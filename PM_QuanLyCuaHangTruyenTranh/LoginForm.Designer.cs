@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblClick = new System.Windows.Forms.Label();
@@ -37,15 +39,23 @@
             this.lblUN = new System.Windows.Forms.Label();
             this.GNtxtPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.GNtxtUN = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.GNcmbVAI = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PicWaitGif = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.picRoleGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaitGif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoleGif)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel1.Controls.Add(this.guna2PictureBox1);
+            this.guna2ShadowPanel1.Controls.Add(this.PicWaitGif);
+            this.guna2ShadowPanel1.Controls.Add(this.label1);
+            this.guna2ShadowPanel1.Controls.Add(this.GNcmbVAI);
+            this.guna2ShadowPanel1.Controls.Add(this.picRoleGif);
             this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel1);
             this.guna2ShadowPanel1.Controls.Add(this.lblClick);
             this.guna2ShadowPanel1.Controls.Add(this.lblHoi);
@@ -54,6 +64,7 @@
             this.guna2ShadowPanel1.Controls.Add(this.lblUN);
             this.guna2ShadowPanel1.Controls.Add(this.GNtxtPass);
             this.guna2ShadowPanel1.Controls.Add(this.GNtxtUN);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.Pink;
             this.guna2ShadowPanel1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -67,6 +78,7 @@
             // 
             this.guna2HtmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.guna2HtmlLabel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Lucida Calligraphy", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(292, 40);
@@ -79,17 +91,21 @@
             // 
             this.lblClick.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblClick.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblClick, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblClick.Location = new System.Drawing.Point(378, 359);
             this.lblClick.Name = "lblClick";
             this.lblClick.Size = new System.Drawing.Size(67, 16);
             this.lblClick.TabIndex = 16;
             this.lblClick.Text = "click here!";
             this.lblClick.Click += new System.EventHandler(this.lblClick_Click);
+            this.lblClick.MouseEnter += new System.EventHandler(this.lblClick_MouseEnter);
+            this.lblClick.MouseLeave += new System.EventHandler(this.lblClick_MouseLeave);
             // 
             // lblHoi
             // 
             this.lblHoi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblHoi.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblHoi, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblHoi.Location = new System.Drawing.Point(289, 359);
             this.lblHoi.Name = "lblHoi";
             this.lblHoi.Size = new System.Drawing.Size(83, 16);
@@ -100,6 +116,7 @@
             // 
             this.GNbtnLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNbtnLogin.BorderRadius = 20;
+            this.guna2Transition1.SetDecoration(this.GNbtnLogin, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNbtnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.GNbtnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.GNbtnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -118,8 +135,9 @@
             // 
             this.lblPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPass.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblPass, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblPass.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPass.Location = new System.Drawing.Point(189, 230);
+            this.lblPass.Location = new System.Drawing.Point(189, 192);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(73, 23);
             this.lblPass.TabIndex = 13;
@@ -129,6 +147,7 @@
             // 
             this.lblUN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUN.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblUN, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblUN.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUN.Location = new System.Drawing.Point(189, 161);
             this.lblUN.Name = "lblUN";
@@ -140,6 +159,7 @@
             // 
             this.GNtxtPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNtxtPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.GNtxtPass, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNtxtPass.DefaultText = "";
             this.GNtxtPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.GNtxtPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -148,7 +168,7 @@
             this.GNtxtPass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.GNtxtPass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.GNtxtPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.GNtxtPass.Location = new System.Drawing.Point(285, 230);
+            this.GNtxtPass.Location = new System.Drawing.Point(285, 192);
             this.GNtxtPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GNtxtPass.Name = "GNtxtPass";
             this.GNtxtPass.PasswordChar = '*';
@@ -161,6 +181,7 @@
             // 
             this.GNtxtUN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNtxtUN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.GNtxtUN, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNtxtUN.DefaultText = "";
             this.GNtxtUN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.GNtxtUN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -177,30 +198,101 @@
             this.GNtxtUN.Size = new System.Drawing.Size(227, 23);
             this.GNtxtUN.TabIndex = 10;
             // 
-            // guna2PictureBox1
+            // GNcmbVAI
             // 
-            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox1.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.text;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(614, 40);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(121, 102);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 18;
-            this.guna2PictureBox1.TabStop = false;
+            this.GNcmbVAI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GNcmbVAI.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.GNcmbVAI, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.GNcmbVAI.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.GNcmbVAI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GNcmbVAI.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.GNcmbVAI.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.GNcmbVAI.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GNcmbVAI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.GNcmbVAI.ItemHeight = 30;
+            this.GNcmbVAI.Items.AddRange(new object[] {
+            "Khach",
+            "Nhan Vien",
+            "Admin"});
+            this.GNcmbVAI.Location = new System.Drawing.Point(285, 235);
+            this.GNcmbVAI.Name = "GNcmbVAI";
+            this.GNcmbVAI.Size = new System.Drawing.Size(140, 36);
+            this.GNcmbVAI.TabIndex = 19;
+            this.GNcmbVAI.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
+            // 
+            // guna2Transition1
+            // 
+            this.guna2Transition1.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(195, 248);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 23);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "You are";
+            // 
+            // PicWaitGif
+            // 
+            this.PicWaitGif.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.PicWaitGif, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.PicWaitGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.PicWaitGif.ImageRotate = 0F;
+            this.PicWaitGif.Location = new System.Drawing.Point(431, 235);
+            this.PicWaitGif.Name = "PicWaitGif";
+            this.PicWaitGif.Size = new System.Drawing.Size(39, 36);
+            this.PicWaitGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicWaitGif.TabIndex = 21;
+            this.PicWaitGif.TabStop = false;
+            // 
+            // picRoleGif
+            // 
+            this.picRoleGif.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picRoleGif.BorderRadius = 10;
+            this.guna2Transition1.SetDecoration(this.picRoleGif, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.picRoleGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.picRoleGif.ImageRotate = 0F;
+            this.picRoleGif.Location = new System.Drawing.Point(576, 161);
+            this.picRoleGif.Name = "picRoleGif";
+            this.picRoleGif.Size = new System.Drawing.Size(191, 160);
+            this.picRoleGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRoleGif.TabIndex = 18;
+            this.picRoleGif.TabStop = false;
             // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.guna2ShadowPanel1);
+            this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2ShadowPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaitGif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoleGif)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,7 +308,11 @@
         private Guna.UI2.WinForms.Guna2TextBox GNtxtPass;
         private Guna.UI2.WinForms.Guna2TextBox GNtxtUN;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox picRoleGif;
+        private Guna.UI2.WinForms.Guna2ComboBox GNcmbVAI;
+        private Guna.UI2.WinForms.Guna2Transition guna2Transition1;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2PictureBox PicWaitGif;
     }
 }
 

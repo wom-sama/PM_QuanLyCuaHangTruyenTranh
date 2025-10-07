@@ -52,6 +52,8 @@ namespace PM_QuanLyCuaHangTruyenTranh
         {
             // Ẩn form hiện tại
             this.Hide();
+            // Ẩn form hiện tại
+            this.Hide();
 
             // Tạo và hiển thị form đăng ký
 
