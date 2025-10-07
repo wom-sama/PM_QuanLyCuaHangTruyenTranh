@@ -1,6 +1,6 @@
 ﻿namespace PM_QuanLyCuaHangTruyenTranh
 {
-    partial class LoginForm
+    partial class SignInForm
     {
         /// <summary>
         /// Required designer variable.
@@ -61,7 +61,7 @@
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.LightGray;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(800, 450);
-            this.guna2ShadowPanel1.TabIndex = 0;
+            this.guna2ShadowPanel1.TabIndex = 1;
             // 
             // guna2HtmlLabel1
             // 
@@ -69,11 +69,11 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Lucida Calligraphy", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(292, 40);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(131, 17);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(186, 80);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(565, 80);
             this.guna2HtmlLabel1.TabIndex = 17;
-            this.guna2HtmlLabel1.Text = "Login";
+            this.guna2HtmlLabel1.Text = "Account Sign-Up";
             // 
             // lblClick
             // 
@@ -84,7 +84,6 @@
             this.lblClick.Size = new System.Drawing.Size(67, 16);
             this.lblClick.TabIndex = 16;
             this.lblClick.Text = "click here!";
-            this.lblClick.Click += new System.EventHandler(this.lblClick_Click);
             // 
             // lblHoi
             // 
@@ -112,7 +111,6 @@
             this.GNbtnLogin.Size = new System.Drawing.Size(180, 45);
             this.GNbtnLogin.TabIndex = 14;
             this.GNbtnLogin.Text = "Login";
-            this.GNbtnLogin.Click += new System.EventHandler(this.GNbtnLogin_Click);
             // 
             // lblPass
             // 
@@ -182,22 +180,20 @@
             this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2PictureBox1.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.text;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(614, 40);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(676, 328);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(121, 102);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 18;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // LoginForm
+            // SignInForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.guna2ShadowPanel1);
-            this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Đăng Nhập";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.Name = "SignInForm";
+            this.Text = "Account Sign-Up Form";
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2ShadowPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
@@ -208,6 +204,8 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.Label lblClick;
         private System.Windows.Forms.Label lblHoi;
         private Guna.UI2.WinForms.Guna2Button GNbtnLogin;
@@ -215,8 +213,5 @@
         private System.Windows.Forms.Label lblUN;
         private Guna.UI2.WinForms.Guna2TextBox GNtxtPass;
         private Guna.UI2.WinForms.Guna2TextBox GNtxtUN;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }
-
