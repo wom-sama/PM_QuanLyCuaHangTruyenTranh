@@ -27,6 +27,15 @@ namespace PM_QuanLyCuaHangTruyenTranh
         {
             InitializeComponent();
             guna2HtmlLabelMess.Text = mess;
+            // nếu là báo sai tài khoản sẽ hiện label quên mật khẩu
+            if (mess == "Sai mat khau hoac tai khoan")
+            {
+                guna2HtmlLabel1Froget.Visible = true;
+            }
+            else
+            {
+                guna2HtmlLabel1Froget.Visible = false;
+            }
         }
 
         private async void guna2Button1_Click(object sender, EventArgs e)
@@ -55,7 +64,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
         }
 
-        private void guna2HtmlLabel1_Click_1(object sender, EventArgs e)
+        private void guna2HtmlLabel1Froget_Click(object sender, EventArgs e)
         {
 
         }

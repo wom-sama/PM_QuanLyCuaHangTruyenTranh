@@ -25,7 +25,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(255, 192, 203); // cùng màu pastel hồng như panel
-            this.MaximizeBox = false;
+            //this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
         }
@@ -50,7 +50,17 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
         private void lblClick_Click(object sender, EventArgs e)
         {
+            // Ẩn form hiện tại
+            this.Hide();
 
+            // Tạo và hiển thị form đăng ký
+
+            SignInForm f = new SignInForm();
+            f.StartPosition = FormStartPosition.CenterScreen; // Hiển thị giữa màn hình
+            f.ShowDialog();
+
+            // Sau khi form đăng ký đóng, hiện lại form đăng nhập
+            this.Show();
         }
     }
 }
