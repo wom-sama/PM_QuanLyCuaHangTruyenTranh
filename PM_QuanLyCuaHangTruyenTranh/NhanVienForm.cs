@@ -114,5 +114,10 @@ namespace PM_QuanLyCuaHangTruyenTranh
                 MessageBox.Show("Lỗi khi tải dữ liệu sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            //
+        }
     }
 }
