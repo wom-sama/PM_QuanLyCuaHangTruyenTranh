@@ -10,8 +10,9 @@ namespace PM_QuanLyCuaHangTruyenTranh.Helpers
 {
     public static class EmailHelper
     {
+
         private static readonly string senderEmail = "your_email@gmail.com";
-        private static readonly string senderPassword = "your_app_password"; // dùng App Password của Gmail
+        private static readonly string senderPassword = "your_app_password"; // 
 
         public static async Task SendVerificationCodeAsync(string recipientEmail, string code)
         {

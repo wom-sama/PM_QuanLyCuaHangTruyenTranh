@@ -24,7 +24,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
     {
         private bool otpVerified = false;
         private DateTime codeSentTime;
-        private string sentOTP=null;
+        private string sentOTP = null;
         public SignInForm()
         {
             InitializeComponent();
@@ -85,7 +85,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
         {
             string enteredOTP = txtOTP1.Text + txtOTP2.Text + txtOTP3.Text + txtOTP4.Text + txtOTP5.Text;
 
-            string decryptedOTP = DecryptString(sentOTP);
+            string decryptedOTP = AESHelper.DecryptString(sentOTP); // Giải mã để so sánh khi người dùng nhập OTP
 
             if (enteredOTP != decryptedOTP || (DateTime.Now - codeSentTime).TotalSeconds > 60)
             {
@@ -179,7 +179,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
         }
 
 
-        private void AddHoverEffect(Guna.UI2.WinForms.Guna2TextBox box)
+        public static void AddHoverEffect(Guna.UI2.WinForms.Guna2TextBox box)
         {
             // Màu viền mặc định
             Color normalBorder = Color.Silver;
@@ -218,7 +218,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
             AddHoverEffect(txtOTP3);
             AddHoverEffect(txtOTP4);
             AddHoverEffect(txtOTP5);
-            
+
             // Thêm hiệu ứng hover cho ô nhập email
             AddHoverEffect(GNtxtMail);
             // Thêm hiệu ứng hover cho ô nhập tên đăng nhập
@@ -291,12 +291,12 @@ namespace PM_QuanLyCuaHangTruyenTranh
             try
             {
                 // Sinh mã OTP
-                string otp = OTPHelper.GenerateOTP();
-                sentOTP = EncryptString(otp); //  Mã hóa trước khi lưu
+
+                sentOTP = AESHelper.EncryptString(OTPHelper.GenerateOTP()); //Mã hóa chuỗi OTP bằng AES (để không lưu plain text trong RAM)
                 codeSentTime = DateTime.Now;
 
                 // Gửi mail
-                await EmailHelper.SendVerificationCodeAsync(email, otp);
+                await EmailHelper.SendVerificationCodeAsync(email, AESHelper.DecryptString(sentOTP));
 
                 new FormMessage("Verification code sent successfully!").ShowDialog();
                 StartCountdown();
@@ -318,62 +318,11 @@ namespace PM_QuanLyCuaHangTruyenTranh
             lblDem.Text = $"Wait ({countdown}s)";
             DemTg.Start();
         }
-     /*   private bool VerifyOTP(string entered)
-        {
-            if (string.IsNullOrEmpty(sentOTP)) return false;
-            if ((DateTime.Now - codeSentTime).TotalSeconds > 60) return false;
-            return entered == sentOTP;
-        }*/
-
-
-
-
-        // Mã hóa chuỗi OTP bằng AES (để không lưu plain text trong RAM)
-        private string EncryptString(string plainText)
-        {
-
-            byte[] key = Encoding.UTF8.GetBytes("3ss@@35sd68){}o??><~!@#$%^&*"); // 16 bytes key 
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = key;
-                aes.GenerateIV();
-                using (var encryptor = aes.CreateEncryptor(aes.Key, aes.IV))
-                using (var ms = new MemoryStream())
-                {
-                    ms.Write(aes.IV, 0, aes.IV.Length);
-                    using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
-                    using (var sw = new StreamWriter(cs))
-                    {
-                        sw.Write(plainText);
-                    }
-                    return Convert.ToBase64String(ms.ToArray());
-                }
-            }
-
-        }
-        // Giải mã để so sánh khi người dùng nhập OTP
-        private string DecryptString(string cipherText)
-        {
-
-            byte[] fullCipher = Convert.FromBase64String(cipherText);
-            byte[] key = Encoding.UTF8.GetBytes("3ss@@35sd68){}o??><~!@#$%^&*");
-            using (Aes aes = Aes.Create())
-            {
-                byte[] iv = new byte[16];
-                Array.Copy(fullCipher, iv, iv.Length);
-                aes.Key = key;
-                aes.IV = iv;
-                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
-                using (var ms = new MemoryStream(fullCipher, 16, fullCipher.Length - 16))
-                using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
-                using (var sr = new StreamReader(cs))
-                {
-                    return sr.ReadToEnd();
-                }
-            }
-
-        }
-
+    
+        
+       
+       
+      
         private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -389,7 +338,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             SaveKhachToDatabase();
             // thong bao dang ky thanh cong va quay lai giao dien dang nhap
-            new FormMessage("account registration successful");
+            new FormMessage("Account registration successful!").ShowDialog();
             this.Close();
 
         }

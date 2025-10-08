@@ -98,8 +98,6 @@
             this.lblClick.TabIndex = 16;
             this.lblClick.Text = "click here!";
             this.lblClick.Click += new System.EventHandler(this.lblClick_Click);
-            this.lblClick.MouseEnter += new System.EventHandler(this.lblClick_MouseEnter);
-            this.lblClick.MouseLeave += new System.EventHandler(this.lblClick_MouseLeave);
             // 
             // lblHoi
             // 
@@ -218,7 +216,7 @@
             this.GNcmbVAI.Name = "GNcmbVAI";
             this.GNcmbVAI.Size = new System.Drawing.Size(140, 36);
             this.GNcmbVAI.TabIndex = 19;
-            this.GNcmbVAI.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
+           
             // 
             // guna2Transition1
             // 

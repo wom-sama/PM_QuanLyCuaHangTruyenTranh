@@ -69,6 +69,10 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=9.0.0.9, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.9.0.9\lib\net462\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -87,6 +91,7 @@
     <Compile Include="FormMessage.Designer.cs">
       <DependentUpon>FormMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AESHelper.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\OTPHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
@@ -102,6 +107,15 @@
     <Compile Include="Khachcs.Designer.cs">
       <DependentUpon>Khachcs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510080702097_InitialCreate.cs" />
+    <Compile Include="Migrations\202510080702097_InitialCreate.Designer.cs">
+      <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510081032100_UpdatePasswordFieldLength.cs" />
+    <Compile Include="Migrations\202510081032100_UpdatePasswordFieldLength.Designer.cs">
+      <DependentUpon>202510081032100_UpdatePasswordFieldLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Khach.cs" />
@@ -128,6 +142,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510080702097_InitialCreate.resx">
+      <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510081032100_UpdatePasswordFieldLength.resx">
+      <DependentUpon>202510081032100_UpdatePasswordFieldLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVienForm.resx">
+      <DependentUpon>NhanVienForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
