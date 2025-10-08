@@ -38,5 +38,5 @@ namespace PM_QuanLyCuaHangTruyenTranh
             Console.WriteLine("Encrypted Pass: " + encPass);*/
         }
     }
-   }
+}
 
