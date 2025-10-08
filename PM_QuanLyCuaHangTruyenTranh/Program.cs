@@ -17,18 +17,12 @@ namespace PM_QuanLyCuaHangTruyenTranh
         static void Main()
         {
 
-            /* Application.EnableVisualStyles();
-             Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new LoginForm());
-            */
-            string rawKey = "3ss@@35sd68){}o??><~!@#$%^&*";
-            byte[] protectedKey = ProtectedData.Protect(
-                Encoding.UTF8.GetBytes(rawKey),
-                null,
-                DataProtectionScope.CurrentUser);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new NhanVienForm());
 
-            Console.WriteLine(Convert.ToBase64String(protectedKey));
+
         }
     }
-   }
+}
 

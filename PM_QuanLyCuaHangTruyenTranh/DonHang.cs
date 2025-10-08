@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace PM_QuanLyCuaHangTruyenTranh
 {
-    public partial class Khachcs : Form
+    public partial class DonHang : Form
     {
-        public Khachcs()
+        public DonHang()
         {
             InitializeComponent();
-        }
-
-        private void Khachcs_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            Form form = new FormMessage("LOL");
-            form.ShowDialog();
         }
     }
 }
