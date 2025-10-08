@@ -1,28 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PM_QuanLyCuaHangTruyenTranh.Helpers
 {
     public static class EmailHelper
     {
-
-        private static readonly string senderEmail = "your_email@gmail.com";
-        private static readonly string senderPassword = "your_app_password"; // 
+        // Lấy encrypted strings từ App.config
+        private static readonly string encEmail = ConfigurationManager.AppSettings["EncryptedSenderEmail"];
+        private static readonly string encPass = ConfigurationManager.AppSettings["EncryptedSenderPass"];
 
         public static async Task SendVerificationCodeAsync(string recipientEmail, string code)
         {
             try
             {
+                if (string.IsNullOrEmpty(encEmail) || string.IsNullOrEmpty(encPass))
+                    throw new Exception("Encrypted email/password not found in appSettings.");
+
+                // Giải mã
+                string senderEmail = AESHelper.DecryptString(encEmail);
+                string senderPassword = AESHelper.DecryptString(encPass);
+
                 var message = new MailMessage();
-                message.From = new MailAddress(senderEmail, "Cửa hàng Truyện Tranh");
+                message.From = new MailAddress(senderEmail, "Comic Store");
                 message.To.Add(recipientEmail);
-                message.Subject = "Mã xác nhận đăng ký tài khoản";
-                message.Body = $"Xin chào,\n\nMã xác nhận đăng ký của bạn là: {code}\n\nTrân trọng,\nCửa hàng Truyện Tranh";
+                message.Subject = "Your verification code";
+                message.Body = $"Hello,\n\nYour verification code is: {code}\n\nThanks!";
                 message.IsBodyHtml = false;
 
                 using (var smtp = new SmtpClient("smtp.gmail.com", 587))
@@ -34,10 +39,9 @@ namespace PM_QuanLyCuaHangTruyenTranh.Helpers
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi gửi email: " + ex.Message);
+                // Bạn có thể log ex.Message ở nơi khác
+                throw new Exception("Failed to send email: " + ex.Message);
             }
         }
-
-
     }
 }

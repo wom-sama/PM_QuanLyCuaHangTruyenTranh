@@ -13,6 +13,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,8 @@ namespace PM_QuanLyCuaHangTruyenTranh
         private bool otpVerified = false;
         private DateTime codeSentTime;
         private string sentOTP = null;
+        private string email = null;
+        private int countdown = 60; // Thời gian đếm ngược ban đầu (giây)
         public SignInForm()
         {
             InitializeComponent();
@@ -66,8 +69,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
             {
                 GNbtnSendCode.Text = "Verify";
                 //GNbtnSendCode.FillColor = Color.MediumSeaGreen;
-                GNbtnSendCode.Click -= GNbtnSendCode_Click;
-                GNbtnSendCode.Click += GNbtnVerify_Click;
+             
                 GNbtnSendCode.Enabled = true;
             }
             // truong hop nguoi dung xoa bot nut
@@ -75,32 +77,14 @@ namespace PM_QuanLyCuaHangTruyenTranh
                 guna2Transition1.HideSync(GNbtnSendCode);
                 GNbtnSendCode.Text = "Send Code";
                 //GNbtnSendCode.FillColor = Color.DodgerBlue;
-                GNbtnSendCode.Click -= GNbtnVerify_Click;
-                GNbtnSendCode.Click += GNbtnSendCode_Click;
+               
                 guna2Transition1.ShowSync(GNbtnSendCode);
             }
         }
 
-        private void GNbtnVerify_Click(object sender, EventArgs e)
-        {
-            string enteredOTP = txtOTP1.Text + txtOTP2.Text + txtOTP3.Text + txtOTP4.Text + txtOTP5.Text;
 
-            string decryptedOTP = AESHelper.DecryptString(sentOTP); // Giải mã để so sánh khi người dùng nhập OTP
-
-            if (enteredOTP != decryptedOTP || (DateTime.Now - codeSentTime).TotalSeconds > 60)
-            {
-                new FormMessage("Invalid or expired code.").ShowDialog();
-                return;
-            }
-
-            otpVerified = true;
-            GNbtnSendCode.Text = "Verified ✓";
-            GNbtnSendCode.Enabled = false;
-            new FormMessage("Code verified successfully!").ShowDialog();
-
-            //  Bật nút Sign Up
-            GNbtnSignUp.Enabled = true;
-        }
+       
+      
 
         // luu thong tin tai khoan khach vao co so du lieu
         private void SaveKhachToDatabase()
@@ -232,13 +216,19 @@ namespace PM_QuanLyCuaHangTruyenTranh
             GNbtnSignUp.Enabled = false;
         }
 
+
+        private bool IsValidEmail(string email)
+        {
+            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
         private void GNtxtMail_TextChanged(object sender, EventArgs e)
         {
 
-            string email = GNtxtMail.Text.Trim();
+             string test = GNtxtMail.Text.Trim();
 
             // Kiểm tra email có đuôi @gmail.com không
-            if (email.EndsWith("@gmail.com", StringComparison.OrdinalIgnoreCase))
+            if (IsValidEmail(test))
             {
                 GNbtnSendCode.Visible = true;
                 GNbtnSendCode.Enabled = true;
@@ -252,7 +242,14 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
         private void DemTg_Tick(object sender, EventArgs e)
         {
-
+            countdown--;
+            lblDem.Text = $"Wait ({countdown}s)";
+            if (countdown <= 0)
+            {
+                DemTg.Stop();
+                GNbtnSendCode.Enabled = true;
+                lblDem.Visible = false;
+            }
         }
 
         private void txtOTP1_Enter(object sender, EventArgs e)
@@ -278,11 +275,32 @@ namespace PM_QuanLyCuaHangTruyenTranh
             }
         }
 
+
+
+        // gui OTP ve email
         private async void GNbtnSendCode_Click(object sender, EventArgs e)
         {
+            // Neu chua gui ma thi gui ma
+            if (GNbtnSendCode.Text == "Send Code")
+            {
+                GNtxtMail.Enabled = false;
+                await HandleSendCode();
+            }
+            // Neu da gui ma thi kiem tra ma
+            else if (GNbtnSendCode.Text == "Verify")
+            {
+                HandleVerify();
+            }
 
-            string email = GNtxtMail.Text.Trim();
-            if (string.IsNullOrEmpty(email))
+        }
+
+
+        // gui OTP
+        private async Task HandleSendCode()
+        {
+            this.email = GNtxtMail.Text;
+
+            if (string.IsNullOrEmpty(this.email))
             {
                 new FormMessage("Please enter your email.").ShowDialog();
                 return;
@@ -290,13 +308,10 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             try
             {
-                // Sinh mã OTP
-
-                sentOTP = AESHelper.EncryptString(OTPHelper.GenerateOTP()); //Mã hóa chuỗi OTP bằng AES (để không lưu plain text trong RAM)
+                sentOTP = AESHelper.EncryptString(OTPHelper.GenerateOTP(), email.Trim());
                 codeSentTime = DateTime.Now;
 
-                // Gửi mail
-                await EmailHelper.SendVerificationCodeAsync(email, AESHelper.DecryptString(sentOTP));
+                await EmailHelper.SendVerificationCodeAsync(email, AESHelper.DecryptString(sentOTP, this.email));
 
                 new FormMessage("Verification code sent successfully!").ShowDialog();
                 StartCountdown();
@@ -305,17 +320,36 @@ namespace PM_QuanLyCuaHangTruyenTranh
             {
                 new FormMessage($"Failed to send email: {ex.Message}").ShowDialog();
             }
-
-
-
         }
+
+        // giai ma va kiem tra OTP nguoi dung nhap
+        private void HandleVerify()
+        {
+            string enteredOTP = txtOTP1.Text.Trim() + txtOTP2.Text.Trim() + txtOTP3.Text.Trim() + txtOTP4.Text.Trim() + txtOTP5.Text.Trim();
+
+            if (enteredOTP != AESHelper.DecryptString(sentOTP, this.email.Trim()) || (DateTime.Now - codeSentTime).TotalSeconds > 60)
+            {
+                new FormMessage("Invalid or expired code.").ShowDialog();
+                return;
+            }
+
+            otpVerified = true;
+            GNbtnSendCode.Text = "Verified ✓";
+            GNbtnSendCode.Enabled = false;
+            new FormMessage("Code verified successfully!").ShowDialog();
+            GNbtnSignUp.Enabled = true;
+        }
+
+
+
 
         private void StartCountdown()
         {
-            int countdown = 60;
+            countdown = 60;
             lblDem.Visible = true;
             GNbtnSendCode.Enabled = false;
             lblDem.Text = $"Wait ({countdown}s)";
+            DemTg.Interval = 1000;
             DemTg.Start();
         }
     

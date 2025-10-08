@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PM_QuanLyCuaHangTruyenTranh.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Security.Cryptography;
+using System.Configuration;
 
 namespace PM_QuanLyCuaHangTruyenTranh
 {
@@ -17,17 +19,23 @@ namespace PM_QuanLyCuaHangTruyenTranh
         static void Main()
         {
 
-            /* Application.EnableVisualStyles();
+             Application.EnableVisualStyles();
              Application.SetCompatibleTextRenderingDefault(false);
              Application.Run(new LoginForm());
+            
+           /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
+            string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
+            Console.WriteLine("Decrypted Email: " + senderEmail);
+            Console.WriteLine("Decrypted Password: " + senderPassword);
             */
-            string rawKey = "3ss@@35sd68){}o??><~!@#$%^&*";
-            byte[] protectedKey = ProtectedData.Protect(
-                Encoding.UTF8.GetBytes(rawKey),
-                null,
-                DataProtectionScope.CurrentUser);
+          /*  string email = "nnnaaahhh199@gmail.com";
+            string password = "kmmq vpig muph shnz";
 
-            Console.WriteLine(Convert.ToBase64String(protectedKey));
+            string encEmail = AESHelper.EncryptString(email);
+            string encPass = AESHelper.EncryptString(password);
+
+            Console.WriteLine("Encrypted Email: " + encEmail);
+            Console.WriteLine("Encrypted Pass: " + encPass);*/
         }
     }
    }
