@@ -376,5 +376,75 @@ namespace PM_QuanLyCuaHangTruyenTranh
             this.Close();
 
         }
+
+        private void lblDem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GNtxtRePass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPass_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblUN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GNtxtPass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GNtxtUN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

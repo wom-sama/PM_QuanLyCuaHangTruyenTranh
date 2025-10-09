@@ -46,7 +46,10 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             // Chờ hiệu ứng hoàn tất rồi đóng
             await Task.Delay(300);
+            
             this.Close();
+
+           
         }
 
         private void FormMessage_Load(object sender, EventArgs e)

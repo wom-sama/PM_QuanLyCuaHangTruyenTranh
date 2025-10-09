@@ -103,6 +103,16 @@ namespace PM_QuanLyCuaHangTruyenTranh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rick_roll {
+            get {
+                object obj = ResourceManager.GetObject("rick-roll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sparkle_hanabi {
             get {
                 object obj = ResourceManager.GetObject("sparkle-hanabi", resourceCulture);

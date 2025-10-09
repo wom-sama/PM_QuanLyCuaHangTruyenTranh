@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using PM_QuanLyCuaHangTruyenTranh.Helpers;
+using PM_QuanLyCuaHangTruyenTranh.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +16,8 @@ namespace PM_QuanLyCuaHangTruyenTranh
 {
     public partial class LoginForm : Form
     {
+        private AppDbContext db = new AppDbContext();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -27,26 +33,128 @@ namespace PM_QuanLyCuaHangTruyenTranh
             this.BackColor = Color.FromArgb(255, 192, 203); // cùng màu pastel hồng như panel
             //this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+           
+            // them hieu ung vao combo box
+            GNcmbVAI.Items.AddRange(new string[] { "", "Admin", "Nhân viên", "Khách" });
+            GNcmbVAI.SelectedIndex = 0;
+
+
 
         }
 
         private void GNbtnLogin_Click(object sender, EventArgs e)
         {
-            if (GNtxtUN.Text == "admin" && GNtxtPass.Text == "123")
-            {
-                Khachcs khachForm = new Khachcs();
-                khachForm.FormClosed += (s, args) => this.Show();
-                this.Hide();
-                khachForm.Show();
-            }
-            else
-            {
-                FormMessage tb = new FormMessage("Sai mat khau hoac tai khoan");
 
-                tb.ShowDialog();
+
+
+
+
+
+
+
+            string username = GNtxtUN.Text.Trim();
+            string password = GNtxtPass.Text.Trim();
+            string role = GNcmbVAI.Text.Trim(); // Vai trò chọn trong combobox
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
+            {
+                new FormMessage("Vui lòng nhập đầy đủ thông tin đăng nhập!").ShowDialog();
+                return;
             }
 
+            try
+            {
+                switch (role)
+                {
+                    case "Admin":
+                        {
+                            var admin = db.Admins.FirstOrDefault(a => a.TenDangNhap == username);
+                            if (admin == null)
+                            {
+                                new FormMessage("Tài khoản Admin không tồn tại!").ShowDialog();
+                                return;
+                            }
+
+                            bool isValid = PasswordHelper.VerifyPassword(password, admin.MatKhau);
+                            if (isValid)
+                            {
+                                new FormMessage("Đăng nhập thành công với vai trò Admin!").ShowDialog();
+                                //this.Hide();
+                               // AdminForm f = new AdminForm(admin);
+                               // f.StartPosition = FormStartPosition.CenterScreen;
+                              //  f.ShowDialog();
+                               // this.Show();
+                            }
+                            else
+                            {
+                                new FormMessage("Mật khẩu không đúng!").ShowDialog();
+                            }
+                            break;
+                        }
+
+                    case "Nhân viên":
+                        {
+                            var nv = db.NhanViens.FirstOrDefault(n => n.TenDangNhap == username);
+                            if (nv == null)
+                            {
+                                new FormMessage("Tài khoản Nhân viên không tồn tại!").ShowDialog();
+                                return;
+                            }
+
+                            bool isValid = PasswordHelper.VerifyPassword(password, nv.MatKhau);
+                            if (isValid)
+                            {
+                                new FormMessage("Đăng nhập thành công với vai trò Nhân viên!").ShowDialog();
+                                this.Hide();
+                                NhanVienForm f = new NhanVienForm();
+                                f.StartPosition = FormStartPosition.CenterScreen;
+                                f.ShowDialog();
+                                this.Show();
+                            }
+                            else
+                            {
+                                new FormMessage("Mật khẩu không đúng!").ShowDialog();
+                            }
+                            break;
+                        }
+
+                    case "Khách":
+                        {
+                            var kh = db.Khaches.FirstOrDefault(k => k.TenDangNhap == username);
+                            if (kh == null)
+                            {
+                                new FormMessage("Tài khoản Khách không tồn tại!").ShowDialog();
+                                return;
+                            }
+
+                            bool isValid = PasswordHelper.VerifyPassword(password, kh.MatKhau);
+                            if (isValid)
+                            {
+                                new FormMessage("Đăng nhập thành công với vai trò Khách!").ShowDialog();
+                                this.Hide();
+                                Khachcs f = new Khachcs();
+                                f.StartPosition = FormStartPosition.CenterScreen;
+                                f.ShowDialog();
+                                this.Show();
+                            }
+                            else
+                            {
+                                new FormMessage("Mật khẩu không đúng!").ShowDialog();
+                            }
+                            break;
+                        }
+
+                    default:
+                        new FormMessage("Vui lòng chọn vai trò hợp lệ!").ShowDialog();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                new FormMessage("Lỗi khi đăng nhập: " + ex.Message).ShowDialog();
+            }
         }
+
 
         private void lblClick_Click(object sender, EventArgs e)
         {
@@ -63,6 +171,83 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             // Sau khi form đăng ký đóng, hiện lại form đăng nhập
             this.Show();
+        }
+
+        private void GNcmbVAI_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Ảnh GIF mới theo vai trò
+            Image newGif;
+            switch (GNcmbVAI.SelectedItem.ToString())
+            {
+                case "Admin":
+                    newGif = Properties.Resources.evernight_ezgif_com_apng_to_gif_converter;
+                    break;
+                case "Nhân viên":
+                    newGif = Properties.Resources.sparkle_hanabi;
+                    break;
+                case "Khách":
+                    newGif = Properties.Resources.text;
+                    break;
+                default:
+                    newGif = Properties.Resources.cherry_blossoms_6383_128;
+                    break;
+            }
+
+            // Tạo ảnh mới (Guna2PictureBox)
+            Guna2PictureBox picNew = new Guna2PictureBox
+            {
+                Size = picRoleGif.Size,
+                Location = picRoleGif.Location,
+                SizeMode = picRoleGif.SizeMode,
+                Image = newGif,
+                BackColor = Color.Transparent,
+                UseTransparentBackground = true,
+                Parent = picRoleGif.Parent,
+            };
+
+            // tam chua hien anh moi
+            picNew.Hide();
+
+
+
+
+            // Ẩn ảnh cũ với hiệu ứng
+
+            guna2Transition1.HideSync(picRoleGif);
+
+            // Hiện ảnh mới 
+            guna2Transition1.ShowSync(picNew);
+
+            // Dọn dẹp ảnh cũ 
+            picRoleGif.Dispose();
+
+            // Cập nhật biến gốc để các chỗ khác trong form vẫn dùng được
+            picRoleGif = picNew;
+        }
+
+        private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblClick_MouseEnter(object sender, EventArgs e)
+        {
+            // Đổi màu va gach chan khi hover chuột vào(link)
+            lblClick.ForeColor = Color.Blue;
+            lblClick.Font = new Font("Palatino Linotype", 12F , FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
+
+        }
+
+        private void lblClick_MouseLeave(object sender, EventArgs e)
+        {
+            // Trả về màu và kiểu chữ ban đầu khi chuột rời khỏi(link)
+            lblClick.ForeColor = Color.FromArgb(75, 63, 63);
+            lblClick.Font = new Font("Palatino Linotype",12F, FontStyle.Bold | FontStyle.Italic);
+        }
+
+        private void lblHoi_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

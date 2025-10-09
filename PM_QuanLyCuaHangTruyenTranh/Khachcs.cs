@@ -26,6 +26,8 @@ namespace PM_QuanLyCuaHangTruyenTranh
         {
             Form form = new FormMessage("LOL");
             form.ShowDialog();
+            guna2PictureBox1.Visible = true;
+            guna2Button4.Visible = false;
         }
     }
 }

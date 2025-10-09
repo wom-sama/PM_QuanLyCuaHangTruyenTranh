@@ -61,7 +61,8 @@
             // 
             this.guna2HtmlLabelMess.AutoSize = false;
             this.guna2HtmlLabelMess.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabelMess.Font = new System.Drawing.Font("Castellar", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabelMess.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabelMess.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(59)))), ((int)(((byte)(102)))));
             this.guna2HtmlLabelMess.Location = new System.Drawing.Point(2, 14);
             this.guna2HtmlLabelMess.Name = "guna2HtmlLabelMess";
             this.guna2HtmlLabelMess.Size = new System.Drawing.Size(345, 100);

@@ -19,7 +19,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.Helpers
         private static object _lock = new object();
 
         // Lấy AES key (unprotect + derive SHA256 để đảm bảo 32 bytes)
-        private static byte[] GetAesKey()
+        public static byte[] GetAesKey()
         {
             if (_aesKey != null) return _aesKey;
 

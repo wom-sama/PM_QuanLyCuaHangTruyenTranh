@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
+            Guna.UI2.AnimatorNS.Animation animation2 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.GNcmbVAI = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblClick = new System.Windows.Forms.Label();
             this.lblHoi = new System.Windows.Forms.Label();
@@ -39,9 +41,7 @@
             this.lblUN = new System.Windows.Forms.Label();
             this.GNtxtPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.GNtxtUN = new Guna.UI2.WinForms.Guna2TextBox();
-            this.GNcmbVAI = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
-            this.label1 = new System.Windows.Forms.Label();
             this.PicWaitGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.picRoleGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1.SuspendLayout();
@@ -73,6 +73,38 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.LightGray;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(800, 450);
             this.guna2ShadowPanel1.TabIndex = 0;
+            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.label1.Location = new System.Drawing.Point(195, 248);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 23);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "You are";
+            // 
+            // GNcmbVAI
+            // 
+            this.GNcmbVAI.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GNcmbVAI.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.GNcmbVAI, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.GNcmbVAI.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.GNcmbVAI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GNcmbVAI.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.GNcmbVAI.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.GNcmbVAI.Font = new System.Drawing.Font("Imprint MT Shadow", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GNcmbVAI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(42)))), ((int)(((byte)(71)))));
+            this.GNcmbVAI.ItemHeight = 30;
+            this.GNcmbVAI.Location = new System.Drawing.Point(285, 235);
+            this.GNcmbVAI.Name = "GNcmbVAI";
+            this.GNcmbVAI.Size = new System.Drawing.Size(140, 36);
+            this.GNcmbVAI.TabIndex = 19;
+            this.GNcmbVAI.SelectedIndexChanged += new System.EventHandler(this.GNcmbVAI_SelectedIndexChanged);
             // 
             // guna2HtmlLabel1
             // 
@@ -92,23 +124,30 @@
             this.lblClick.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblClick.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.lblClick, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.lblClick.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.lblClick.Location = new System.Drawing.Point(378, 359);
             this.lblClick.Name = "lblClick";
-            this.lblClick.Size = new System.Drawing.Size(67, 16);
+            this.lblClick.Size = new System.Drawing.Size(102, 27);
             this.lblClick.TabIndex = 16;
             this.lblClick.Text = "click here!";
             this.lblClick.Click += new System.EventHandler(this.lblClick_Click);
+            this.lblClick.MouseEnter += new System.EventHandler(this.lblClick_MouseEnter);
+            this.lblClick.MouseLeave += new System.EventHandler(this.lblClick_MouseLeave);
             // 
             // lblHoi
             // 
             this.lblHoi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblHoi.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.lblHoi, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.lblHoi.Location = new System.Drawing.Point(289, 359);
+            this.lblHoi.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.lblHoi.Location = new System.Drawing.Point(194, 359);
             this.lblHoi.Name = "lblHoi";
-            this.lblHoi.Size = new System.Drawing.Size(83, 16);
+            this.lblHoi.Size = new System.Drawing.Size(123, 27);
             this.lblHoi.TabIndex = 15;
             this.lblHoi.Text = "not have acc";
+            this.lblHoi.Click += new System.EventHandler(this.lblHoi_Click);
             // 
             // GNbtnLogin
             // 
@@ -135,6 +174,7 @@
             this.lblPass.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.lblPass, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblPass.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.lblPass.Location = new System.Drawing.Point(189, 192);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(73, 23);
@@ -147,6 +187,7 @@
             this.lblUN.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.lblUN, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblUN.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.lblUN.Location = new System.Drawing.Point(189, 161);
             this.lblUN.Name = "lblUN";
             this.lblUN.Size = new System.Drawing.Size(79, 23);
@@ -196,59 +237,26 @@
             this.GNtxtUN.Size = new System.Drawing.Size(227, 23);
             this.GNtxtUN.TabIndex = 10;
             // 
-            // GNcmbVAI
-            // 
-            this.GNcmbVAI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GNcmbVAI.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.GNcmbVAI, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.GNcmbVAI.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.GNcmbVAI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.GNcmbVAI.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.GNcmbVAI.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.GNcmbVAI.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GNcmbVAI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.GNcmbVAI.ItemHeight = 30;
-            this.GNcmbVAI.Items.AddRange(new object[] {
-            "Khach",
-            "Nhan Vien",
-            "Admin"});
-            this.GNcmbVAI.Location = new System.Drawing.Point(285, 235);
-            this.GNcmbVAI.Name = "GNcmbVAI";
-            this.GNcmbVAI.Size = new System.Drawing.Size(140, 36);
-            this.GNcmbVAI.TabIndex = 19;
-           
-            // 
             // guna2Transition1
             // 
-            this.guna2Transition1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.guna2Transition1.DefaultAnimation = animation1;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(195, 248);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 23);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "You are";
+            this.guna2Transition1.AnimationType = Guna.UI2.AnimatorNS.AnimationType.Leaf;
+            this.guna2Transition1.Cursor = System.Windows.Forms.Cursors.No;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 1F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation2;
             // 
             // PicWaitGif
             // 

@@ -19,16 +19,20 @@ namespace PM_QuanLyCuaHangTruyenTranh
         static void Main()
         {
 
-             Application.EnableVisualStyles();
-             Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new LoginForm());
-            
-           /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
-            string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
-            Console.WriteLine("Decrypted Email: " + senderEmail);
-            Console.WriteLine("Decrypted Password: " + senderPassword);
-            */
-         
+              Application.EnableVisualStyles();
+              Application.SetCompatibleTextRenderingDefault(false);
+              Application.Run(new LoginForm());
+
+            /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
+             string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
+             Console.WriteLine("Decrypted Email: " + senderEmail);
+             Console.WriteLine("Decrypted Password: " + senderPassword);
+             */
+
+            // in ra AES key để kiểm tra
+          
+           
+
         }
     }
 }

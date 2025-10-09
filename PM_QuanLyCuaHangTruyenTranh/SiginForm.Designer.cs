@@ -35,8 +35,6 @@
             this.lblDem = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.GNtxtRePass = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtOTP1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtOTP2 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -47,7 +45,6 @@
             this.GNbtnSendCode = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.label1 = new System.Windows.Forms.Label();
             this.GNtxtMail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.GNbtnSignUp = new Guna.UI2.WinForms.Guna2Button();
             this.lblPass = new System.Windows.Forms.Label();
@@ -56,10 +53,13 @@
             this.GNtxtUN = new Guna.UI2.WinForms.Guna2TextBox();
             this.DemTg = new System.Windows.Forms.Timer(this.components);
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +83,7 @@
             this.guna2ShadowPanel1.Controls.Add(this.lblUN);
             this.guna2ShadowPanel1.Controls.Add(this.GNtxtPass);
             this.guna2ShadowPanel1.Controls.Add(this.GNtxtUN);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.Pink;
             this.guna2ShadowPanel1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -97,28 +98,33 @@
             // 
             this.lblDem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDem.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblDem, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblDem.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDem.Location = new System.Drawing.Point(629, 226);
             this.lblDem.Name = "lblDem";
             this.lblDem.Size = new System.Drawing.Size(44, 23);
             this.lblDem.TabIndex = 31;
             this.lblDem.Text = "None";
+            this.lblDem.Click += new System.EventHandler(this.lblDem_Click);
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(158, 314);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(132, 23);
             this.label3.TabIndex = 30;
             this.label3.Text = "Confirm Password";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // GNtxtRePass
             // 
             this.GNtxtRePass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNtxtRePass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.GNtxtRePass, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNtxtRePass.DefaultText = "";
             this.GNtxtRePass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.GNtxtRePass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -135,30 +141,7 @@
             this.GNtxtRePass.SelectedText = "";
             this.GNtxtRePass.Size = new System.Drawing.Size(227, 23);
             this.GNtxtRePass.TabIndex = 29;
-            // 
-            // guna2PictureBox3
-            // 
-            this.guna2PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox3.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.megumitop;
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(26, 12);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(121, 102);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox3.TabIndex = 28;
-            this.guna2PictureBox3.TabStop = false;
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox2.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.sparkle_hanabi;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(12, 314);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(121, 102);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 27;
-            this.guna2PictureBox2.TabStop = false;
+            this.GNtxtRePass.TextChanged += new System.EventHandler(this.GNtxtRePass_TextChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -168,15 +151,18 @@
             this.flowLayoutPanel1.Controls.Add(this.txtOTP3);
             this.flowLayoutPanel1.Controls.Add(this.txtOTP4);
             this.flowLayoutPanel1.Controls.Add(this.txtOTP5);
+            this.guna2Transition1.SetDecoration(this.flowLayoutPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(313, 222);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(156, 37);
             this.flowLayoutPanel1.TabIndex = 26;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // txtOTP1
             // 
             this.txtOTP1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtOTP1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.txtOTP1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.txtOTP1.DefaultText = "";
             this.txtOTP1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtOTP1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -201,6 +187,7 @@
             // 
             this.txtOTP2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtOTP2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.txtOTP2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.txtOTP2.DefaultText = "";
             this.txtOTP2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtOTP2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -225,6 +212,7 @@
             // 
             this.txtOTP3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtOTP3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.txtOTP3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.txtOTP3.DefaultText = "";
             this.txtOTP3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtOTP3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -249,6 +237,7 @@
             // 
             this.txtOTP4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtOTP4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.txtOTP4, Guna.UI2.AnimatorNS.DecorationType.None);
             this.txtOTP4.DefaultText = "";
             this.txtOTP4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtOTP4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -273,6 +262,7 @@
             // 
             this.txtOTP5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtOTP5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.txtOTP5, Guna.UI2.AnimatorNS.DecorationType.None);
             this.txtOTP5.DefaultText = "";
             this.txtOTP5.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtOTP5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -297,16 +287,19 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(242, 226);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 23);
             this.label2.TabIndex = 24;
             this.label2.Text = "Email";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // GNbtnSendCode
             // 
             this.GNbtnSendCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.GNbtnSendCode, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNbtnSendCode.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.GNbtnSendCode.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.GNbtnSendCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -326,17 +319,20 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.label1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label1.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(242, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 23);
             this.label1.TabIndex = 20;
             this.label1.Text = "Email";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // GNtxtMail
             // 
             this.GNtxtMail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNtxtMail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.GNtxtMail, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNtxtMail.DefaultText = "";
             this.GNtxtMail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.GNtxtMail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -354,22 +350,11 @@
             this.GNtxtMail.TabIndex = 19;
             this.GNtxtMail.TextChanged += new System.EventHandler(this.GNtxtMail_TextChanged);
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox1.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.text;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(667, 328);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(121, 102);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 18;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.guna2HtmlLabel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Lucida Calligraphy", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(153, 23);
@@ -377,11 +362,13 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(565, 80);
             this.guna2HtmlLabel1.TabIndex = 17;
             this.guna2HtmlLabel1.Text = "Account Sign-Up";
+            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
             // 
             // GNbtnSignUp
             // 
             this.GNbtnSignUp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNbtnSignUp.BorderRadius = 20;
+            this.guna2Transition1.SetDecoration(this.GNbtnSignUp, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNbtnSignUp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.GNbtnSignUp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.GNbtnSignUp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -400,28 +387,33 @@
             // 
             this.lblPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPass.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblPass, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblPass.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPass.Location = new System.Drawing.Point(217, 275);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(73, 23);
             this.lblPass.TabIndex = 13;
             this.lblPass.Text = "Password";
+            this.lblPass.Click += new System.EventHandler(this.lblPass_Click);
             // 
             // lblUN
             // 
             this.lblUN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUN.AutoSize = true;
+            this.guna2Transition1.SetDecoration(this.lblUN, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblUN.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUN.Location = new System.Drawing.Point(211, 154);
             this.lblUN.Name = "lblUN";
             this.lblUN.Size = new System.Drawing.Size(79, 23);
             this.lblUN.TabIndex = 12;
             this.lblUN.Text = "UserName";
+            this.lblUN.Click += new System.EventHandler(this.lblUN_Click);
             // 
             // GNtxtPass
             // 
             this.GNtxtPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNtxtPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.GNtxtPass, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNtxtPass.DefaultText = "";
             this.GNtxtPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.GNtxtPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -438,11 +430,13 @@
             this.GNtxtPass.SelectedText = "";
             this.GNtxtPass.Size = new System.Drawing.Size(227, 23);
             this.GNtxtPass.TabIndex = 11;
+            this.GNtxtPass.TextChanged += new System.EventHandler(this.GNtxtPass_TextChanged);
             // 
             // GNtxtUN
             // 
             this.GNtxtUN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GNtxtUN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2Transition1.SetDecoration(this.GNtxtUN, Guna.UI2.AnimatorNS.DecorationType.None);
             this.GNtxtUN.DefaultText = "";
             this.GNtxtUN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.GNtxtUN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -458,6 +452,7 @@
             this.GNtxtUN.SelectedText = "";
             this.GNtxtUN.Size = new System.Drawing.Size(227, 23);
             this.GNtxtUN.TabIndex = 10;
+            this.GNtxtUN.TextChanged += new System.EventHandler(this.GNtxtUN_TextChanged);
             this.GNtxtUN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GNtxtUN_KeyDown);
             // 
             // DemTg
@@ -477,7 +472,7 @@
             animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
             animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
             animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            animation1.Padding = new System.Windows.Forms.Padding(0);
             animation1.RotateCoeff = 0F;
             animation1.RotateLimit = 0F;
             animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
@@ -485,6 +480,48 @@
             animation1.TimeCoeff = 0F;
             animation1.TransparencyCoeff = 0F;
             this.guna2Transition1.DefaultAnimation = animation1;
+            // 
+            // guna2PictureBox3
+            // 
+            this.guna2PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.guna2PictureBox3, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2PictureBox3.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.megumitop;
+            this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Location = new System.Drawing.Point(26, 12);
+            this.guna2PictureBox3.Name = "guna2PictureBox3";
+            this.guna2PictureBox3.Size = new System.Drawing.Size(121, 102);
+            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox3.TabIndex = 28;
+            this.guna2PictureBox3.TabStop = false;
+            this.guna2PictureBox3.Click += new System.EventHandler(this.guna2PictureBox3_Click);
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.guna2PictureBox2, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2PictureBox2.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.sparkle_hanabi;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(12, 314);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(121, 102);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 27;
+            this.guna2PictureBox2.TabStop = false;
+            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.guna2PictureBox1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2PictureBox1.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.text;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(667, 328);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(121, 102);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 18;
+            this.guna2PictureBox1.TabStop = false;
+            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
             // 
             // SignInForm
             // 
@@ -497,9 +534,9 @@
             this.Load += new System.EventHandler(this.SignInForm_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2ShadowPanel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 

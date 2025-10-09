@@ -208,7 +208,14 @@
   <ItemGroup>
     <None Include="Resources\evernight-ezgif.com-apng-to-gif-converter.gif" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\rick-roll.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="userConTrol\Admin\" />
+    <Folder Include="userConTrol\Client\" />
+    <Folder Include="userConTrol\Employee\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
