@@ -21,7 +21,8 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
               Application.EnableVisualStyles();
               Application.SetCompatibleTextRenderingDefault(false);
-              Application.Run(new LoginForm());
+              //Application.Run(new LoginForm());
+              Application.Run(new AdminForm());
 
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
              string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
@@ -30,8 +31,8 @@ namespace PM_QuanLyCuaHangTruyenTranh
              */
 
             // in ra AES key để kiểm tra
-          
-           
+
+
 
         }
     }
