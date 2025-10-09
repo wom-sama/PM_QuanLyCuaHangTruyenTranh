@@ -28,14 +28,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
             Console.WriteLine("Decrypted Email: " + senderEmail);
             Console.WriteLine("Decrypted Password: " + senderPassword);
             */
-          /*  string email = "nnnaaahhh199@gmail.com";
-            string password = "kmmq vpig muph shnz";
-
-            string encEmail = AESHelper.EncryptString(email);
-            string encPass = AESHelper.EncryptString(password);
-
-            Console.WriteLine("Encrypted Email: " + encEmail);
-            Console.WriteLine("Encrypted Pass: " + encPass);*/
+         
         }
     }
 }
