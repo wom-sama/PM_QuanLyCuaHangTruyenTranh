@@ -63,6 +63,16 @@ namespace PM_QuanLyCuaHangTruyenTranh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_11_09_58_7_thg_10__2025 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 11_09_58 7 thg 10, 2025", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cherry_blossoms_6383_128 {
             get {
                 object obj = ResourceManager.GetObject("cherry-blossoms-6383_128", resourceCulture);
@@ -106,6 +116,16 @@ namespace PM_QuanLyCuaHangTruyenTranh.Properties {
         internal static System.Drawing.Bitmap rick_roll {
             get {
                 object obj = ResourceManager.GetObject("rick-roll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Roblox_3_2_2025_12_02_38_AM {
+            get {
+                object obj = ResourceManager.GetObject("Roblox 3_2_2025 12_02_38 AM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

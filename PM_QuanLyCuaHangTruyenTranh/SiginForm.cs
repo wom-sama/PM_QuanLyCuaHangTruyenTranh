@@ -308,7 +308,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             try
             {
-                sentOTP = AESHelper.EncryptString(OTPHelper.GenerateOTP(), email.Trim());
+                sentOTP = AESHelper.EncryptString(RandHelper.GenerateOTP(), email.Trim());
                 codeSentTime = DateTime.Now;
 
                 await EmailHelper.SendVerificationCodeAsync(email, AESHelper.DecryptString(sentOTP, this.email));

@@ -1,6 +1,6 @@
 ﻿namespace PM_QuanLyCuaHangTruyenTranh
 {
-    partial class Khachcs
+    partial class Client
     {
         /// <summary>
         /// Required designer variable.

@@ -41,5 +41,10 @@ namespace PM_QuanLyCuaHangTruyenTranh
         {
           
         }
+
+        private void add_Book1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

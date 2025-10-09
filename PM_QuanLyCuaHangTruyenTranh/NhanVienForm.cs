@@ -1,5 +1,4 @@
-﻿using PM_QuanLyCuaHangTruyenTranh.BOOK;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -91,28 +90,28 @@ namespace PM_QuanLyCuaHangTruyenTranh
         }
         private void LoadBookData()
         {
-            try
-            {
-                using (var db = new Model1()) // context của Entity Framework
-                {
-                    var data = db.Books
-                        .Select(b => new
-                        {
-                            Mã_Sách = b.BookId,
-                            Tên_Sách = b.Title,
-                            Số_Lượng = b.Quantity,
-                            Tác_Giả = b.Author,
-                            Giá_Thuê = b.RentPrice
-                        })
-                        .ToList();
+            //try
+            //{
+            //    using (var db = new Model1()) // context của Entity Framework
+            //    {
+            //        var data = db.Books
+            //            .Select(b => new
+            //            {
+            //                Mã_Sách = b.BookId,
+            //                Tên_Sách = b.Title,
+            //                Số_Lượng = b.Quantity,
+            //                Tác_Giả = b.Author,
+            //                Giá_Thuê = b.RentPrice
+            //            })
+            //            .ToList();
 
-                    guna2DataGridView1.DataSource = data;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //        guna2DataGridView1.DataSource = data;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi khi tải dữ liệu sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void txtPhone_TextChanged(object sender, EventArgs e)

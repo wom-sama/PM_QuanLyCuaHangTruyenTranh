@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PM_QuanLyCuaHangTruyenTranh
 {
-    public partial class Khachcs : Form
+    public partial class Client : Form
     {
-        public Khachcs()
+        public Client()
         {
             InitializeComponent();
         }

@@ -132,7 +132,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
                             {
                                 new FormMessage("Đăng nhập thành công với vai trò Khách!").ShowDialog();
                                 this.Hide();
-                                Khachcs f = new Khachcs();
+                                Client f = new Client();
                                 f.StartPosition = FormStartPosition.CenterScreen;
                                 f.ShowDialog();
                                 this.Show();

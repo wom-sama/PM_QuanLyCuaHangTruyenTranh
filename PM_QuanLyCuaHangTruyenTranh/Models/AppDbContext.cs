@@ -16,5 +16,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.Models
         public DbSet<Admin> Admins { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<Khach> Khaches { get; set; }
+        public DbSet<Sach> Sachs { get; set; }
+        public DbSet<TheLoai> TheLoais { get; set; }
     }
 }

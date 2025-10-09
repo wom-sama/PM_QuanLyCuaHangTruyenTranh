@@ -118,8 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="megumitop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\megumitop.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="evernight-ezgif.com-apng-to-gif-converter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\evernight-ezgif.com-apng-to-gif-converter.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rick-roll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rick-roll.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="everknight-evernight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\everknight-evernight.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,16 +130,19 @@
   <data name="text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="evernight-ezgif.com-apng-to-gif-converter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\evernight-ezgif.com-apng-to-gif-converter.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="sparkle-hanabi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sparkle-hanabi.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cherry-blossoms-6383_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cherry-blossoms-6383_128.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rick-roll" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rick-roll.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="megumitop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\megumitop.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChatGPT Image 11_09_58 7 thg 10, 2025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChatGPT Image 11_09_58 7 thg 10, 2025.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Roblox 3_2_2025 12_02_38 AM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Roblox 3_2_2025 12_02_38 AM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
