@@ -11,6 +11,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.Models
     {
         public AppDbContext() : base("name=QuanLyCuaHangTruyenTranh")
         {
+
         }
 
         public DbSet<Admin> Admins { get; set; }

@@ -27,7 +27,12 @@ namespace PM_QuanLyCuaHangTruyenTranh
             Form form = new FormMessage("LOL");
             form.ShowDialog();
             guna2PictureBox1.Visible = true;
-            guna2Button4.Visible = false;
+           // guna2Button4.Visible = false;
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

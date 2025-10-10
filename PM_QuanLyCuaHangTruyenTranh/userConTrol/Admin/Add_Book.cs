@@ -22,6 +22,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
 
         private void LoadTheLoai()
         {
+           
             flpTheLoai.Controls.Clear();
             using (var db = new AppDbContext())
             {
@@ -51,7 +52,10 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
         private void Add_Book_Load(object sender, EventArgs e)
         {
             // Load thể loại từ database
-            LoadTheLoai();
+            if (!DesignMode)
+            {
+                LoadTheLoai();
+            }
             //
             flpTheLoai.AutoScroll = true;
             flpTheLoai.WrapContents = true;
@@ -130,22 +134,17 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
                         TheLoais = new List<TheLoai>()
                     };
 
-                    // Lưu ảnh vào thư mục /Images/Sach
+                    //  Lưu ảnh trực tiếp vào database (dạng byte[])
                     if (picBiaSach.Tag != null)
                     {
                         string source = picBiaSach.Tag.ToString();
-                        string folder = Path.Combine(Application.StartupPath, "BOOK", "_Image");
 
-                        if (!Directory.Exists(folder))
-                            Directory.CreateDirectory(folder);
-
-                        string dest = Path.Combine(folder, Path.GetFileName(source));
-                        File.Copy(source, dest, true);
-                        sach.BiaSach = Path.Combine("BOOK", "_Image", Path.GetFileName(source)); // Lưu đường dẫn trong DB
+                        // Đọc ảnh thành mảng byte
+                        sach.BiaSach = File.ReadAllBytes(source);
                     }
 
-                    // Duyệt các thể loại đã chọn
-                    foreach (Guna2CheckBox chk in flpTheLoai.Controls.OfType<Guna2CheckBox>())
+                    //  Duyệt các thể loại đã chọn
+                    foreach (Guna.UI2.WinForms.Guna2CheckBox chk in flpTheLoai.Controls.OfType<Guna.UI2.WinForms.Guna2CheckBox>())
                     {
                         if (chk.Checked)
                         {
@@ -159,13 +158,26 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
                     db.Sachs.Add(sach);
                     db.SaveChanges();
 
-                    MessageBox.Show("Thêm sách thành công!", "Thông báo");
+                    new FormMessage("Them Thanh Cong").ShowDialog();
+                    picBiaSach.Image = null;
+                    picBiaSach.Tag = null;
+                    GNtxtTenSach.Clear();
+                    GNtxtSoTrang.Clear();
+                    txtGioiThieu.Clear();
+                    GNtxtTacGia.Clear();
+                    foreach (var chk in flpTheLoai.Controls.OfType<Guna.UI2.WinForms.Guna2CheckBox>())
+                        chk.Checked = false;
+                    GNtxtMaSach.Text = Helpers.RandHelper.TaoMa("SACH");
+
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi thêm sách: " + ex.Message);
+               FormMessage f =  new FormMessage("Lỗi khi thêm sách " + ex.Message);
+                f.ShowDialog();
             }
         }
+
+       
     }
 }

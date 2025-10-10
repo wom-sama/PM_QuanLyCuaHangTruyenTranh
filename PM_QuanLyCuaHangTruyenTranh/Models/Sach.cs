@@ -20,11 +20,11 @@ namespace PM_QuanLyCuaHangTruyenTranh.Models
 
         public string GioiThieu { get; set; }
 
-        public string BiaSach { get; set; }
-
         public string TacGia { get; set; }
+        public byte[] BiaSach { get; set; }
 
         public virtual ICollection<TheLoai> TheLoais { get; set; }
+        
 
 
 

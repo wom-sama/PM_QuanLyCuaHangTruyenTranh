@@ -141,6 +141,10 @@
     <Compile Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.Designer.cs">
       <DependentUpon>202510091717573_UpdateSachTheLoaiRelation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510101234148_SuaLuuAnh.cs" />
+    <Compile Include="Migrations\202510101234148_SuaLuuAnh.Designer.cs">
+      <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AppDbContext.cs" />
@@ -174,6 +178,12 @@
     <Compile Include="userConTrol\Admin\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Client\KeSach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\KeSach.Designer.cs">
+      <DependentUpon>KeSach.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.resx">
       <DependentUpon>202510091717573_UpdateSachTheLoaiRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510101234148_SuaLuuAnh.resx">
+      <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVienForm.resx">
       <DependentUpon>NhanVienForm.cs</DependentUpon>
@@ -258,7 +271,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BOOK\Image_\" />
-    <Folder Include="userConTrol\Client\" />
     <Folder Include="userConTrol\Employee\" />
   </ItemGroup>
   <ItemGroup>
