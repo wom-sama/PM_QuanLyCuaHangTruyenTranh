@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using PM_QuanLyCuaHangTruyenTranh.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
         // danh sach cac UserControl
         private List<UserControl> AdminControl = new List<UserControl>();
 
-        public AdminForm()
+        public AdminForm(Admin admin)
         {
             InitializeComponent();
         }
@@ -45,8 +46,12 @@ namespace PM_QuanLyCuaHangTruyenTranh
         {
             AdjustFontSize(titleCN);
             // them cac UC vao list
-            AdminControl.Add(add_Book1);
-
+            AdminControl = this.guna2ShadowPanel1.Controls.OfType<UserControl>().ToList();
+            foreach (var item in AdminControl)
+            {
+                item.Visible = false; // ẩn tất cả
+                item.Enabled = false; // khoa tat ca
+            }
 
         }
         //hien thi control su dung
@@ -97,6 +102,11 @@ namespace PM_QuanLyCuaHangTruyenTranh
             HienThiUserControl(add_Book1);
             titleCN.Text=BtnThem.Text;
             AdjustFontSize(titleCN);
+        }
+
+        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        {
+            HienThiUserControl(edit_BOOk1);
         }
     }
 }

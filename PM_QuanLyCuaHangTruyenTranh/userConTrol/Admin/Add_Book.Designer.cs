@@ -74,9 +74,10 @@
             this.guna2Panel1.Controls.Add(this.GNtxtMaSach);
             this.guna2Panel1.Controls.Add(this.GNtxtSoTrang);
             this.guna2Panel1.Controls.Add(this.GNtxtTacGia);
-            this.guna2Panel1.Location = new System.Drawing.Point(3, 3);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(730, 440);
+            this.guna2Panel1.Size = new System.Drawing.Size(736, 461);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 

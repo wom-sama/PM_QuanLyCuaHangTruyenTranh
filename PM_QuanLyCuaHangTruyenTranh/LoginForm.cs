@@ -17,6 +17,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
     public partial class LoginForm : Form
     {
         private AppDbContext db = new AppDbContext();
+        FormMessage f = new FormMessage("Vui lòng liên hệ Admin để được hỗ trợ!");
 
         public LoginForm()
         {
@@ -33,11 +34,13 @@ namespace PM_QuanLyCuaHangTruyenTranh
             this.BackColor = Color.FromArgb(255, 192, 203); // cùng màu pastel hồng như panel
             //this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-           
+
+            lblInfo.Cursor = Cursors.Default;
+
             // them hieu ung vao combo box
             GNcmbVAI.Items.AddRange(new string[] { "", "Admin", "Nhân viên", "Khách" });
             GNcmbVAI.SelectedIndex = 0;
-
+            
 
 
         }
@@ -79,11 +82,11 @@ namespace PM_QuanLyCuaHangTruyenTranh
                             if (isValid)
                             {
                                 new FormMessage("Đăng nhập thành công với vai trò Admin!").ShowDialog();
-                                //this.Hide();
-                               // AdminForm f = new AdminForm(admin);
-                               // f.StartPosition = FormStartPosition.CenterScreen;
-                              //  f.ShowDialog();
-                               // this.Show();
+                                this.Hide();
+                                AdminForm f = new AdminForm(admin);
+                                f.StartPosition = FormStartPosition.CenterScreen;
+                                f.ShowDialog();
+                                this.Show();
                             }
                             else
                             {
@@ -248,6 +251,30 @@ namespace PM_QuanLyCuaHangTruyenTranh
         private void lblHoi_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2HtmlLabel1_MouseEnter(object sender, EventArgs e)
+        {
+            Point cursorPos = Cursor.Position;
+            f.Location = new Point(cursorPos.X + 15, cursorPos.Y + 15);
+            f.Show();
+            checkMouseTimer.Start();
+        }
+
+        private void guna2HtmlLabel1_MouseLeave(object sender, EventArgs e)
+        {
+            checkMouseTimer.Start();
+
+        }
+
+        private void checkMouseTimer_Tick(object sender, EventArgs e)
+        {
+            bool isOnLabel = lblInfo.Bounds.Contains(PointToClient(Cursor.Position));
+            if (!isOnLabel && !f.IsMouseInside)
+            {
+                f.Hide();
+                checkMouseTimer.Stop();
+            }
         }
     }
 }

@@ -23,6 +23,8 @@ namespace PM_QuanLyCuaHangTruyenTranh
         const int AW_BLEND = 0x00080000;
         const int AW_CENTER = 0x00000010;
 
+        public bool IsMouseInside = false; // Cờ kiểm tra chuột
+
         public FormMessage(string mess)
         {
             InitializeComponent();
@@ -36,6 +38,15 @@ namespace PM_QuanLyCuaHangTruyenTranh
             {
                 guna2HtmlLabel1Froget.Visible = false;
             }
+            
+
+            // Bắt sự kiện di chuột
+            this.MouseEnter += (s, e) => IsMouseInside = true;
+            this.MouseLeave += (s, e) =>
+            {
+                IsMouseInside = false;
+                Hide();
+            };
         }
 
         private async void guna2Button1_Click(object sender, EventArgs e)

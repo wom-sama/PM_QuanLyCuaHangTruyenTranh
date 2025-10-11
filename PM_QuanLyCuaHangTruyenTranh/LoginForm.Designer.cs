@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.PicWaitGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.GNcmbVAI = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.picRoleGif = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.lblInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblClick = new System.Windows.Forms.Label();
             this.lblHoi = new System.Windows.Forms.Label();
             this.GNbtnLogin = new Guna.UI2.WinForms.Guna2Button();
@@ -42,8 +45,7 @@
             this.GNtxtPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.GNtxtUN = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
-            this.PicWaitGif = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.picRoleGif = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.checkMouseTimer = new System.Windows.Forms.Timer(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicWaitGif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRoleGif)).BeginInit();
@@ -56,7 +58,7 @@
             this.guna2ShadowPanel1.Controls.Add(this.label1);
             this.guna2ShadowPanel1.Controls.Add(this.GNcmbVAI);
             this.guna2ShadowPanel1.Controls.Add(this.picRoleGif);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2ShadowPanel1.Controls.Add(this.lblInfo);
             this.guna2ShadowPanel1.Controls.Add(this.lblClick);
             this.guna2ShadowPanel1.Controls.Add(this.lblHoi);
             this.guna2ShadowPanel1.Controls.Add(this.GNbtnLogin);
@@ -74,6 +76,19 @@
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(800, 450);
             this.guna2ShadowPanel1.TabIndex = 0;
             this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
+            // 
+            // PicWaitGif
+            // 
+            this.PicWaitGif.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.PicWaitGif, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.PicWaitGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.PicWaitGif.ImageRotate = 0F;
+            this.PicWaitGif.Location = new System.Drawing.Point(431, 235);
+            this.PicWaitGif.Name = "PicWaitGif";
+            this.PicWaitGif.Size = new System.Drawing.Size(39, 36);
+            this.PicWaitGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicWaitGif.TabIndex = 21;
+            this.PicWaitGif.TabStop = false;
             // 
             // label1
             // 
@@ -106,18 +121,34 @@
             this.GNcmbVAI.TabIndex = 19;
             this.GNcmbVAI.SelectedIndexChanged += new System.EventHandler(this.GNcmbVAI_SelectedIndexChanged);
             // 
-            // guna2HtmlLabel1
+            // picRoleGif
             // 
-            this.guna2HtmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.guna2HtmlLabel1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Lucida Calligraphy", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(292, 40);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(186, 80);
-            this.guna2HtmlLabel1.TabIndex = 17;
-            this.guna2HtmlLabel1.Text = "Login";
+            this.picRoleGif.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picRoleGif.BorderRadius = 10;
+            this.guna2Transition1.SetDecoration(this.picRoleGif, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.picRoleGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.picRoleGif.ImageRotate = 0F;
+            this.picRoleGif.Location = new System.Drawing.Point(576, 161);
+            this.picRoleGif.Name = "picRoleGif";
+            this.picRoleGif.Size = new System.Drawing.Size(191, 160);
+            this.picRoleGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRoleGif.TabIndex = 18;
+            this.picRoleGif.TabStop = false;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblInfo.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.lblInfo, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.lblInfo.Font = new System.Drawing.Font("Lucida Calligraphy", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblInfo.Location = new System.Drawing.Point(292, 40);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(186, 80);
+            this.lblInfo.TabIndex = 17;
+            this.lblInfo.Text = "Login";
+            this.lblInfo.MouseEnter += new System.EventHandler(this.guna2HtmlLabel1_MouseEnter);
+            this.lblInfo.MouseLeave += new System.EventHandler(this.guna2HtmlLabel1_MouseLeave);
             // 
             // lblClick
             // 
@@ -258,32 +289,10 @@
             animation1.TransparencyCoeff = 0F;
             this.guna2Transition1.DefaultAnimation = animation1;
             // 
-            // PicWaitGif
+            // checkMouseTimer
             // 
-            this.PicWaitGif.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2Transition1.SetDecoration(this.PicWaitGif, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.PicWaitGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
-            this.PicWaitGif.ImageRotate = 0F;
-            this.PicWaitGif.Location = new System.Drawing.Point(431, 235);
-            this.PicWaitGif.Name = "PicWaitGif";
-            this.PicWaitGif.Size = new System.Drawing.Size(39, 36);
-            this.PicWaitGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicWaitGif.TabIndex = 21;
-            this.PicWaitGif.TabStop = false;
-            // 
-            // picRoleGif
-            // 
-            this.picRoleGif.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picRoleGif.BorderRadius = 10;
-            this.guna2Transition1.SetDecoration(this.picRoleGif, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.picRoleGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
-            this.picRoleGif.ImageRotate = 0F;
-            this.picRoleGif.Location = new System.Drawing.Point(576, 161);
-            this.picRoleGif.Name = "picRoleGif";
-            this.picRoleGif.Size = new System.Drawing.Size(191, 160);
-            this.picRoleGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRoleGif.TabIndex = 18;
-            this.picRoleGif.TabStop = false;
+            this.checkMouseTimer.Enabled = true;
+            this.checkMouseTimer.Tick += new System.EventHandler(this.checkMouseTimer_Tick);
             // 
             // LoginForm
             // 
@@ -313,12 +322,13 @@
         private System.Windows.Forms.Label lblUN;
         private Guna.UI2.WinForms.Guna2TextBox GNtxtPass;
         private Guna.UI2.WinForms.Guna2TextBox GNtxtUN;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblInfo;
         private Guna.UI2.WinForms.Guna2PictureBox picRoleGif;
         private Guna.UI2.WinForms.Guna2ComboBox GNcmbVAI;
         private Guna.UI2.WinForms.Guna2Transition guna2Transition1;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox PicWaitGif;
+        private System.Windows.Forms.Timer checkMouseTimer;
     }
 }
 
