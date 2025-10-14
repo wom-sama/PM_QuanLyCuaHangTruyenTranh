@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.edit_BOOk1 = new PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin.Edit_BOOk();
+            this.add_Book1 = new PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin.Add_Book();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -43,8 +45,6 @@
             this.PicWaitGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.edit_BOOk1 = new PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin.Edit_BOOk();
-            this.add_Book1 = new PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin.Add_Book();
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2ShadowPanel2.SuspendLayout();
             this.PanelCN.SuspendLayout();
@@ -71,6 +71,23 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(762, 477);
             this.guna2ShadowPanel1.TabIndex = 0;
+            // 
+            // edit_BOOk1
+            // 
+            this.edit_BOOk1.AutoScroll = true;
+            this.edit_BOOk1.Location = new System.Drawing.Point(12, 16);
+            this.edit_BOOk1.Name = "edit_BOOk1";
+            this.edit_BOOk1.Size = new System.Drawing.Size(736, 461);
+            this.edit_BOOk1.TabIndex = 1;
+            // 
+            // add_Book1
+            // 
+            this.add_Book1.BackColor = System.Drawing.Color.Transparent;
+            this.add_Book1.Location = new System.Drawing.Point(12, 15);
+            this.add_Book1.Name = "add_Book1";
+            this.add_Book1.Size = new System.Drawing.Size(736, 472);
+            this.add_Book1.TabIndex = 0;
+            this.add_Book1.Load += new System.EventHandler(this.add_Book1_Load);
             // 
             // guna2ShadowPanel2
             // 
@@ -233,6 +250,7 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1188, 702);
             this.guna2Panel1.TabIndex = 30;
+            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // titleCN
             // 
@@ -246,23 +264,6 @@
             this.titleCN.Text = "Chuc Nang";
             this.titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.titleCN.Click += new System.EventHandler(this.titleCN_Click);
-            // 
-            // edit_BOOk1
-            // 
-            this.edit_BOOk1.AutoScroll = true;
-            this.edit_BOOk1.Location = new System.Drawing.Point(12, 16);
-            this.edit_BOOk1.Name = "edit_BOOk1";
-            this.edit_BOOk1.Size = new System.Drawing.Size(736, 461);
-            this.edit_BOOk1.TabIndex = 1;
-            // 
-            // add_Book1
-            // 
-            this.add_Book1.BackColor = System.Drawing.Color.Transparent;
-            this.add_Book1.Location = new System.Drawing.Point(12, 15);
-            this.add_Book1.Name = "add_Book1";
-            this.add_Book1.Size = new System.Drawing.Size(736, 472);
-            this.add_Book1.TabIndex = 0;
-            this.add_Book1.Load += new System.EventHandler(this.add_Book1_Load);
             // 
             // AdminForm
             // 

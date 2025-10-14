@@ -28,29 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.picBia = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtNameBook = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.picBia)).BeginInit();
+            this.picBia = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBia)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picBia
-            // 
-            this.picBia.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.picBia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picBia.Cursor = System.Windows.Forms.Cursors.No;
-            this.picBia.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.rick_roll;
-            this.picBia.ImageRotate = 0F;
-            this.picBia.Location = new System.Drawing.Point(15, 16);
-            this.picBia.Name = "picBia";
-            this.picBia.Size = new System.Drawing.Size(128, 201);
-            this.picBia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBia.TabIndex = 0;
-            this.picBia.TabStop = false;
-            this.picBia.WaitOnLoad = true;
-            this.picBia.MouseEnter += new System.EventHandler(this.picBia_MouseEnter);
-            this.picBia.MouseLeave += new System.EventHandler(this.picBia_MouseLeave);
             // 
             // txtNameBook
             // 
@@ -72,6 +55,7 @@
             this.txtNameBook.Size = new System.Drawing.Size(128, 45);
             this.txtNameBook.TabIndex = 1;
             this.txtNameBook.TextChanged += new System.EventHandler(this.txtNameBook_TextChanged);
+            this.txtNameBook.MouseEnter += new System.EventHandler(this.txtNameBook_MouseEnter);
             // 
             // guna2ShadowPanel1
             // 
@@ -85,6 +69,24 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(163, 285);
             this.guna2ShadowPanel1.TabIndex = 2;
+            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
+            // 
+            // picBia
+            // 
+            this.picBia.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.picBia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picBia.Cursor = System.Windows.Forms.Cursors.No;
+            this.picBia.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.rick_roll;
+            this.picBia.ImageRotate = 0F;
+            this.picBia.Location = new System.Drawing.Point(15, 16);
+            this.picBia.Name = "picBia";
+            this.picBia.Size = new System.Drawing.Size(128, 201);
+            this.picBia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBia.TabIndex = 0;
+            this.picBia.TabStop = false;
+            this.picBia.WaitOnLoad = true;
+            this.picBia.MouseEnter += new System.EventHandler(this.picBia_MouseEnter);
+            this.picBia.MouseLeave += new System.EventHandler(this.picBia_MouseLeave);
             // 
             // BooKShowcs
             // 
@@ -94,8 +96,8 @@
             this.Name = "BooKShowcs";
             this.Size = new System.Drawing.Size(163, 285);
             this.Load += new System.EventHandler(this.BooKShowcs_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picBia)).EndInit();
             this.guna2ShadowPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBia)).EndInit();
             this.ResumeLayout(false);
 
         }

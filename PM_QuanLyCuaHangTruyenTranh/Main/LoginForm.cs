@@ -47,17 +47,9 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
         private void GNbtnLogin_Click(object sender, EventArgs e)
         {
-
-
-
-
-
-
-
-
             string username = GNtxtUN.Text.Trim();
             string password = GNtxtPass.Text.Trim();
-            string role = GNcmbVAI.Text.Trim(); // Vai trò chọn trong combobox
+            string role = GNcmbVAI.Text.Trim();
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
             {
@@ -67,90 +59,40 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             try
             {
-                switch (role)
+                var tk = db.TaiKhoans.FirstOrDefault(t => t.TenDangNhap == username && t.Quyen == role);
+
+                if (tk == null)
+                {
+                    new FormMessage("Tài khoản không tồn tại hoặc sai vai trò!").ShowDialog();
+                    return;
+                }
+
+                bool isValid = PasswordHelper.VerifyPassword(password, tk.MatKhau);
+
+                if (!isValid)
+                {
+                    new FormMessage("Mật khẩu không đúng!").ShowDialog();
+                    return;
+                }
+
+                // Đăng nhập thành công → mở form tương ứng
+                new FormMessage($"Đăng nhập thành công với vai trò {tk.Quyen}!").ShowDialog();
+                this.Hide();
+
+                switch (tk.Quyen)
                 {
                     case "Admin":
-                        {
-                            var admin = db.Admins.FirstOrDefault(a => a.TenDangNhap == username);
-                            if (admin == null)
-                            {
-                                new FormMessage("Tài khoản Admin không tồn tại!").ShowDialog();
-                                return;
-                            }
-
-                            bool isValid = PasswordHelper.VerifyPassword(password, admin.MatKhau);
-                            if (isValid)
-                            {
-                                new FormMessage("Đăng nhập thành công với vai trò Admin!").ShowDialog();
-                                this.Hide();
-                                AdminForm f = new AdminForm(admin);
-                                f.StartPosition = FormStartPosition.CenterScreen;
-                                f.ShowDialog();
-                                this.Show();
-                            }
-                            else
-                            {
-                                new FormMessage("Mật khẩu không đúng!").ShowDialog();
-                            }
-                            break;
-                        }
-
-                    case "Nhân viên":
-                        {
-                            var nv = db.NhanViens.FirstOrDefault(n => n.TenDangNhap == username);
-                            if (nv == null)
-                            {
-                                new FormMessage("Tài khoản Nhân viên không tồn tại!").ShowDialog();
-                                return;
-                            }
-
-                            bool isValid = PasswordHelper.VerifyPassword(password, nv.MatKhau);
-                            if (isValid)
-                            {
-                                new FormMessage("Đăng nhập thành công với vai trò Nhân viên!").ShowDialog();
-                                this.Hide();
-                                NhanVienForm f = new NhanVienForm();
-                                f.StartPosition = FormStartPosition.CenterScreen;
-                                f.ShowDialog();
-                                this.Show();
-                            }
-                            else
-                            {
-                                new FormMessage("Mật khẩu không đúng!").ShowDialog();
-                            }
-                            break;
-                        }
-
-                    case "Khách":
-                        {
-                            var kh = db.Khaches.FirstOrDefault(k => k.TenDangNhap == username);
-                            if (kh == null)
-                            {
-                                new FormMessage("Tài khoản Khách không tồn tại!").ShowDialog();
-                                return;
-                            }
-
-                            bool isValid = PasswordHelper.VerifyPassword(password, kh.MatKhau);
-                            if (isValid)
-                            {
-                                new FormMessage("Đăng nhập thành công với vai trò Khách!").ShowDialog();
-                                this.Hide();
-                                Client f = new Client();
-                                f.StartPosition = FormStartPosition.CenterScreen;
-                                f.ShowDialog();
-                                this.Show();
-                            }
-                            else
-                            {
-                                new FormMessage("Mật khẩu không đúng!").ShowDialog();
-                            }
-                            break;
-                        }
-
-                    default:
-                        new FormMessage("Vui lòng chọn vai trò hợp lệ!").ShowDialog();
+                        new AdminForm(tk).ShowDialog();
+                        break;
+                    case "NhanVien":
+                        new NhanVienForm(tk).ShowDialog();
+                        break;
+                    case "Khach":
+                        new Client(tk).ShowDialog();
                         break;
                 }
+
+                this.Show();
             }
             catch (Exception ex)
             {

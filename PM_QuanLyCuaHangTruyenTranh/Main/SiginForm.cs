@@ -108,7 +108,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             if (!otpVerified)
             {
-                new FormMessage("Please verify your code first.").ShowDialog();
+                new FormMessage("Please verify your email first.").ShowDialog();
                 return;
             }
 
@@ -116,23 +116,43 @@ namespace PM_QuanLyCuaHangTruyenTranh
             {
                 using (var db = new AppDbContext())
                 {
-                    if (db.Khaches.Any(k => k.Email == email))
+                    // Kiểm tra username hoặc email đã tồn tại chưa
+                    if (db.TaiKhoans.Any(t => t.TenDangNhap == username))
+                    {
+                        new FormMessage("Username already exists.").ShowDialog();
+                        return;
+                    }
+
+                    if (db.KhachHangs.Any(k => k.Email == email))
                     {
                         new FormMessage("This email is already registered.").ShowDialog();
                         return;
                     }
 
-                    string id = "KH" + Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
-
-                    var kh = new Khach
+                    // Tạo đối tượng tài khoản mới
+                    var taiKhoan = new TaiKhoan
                     {
-                        MaKhach = id,
                         TenDangNhap = username,
                         MatKhau = PasswordHelper.HashPassword(password),
-                        Email = email
+                        Quyen = "Khach",
+                        TrangThai = true
                     };
 
-                    db.Khaches.Add(kh);
+                    // Tạo mã khách
+                    string id = "KH" + Guid.NewGuid().ToString("N").Substring(0, 6).ToUpper();
+
+                    // Tạo đối tượng khách hàng mới
+                    var khach = new KhachHang
+                    {
+                        //MaKH = id,
+                        HoTen = username, // có thể cập nhật lại bằng form nhập tên thật
+                        Email = email,
+                        NgayDangKy = DateTime.Now,
+                        TenDangNhap = taiKhoan.TenDangNhap
+                    };
+
+                    db.TaiKhoans.Add(taiKhoan);
+                    db.KhachHangs.Add(khach);
                     db.SaveChanges();
                 }
 

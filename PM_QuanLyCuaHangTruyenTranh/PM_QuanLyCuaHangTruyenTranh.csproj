@@ -104,32 +104,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminForm.cs">
+    <Compile Include="FormThongBao\HoveInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForm.Designer.cs">
+    <Compile Include="FormThongBao\HoveInfo.Designer.cs">
+      <DependentUpon>HoveInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMessage.cs">
+    <Compile Include="FormThongBao\FormMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMessage.Designer.cs">
+    <Compile Include="FormThongBao\FormMessage.Designer.cs">
       <DependentUpon>FormMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AESHelper.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\RandHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Main\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Main\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs">
+    <Compile Include="Main\Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Client.Designer.cs">
+    <Compile Include="Main\Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202510080702097_InitialCreate.cs" />
@@ -160,25 +166,48 @@
     <Compile Include="Migrations\202510101234148_SuaLuuAnh.Designer.cs">
       <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510141635405_InitDatabase.cs" />
+    <Compile Include="Migrations\202510141635405_InitDatabase.Designer.cs">
+      <DependentUpon>202510141635405_InitDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AppDbContext.cs" />
-    <Compile Include="Models\Khach.cs" />
+    <Compile Include="Models\BanQuyen.cs" />
+    <Compile Include="Models\ChiNhanh.cs" />
+    <Compile Include="Models\ChucVu.cs" />
+    <Compile Include="Models\ChuyenKho.cs" />
+    <Compile Include="Models\CT_DonHang.cs" />
+    <Compile Include="Models\CT_GioHang.cs" />
+    <Compile Include="Models\CT_NhapKho.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\KeSach.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\Kho.cs" />
+    <Compile Include="Models\KhuyenMai.cs" />
+    <Compile Include="Models\KiemKe.cs" />
     <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\NhapKho.cs" />
+    <Compile Include="Models\NhaXuatBan.cs" />
     <Compile Include="Models\Sach.cs" />
+    <Compile Include="Models\TacGia.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TheLoai.cs" />
-    <Compile Include="NhanVienForm.cs">
+    <Compile Include="Main\NhanVienForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVienForm.Designer.cs">
+    <Compile Include="Main\NhanVienForm.Designer.cs">
       <DependentUpon>NhanVienForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ThongBao.cs" />
+    <Compile Include="Models\VanChuyen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiginForm.cs">
+    <Compile Include="Main\SiginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SiginForm.Designer.cs">
+    <Compile Include="Main\SiginForm.Designer.cs">
       <DependentUpon>SiginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Admin\Add_Book.cs">
@@ -205,16 +234,19 @@
     <Compile Include="userConTrol\Common\BooKShowcs.Designer.cs">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminForm.resx">
+    <EmbeddedResource Include="FormThongBao\HoveInfo.resx">
+      <DependentUpon>HoveInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMessage.resx">
+    <EmbeddedResource Include="FormThongBao\FormMessage.resx">
       <DependentUpon>FormMessage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Client.resx">
+    <EmbeddedResource Include="Main\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510080702097_InitialCreate.resx">
@@ -238,8 +270,11 @@
     <EmbeddedResource Include="Migrations\202510101234148_SuaLuuAnh.resx">
       <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVienForm.resx">
+    <EmbeddedResource Include="Main\NhanVienForm.resx">
       <DependentUpon>NhanVienForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510141635405_InitDatabase.resx">
+      <DependentUpon>202510141635405_InitDatabase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -251,7 +286,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SiginForm.resx">
+    <EmbeddedResource Include="Main\SiginForm.resx">
       <DependentUpon>SiginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\Add_Book.resx">

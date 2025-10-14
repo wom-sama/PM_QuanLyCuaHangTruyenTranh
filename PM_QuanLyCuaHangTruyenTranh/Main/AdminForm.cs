@@ -17,7 +17,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
         // danh sach cac UserControl
         private List<UserControl> AdminControl = new List<UserControl>();
 
-        public AdminForm(Admin admin)
+        public AdminForm(TaiKhoan Admin)
         {
             InitializeComponent();
         }
@@ -107,6 +107,13 @@ namespace PM_QuanLyCuaHangTruyenTranh
         private void guna2GradientTileButton1_Click(object sender, EventArgs e)
         {
             HienThiUserControl(edit_BOOk1);
+            titleCN.Text = "Thông tin sách đang có trong cửa hàng";
+            AdjustFontSize(titleCN);
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

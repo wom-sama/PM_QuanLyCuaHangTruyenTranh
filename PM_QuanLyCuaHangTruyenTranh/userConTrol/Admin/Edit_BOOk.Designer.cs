@@ -31,8 +31,9 @@
             this.txtFindTen = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelDanhSach = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnTheLoai = new Guna.UI2.WinForms.Guna2Button();
             this.flpTheLoai = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnTheLoai = new Guna.UI2.WinForms.Guna2Button();
+            this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.btnFind);
             this.guna2Panel1.Controls.Add(this.flpTheLoai);
             this.guna2Panel1.Controls.Add(this.btnTheLoai);
             this.guna2Panel1.Controls.Add(this.txtFindTen);
@@ -76,8 +78,16 @@
             this.guna2Panel1.TabIndex = 3;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
+            // flpTheLoai
+            // 
+            this.flpTheLoai.Location = new System.Drawing.Point(110, 104);
+            this.flpTheLoai.Name = "flpTheLoai";
+            this.flpTheLoai.Size = new System.Drawing.Size(489, 354);
+            this.flpTheLoai.TabIndex = 4;
+            // 
             // btnTheLoai
             // 
+            this.btnTheLoai.BorderRadius = 15;
             this.btnTheLoai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTheLoai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTheLoai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -88,14 +98,24 @@
             this.btnTheLoai.Name = "btnTheLoai";
             this.btnTheLoai.Size = new System.Drawing.Size(180, 31);
             this.btnTheLoai.TabIndex = 3;
-            this.btnTheLoai.Text = "guna2Button1";
+            this.btnTheLoai.Text = "tag";
+            this.btnTheLoai.Click += new System.EventHandler(this.btnTheLoai_Click);
             // 
-            // flpTheLoai
+            // btnFind
             // 
-            this.flpTheLoai.Location = new System.Drawing.Point(110, 104);
-            this.flpTheLoai.Name = "flpTheLoai";
-            this.flpTheLoai.Size = new System.Drawing.Size(489, 354);
-            this.flpTheLoai.TabIndex = 4;
+            this.btnFind.BorderRadius = 15;
+            this.btnFind.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFind.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFind.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFind.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Location = new System.Drawing.Point(605, 28);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(98, 33);
+            this.btnFind.TabIndex = 5;
+            this.btnFind.Text = "tim";
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // Edit_BOOk
             // 
@@ -118,5 +138,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button btnTheLoai;
         private System.Windows.Forms.FlowLayoutPanel flpTheLoai;
+        private Guna.UI2.WinForms.Guna2Button btnFind;
     }
 }

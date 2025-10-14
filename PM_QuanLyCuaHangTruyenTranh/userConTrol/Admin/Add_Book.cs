@@ -128,10 +128,10 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
                     {
                         MaSach = GNtxtMaSach.Text.Trim(),
                         TenSach = GNtxtTenSach.Text.Trim(),
-                        TacGia = GNtxtTacGia.Text.Trim(),
+                        //TacGia = GNtxtTacGia.Text.Trim(),
                         SoTrang = int.Parse(GNtxtSoTrang.Text),
-                        GioiThieu = txtGioiThieu.Text.Trim(),
-                        TheLoais = new List<TheLoai>()
+                       // GioiThieu = txtGioiThieu.Text.Trim(),
+                        //TheLoais = new List<TheLoai>()
                     };
 
                     //  Lưu ảnh trực tiếp vào database (dạng byte[])
@@ -144,7 +144,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
                     }
 
                     //  Duyệt các thể loại đã chọn
-                    foreach (Guna.UI2.WinForms.Guna2CheckBox chk in flpTheLoai.Controls.OfType<Guna.UI2.WinForms.Guna2CheckBox>())
+                    /*foreach (Guna.UI2.WinForms.Guna2CheckBox chk in flpTheLoai.Controls.OfType<Guna.UI2.WinForms.Guna2CheckBox>())
                     {
                         if (chk.Checked)
                         {
@@ -153,10 +153,10 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
                             if (tl != null)
                                 sach.TheLoais.Add(tl);
                         }
-                    }
+                    }*/
 
-                    db.Sachs.Add(sach);
-                    db.SaveChanges();
+                    /*db.Sachs.Add(sach);
+                    db.SaveChanges();*/
 
                     new FormMessage("Them Thanh Cong").ShowDialog();
                     picBiaSach.Image = null;
