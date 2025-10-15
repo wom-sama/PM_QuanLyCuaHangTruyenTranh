@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PM_QuanLyCuaHangTruyenTranh.Models
 {
+    [Table("Saches")] 
     public class Sach
     {
         [Key, Column(TypeName = "varchar"), MaxLength(20)]
@@ -21,19 +19,16 @@ namespace PM_QuanLyCuaHangTruyenTranh.Models
 
         // ====== NHÀ XUẤT BẢN ======
         public string MaNXB { get; set; }
-
         [ForeignKey(nameof(MaNXB))]
         public virtual NhaXuatBan NhaXuatBan { get; set; }
 
         // ====== TÁC GIẢ ======
         public string MaTacGia { get; set; }
-
         [ForeignKey(nameof(MaTacGia))]
         public virtual TacGia TacGia { get; set; }
 
         // ====== THỂ LOẠI ======
         public string MaTheLoai { get; set; }
-
         [ForeignKey(nameof(MaTheLoai))]
         public virtual TheLoai TheLoai { get; set; }
 
@@ -50,10 +45,6 @@ namespace PM_QuanLyCuaHangTruyenTranh.Models
         public virtual ICollection<BanQuyen> BanQuyens { get; set; }
         public virtual ICollection<CT_NhapKho> CT_NhapKhos { get; set; }
         public virtual ICollection<CT_DonHang> CT_DonHangs { get; set; }
-
-
-
-
 
     }
 }

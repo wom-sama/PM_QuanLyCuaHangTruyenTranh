@@ -33,18 +33,18 @@
             // 
             // lenDon1
             // 
-            this.lenDon1.Location = new System.Drawing.Point(45, 21);
+            this.lenDon1.Location = new System.Drawing.Point(0, 0);
             this.lenDon1.Name = "lenDon1";
-            this.lenDon1.Size = new System.Drawing.Size(1255, 619);
+            this.lenDon1.Size = new System.Drawing.Size(1340, 709);
             this.lenDon1.TabIndex = 0;
             // 
-            // NhanVien
+            // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 694);
             this.Controls.Add(this.lenDon1);
-            this.Name = "NhanVien";
+            this.Name = "NhanVienForm";
             this.Text = "NhanVien";
             this.ResumeLayout(false);
 

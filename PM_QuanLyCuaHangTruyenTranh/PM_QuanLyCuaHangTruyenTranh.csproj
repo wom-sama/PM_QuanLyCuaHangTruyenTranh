@@ -235,11 +235,23 @@
     <Compile Include="userConTrol\Common\BooKShowcs.Designer.cs">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\DuyetDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\DuyetDon.Designer.cs">
+      <DependentUpon>DuyetDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\LenDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userConTrol\Employee\LenDon.Designer.cs">
       <DependentUpon>LenDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Employee\XemDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\XemDon.Designer.cs">
+      <DependentUpon>XemDon.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormThongBao\HoveInfo.resx">
       <DependentUpon>HoveInfo.cs</DependentUpon>
@@ -308,8 +320,14 @@
     <EmbeddedResource Include="userConTrol\Common\BooKShowcs.resx">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\DuyetDon.resx">
+      <DependentUpon>DuyetDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\LenDon.resx">
       <DependentUpon>LenDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\XemDon.resx">
+      <DependentUpon>XemDon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

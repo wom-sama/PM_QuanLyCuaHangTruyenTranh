@@ -21,12 +21,12 @@ namespace PM_QuanLyCuaHangTruyenTranh
         static void Main()
         {
 
-            /* Application.EnableVisualStyles();
-             Application.SetCompatibleTextRenderingDefault(false);
-              Application.Run(new LoginForm());*/
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Main.NhanVienForm());
             //Application.Run(new AdminForm(null));
 
-             AppDbSeeder.Seed();
+            AppDbSeeder.Seed();
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
              string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
              Console.WriteLine("Decrypted Email: " + senderEmail);
@@ -121,81 +121,82 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
 
           }*/
-            using (var db = new AppDbContext())
-            {
-                // Danh sách ảnh + ISBN tương ứng
-                var sachData = new Dictionary<string, (string url, string isbn)>
-                {
-                    ["S001"] = ("https://static0.srcdn.com/wordpress/wp-content/uploads/2023/07/one-piece-franchise-poster.jpg?q=70&fit=contain&w=280&dpr=1", "9784098516813"),
-                    ["S002"] = ("https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg", "9781569319000"),
-                    ["S003"] = ("https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png", "9780316472861"),
-                    ["S004"] = ("https://i.ebayimg.com/images/g/fqEAAOSwB-1YtiGV/s-l400.jpg", "9781632364103"),
-                    ["S005"] = ("https://i.pinimg.com/originals/86/1d/95/861d95dc646bec1dedde1586adf896e3.jpg", "9781974700523"),
-                    ["S006"] = ("https://mixmangastore.com/cdn/shop/files/12.jpg?v=1691219705", "9781974715466"),
-                    ["S007"] = ("https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg", "9781421501680"),
-                    ["S008"] = ("https://www.manga-news.com/public/images/vols/detective-conan-97-kana.jpg", "9784091252527"),
-                    ["S009"] = ("http://www.manga-sanctuary.com/imageslesseries2/tokyo-ghoul-manga-volume-1-francaise-73492[1].jpg", "9781421580364"),
-                    ["S010"] = ("https://cdn.kobo.com/book-images/d0259d14-58b5-443a-b4a3-f59ebd47a85b/1200/1200/False/blue-lock-20.jpg", "9781646516543"),
-                    ["S011"] = ("https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/jujutsu-kaisen-manga-cover-4-william-stratton.jpg", "9781974710027"),
-                    ["S012"] = ("https://i.pinimg.com/736x/5b/56/78/5b5678fc43d0cf4566e65546efd2cfa5.jpg", "9781974709939"),
-                    ["S013"] = ("https://www.manga-news.com/public/images/vols/Dr_Stone_-_Tome_24_-_Gl_nat.jpg", "9781974702619"),
-                    ["S014"] = ("https://i.pinimg.com/736x/c8/41/e7/c841e78626b3cf416ce1bc185e1543f6.jpg", "9781421582696"),
-                    ["S015"] = ("https://i.pinimg.com/originals/10/f6/85/10f68546e22d27fc4df8c6d221bbdcc6.png", "9781612622767"),
-                    ["S016"] = ("https://i.pinimg.com/originals/e3/fa/75/e3fa753ceabf2095350e89f849485ca7.png", "9780316371249"),
-                    ["S017"] = ("https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/a-silent-voice-anime-poster-elizabeth-king.jpg", "9781632360563"),
-                    ["S018"] = ("https://i.pinimg.com/originals/e3/5a/e8/e35ae8083a43c49729d206bfe9036507.jpg", "9781612620732"),
-                    ["S019"] = ("https://i.pinimg.com/originals/55/b3/4e/55b34ed676329d360be068d576e9098a.jpg", "9781974703319"),
-                    ["S020"] = ("https://i.pinimg.com/originals/ce/a7/98/cea7987217ebc08748342c83c77f3208.jpg", "9781421587660")
-                };
+            /* using (var db = new AppDbContext())
+             {
+                 // Danh sách ảnh + ISBN tương ứng
+                 var sachData = new Dictionary<string, (string url, string isbn)>
+                 {
+                     ["S001"] = ("https://static0.srcdn.com/wordpress/wp-content/uploads/2023/07/one-piece-franchise-poster.jpg?q=70&fit=contain&w=280&dpr=1", "9784098516813"),
+                     ["S002"] = ("https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg", "9781569319000"),
+                     ["S003"] = ("https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png", "9780316472861"),
+                     ["S004"] = ("https://i.ebayimg.com/images/g/fqEAAOSwB-1YtiGV/s-l400.jpg", "9781632364103"),
+                     ["S005"] = ("https://i.pinimg.com/originals/86/1d/95/861d95dc646bec1dedde1586adf896e3.jpg", "9781974700523"),
+                     ["S006"] = ("https://mixmangastore.com/cdn/shop/files/12.jpg?v=1691219705", "9781974715466"),
+                     ["S007"] = ("https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg", "9781421501680"),
+                     ["S008"] = ("https://www.manga-news.com/public/images/vols/detective-conan-97-kana.jpg", "9784091252527"),
+                     ["S009"] = ("http://www.manga-sanctuary.com/imageslesseries2/tokyo-ghoul-manga-volume-1-francaise-73492[1].jpg", "9781421580364"),
+                     ["S010"] = ("https://cdn.kobo.com/book-images/d0259d14-58b5-443a-b4a3-f59ebd47a85b/1200/1200/False/blue-lock-20.jpg", "9781646516543"),
+                     ["S011"] = ("https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/jujutsu-kaisen-manga-cover-4-william-stratton.jpg", "9781974710027"),
+                     ["S012"] = ("https://i.pinimg.com/736x/5b/56/78/5b5678fc43d0cf4566e65546efd2cfa5.jpg", "9781974709939"),
+                     ["S013"] = ("https://www.manga-news.com/public/images/vols/Dr_Stone_-_Tome_24_-_Gl_nat.jpg", "9781974702619"),
+                     ["S014"] = ("https://i.pinimg.com/736x/c8/41/e7/c841e78626b3cf416ce1bc185e1543f6.jpg", "9781421582696"),
+                     ["S015"] = ("https://i.pinimg.com/originals/10/f6/85/10f68546e22d27fc4df8c6d221bbdcc6.png", "9781612622767"),
+                     ["S016"] = ("https://i.pinimg.com/originals/e3/fa/75/e3fa753ceabf2095350e89f849485ca7.png", "9780316371249"),
+                     ["S017"] = ("https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/a-silent-voice-anime-poster-elizabeth-king.jpg", "9781632360563"),
+                     ["S018"] = ("https://i.pinimg.com/originals/e3/5a/e8/e35ae8083a43c49729d206bfe9036507.jpg", "9781612620732"),
+                     ["S019"] = ("https://i.pinimg.com/originals/55/b3/4e/55b34ed676329d360be068d576e9098a.jpg", "9781974703319"),
+                     ["S020"] = ("https://i.pinimg.com/originals/ce/a7/98/cea7987217ebc08748342c83c77f3208.jpg", "9781421587660")
+                 };
 
-                int updatedCount = 0;
+                 int updatedCount = 0;
 
-                foreach (var sach in db.Sachs.ToList())
-                {
-                    if (sachData.TryGetValue(sach.MaSach, out var data))
-                    {
-                        // Cập nhật ISBN nếu đang NULL hoặc rỗng
-                        if (string.IsNullOrEmpty(sach.ISBN))
-                            sach.ISBN = data.isbn;
+                 foreach (var sach in db.Sachs.ToList())
+                 {
+                     if (sachData.TryGetValue(sach.MaSach, out var data))
+                     {
+                         // Cập nhật ISBN nếu đang NULL hoặc rỗng
+                         if (string.IsNullOrEmpty(sach.ISBN))
+                             sach.ISBN = data.isbn;
 
-                        // Cập nhật BiaSach nếu chưa có
-                        if (sach.BiaSach == null)
-                            sach.BiaSach = TaiAnhTuInternet(data.url);
+                         // Cập nhật BiaSach nếu chưa có
+                         if (sach.BiaSach == null)
+                             sach.BiaSach = TaiAnhTuInternet(data.url);
 
-                        updatedCount++;
-                    }
-                }
+                         updatedCount++;
+                     }
+                 }
 
-                db.SaveChanges();
-                MessageBox.Show($"✅ Đã cập nhật {updatedCount} sách có ISBN & Bìa!",
-                                "Hoàn tất", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-               public static byte[] TaiAnhTuInternet(string url)
-                {
-                try
-                {
-                    using (var webClient = new WebClient())
-                    {
-                        // Giả lập trình duyệt để tránh bị chặn 403
-                        webClient.Headers.Add("User-Agent",
-                            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
-                            "AppleWebKit/537.36 (KHTML, like Gecko) " +
-                            "Chrome/124.0.0.0 Safari/537.36");
+                 db.SaveChanges();
+                 MessageBox.Show($"✅ Đã cập nhật {updatedCount} sách có ISBN & Bìa!",
+                                 "Hoàn tất", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             }
+         }
+                public static byte[] TaiAnhTuInternet(string url)
+                 {
+                 try
+                 {
+                     using (var webClient = new WebClient())
+                     {
+                         // Giả lập trình duyệt để tránh bị chặn 403
+                         webClient.Headers.Add("User-Agent",
+                             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+                             "AppleWebKit/537.36 (KHTML, like Gecko) " +
+                             "Chrome/124.0.0.0 Safari/537.36");
 
-                        return webClient.DownloadData(url);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Không thể tải ảnh từ {url}:\n{ex.Message}",
-                        "Lỗi tải ảnh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
-            }
+                         return webClient.DownloadData(url);
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show($"Không thể tải ảnh từ {url}:\n{ex.Message}",
+                         "Lỗi tải ảnh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     return null;
+                 }
+             }*/
         }
     }
-//xoa khi mo hai c dong  /* o tren
+    //xoa khi mo hai c dong  /* o tren
+}
 
 
 

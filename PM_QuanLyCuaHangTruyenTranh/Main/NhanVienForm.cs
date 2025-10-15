@@ -16,5 +16,10 @@ namespace PM_QuanLyCuaHangTruyenTranh.Main
         {
             InitializeComponent();
         }
+
+        private void lenDon1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
