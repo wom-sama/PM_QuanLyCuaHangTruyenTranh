@@ -138,6 +138,12 @@
     <Compile Include="Main\Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\NhanVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\NhanVienForm.Designer.cs">
+      <DependentUpon>NhanVienForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202510080702097_InitialCreate.cs" />
     <Compile Include="Migrations\202510080702097_InitialCreate.Designer.cs">
       <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
@@ -194,12 +200,6 @@
     <Compile Include="Models\TacGia.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TheLoai.cs" />
-    <Compile Include="Main\NhanVienForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main\NhanVienForm.Designer.cs">
-      <DependentUpon>NhanVienForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\ThongBao.cs" />
     <Compile Include="Models\VanChuyen.cs" />
     <Compile Include="Program.cs" />
@@ -234,6 +234,12 @@
     <Compile Include="userConTrol\Common\BooKShowcs.Designer.cs">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\LenDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\LenDon.Designer.cs">
+      <DependentUpon>LenDon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormThongBao\HoveInfo.resx">
       <DependentUpon>HoveInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\NhanVienForm.resx">
+      <DependentUpon>NhanVienForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510080702097_InitialCreate.resx">
       <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
@@ -269,9 +278,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510101234148_SuaLuuAnh.resx">
       <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\NhanVienForm.resx">
-      <DependentUpon>NhanVienForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510141635405_InitDatabase.resx">
       <DependentUpon>202510141635405_InitDatabase.cs</DependentUpon>
@@ -295,8 +301,14 @@
     <EmbeddedResource Include="userConTrol\Admin\Edit_BOOk.resx">
       <DependentUpon>Edit_BOOk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\KeSach.resx">
+      <DependentUpon>KeSach.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Common\BooKShowcs.resx">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\LenDon.resx">
+      <DependentUpon>LenDon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
@@ -331,9 +343,7 @@
   <ItemGroup>
     <None Include="Resources\rick-roll.gif" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="userConTrol\Employee\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\ChatGPT Image 11_09_58 7 thg 10, 2025.png" />
   </ItemGroup>

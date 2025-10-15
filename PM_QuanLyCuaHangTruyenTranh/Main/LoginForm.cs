@@ -85,7 +85,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
                         new AdminForm(tk).ShowDialog();
                         break;
                     case "NhanVien":
-                        new NhanVienForm(tk).ShowDialog();
+                       // new NhanVienForm(tk).ShowDialog();
                         break;
                     case "Khach":
                         new Client(tk).ShowDialog();

@@ -23,7 +23,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
              Application.EnableVisualStyles();
              Application.SetCompatibleTextRenderingDefault(false);
-              Application.Run(new LoginForm());
+              Application.Run(new Main.NhanVienForm());
              //Application.Run(new AdminForm(null));
 
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
