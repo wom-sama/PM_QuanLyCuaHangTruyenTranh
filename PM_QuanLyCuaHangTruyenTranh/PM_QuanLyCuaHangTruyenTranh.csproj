@@ -211,6 +211,12 @@
     <Compile Include="Main\SiginForm.Designer.cs">
       <DependentUpon>SiginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\AddTacGia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\AddTacGia.Designer.cs">
+      <DependentUpon>AddTacGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Admin\Add_Book.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </Compile>
     <EmbeddedResource Include="Main\SiginForm.resx">
       <DependentUpon>SiginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Admin\AddTacGia.resx">
+      <DependentUpon>AddTacGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\Add_Book.resx">
       <DependentUpon>Add_Book.cs</DependentUpon>
