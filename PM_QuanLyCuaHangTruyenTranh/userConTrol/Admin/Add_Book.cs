@@ -91,9 +91,9 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
             txtGioiThieu.FillColor = Color.WhiteSmoke;
             txtGioiThieu.Font = new Font("Segoe UI", 10);
             // khoa MaSach va tao ma tu dong
-            GNtxtMaSach.ReadOnly = true;
-            GNtxtMaSach.Enabled = false;
-            GNtxtMaSach.Text=Helpers.RandHelper.TaoMa("SACH");
+            txtMaSach.ReadOnly = true;
+            txtMaSach.Enabled = false;
+            txtMaSach.Text=Helpers.RandHelper.TaoMa("SACH");
             // chinh sua picBiaSach
             picBiaSach.SizeMode = PictureBoxSizeMode.Zoom;
             picBiaSach.BorderRadius = 10;     
@@ -126,7 +126,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
                 {
                     var sach = new Sach()
                     {
-                        MaSach = GNtxtMaSach.Text.Trim(),
+                        MaSach = txtMaSach.Text.Trim(),
                         TenSach = GNtxtTenSach.Text.Trim(),
                         //TacGia = GNtxtTacGia.Text.Trim(),
                         SoTrang = int.Parse(GNtxtSoTrang.Text),
@@ -167,7 +167,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
                     GNtxtTacGia.Clear();
                     foreach (var chk in flpTheLoai.Controls.OfType<Guna.UI2.WinForms.Guna2CheckBox>())
                         chk.Checked = false;
-                    GNtxtMaSach.Text = Helpers.RandHelper.TaoMa("SACH");
+                    txtMaSach.Text = Helpers.RandHelper.TaoMa("SACH");
 
                 }
             }
@@ -178,6 +178,9 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
             }
         }
 
-       
+        private void GNtxtSoTrang_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
