@@ -75,7 +75,7 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.LightGray;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(800, 450);
             this.guna2ShadowPanel1.TabIndex = 0;
-            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
+//           this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
             // 
             // PicWaitGif
             // 
@@ -148,7 +148,7 @@
             this.lblInfo.TabIndex = 17;
             this.lblInfo.Text = "Login";
             this.lblInfo.MouseEnter += new System.EventHandler(this.guna2HtmlLabel1_MouseEnter);
-            this.lblInfo.MouseLeave += new System.EventHandler(this.guna2HtmlLabel1_MouseLeave);
+           this.lblInfo.MouseLeave += new System.EventHandler(this.guna2HtmlLabel1_MouseLeave);
             // 
             // lblClick
             // 
@@ -163,7 +163,7 @@
             this.lblClick.TabIndex = 16;
             this.lblClick.Text = "click here!";
             this.lblClick.Click += new System.EventHandler(this.lblClick_Click);
-            this.lblClick.MouseEnter += new System.EventHandler(this.lblClick_MouseEnter);
+           this.lblClick.MouseEnter += new System.EventHandler(this.lblClick_MouseEnter);
             this.lblClick.MouseLeave += new System.EventHandler(this.lblClick_MouseLeave);
             // 
             // lblHoi
@@ -178,7 +178,7 @@
             this.lblHoi.Size = new System.Drawing.Size(123, 27);
             this.lblHoi.TabIndex = 15;
             this.lblHoi.Text = "not have acc";
-            this.lblHoi.Click += new System.EventHandler(this.lblHoi_Click);
+          //  this.lblHoi.Click += new System.EventHandler(this.lblHoi_Click);
             // 
             // GNbtnLogin
             // 

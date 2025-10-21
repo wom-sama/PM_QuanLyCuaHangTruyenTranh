@@ -92,7 +92,7 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.LightGray;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(800, 450);
             this.guna2ShadowPanel1.TabIndex = 1;
-            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
+//            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
             // 
             // lblDem
             // 
@@ -105,7 +105,7 @@
             this.lblDem.Size = new System.Drawing.Size(44, 23);
             this.lblDem.TabIndex = 31;
             this.lblDem.Text = "None";
-            this.lblDem.Click += new System.EventHandler(this.lblDem_Click);
+//            this.lblDem.Click += new System.EventHandler(this.lblDem_Click);
             // 
             // label3
             // 
@@ -118,7 +118,7 @@
             this.label3.Size = new System.Drawing.Size(132, 23);
             this.label3.TabIndex = 30;
             this.label3.Text = "Confirm Password";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+//            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // GNtxtRePass
             // 
@@ -141,7 +141,7 @@
             this.GNtxtRePass.SelectedText = "";
             this.GNtxtRePass.Size = new System.Drawing.Size(227, 23);
             this.GNtxtRePass.TabIndex = 29;
-            this.GNtxtRePass.TextChanged += new System.EventHandler(this.GNtxtRePass_TextChanged);
+//            this.GNtxtRePass.TextChanged += new System.EventHandler(this.GNtxtRePass_TextChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -156,7 +156,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(156, 37);
             this.flowLayoutPanel1.TabIndex = 26;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+//            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // txtOTP1
             // 
@@ -294,7 +294,7 @@
             this.label2.Size = new System.Drawing.Size(48, 23);
             this.label2.TabIndex = 24;
             this.label2.Text = "Email";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+//            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // GNbtnSendCode
             // 
@@ -326,7 +326,7 @@
             this.label1.Size = new System.Drawing.Size(48, 23);
             this.label1.TabIndex = 20;
             this.label1.Text = "Email";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+//            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // GNtxtMail
             // 
@@ -362,7 +362,7 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(565, 80);
             this.guna2HtmlLabel1.TabIndex = 17;
             this.guna2HtmlLabel1.Text = "Account Sign-Up";
-            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
+//            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
             // 
             // GNbtnSignUp
             // 
@@ -394,7 +394,7 @@
             this.lblPass.Size = new System.Drawing.Size(73, 23);
             this.lblPass.TabIndex = 13;
             this.lblPass.Text = "Password";
-            this.lblPass.Click += new System.EventHandler(this.lblPass_Click);
+//            this.lblPass.Click += new System.EventHandler(this.lblPass_Click);
             // 
             // lblUN
             // 
@@ -407,7 +407,7 @@
             this.lblUN.Size = new System.Drawing.Size(79, 23);
             this.lblUN.TabIndex = 12;
             this.lblUN.Text = "UserName";
-            this.lblUN.Click += new System.EventHandler(this.lblUN_Click);
+//            this.lblUN.Click += new System.EventHandler(this.lblUN_Click);
             // 
             // GNtxtPass
             // 
@@ -430,7 +430,7 @@
             this.GNtxtPass.SelectedText = "";
             this.GNtxtPass.Size = new System.Drawing.Size(227, 23);
             this.GNtxtPass.TabIndex = 11;
-            this.GNtxtPass.TextChanged += new System.EventHandler(this.GNtxtPass_TextChanged);
+//            this.GNtxtPass.TextChanged += new System.EventHandler(this.GNtxtPass_TextChanged);
             // 
             // GNtxtUN
             // 
@@ -452,8 +452,8 @@
             this.GNtxtUN.SelectedText = "";
             this.GNtxtUN.Size = new System.Drawing.Size(227, 23);
             this.GNtxtUN.TabIndex = 10;
-            this.GNtxtUN.TextChanged += new System.EventHandler(this.GNtxtUN_TextChanged);
-            this.GNtxtUN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GNtxtUN_KeyDown);
+//            this.GNtxtUN.TextChanged += new System.EventHandler(this.GNtxtUN_TextChanged);
+//            this.GNtxtUN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GNtxtUN_KeyDown);
             // 
             // DemTg
             // 
@@ -493,7 +493,7 @@
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox3.TabIndex = 28;
             this.guna2PictureBox3.TabStop = false;
-            this.guna2PictureBox3.Click += new System.EventHandler(this.guna2PictureBox3_Click);
+//            this.guna2PictureBox3.Click += new System.EventHandler(this.guna2PictureBox3_Click);
             // 
             // guna2PictureBox2
             // 
@@ -507,7 +507,7 @@
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox2.TabIndex = 27;
             this.guna2PictureBox2.TabStop = false;
-            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
+//            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
             // 
             // guna2PictureBox1
             // 
@@ -521,7 +521,7 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 18;
             this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
+//            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
             // 
             // SignInForm
             // 

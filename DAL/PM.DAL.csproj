@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8995C0F9-CC1A-4901-A4CB-AE8F541268A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppDbSeeder.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\202510210247282_UpdateKhachHangTaiKhoanRelation.cs" />
+    <Compile Include="Migrations\202510210247282_UpdateKhachHangTaiKhoanRelation.Designer.cs">
+      <DependentUpon>202510210247282_UpdateKhachHangTaiKhoanRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.cs" />
+    <Compile Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.Designer.cs">
+      <DependentUpon>202510210254560_UpdateKhachHangTaiKhoanRelation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordHelperDAL.cs" />
+    <Compile Include="Migrations\202510080702097_InitialCreate.cs" />
+    <Compile Include="Migrations\202510080702097_InitialCreate.Designer.cs">
+      <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510081032100_UpdatePasswordFieldLength.cs" />
+    <Compile Include="Migrations\202510081032100_UpdatePasswordFieldLength.Designer.cs">
+      <DependentUpon>202510081032100_UpdatePasswordFieldLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510091651052_AddSachTacGiaTheLoai.cs" />
+    <Compile Include="Migrations\202510091651052_AddSachTacGiaTheLoai.Designer.cs">
+      <DependentUpon>202510091651052_AddSachTacGiaTheLoai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510091654202_AddSachTacGiaTheLoaiAgain.cs" />
+    <Compile Include="Migrations\202510091654202_AddSachTacGiaTheLoaiAgain.Designer.cs">
+      <DependentUpon>202510091654202_AddSachTacGiaTheLoaiAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.cs" />
+    <Compile Include="Migrations\202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.Designer.cs">
+      <DependentUpon>202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.cs" />
+    <Compile Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.Designer.cs">
+      <DependentUpon>202510091717573_UpdateSachTheLoaiRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510101234148_SuaLuuAnh.cs" />
+    <Compile Include="Migrations\202510101234148_SuaLuuAnh.Designer.cs">
+      <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510141635405_InitDatabase.cs" />
+    <Compile Include="Migrations\202510141635405_InitDatabase.Designer.cs">
+      <DependentUpon>202510141635405_InitDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\BanQuyen.cs" />
+    <Compile Include="Models\ChiNhanh.cs" />
+    <Compile Include="Models\ChucVu.cs" />
+    <Compile Include="Models\ChuyenKho.cs" />
+    <Compile Include="Models\CT_DonHang.cs" />
+    <Compile Include="Models\CT_GioHang.cs" />
+    <Compile Include="Models\CT_NhapKho.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\KeSach.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\Kho.cs" />
+    <Compile Include="Models\KhuyenMai.cs" />
+    <Compile Include="Models\KiemKe.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\NhapKho.cs" />
+    <Compile Include="Models\NhaXuatBan.cs" />
+    <Compile Include="Models\Sach.cs" />
+    <Compile Include="Models\TacGia.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\TheLoai.cs" />
+    <Compile Include="Models\ThongBao.cs" />
+    <Compile Include="Models\VanChuyen.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202510080702097_InitialCreate.resx">
+      <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510081032100_UpdatePasswordFieldLength.resx">
+      <DependentUpon>202510081032100_UpdatePasswordFieldLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510091651052_AddSachTacGiaTheLoai.resx">
+      <DependentUpon>202510091651052_AddSachTacGiaTheLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510091654202_AddSachTacGiaTheLoaiAgain.resx">
+      <DependentUpon>202510091654202_AddSachTacGiaTheLoaiAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.resx">
+      <DependentUpon>202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.resx">
+      <DependentUpon>202510091717573_UpdateSachTheLoaiRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510101234148_SuaLuuAnh.resx">
+      <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510141635405_InitDatabase.resx">
+      <DependentUpon>202510141635405_InitDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510210247282_UpdateKhachHangTaiKhoanRelation.resx">
+      <DependentUpon>202510210247282_UpdateKhachHangTaiKhoanRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.resx">
+      <DependentUpon>202510210254560_UpdateKhachHangTaiKhoanRelation1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>

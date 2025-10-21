@@ -97,7 +97,7 @@
             this.btnTatCa.Name = "btnTatCa";
             this.btnTatCa.Size = new System.Drawing.Size(176, 29);
             this.btnTatCa.Text = "Tất Cả Đơn Hàng";
-            this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
+//            this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
             // 
             // toolStripSeparator1
             // 
@@ -111,7 +111,7 @@
             this.btnXuLy.Name = "btnXuLy";
             this.btnXuLy.Size = new System.Drawing.Size(218, 29);
             this.btnXuLy.Text = "Đơn Hàng Đang Xử Lý";
-            this.btnXuLy.Click += new System.EventHandler(this.btnXuLy_Click);
+//            this.btnXuLy.Click += new System.EventHandler(this.btnXuLy_Click);
             // 
             // toolStripLabel2
             // 
@@ -144,7 +144,7 @@
             this.btnĐaGiao.Name = "btnĐaGiao";
             this.btnĐaGiao.Size = new System.Drawing.Size(190, 29);
             this.btnĐaGiao.Text = "Đơn Hàng Đã Giao";
-            this.btnĐaGiao.Click += new System.EventHandler(this.btnĐaGiao_Click);
+//            this.btnĐaGiao.Click += new System.EventHandler(this.btnĐaGiao_Click);
             // 
             // toolStripSeparator4
             // 
@@ -158,7 +158,7 @@
             this.btnTaiLai.Name = "btnTaiLai";
             this.btnTaiLai.Size = new System.Drawing.Size(88, 29);
             this.btnTaiLai.Text = "Tải Lại";
-            this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
+//            this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
             // 
             // guna2DataGridView2
             // 
@@ -263,8 +263,8 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 28;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.guna2DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellClick);
-            this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
+//            this.guna2DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellClick);
+//            this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
             // toolStripSeparator5
             // 

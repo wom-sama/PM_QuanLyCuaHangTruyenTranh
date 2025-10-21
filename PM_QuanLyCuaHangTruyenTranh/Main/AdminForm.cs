@@ -1,5 +1,4 @@
 ﻿using Guna.UI2.WinForms;
-using PM_QuanLyCuaHangTruyenTranh.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +16,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
         // danh sach cac UserControl
         private List<UserControl> AdminControl = new List<UserControl>();
 
-        public AdminForm(TaiKhoan Admin)
+        public AdminForm()
         {
             InitializeComponent();
         }

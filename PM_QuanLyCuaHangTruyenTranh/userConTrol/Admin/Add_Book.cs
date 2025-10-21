@@ -1,186 +1,170 @@
 ﻿using Guna.UI2.WinForms;
-using PM_QuanLyCuaHangTruyenTranh.Models;
+using PM.BUS.Helpers;
+using PM.BUS.Services.Sachsv;
+using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
 {
     public partial class Add_Book : UserControl
     {
+        private readonly SachService _sachService = new SachService();
+        private readonly TheLoaiService _theLoaiService = new TheLoaiService();
+        private string _anhBiaPath = null;
+
         public Add_Book()
         {
             InitializeComponent();
         }
 
-        private void LoadTheLoai()
-        {
-           
-            flpTheLoai.Controls.Clear();
-            using (var db = new AppDbContext())
-            {
-                var dsTL = db.TheLoais.ToList();
-                foreach (var tl in dsTL)
-                {
-                    var chk = new Guna2CheckBox()
-                    {
-                        Text = tl.TenTheLoai,
-                        Tag = tl.MaTheLoai,
-                        AutoSize = true,
-                        CheckedState = { FillColor = Color.MediumPurple },
-                        UncheckedState = { FillColor = Color.Transparent },
-                        ForeColor = Color.Black,
-                        Margin = new Padding(8)
-                    };
-                    flpTheLoai.Controls.Add(chk);
-                }
-            }
-        }
-
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Add_Book_Load(object sender, EventArgs e)
         {
-            // Load thể loại từ database
-            if (!DesignMode)
+            if (DesignMode) return;
+            try
             {
                 LoadTheLoai();
+                txtMaSach.Text = RandHelper.TaoMa("SACH");
             }
-            //
-            flpTheLoai.AutoScroll = true;
-            flpTheLoai.WrapContents = true;
-            flpTheLoai.FlowDirection = FlowDirection.LeftToRight;
-            flpTheLoai.Size = new Size(340, 111);
-            flpTheLoai.BorderStyle = BorderStyle.FixedSingle;
-            flpTheLoai.Padding = new Padding(10);
-            flpTheLoai.AutoScroll = true;
-            guna2VScrollBar1.BindingContainer = flpTheLoai;
-            guna2VScrollBar1.ScrollbarSize = 10;
-            guna2VScrollBar1.FillColor = Color.LightGray;
-            guna2VScrollBar1.ThumbColor = Color.Gray;
-            guna2VScrollBar1.ThumbSize = 30;
-            guna2VScrollBar1.BorderRadius = 5;
-            guna2VScrollBar1.Visible = true;
-            guna2VScrollBar1.BringToFront();
-            guna2VScrollBar1.Location = new Point(flpTheLoai.Right - guna2VScrollBar1.Width, flpTheLoai.Top);
-            guna2VScrollBar1.Height = flpTheLoai.Height;
-            guna2VScrollBar1.LargeChange = 20;
-            guna2VScrollBar1.Minimum = 0;
-            guna2VScrollBar1.Maximum = flpTheLoai.VerticalScroll.Maximum;
-            guna2VScrollBar1.Value = flpTheLoai.VerticalScroll.Value;
-            guna2VScrollBar1.Scroll += (s, ev) =>
+            catch (Exception ex)
             {
-                flpTheLoai.VerticalScroll.Value = guna2VScrollBar1.Value;
-                flpTheLoai.PerformLayout();
-            };
-            // chinh sua txtGioiThieu
-            txtGioiThieu.PlaceholderText = "Nhập giới thiệu về truyện...";
-            txtGioiThieu.Multiline = true;
-            txtGioiThieu.ScrollBars = ScrollBars.Vertical;
-            txtGioiThieu.BorderRadius = 8;
-            txtGioiThieu.FillColor = Color.WhiteSmoke;
-            txtGioiThieu.Font = new Font("Segoe UI", 10);
-            // khoa MaSach va tao ma tu dong
-            txtMaSach.ReadOnly = true;
-            txtMaSach.Enabled = false;
-            txtMaSach.Text=Helpers.RandHelper.TaoMa("SACH");
-            // chinh sua picBiaSach
-            picBiaSach.SizeMode = PictureBoxSizeMode.Zoom;
-            picBiaSach.BorderRadius = 10;     
-            picBiaSach.FillColor = Color.Transparent; 
-            picBiaSach.BackColor = Color.Transparent;
-            picBiaSach.BorderStyle = BorderStyle.FixedSingle;
-        }
-
-        private void Add_Book_ImeModeChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Ảnh bìa (*.jpg;*.png)|*.jpg;*.png";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                picBiaSach.Image = Image.FromFile(ofd.FileName);
-                picBiaSach.Tag = ofd.FileName; // Lưu tạm đường dẫn
+                new FormMessage("Lỗi khi tải thể loại: " + ex.Message).ShowDialog();
             }
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        // ===================== LOAD THỂ LOẠI =====================
+        private void LoadTheLoai()
+        {
+            flpTheLoai.Controls.Clear();
+            var list = _theLoaiService.GetAll();
+
+            if (list == null || !list.Any())
+            {
+                flpTheLoai.Controls.Add(new Label
+                {
+                    Text = "Không có thể loại nào!",
+                    ForeColor = Color.Gray,
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 9, FontStyle.Italic)
+                });
+                return;
+            }
+
+            foreach (var tl in list)
+            {
+                var chk = new Guna2CheckBox
+                {
+                    Text = tl.TenTheLoai,
+                    Tag = tl.MaTheLoai,
+                    AutoSize = true,
+                    ForeColor = Color.Black,
+                    Margin = new Padding(6)
+                };
+                flpTheLoai.Controls.Add(chk);
+            }
+        }
+
+        // ===================== CHỌN ẢNH =====================
+        private void btnChonAnh_Click(object sender, EventArgs e)
         {
             try
             {
-                using (var db = new AppDbContext())
+                using (OpenFileDialog ofd = new OpenFileDialog())
                 {
-                    var sach = new Sach()
+                    ofd.Filter = "Ảnh bìa (*.jpg;*.png)|*.jpg;*.png";
+                    if (ofd.ShowDialog() == DialogResult.OK)
                     {
-                        MaSach = txtMaSach.Text.Trim(),
-                        TenSach = GNtxtTenSach.Text.Trim(),
-                        //TacGia = GNtxtTacGia.Text.Trim(),
-                        SoTrang = int.Parse(GNtxtSoTrang.Text),
-                       // GioiThieu = txtGioiThieu.Text.Trim(),
-                        //TheLoais = new List<TheLoai>()
-                    };
-
-                    //  Lưu ảnh trực tiếp vào database (dạng byte[])
-                    if (picBiaSach.Tag != null)
-                    {
-                        string source = picBiaSach.Tag.ToString();
-
-                        // Đọc ảnh thành mảng byte
-                        sach.BiaSach = File.ReadAllBytes(source);
+                        picBiaSach.Image = Image.FromFile(ofd.FileName);
+                        _anhBiaPath = ofd.FileName;
                     }
-
-                    //  Duyệt các thể loại đã chọn
-                    /*foreach (Guna.UI2.WinForms.Guna2CheckBox chk in flpTheLoai.Controls.OfType<Guna.UI2.WinForms.Guna2CheckBox>())
-                    {
-                        if (chk.Checked)
-                        {
-                            string maTheLoai = chk.Tag.ToString();
-                            var tl = db.TheLoais.FirstOrDefault(t => t.MaTheLoai == maTheLoai);
-                            if (tl != null)
-                                sach.TheLoais.Add(tl);
-                        }
-                    }*/
-
-                    /*db.Sachs.Add(sach);
-                    db.SaveChanges();*/
-
-                    new FormMessage("Them Thanh Cong").ShowDialog();
-                    picBiaSach.Image = null;
-                    picBiaSach.Tag = null;
-                    GNtxtTenSach.Clear();
-                    GNtxtSoTrang.Clear();
-                    txtGioiThieu.Clear();
-                    GNtxtTacGia.Clear();
-                    foreach (var chk in flpTheLoai.Controls.OfType<Guna.UI2.WinForms.Guna2CheckBox>())
-                        chk.Checked = false;
-                    txtMaSach.Text = Helpers.RandHelper.TaoMa("SACH");
-
                 }
             }
             catch (Exception ex)
             {
-               FormMessage f =  new FormMessage("Lỗi khi thêm sách " + ex.Message);
-                f.ShowDialog();
+                new FormMessage("Lỗi khi chọn ảnh: " + ex.Message).ShowDialog();
             }
         }
 
-        private void GNtxtSoTrang_TextChanged(object sender, EventArgs e)
+        // ===================== NÚT LƯU =====================
+        private void btnLuu_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Kiểm tra hợp lệ
+                if (string.IsNullOrWhiteSpace(GNtxtTenSach.Text))
+                {
+                    new FormMessage("Vui lòng nhập tên sách!").ShowDialog();
+                    return;
+                }
 
+                if (!int.TryParse(GNtxtSoTrang.Text, out int soTrang))
+                {
+                    new FormMessage("Số trang phải là số hợp lệ!").ShowDialog();
+                    return;
+                }
+
+                // Thu thập thể loại đã chọn
+                var theLoaiChon = flpTheLoai.Controls
+                    .OfType<Guna2CheckBox>()
+                    .Where(c => c.Checked)
+                    .Select(c => c.Tag.ToString())
+                    .ToList();
+
+                // Tạo đối tượng sách mới
+                var sach = new Sach
+                {
+                    MaSach = txtMaSach.Text.Trim(),
+                    TenSach = GNtxtTenSach.Text.Trim(),
+                    SoTrang = soTrang,
+                    //NgayNhap = DateTime.Now
+                };
+
+                // Chuyển ảnh thành byte[] nếu có
+                if (!string.IsNullOrEmpty(_anhBiaPath) && File.Exists(_anhBiaPath))
+                {
+                    sach.BiaSach = File.ReadAllBytes(_anhBiaPath);
+                }
+
+                // Gọi BUS thêm sách
+                bool kq = _sachService.Add(sach);
+
+                if (kq)
+                {
+                    new FormMessage("✅ Thêm sách thành công!").ShowDialog();
+                    ResetForm();
+                }
+                else
+                {
+                    new FormMessage("❌ Không thể thêm sách!").ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                new FormMessage("Lỗi: " + ex.Message).ShowDialog();
+            }
+        }
+
+        // ===================== RESET FORM =====================
+        private void ResetForm()
+        {
+            GNtxtTenSach.Clear();
+            GNtxtSoTrang.Clear();
+            picBiaSach.Image = null;
+            _anhBiaPath = null;
+            txtMaSach.Text = RandHelper.TaoMa("SACH");
+
+            foreach (var chk in flpTheLoai.Controls.OfType<Guna2CheckBox>())
+                chk.Checked = false;
+        }
+
+        // ===================== EVENT KHÁC =====================
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+            // Không chỉnh event gốc, giữ nguyên
         }
     }
 }

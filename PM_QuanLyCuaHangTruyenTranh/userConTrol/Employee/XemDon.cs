@@ -1,19 +1,17 @@
-﻿using PM_QuanLyCuaHangTruyenTranh.Models;
+﻿using PM.BUS.Services.Facade;
 using System;
-using System.Data;
-using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
 {
     public partial class XemDon : UserControl
     {
-        AppDbContext db = new AppDbContext();
+        private readonly QuanLyDonHangBUS _bus;
 
         public XemDon()
         {
             InitializeComponent();
+            _bus = new QuanLyDonHangBUS();
         }
 
         private void XemDon_Load(object sender, EventArgs e)
@@ -25,27 +23,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
         {
             try
             {
-                var query = db.DonHangs.AsQueryable();
-
-                if (!string.IsNullOrEmpty(trangThai))
-                {
-                    query = query.Where(d => d.TrangThai == trangThai);
-                }
-
-                var data = query
-                    .Select(d => new
-                    {
-                        Mã_Đơn_Hàng = d.MaDonHang,
-                        Khách_Hàng = d.Khach.HoTen,
-                        Nhân_Viên = d.NhanVien.HoTen,
-                        Ngày_Đặt = d.NgayDat,
-                        Ngày_Giao = d.NgayGiao,
-                        Tổng_Tiền = d.TongTien,
-                        Trạng_Thái = d.TrangThai
-                    })
-                    .ToList();
-
-                guna2DataGridView1.DataSource = data;
+                guna2DataGridView1.DataSource = _bus.LayDanhSachDonHang(trangThai);
             }
             catch (Exception ex)
             {
@@ -53,44 +31,9 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             }
         }
 
-
-
-
-        private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-     
-
-        private void btnXuLy_Click(object sender, EventArgs e)
-        {
-            LoadDonHang("Đang xử lý");
-        }
-
         private void btnDangGiao_Click(object sender, EventArgs e)
         {
             LoadDonHang("Đang giao");
-        }
-
-        private void btnTatCa_Click(object sender, EventArgs e)
-        {
-            LoadDonHang();
-        }
-
-        private void btnĐaGiao_Click(object sender, EventArgs e)
-        {
-            LoadDonHang("Đã giao");
-        }
-
-        private void btnTaiLai_Click(object sender, EventArgs e)
-        {
-            LoadDonHang();
         }
 
         private void btnDaban_Click(object sender, EventArgs e)

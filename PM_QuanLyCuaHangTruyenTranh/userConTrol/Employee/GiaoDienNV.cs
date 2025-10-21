@@ -16,5 +16,10 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
         {
             InitializeComponent();
         }
+
+        private void GiaoDienNV_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

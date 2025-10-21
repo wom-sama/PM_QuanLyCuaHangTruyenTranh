@@ -31,9 +31,9 @@
             this.txtFindTen = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelDanhSach = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.flpTheLoai = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTheLoai = new Guna.UI2.WinForms.Guna2Button();
-            this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             this.panelDanhSach.Name = "panelDanhSach";
             this.panelDanhSach.Size = new System.Drawing.Size(730, 352);
             this.panelDanhSach.TabIndex = 2;
+//            this.panelDanhSach.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDanhSach_Paint);
             // 
             // guna2Panel1
             // 
@@ -76,7 +77,23 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(736, 461);
             this.guna2Panel1.TabIndex = 3;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+//            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // btnFind
+            // 
+            this.btnFind.BorderRadius = 15;
+            this.btnFind.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFind.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFind.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFind.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Location = new System.Drawing.Point(605, 28);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(98, 33);
+            this.btnFind.TabIndex = 5;
+            this.btnFind.Text = "tim";
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // flpTheLoai
             // 
@@ -99,23 +116,7 @@
             this.btnTheLoai.Size = new System.Drawing.Size(180, 31);
             this.btnTheLoai.TabIndex = 3;
             this.btnTheLoai.Text = "tag";
-            this.btnTheLoai.Click += new System.EventHandler(this.btnTheLoai_Click);
-            // 
-            // btnFind
-            // 
-            this.btnFind.BorderRadius = 15;
-            this.btnFind.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFind.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFind.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFind.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(605, 28);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(98, 33);
-            this.btnFind.TabIndex = 5;
-            this.btnFind.Text = "tim";
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+//            this.btnTheLoai.Click += new System.EventHandler(this.btnTheLoai_Click);
             // 
             // Edit_BOOk
             // 

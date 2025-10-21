@@ -1,5 +1,4 @@
-﻿using PM_QuanLyCuaHangTruyenTranh.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +16,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.FormThongBao
         {
             InitializeComponent();
         }
-        public HoveInfo(Sach a)
+     /*   public HoveInfo(Sach a)
         {
             InitializeComponent();
         }
@@ -29,7 +28,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.FormThongBao
         public HoveInfo(NhanVien a)
         {
             InitializeComponent();
-        }
+        }*/
 
         private void HoveInfo_Load(object sender, EventArgs e)
         {

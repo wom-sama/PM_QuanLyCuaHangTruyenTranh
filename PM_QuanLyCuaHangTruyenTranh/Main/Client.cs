@@ -1,4 +1,4 @@
-﻿using PM_QuanLyCuaHangTruyenTranh.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
 {
     public partial class Client : Form
     {
-        public Client(TaiKhoan a)
+        public Client()
         {
             InitializeComponent();
         }

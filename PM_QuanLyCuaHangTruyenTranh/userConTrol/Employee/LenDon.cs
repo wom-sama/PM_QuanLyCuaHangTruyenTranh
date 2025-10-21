@@ -1,5 +1,10 @@
-﻿using Microsoft.VisualBasic;
-using PM_QuanLyCuaHangTruyenTranh.Models;
+﻿
+using Microsoft.VisualBasic;
+using PM.BUS.Helpers;
+using PM.BUS.Services.Sachsv;
+using PM.BUS.Services.DonHangsv;
+using PM.DAL;
+using PM.DAL.Models;
 using QRCoder;
 using System;
 using System.Collections.Generic;
@@ -9,37 +14,43 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-
 namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
 {
     public partial class LenDon : UserControl
     {
-        AppDbContext db = new AppDbContext();
+        // Thay vì dùng trực tiếp AppDbContext, dùng services đã cung cấp
+        private readonly SachService _sachService;
+        private readonly DonHangService _donHangService;
+        private readonly CT_DonHangService _ctDonHangService;
+
         private string lastCreatedOrderID = null;
         private decimal lastOrderTotal = 0;
+
         public LenDon()
         {
-
             InitializeComponent();
 
-
+            // Khởi tạo services theo mã bạn cung cấp
+            _sachService = new SachService();                     // có ctor mặc định
+            _donHangService = new DonHangService();               // có ctor mặc định
+            _ctDonHangService = new CT_DonHangService(); // CT_DonHangService chỉ có ctor(IUnitOfWork)
         }
-        
+
         private void LenDon_Load(object sender, EventArgs e)
         {
             if (!DesignMode)
             {
-                MessageBox.Show("Form đang load dữ liệu!"); 
-               
+                MessageBox.Show("Form đang load dữ liệu!");
+
                 dgvSach.MultiSelect = true;
                 dgvSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 LoadSachData();
-
             }
-                
         }
-        private List<dynamic> allBooks;
-        // Hàm load dữ liệu sách vào bảng
+
+        private Object allBooks;
+
+        // Hàm load dữ liệu sách vào bảng — dùng SachService thay cho truy vấn trực tiếp
         private void LoadSachData()
         {
             try
@@ -55,23 +66,24 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     dgvSach.Columns.Add(new DataGridViewTextBoxColumn { Name = "SoLuongTon", HeaderText = "Số Lượng Tồn", DataPropertyName = "SoLuongTon" });
                 }
 
-                var data = db.Sachs
-                    .Include(s => s.TheLoai)
-                    .Include(s => s.CT_NhapKhos)
-                    .Include(s => s.CT_DonHangs)
-                    .AsNoTracking()
+                // Lấy tất cả sách từ service
+                var sachEntities = _sachService.GetAll() ?? new List<PM.DAL.Models.Sach>();
+
+                // Tính tồn kho tương tự truy vấn gốc dùng quan hệ CT_NhapKhos và CT_DonHangs
+                var data = sachEntities
                     .Select(s => new
                     {
                         s.MaSach,
                         s.TenSach,
                         TenTheLoai = s.TheLoai != null ? s.TheLoai.TenTheLoai : "Chưa phân loại",
                         s.GiaBan,
-                        SoLuongTon = (s.CT_NhapKhos.Sum(n => (int?)n.SoLuong) ?? 0)
-                                    - (s.CT_DonHangs.Sum(d => (int?)d.SoLuong) ?? 0)
+                        SoLuongTon = (s.CT_NhapKhos?.Sum(n => (int?)n.SoLuong) ?? 0)
+                                    - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)+1
                     })
                     .ToList();
 
                 dgvSach.DataSource = data;
+                allBooks = data;
             }
             catch (Exception ex)
             {
@@ -79,18 +91,18 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            picQR.SizeMode = PictureBoxSizeMode.Zoom;  
-            picQR.Visible=false;
-            btnXacNhan.Visible=false;
-            btnXacNhan.Enabled=false;
+            picQR.SizeMode = PictureBoxSizeMode.Zoom;
+            picQR.Visible = false;
+            btnXacNhan.Visible = false;
+            btnXacNhan.Enabled = false;
         }
-
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            // Giữ nguyên (không làm gì) như bản gốc
         }
 
+        // Sự kiện tạo đơn (giữ nguyên tên sự kiện)
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             try
@@ -101,23 +113,29 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     return;
                 }
 
-                // === Tạo mã đơn hàng tự động ===
-                string maDonHang = "DH" + DateTime.Now.ToString("yyyyMMddHHmmss");
-
+                // === Tạo mã đơn hàng tự động (dùng RandHelper.TaoMa) ===
+                string maDonHang = RandHelper.TaoMa("DH");
                 decimal tongTien = 0;
 
-                // === Tạo đơn hàng ===
+                // === Tạo đơn hàng (dùng DonHangService) ===
                 var donHang = new DonHang
                 {
                     MaDonHang = maDonHang,
                     MaKhach = null, // Khách lẻ
-                    MaNV = db.NhanViens.FirstOrDefault()?.MaNV ?? "NV01",
+                    MaNV = "NV001",  // không có context NhanVien trong service hiện tại -> dùng mã mặc định
                     NgayDat = DateTime.Now,
                     NgayGiao = DateTime.Now,
                     TongTien = 0, // sẽ cập nhật sau
                     TrangThai = "Chờ thanh toán"
                 };
-                db.DonHangs.Add(donHang);
+
+                // Lưu đơn (nếu thất bại, thông báo và thoát)
+                var addDonResult = _donHangService.Add(donHang);
+                if (!addDonResult)
+                {
+                    MessageBox.Show("Không thể tạo đơn hàng (lưu DonHang thất bại).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 // === Duyệt qua từng sách được chọn ===
                 foreach (DataGridViewRow row in dgvSach.SelectedRows)
@@ -136,7 +154,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                         continue;
                     }
 
-                    // kiểm tra tồn
+                    // kiểm tra tồn dựa vào dữ liệu đã load lên grid
                     int soLuongTon = Convert.ToInt32(row.Cells["SoLuongTon"].Value);
                     if (soLuongMua > soLuongTon)
                     {
@@ -144,7 +162,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                         continue;
                     }
 
-                    // tạo chi tiết đơn
+                    // tạo chi tiết đơn (dùng CT_DonHangService)
                     var chiTiet = new CT_DonHang
                     {
                         MaDonHang = maDonHang,
@@ -153,22 +171,30 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                         DonGia = giaBan,
                         ThanhTien = giaBan * soLuongMua
                     };
-                    db.CT_DonHangs.Add(chiTiet);
+
+                    var addCtResult = _ctDonHangService.Add(chiTiet);
+                    if (!addCtResult)
+                    {
+                        // nếu thêm chi tiết thất bại, bỏ qua chi tiết đó (và không cộng tiền)
+                        MessageBox.Show($"Không thể thêm chi tiết cho sách '{tenSach}', bỏ qua.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        continue;
+                    }
 
                     tongTien += chiTiet.ThanhTien;
                 }
 
-                // === Nếu không có chi tiết nào hợp lệ, hủy đơn ===
+                // === Nếu không có chi tiết nào hợp lệ, xóa DonHang vừa tạo và hủy ===
                 if (tongTien == 0)
                 {
+                    // xóa đơn đã tạo (hàm Delete theo service)
+                    _donHangService.Delete(maDonHang);
                     MessageBox.Show("Không có sách nào hợp lệ để tạo đơn!", "Thông báo");
-                    db.Entry(donHang).State = EntityState.Detached;
                     return;
                 }
 
                 // === Cập nhật tổng tiền cho đơn ===
                 donHang.TongTien = tongTien;
-                db.SaveChanges();
+                _donHangService.Update(donHang);
 
                 // 🔹 Lưu thông tin để dùng sau
                 lastCreatedOrderID = maDonHang;
@@ -187,63 +213,58 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            // giữ nguyên
         }
 
         private void txtHT_TextChanged(object sender, EventArgs e)
         {
-
+            // giữ nguyên
         }
 
         private void guna2HtmlLabel2_Click(object sender, EventArgs e)
         {
-
+            // giữ nguyên
         }
 
         private void txtHT_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            // giữ nguyên
         }
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
             string keyword = guna2TextBox1.Text.Trim().ToLower();
 
-            var data = db.Sachs
-                .Include(s => s.TheLoai)
-                .Include(s => s.CT_NhapKhos)
-                .Include(s => s.CT_DonHangs)
-                .AsNoTracking()
+            // Tìm kiếm qua service thay vì truy vấn trực tiếp
+            var data = (_sachService.GetAll() ?? new List<PM.DAL.Models.Sach>())
                 .Where(s =>
-                    s.TenSach.ToLower().Contains(keyword) ||
-                    s.MaSach.ToLower().Contains(keyword)
+                    (!string.IsNullOrEmpty(s.TenSach) && s.TenSach.ToLower().Contains(keyword)) ||
+                    (!string.IsNullOrEmpty(s.MaSach) && s.MaSach.ToLower().Contains(keyword))
                 )
                 .Select(s => new
                 {
                     s.MaSach,
                     s.TenSach,
-                    TenTheLoai = s.TheLoai.TenTheLoai,
+                    TenTheLoai = s.TheLoai != null ? s.TheLoai.TenTheLoai : "Chưa phân loại",
                     s.GiaBan,
-                    SoLuongTon =
-                        (s.CT_NhapKhos.Sum(n => (int?)n.SoLuong) ?? 0)
-                        - (s.CT_DonHangs.Sum(d => (int?)d.SoLuong) ?? 0)
+                    SoLuongTon = (s.CT_NhapKhos?.Sum(n => (int?)n.SoLuong) ?? 0)
+                                - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)
                 })
                 .ToList();
 
             dgvSach.DataSource = data;
         }
-
-        
 
         private void btnXemDon_Click(object sender, EventArgs e)
         {
@@ -282,7 +303,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
 
         private void guna2HtmlLabel4_Click(object sender, EventArgs e)
         {
-
+            // giữ nguyên
         }
 
         private void btnduyetdon_Click(object sender, EventArgs e)
@@ -295,6 +316,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             frm.ShowDialog(); // modal
         }
 
+        // Tạo QR (dùng QrHelper.TaoQRThanhToan)
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             try
@@ -306,18 +328,12 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     return;
                 }
 
-                string bankCode = "BIDV"; // MB Bank
-                string accountNo = "6910973464"; // số tài khoản
-                string accountName = "TRAN DUY TAN"; // tên chủ TK
+                string bankCode = "BIDV";
+                string accountNo = "6910973464";
+                string accountName = "TRAN DUY TAN";
 
-                // Ghi chú = mã đơn hàng
-                string ghiChu = $"Thanh toan don {lastCreatedOrderID}";
-
-                // Tạo URL QR MB Bank (VietQR)
-                string qrUrl = $"https://img.vietqr.io/image/{bankCode}-{accountNo}-compact2.png" +
-                               $"?amount={lastOrderTotal}" +
-                               $"&addInfo={Uri.EscapeDataString(ghiChu)}" +
-                               $"&accountName={Uri.EscapeDataString(accountName)}";
+                // Tạo URL QR dùng QrHelper (theo signature bạn cung cấp)
+                string qrUrl = QrHelper.TaoQRThanhToan(bankCode, accountNo, accountName, lastOrderTotal, lastCreatedOrderID);
 
                 // Hiển thị QR trong PictureBox có sẵn
                 picQR.Visible = true;
@@ -339,6 +355,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             }
         }
 
+        // Xác nhận thanh toán (giữ nguyên event)
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             try
@@ -350,8 +367,8 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     return;
                 }
 
-                // === Lấy đơn hàng vừa tạo ===
-                var don = db.DonHangs.FirstOrDefault(d => d.MaDonHang == lastCreatedOrderID);
+                // Lấy đơn hàng bằng service
+                var don = _donHangService.GetById(lastCreatedOrderID);
                 if (don == null)
                 {
                     MessageBox.Show("Không tìm thấy đơn hàng cần xác nhận!",
@@ -359,14 +376,14 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     return;
                 }
 
-                // === Cập nhật trạng thái thanh toán ===
+                // Cập nhật trạng thái thanh toán
                 don.TrangThai = "Đã thanh toán";
-                db.SaveChanges();
+                _donHangService.Update(don);
 
                 MessageBox.Show($"✅ Đơn hàng {lastCreatedOrderID} đã được thanh toán thành công!",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // === Mở giao diện in hóa đơn ===
+                // Mở giao diện in hóa đơn
                 InHoaDon hoaDonUC = new InHoaDon(lastCreatedOrderID);
                 Form frm = new Form();
                 frm.Text = "Hóa đơn bán hàng";
@@ -396,8 +413,8 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     return;
                 }
 
-                // Tìm đơn hàng vừa tạo
-                var don = db.DonHangs.FirstOrDefault(d => d.MaDonHang == lastCreatedOrderID);
+                // Tìm đơn hàng vừa tạo thông qua service
+                var don = _donHangService.GetById(lastCreatedOrderID);
                 if (don == null)
                 {
                     MessageBox.Show("Không tìm thấy đơn hàng cần xuất!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -406,7 +423,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
 
                 // Cập nhật trạng thái đơn hàng thành "Đã thanh toán"
                 don.TrangThai = "Đã thanh toán";
-                db.SaveChanges();
+                _donHangService.Update(don);
 
                 MessageBox.Show($"✅ Đơn hàng {lastCreatedOrderID} đã được thanh toán và sẵn sàng in!",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -427,37 +444,33 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             {
                 MessageBox.Show("Lỗi khi xuất đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void txtTimSach_TextChanged(object sender, EventArgs e)
         {
-            string keyword = txtTimSach.Text.Trim().ToLower(); // sửa lại đây
+            string keyword = txtTimSach.Text.Trim().ToLower();
 
-            var query = db.Sachs
-                .Include(s => s.TheLoai)
-                .Include(s => s.CT_NhapKhos)
-                .Include(s => s.CT_DonHangs)
-                .AsNoTracking();
+            // Lấy danh sách sách từ service và ép về List để tính toán trong bộ nhớ
+            var all = _sachService.GetAll()?.ToList() ?? new List<PM.DAL.Models.Sach>();
 
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                query = query.Where(s =>
-                    s.TenSach.ToLower().Contains(keyword) ||
-                    s.MaSach.ToLower().Contains(keyword));
-            }
+            // Lọc theo từ khóa (không phân biệt hoa thường)
+            var filtered = string.IsNullOrEmpty(keyword)
+                ? all
+                : all.Where(s =>
+                    (!string.IsNullOrEmpty(s.TenSach) && s.TenSach.ToLower().Contains(keyword)) ||
+                    (!string.IsNullOrEmpty(s.MaSach) && s.MaSach.ToLower().Contains(keyword))
+                ).ToList();
 
-            var data = query.Select(s => new
+            // Chuẩn bị dữ liệu hiển thị
+            var data = filtered.Select(s => new
             {
                 s.MaSach,
                 s.TenSach,
                 TenTheLoai = s.TheLoai != null ? s.TheLoai.TenTheLoai : "Chưa phân loại",
                 s.GiaBan,
-                SoLuongTon =
-                    (s.CT_NhapKhos.Sum(n => (int?)n.SoLuong) ?? 0)
-                    - (s.CT_DonHangs.Sum(d => (int?)d.SoLuong) ?? 0)
-            })
-            .ToList();
+                SoLuongTon = (s.CT_NhapKhos?.Sum(n => (int?)n.SoLuong) ?? 0)
+                            - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)
+            }).ToList();
 
             dgvSach.DataSource = data;
         }

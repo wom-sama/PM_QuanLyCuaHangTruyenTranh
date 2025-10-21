@@ -1,5 +1,4 @@
-﻿using PM_QuanLyCuaHangTruyenTranh.Helpers;
-using PM_QuanLyCuaHangTruyenTranh.Models;
+﻿using PM_QuanLyCuaHangTruyenTranh.Main;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,10 +22,10 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main.NhanVienForm());
+            Application.Run(new NhanVienForm());
             //Application.Run(new AdminForm(null));
 
-            AppDbSeeder.Seed();
+            //AppDbSeeder.Seed();
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
              string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
              Console.WriteLine("Decrypted Email: " + senderEmail);
