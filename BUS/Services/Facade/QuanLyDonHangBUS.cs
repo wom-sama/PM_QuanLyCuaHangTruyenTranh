@@ -1,6 +1,7 @@
-﻿using PM.DAL;
+﻿using BUS.DTOs;
 using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.VanChuyensv;
+using PM.DAL;
 using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,28 @@ namespace PM.BUS.Services.Facade
                 d.TrangThai
             }).ToList();
         }
+        /*/ dto
+        public IEnumerable<DonHangDTO> LayDanhSachDonHangDTO(string trangThai = null)
+        {
+            var ds = _donHangService.GetAll();
+
+            if (!string.IsNullOrEmpty(trangThai))
+                ds = ds.Where(d => d.TrangThai == trangThai);
+
+            return ds.Select(d => new DonHangDTO
+            {
+                MaDonHang = d.MaDonHang,
+                TenKhachHang = d.Khach?.HoTen,
+                SDT = d.Khach?.SoDienThoai,
+                TenNhanVien = d.NhanVien?.HoTen,
+                LoaiDon = d.LoaiDon,
+                NgayTao = d.NgayDat,
+                NgayGiao = d.NgayGiao,
+                TongTien = d.TongTien,
+                TrangThai = d.TrangThai
+            }).ToList();
+        }*/
+
 
         // ==================== CHI TIẾT ĐƠN ====================
 
@@ -95,5 +118,19 @@ namespace PM.BUS.Services.Facade
                 ThanhTien = ct.ThanhTien
             }).ToList<object>();
         }
+        // ==================== BỔ SUNG PHƯƠNG THỨC CHO FORM DUYỆT ====================
+
+        // Lấy danh sách đơn hàng theo trạng thái cụ thể
+        public List<object> LayDanhSachDonHangTheoTrangThai(string trangThai)
+        {
+            return LayDanhSachDonHang(trangThai).ToList();
+        }
+
+        // Lấy đơn hàng theo mã đơn
+        public DonHang LayDonHangTheoMa(string maDonHang)
+        {
+            return _donHangService.GetById(maDonHang);
+        }
+
     }
 }

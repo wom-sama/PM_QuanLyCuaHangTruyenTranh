@@ -11,16 +11,24 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
 
         public DuyetDon()
         {
-            InitializeComponent();
-            _bus = new QuanLyDonHangBUS(); // ✅ Không còn tạo UnitOfWork ở GUI
-            LoadDonHang();
+            InitializeComponent(); 
+
+            _bus = new QuanLyDonHangBUS(); // ✅ KHỞI TẠO BUS TRƯỚC
+
+            // Lấy danh sách đơn hàng có trạng thái "Đang chờ duyệt"
+            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Đang xử lý");
+            dgvChiTiet.DataSource = null;
+            selectedMaDonHang = null;
         }
 
         private void LoadDonHang()
         {
-            dgvDonHang.DataSource = _bus.LayDanhSachDonHang();
+            // Chỉ tải lại các đơn hàng đang chờ duyệt
+            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Đang xử lý");
             dgvChiTiet.DataSource = null;
+            selectedMaDonHang = null;
         }
+        
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -39,6 +47,21 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                 return;
             }
 
+            // Kiểm tra trạng thái hiện tại của đơn hàng
+            var donHang = _bus.LayDonHangTheoMa(selectedMaDonHang);
+            if (donHang == null)
+            {
+                MessageBox.Show("❌ Không tìm thấy đơn hàng!", "Lỗi");
+                return;
+            }
+
+            if (donHang.TrangThai != "Đang xử lý")
+            {
+                MessageBox.Show("⚠️ Chỉ có thể duyệt các đơn hàng đang chờ duyệt!", "Thông báo");
+                return;
+            }
+
+            // Thực hiện duyệt đơn
             bool thanhCong = _bus.DuyetDon(selectedMaDonHang);
 
             if (thanhCong)
@@ -46,7 +69,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             else
                 MessageBox.Show("❌ Không thể duyệt đơn hàng!", "Lỗi");
 
-            LoadDonHang();
+            LoadDonHang(); // làm mới danh sách sau khi duyệt
         }
 
         private void BtnTaiLai_Click(object sender, EventArgs e)

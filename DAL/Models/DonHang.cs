@@ -27,5 +27,11 @@ namespace PM.DAL.Models
         public string TrangThai { get; set; }
 
         public virtual ICollection<CT_DonHang> CT_DonHangs { get; set; }
+        // ======= Thêm LoaiDon =======
+        //[Required]
+        //[MaxLength(20)]
+        //public string LoaiDon { get; set; }  // giá trị: "Online" hoặc "Trực tiếp"
+
+        //public virtual ICollection<CT_DonHang> CT_DonHang { get; set; }
     }
 }
