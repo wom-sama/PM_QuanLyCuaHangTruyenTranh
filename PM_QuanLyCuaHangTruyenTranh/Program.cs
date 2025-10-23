@@ -25,7 +25,7 @@ namespace PM.GUI
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main.LoginForm());
 
-            // AppDbSeeder.Seed();
+            // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
 
             //AppDbSeeder.Seed();
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
@@ -95,6 +95,10 @@ db.Sachs.AddRange(sachs);
 
 
           }*/
+
+
+            ///Them Bìa sách thì mở đống này ra
+            ///
             /*  using (var db = new AppDbContext())
               {
                   // Danh sách ảnh + ISBN tương ứng
