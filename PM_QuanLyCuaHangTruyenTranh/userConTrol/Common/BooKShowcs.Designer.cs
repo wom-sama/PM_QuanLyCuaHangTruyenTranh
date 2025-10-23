@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtNameBook = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.picBia = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.checkMouseTimer = new System.Windows.Forms.Timer(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBia)).BeginInit();
             this.SuspendLayout();
@@ -88,6 +90,11 @@
             this.picBia.MouseEnter += new System.EventHandler(this.picBia_MouseEnter);
             this.picBia.MouseLeave += new System.EventHandler(this.picBia_MouseLeave);
             // 
+            // checkMouseTimer
+            // 
+            this.checkMouseTimer.Enabled = true;
+            this.checkMouseTimer.Tick += new System.EventHandler(this.checkMouseTimer_Tick);
+            // 
             // BooKShowcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -107,5 +114,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox picBia;
         private Guna.UI2.WinForms.Guna2TextBox txtNameBook;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private System.Windows.Forms.Timer checkMouseTimer;
     }
 }

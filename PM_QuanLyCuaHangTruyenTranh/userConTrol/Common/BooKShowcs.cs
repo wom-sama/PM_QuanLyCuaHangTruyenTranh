@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using PM.GUI.FormThongBao;
+using PM.GUI;
 
 namespace PM.GUI.userConTrol.Common
 {
@@ -12,6 +14,7 @@ namespace PM.GUI.userConTrol.Common
     {
         private SachService sachService = new SachService();
         private Sach sach = new Sach();
+        private FormMessage f = new FormMessage("LOL");
 
         public BooKShowcs()
         {
@@ -93,6 +96,10 @@ namespace PM.GUI.userConTrol.Common
             guna2ShadowPanel1.ShadowColor = Color.FromArgb(180, 60, 60, 60);
             guna2ShadowPanel1.ShadowDepth = 60;
             guna2ShadowPanel1.FillColor = Color.FromArgb(250, 250, 250);
+            Point cursorPos = Cursor.Position;
+            f.Location = new Point(cursorPos.X + 15, cursorPos.Y + 15);
+            f.Show();
+            checkMouseTimer.Start();
         }
 
         private void picBia_MouseLeave(object sender, EventArgs e)
@@ -100,6 +107,7 @@ namespace PM.GUI.userConTrol.Common
             guna2ShadowPanel1.ShadowColor = Color.FromArgb(120, 0, 0, 0);
             guna2ShadowPanel1.ShadowDepth = 40;
             guna2ShadowPanel1.FillColor = Color.White;
+            checkMouseTimer.Start();
         }
 
         private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)
@@ -110,6 +118,11 @@ namespace PM.GUI.userConTrol.Common
         private void txtNameBook_MouseEnter(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+        }
+
+        private void checkMouseTimer_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
