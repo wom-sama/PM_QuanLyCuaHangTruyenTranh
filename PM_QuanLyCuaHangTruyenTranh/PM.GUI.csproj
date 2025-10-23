@@ -120,6 +120,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppDbSeeder.cs" />
     <Compile Include="FormThongBao\HoveInfo.cs">
       <SubType>Form</SubType>
     </Compile>

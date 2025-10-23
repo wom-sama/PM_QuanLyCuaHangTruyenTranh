@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.FormThongBao
+﻿namespace PM.GUI.FormThongBao
 {
     partial class HoveInfo
     {

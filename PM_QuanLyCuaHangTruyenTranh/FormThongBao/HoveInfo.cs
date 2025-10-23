@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.FormThongBao
+namespace PM.GUI.FormThongBao
 {
     public partial class HoveInfo : Form
     {

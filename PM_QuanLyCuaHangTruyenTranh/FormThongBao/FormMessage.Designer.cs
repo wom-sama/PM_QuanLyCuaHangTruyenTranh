@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh
+﻿namespace PM.GUI.FormThongBao
 {
     partial class FormMessage
     {

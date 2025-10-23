@@ -5,8 +5,9 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PM.GUI.FormThongBao;
 
-namespace PM_QuanLyCuaHangTruyenTranh
+namespace PM.GUI.Main
 {
     public partial class LoginForm : Form
     {
@@ -57,13 +58,13 @@ namespace PM_QuanLyCuaHangTruyenTranh
                 switch (tk.Quyen)
                 {
                     case "Admin":
-                        //new AdminForm(tk).ShowDialog();
+                        new AdminForm().ShowDialog();
                         break;
                     case "Nhân viên":
-                        // new NhanVienForm(tk).ShowDialog();
+                         new PM.GUI.Main.NhanVienForm().ShowDialog();
                         break;
                     case "Khách":
-                        //new Client(tk).ShowDialog();
+                        new Client(tk).ShowDialog();
                         break;
                 }
 

@@ -8,8 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PM.GUI;
+using PM.GUI.Main;
 
-namespace PM_QuanLyCuaHangTruyenTranh
+namespace PM.GUI.Main
 {
     public partial class AdminForm : Form
     {

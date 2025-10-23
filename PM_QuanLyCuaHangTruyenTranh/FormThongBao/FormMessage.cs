@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh
+namespace PM.GUI.FormThongBao
 {
     public partial class FormMessage : Form
     {

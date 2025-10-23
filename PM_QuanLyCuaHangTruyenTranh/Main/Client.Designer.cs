@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh
+﻿namespace PM.GUI.Main
 {
     partial class Client
     {
