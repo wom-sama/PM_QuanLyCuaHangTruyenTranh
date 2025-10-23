@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace PM.BUS.Services.Sachsv
 {
     public class SachService
@@ -23,17 +24,9 @@ namespace PM.BUS.Services.Sachsv
 
         // ==================== LẤY DỮ LIỆU ====================
 
-        public IEnumerable<PM.DAL.Models.Sach> GetAll()
+        public IEnumerable<Sach> GetAll()
         {
-            try
-            {
-                return _unitOfWork.SachRepository.GetAll();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi khi lấy danh sách sách: " + ex.Message);
-                return new List<PM.DAL.Models.Sach>();
-            }
+            return _unitOfWork.SachRepository.GetAllNoTracking();
         }
 
         public PM.DAL.Models.Sach GetById(string maSach)
@@ -200,7 +193,11 @@ namespace PM.BUS.Services.Sachsv
                 Console.WriteLine("Lỗi khi xóa sách (async): " + ex.Message);
                 return false;
             }
+
         }
+
+
+
     }
 
 }

@@ -26,6 +26,10 @@ namespace PM.DAL.Repositories
         {
             return _dbSet.ToList();
         }
+        public IEnumerable<T> GetAllNoTracking()
+        {
+            return _dbSet.AsNoTracking().ToList();
+        }
 
         public T GetById(params object[] keyValues)
         {

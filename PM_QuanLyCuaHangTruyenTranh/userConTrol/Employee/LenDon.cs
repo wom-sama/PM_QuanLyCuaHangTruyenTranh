@@ -1,8 +1,9 @@
 ﻿
 using Microsoft.VisualBasic;
 using PM.BUS.Helpers;
-using PM.BUS.Services.Sachsv;
 using PM.BUS.Services.DonHangsv;
+using PM.BUS.Services.Facade;
+using PM.BUS.Services.Sachsv;
 using PM.DAL;
 using PM.DAL.Models;
 using QRCoder;
@@ -22,6 +23,8 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
         private readonly SachService _sachService;
         private readonly DonHangService _donHangService;
         private readonly CT_DonHangService _ctDonHangService;
+    
+
 
         private string lastCreatedOrderID = null;
         private decimal lastOrderTotal = 0;
@@ -34,6 +37,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             _sachService = new SachService();                     // có ctor mặc định
             _donHangService = new DonHangService();               // có ctor mặc định
             _ctDonHangService = new CT_DonHangService(); // CT_DonHangService chỉ có ctor(IUnitOfWork)
+         
         }
 
         private void LenDon_Load(object sender, EventArgs e)
@@ -78,7 +82,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                         TenTheLoai = s.TheLoai != null ? s.TheLoai.TenTheLoai : "Chưa phân loại",
                         s.GiaBan,
                         SoLuongTon = (s.CT_NhapKhos?.Sum(n => (int?)n.SoLuong) ?? 0)
-                                    - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)+1
+                                    - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)
                     })
                     .ToList();
 
@@ -122,13 +126,13 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                 {
                     MaDonHang = maDonHang,
                     MaKhach = null, // Khách lẻ
-                    MaNV = "NV001",  // không có context NhanVien trong service hiện tại -> dùng mã mặc định
+                    MaNV = "NV01",  // không có context NhanVien trong service hiện tại -> dùng mã mặc định
                     NgayDat = DateTime.Now,
                     NgayGiao = DateTime.Now,
                     TongTien = 0, // sẽ cập nhật sau
                     TrangThai = "Chờ thanh toán"
                 };
-
+                
                 // Lưu đơn (nếu thất bại, thông báo và thoát)
                 var addDonResult = _donHangService.Add(donHang);
                 if (!addDonResult)
@@ -136,6 +140,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                     MessageBox.Show("Không thể tạo đơn hàng (lưu DonHang thất bại).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+               
 
                 // === Duyệt qua từng sách được chọn ===
                 foreach (DataGridViewRow row in dgvSach.SelectedRows)
@@ -219,29 +224,6 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             // giữ nguyên
         }
 
-        private void txtHT_TextChanged(object sender, EventArgs e)
-        {
-            // giữ nguyên
-        }
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
-        {
-            // giữ nguyên
-        }
-
-        private void txtHT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // giữ nguyên
-        }
-
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
             string keyword = guna2TextBox1.Text.Trim().ToLower();
@@ -279,32 +261,9 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             frm.Show(); // hiển thị form
         }
 
-        private void txtPhone_TextChanged(object sender, EventArgs e)
-        {
-            TextBox txt = sender as TextBox;
+   
 
-            if (txt == null) return;
-
-            // Lấy chỉ các ký tự số từ chuỗi hiện tại
-            string onlyDigits = new string(txt.Text.Where(char.IsDigit).ToArray());
-
-            // Giới hạn tối đa 10 số
-            if (onlyDigits.Length > 10)
-                onlyDigits = onlyDigits.Substring(0, 10);
-
-            // Nếu chuỗi đã thay đổi, cập nhật lại TextBox
-            if (txt.Text != onlyDigits)
-            {
-                int selStart = txt.SelectionStart; // lưu vị trí con trỏ
-                txt.Text = onlyDigits;
-                txt.SelectionStart = selStart > txt.Text.Length ? txt.Text.Length : selStart;
-            }
-        }
-
-        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
-        {
-            // giữ nguyên
-        }
+      
 
         private void btnduyetdon_Click(object sender, EventArgs e)
         {
@@ -392,6 +351,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                 frm.Controls.Add(hoaDonUC);
                 frm.StartPosition = FormStartPosition.CenterScreen;
                 frm.ShowDialog();
+                ResetUIAfterPrint();
 
                 // Làm mới dữ liệu sau khi in
                 LoadSachData();
@@ -423,6 +383,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
 
                 // Cập nhật trạng thái đơn hàng thành "Đã thanh toán"
                 don.TrangThai = "Đã thanh toán";
+                //don.LoaiDon = "Trực tiếp";
                 _donHangService.Update(don);
 
                 MessageBox.Show($"✅ Đơn hàng {lastCreatedOrderID} đã được thanh toán và sẵn sàng in!",
@@ -437,6 +398,7 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
                 frm.Controls.Add(hoaDonUC);
                 frm.StartPosition = FormStartPosition.CenterScreen;
                 frm.ShowDialog();
+                ResetUIAfterPrint();
 
                 LoadSachData();
             }
@@ -473,6 +435,19 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
             }).ToList();
 
             dgvSach.DataSource = data;
+        }
+        private void ResetUIAfterPrint()
+        {
+            dgvSach.Enabled = true;
+            btnTaoDon.Enabled = true;
+            picQR.Visible = false;
+            btnXacNhan.Visible = false;
+            btnXacNhan.Enabled = false;
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+            LoadSachData();
         }
     }
 }

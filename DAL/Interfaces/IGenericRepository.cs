@@ -9,6 +9,7 @@ namespace PM.DAL.Interfaces
     {
         // --- Đồng bộ ---
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetAllNoTracking();
         T GetById(params object[] keyValues);
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
         void Add(T entity);
