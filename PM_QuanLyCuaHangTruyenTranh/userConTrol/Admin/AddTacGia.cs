@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
+namespace PM.GUI.userConTrol.Admin
 {
     public partial class AddTacGia : UserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
+﻿namespace PM.GUI.userConTrol.Admin
 {
     partial class Add_Book
     {
@@ -219,7 +219,7 @@
             // picBiaSach
             // 
             this.picBiaSach.BackColor = System.Drawing.Color.DarkGray;
-            this.picBiaSach.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.Roblox_3_2_2025_12_02_38_AM;
+            this.picBiaSach.Image = global::PM.GUI.Properties.Resources.Roblox_3_2_2025_12_02_38_AM;
             this.picBiaSach.ImageRotate = 0F;
             this.picBiaSach.Location = new System.Drawing.Point(225, 1077);
             this.picBiaSach.Name = "picBiaSach";

@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh
+﻿namespace PM.GUI
 {
     partial class SignInForm
     {
@@ -485,7 +485,7 @@
             // 
             this.guna2PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2Transition1.SetDecoration(this.guna2PictureBox3, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2PictureBox3.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.megumitop;
+            this.guna2PictureBox3.Image = global::PM.GUI.Properties.Resources.megumitop;
             this.guna2PictureBox3.ImageRotate = 0F;
             this.guna2PictureBox3.Location = new System.Drawing.Point(26, 12);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
@@ -499,7 +499,7 @@
             // 
             this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2Transition1.SetDecoration(this.guna2PictureBox2, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2PictureBox2.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.sparkle_hanabi;
+            this.guna2PictureBox2.Image = global::PM.GUI.Properties.Resources.sparkle_hanabi;
             this.guna2PictureBox2.ImageRotate = 0F;
             this.guna2PictureBox2.Location = new System.Drawing.Point(12, 314);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
@@ -513,7 +513,7 @@
             // 
             this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2Transition1.SetDecoration(this.guna2PictureBox1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2PictureBox1.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.text;
+            this.guna2PictureBox1.Image = global::PM.GUI.Properties.Resources.text;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(667, 328);
             this.guna2PictureBox1.Name = "guna2PictureBox1";

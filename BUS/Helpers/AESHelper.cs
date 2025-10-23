@@ -12,7 +12,7 @@ namespace PM.BUS.Helpers
     {
 
         // Đường dẫn tới file chứa DPAPI-protected key (Base64). Thay đường dẫn nếu cần.
-        private static readonly string ProtectedKeyFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"D:\LAP\PM_QuanLyCuaHangTruyenTranh\packages\key.txt");
+        private static readonly string ProtectedKeyFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"D:\LAP\PM.GUI\packages\key.txt");
 
         // Cache key đã unprotect để dùng lại
         private static byte[] _aesKey = null;

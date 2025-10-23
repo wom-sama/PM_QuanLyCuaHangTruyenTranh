@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.Main
+namespace PM.GUI.Main
 {
     public partial class NhanVienForm : Form
     {

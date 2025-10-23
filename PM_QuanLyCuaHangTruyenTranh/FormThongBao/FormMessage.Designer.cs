@@ -98,7 +98,7 @@
             // guna2PictureBox2
             // 
             this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox2.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.sparkle_hanabi;
+            this.guna2PictureBox2.Image = global::PM.GUI.Properties.Resources.sparkle_hanabi;
             this.guna2PictureBox2.ImageRotate = 0F;
             this.guna2PictureBox2.Location = new System.Drawing.Point(276, 120);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
@@ -110,7 +110,7 @@
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox1.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.sparkle_hanabi;
+            this.guna2PictureBox1.Image = global::PM.GUI.Properties.Resources.sparkle_hanabi;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(2, 120);
             this.guna2PictureBox1.Name = "guna2PictureBox1";

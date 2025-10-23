@@ -15,7 +15,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
+namespace PM.GUI.userConTrol.Employee
 {
     public partial class LenDon : UserControl
     {

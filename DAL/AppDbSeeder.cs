@@ -5,7 +5,7 @@ using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace PM_QuanLyCuaHangTruyenTranh
+namespace PM.GUI
 {
     public static class AppDbSeeder
     {

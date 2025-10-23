@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
+﻿namespace PM.GUI.userConTrol.Admin
 {
     partial class Edit_BOOk
     {
@@ -63,7 +63,6 @@
             this.panelDanhSach.Name = "panelDanhSach";
             this.panelDanhSach.Size = new System.Drawing.Size(730, 352);
             this.panelDanhSach.TabIndex = 2;
-//            this.panelDanhSach.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDanhSach_Paint);
             // 
             // guna2Panel1
             // 
@@ -77,7 +76,6 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(736, 461);
             this.guna2Panel1.TabIndex = 3;
-//            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // btnFind
             // 
@@ -116,7 +114,7 @@
             this.btnTheLoai.Size = new System.Drawing.Size(180, 31);
             this.btnTheLoai.TabIndex = 3;
             this.btnTheLoai.Text = "tag";
-//            this.btnTheLoai.Click += new System.EventHandler(this.btnTheLoai_Click);
+            this.btnTheLoai.Click += new System.EventHandler(this.btnTheLoai_Click);
             // 
             // Edit_BOOk
             // 

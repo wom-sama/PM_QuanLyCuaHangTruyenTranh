@@ -1,19 +1,21 @@
 ﻿using PM.BUS.Services.Sachsv;
 using PM.DAL.Models;
-using PM_QuanLyCuaHangTruyenTranh.userConTrol.Common;
+using PM.GUI.userConTrol.Common;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
+namespace PM.GUI.userConTrol.Admin
 {
     public partial class Edit_BOOk : UserControl
     {
-        private readonly SachService _sachService = new SachService();
-        private readonly TheLoaiService _theLoaiService = new TheLoaiService();
-        private bool hienTheLoai = false;
+        private TheLoaiService theLoaiService = new TheLoaiService();
+        private SachService sachService = new SachService();
+
+        private bool isTheLoaiVisible = false;
+        private List<string> selectedTheLoais = new List<string>();
 
         public Edit_BOOk()
         {
@@ -22,32 +24,100 @@ namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
 
         private void Edit_BOOk_Load(object sender, EventArgs e)
         {
-            if (DesignMode) return;
-            HienTatCaSach();
+            LoadAllBooks();
+            flpTheLoai.Visible = false;
         }
 
-        private void HienTatCaSach()
-        {
-            var ds = _sachService.GetAll();
-            //HienDanhSachSach(ds);
-        }
-
-        private void HienDanhSachSach(List<Sach> ds)
+        // ==================== HIỂN THỊ DANH SÁCH SÁCH ====================
+        private void LoadAllBooks(IEnumerable<Sach> list = null)
         {
             panelDanhSach.Controls.Clear();
-            foreach (var sach in ds)
+            var books = list ?? sachService.GetAll();
+
+            foreach (var sach in books)
             {
-                BooKShowcs item = new BooKShowcs(sach);
-                item.Margin = new Padding(10);
-                panelDanhSach.Controls.Add(item);
+                BooKShowcs bookItem = new BooKShowcs(sach);
+                bookItem.Margin = new Padding(10);
+                panelDanhSach.Controls.Add(bookItem);
             }
         }
 
+        // ==================== NÚT THỂ LOẠI ====================
+        private void btnTheLoai_Click(object sender, EventArgs e)
+        {
+            isTheLoaiVisible = !isTheLoaiVisible;
+
+            if (isTheLoaiVisible)
+            {
+                ShowTheLoaiList();
+            }
+            else
+            {
+                flpTheLoai.Visible = false;
+                panelDanhSach.Visible = true;
+
+                // Lọc sách theo thể loại đã chọn
+                FilterBooksBySelectedTheLoai();
+            }
+        }
+
+        // ==================== HIỂN THỊ CÁC THỂ LOẠI DƯỚI DẠNG CHECKBOX ====================
+        private void ShowTheLoaiList()
+        {
+            flpTheLoai.Controls.Clear();
+            var listTheLoai = theLoaiService.GetAll();
+
+            foreach (var tl in listTheLoai)
+            {
+                CheckBox chk = new CheckBox
+                {
+                    Text = tl.TenTheLoai,
+                    Tag = tl.MaTheLoai,
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 10),
+                    ForeColor = Color.Black,
+                    Margin = new Padding(5)
+                };
+
+                if (selectedTheLoais.Contains(tl.MaTheLoai))
+                    chk.Checked = true;
+
+                chk.CheckedChanged += (s, e) =>
+                {
+                    string maTL = chk.Tag.ToString();
+                    if (chk.Checked)
+                        selectedTheLoais.Add(maTL);
+                    else
+                        selectedTheLoais.Remove(maTL);
+                };
+
+                flpTheLoai.Controls.Add(chk);
+            }
+
+            flpTheLoai.Visible = true;
+            panelDanhSach.Visible = false;
+        }
+
+        // ==================== LỌC SÁCH THEO THỂ LOẠI ====================
+        private void FilterBooksBySelectedTheLoai()
+        {
+            if (selectedTheLoais.Count == 0)
+            {
+                LoadAllBooks(); // nếu không chọn thể loại nào, hiển thị toàn bộ
+                return;
+            }
+
+            var allBooks = sachService.GetAll();
+            var filtered = allBooks.Where(s => selectedTheLoais.Contains(s.MaTheLoai));
+            LoadAllBooks(filtered);
+        }
+
+        // ==================== NÚT TÌM KIẾM ====================
         private void btnFind_Click(object sender, EventArgs e)
         {
-            string tuKhoa = txtFindTen.Text.Trim();
-           // var ds = _sachService.FindByKeyword(tuKhoa);
-            //HienDanhSachSach(ds);
+            string keyword = txtFindTen.Text.Trim().ToLower();
+            var filtered = sachService.Find(s => s.TenSach.ToLower().Contains(keyword));
+            LoadAllBooks(filtered);
         }
     }
 }

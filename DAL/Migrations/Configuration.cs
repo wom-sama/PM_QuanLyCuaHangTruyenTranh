@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.Migrations
+﻿namespace PM.GUI.Migrations
 {
     using System;
     using System.Data.Entity;

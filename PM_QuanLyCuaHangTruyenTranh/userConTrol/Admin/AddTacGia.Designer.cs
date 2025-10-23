@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
+﻿namespace PM.GUI.userConTrol.Admin
 {
     partial class AddTacGia
     {

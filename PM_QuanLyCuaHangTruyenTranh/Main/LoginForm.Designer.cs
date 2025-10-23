@@ -81,7 +81,7 @@
             // 
             this.PicWaitGif.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2Transition1.SetDecoration(this.PicWaitGif, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.PicWaitGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.PicWaitGif.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.PicWaitGif.ImageRotate = 0F;
             this.PicWaitGif.Location = new System.Drawing.Point(431, 235);
             this.PicWaitGif.Name = "PicWaitGif";
@@ -126,7 +126,7 @@
             this.picRoleGif.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picRoleGif.BorderRadius = 10;
             this.guna2Transition1.SetDecoration(this.picRoleGif, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.picRoleGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.picRoleGif.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.picRoleGif.ImageRotate = 0F;
             this.picRoleGif.Location = new System.Drawing.Point(576, 161);
             this.picRoleGif.Name = "picRoleGif";

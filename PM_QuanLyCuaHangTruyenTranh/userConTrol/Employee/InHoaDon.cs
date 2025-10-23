@@ -8,7 +8,7 @@ using System.Linq;
 using System.IO;
 
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
+namespace PM.GUI.userConTrol.Employee
 {
     public partial class InHoaDon : UserControl
     {

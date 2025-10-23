@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
+namespace PM.GUI.userConTrol.Employee
 {
     partial class InHoaDon
     {

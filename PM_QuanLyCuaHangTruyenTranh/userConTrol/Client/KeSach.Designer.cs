@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Client
+﻿namespace PM.GUI.userConTrol.Client
 {
     partial class KeSach
     {

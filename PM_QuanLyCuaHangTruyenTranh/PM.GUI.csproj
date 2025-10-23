@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{686AFAE3-C305-4666-8C78-CC987EA01832}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PM_QuanLyCuaHangTruyenTranh</RootNamespace>
+    <RootNamespace>PM.GUI</RootNamespace>
     <AssemblyName>PM_QuanLyCuaHangTruyenTranh</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

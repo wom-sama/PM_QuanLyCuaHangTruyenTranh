@@ -7,8 +7,9 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PM.GUI.FormThongBao;
 
-namespace PM_QuanLyCuaHangTruyenTranh
+namespace PM.GUI
 {
     public partial class SignInForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Common
+﻿namespace PM.GUI.userConTrol.Common
 {
     partial class BooKShowcs
     {
@@ -67,16 +67,16 @@
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(163, 285);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(154, 285);
             this.guna2ShadowPanel1.TabIndex = 2;
             this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
             // 
             // picBia
             // 
-            this.picBia.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.picBia.BackColor = System.Drawing.Color.Transparent;
             this.picBia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.picBia.Cursor = System.Windows.Forms.Cursors.No;
-            this.picBia.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.rick_roll;
+            this.picBia.Image = global::PM.GUI.Properties.Resources.rick_roll;
             this.picBia.ImageRotate = 0F;
             this.picBia.Location = new System.Drawing.Point(15, 16);
             this.picBia.Name = "picBia";
@@ -94,7 +94,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Name = "BooKShowcs";
-            this.Size = new System.Drawing.Size(163, 285);
+            this.Size = new System.Drawing.Size(154, 285);
             this.Load += new System.EventHandler(this.BooKShowcs_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBia)).EndInit();

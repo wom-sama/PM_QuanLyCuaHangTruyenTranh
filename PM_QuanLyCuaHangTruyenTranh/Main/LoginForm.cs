@@ -1,11 +1,14 @@
 ﻿using Guna.UI2.WinForms;
 using PM.BUS.Services.TaiKhoansv;
+using PM.GUI.FormThongBao;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PM.GUI.FormThongBao;
 
 namespace PM.GUI.Main
 {
@@ -35,6 +38,21 @@ namespace PM.GUI.Main
             string password = GNtxtPass.Text.Trim();
             string role = GNcmbVAI.Text.Trim();
 
+            // Chuẩn hóa vai trò bằng cách loại bỏ dấu tiếng Việt
+            string normalized = role.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char c in normalized)
+            {
+                var category = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (category != UnicodeCategory.NonSpacingMark)
+                    sb.Append(c);
+            }
+
+            // Loại bỏ khoảng trắng và dấu câu
+            string cleanRole = Regex.Replace(sb.ToString(), @"[\p{P}\s]+", "");
+            role = cleanRole;
+
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
             {
                 new FormMessage("Vui lòng nhập đầy đủ thông tin đăng nhập!").ShowDialog();
@@ -58,13 +76,20 @@ namespace PM.GUI.Main
                 switch (tk.Quyen)
                 {
                     case "Admin":
-                        new AdminForm().ShowDialog();
+                        AdminForm adminForm = new AdminForm();
+                        adminForm.StartPosition = FormStartPosition.CenterScreen;
+                        adminForm.ShowDialog();
+
                         break;
-                    case "Nhân viên":
-                         new PM.GUI.Main.NhanVienForm().ShowDialog();
+                    case "NhanVien":
+                         NhanVienForm nvForm = new NhanVienForm();
+                        nvForm.StartPosition = FormStartPosition.CenterScreen;
+                        nvForm.ShowDialog();
                         break;
-                    case "Khách":
-                        new Client(tk).ShowDialog();
+                    case "Khach":
+                       Client clientForm = new Client();
+                        clientForm.StartPosition = FormStartPosition.CenterScreen;
+                        clientForm.ShowDialog();
                         break;
                 }
 
@@ -93,7 +118,7 @@ namespace PM.GUI.Main
                 case "Admin":
                     newGif = Properties.Resources.evernight_ezgif_com_apng_to_gif_converter;
                     break;
-                case "Nhân viên":
+                case "Nhân Viên":
                     newGif = Properties.Resources.sparkle_hanabi;
                     break;
                 case "Khách":

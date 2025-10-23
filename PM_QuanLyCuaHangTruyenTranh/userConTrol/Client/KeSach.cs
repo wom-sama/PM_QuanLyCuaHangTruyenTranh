@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Client
+namespace PM.GUI.userConTrol.Client
 {
     public partial class KeSach : UserControl
     {

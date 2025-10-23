@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.Main
+﻿namespace PM.GUI.Main
 {
     partial class NhanVienForm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lenDon1 = new PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee.LenDon();
+            this.lenDon1 = new PM.GUI.userConTrol.Employee.LenDon();
             this.SuspendLayout();
             // 
             // lenDon1

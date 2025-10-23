@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
+namespace PM.GUI.userConTrol.Employee
 {
     partial class DuyetDon
     {

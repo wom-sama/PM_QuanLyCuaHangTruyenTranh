@@ -1,4 +1,4 @@
-﻿namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
+﻿namespace PM.GUI.userConTrol.Employee
 {
     partial class XemDon
     {

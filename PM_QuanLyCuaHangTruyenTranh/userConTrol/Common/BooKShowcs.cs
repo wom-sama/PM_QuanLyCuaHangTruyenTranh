@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Common
+namespace PM.GUI.userConTrol.Common
 {
     public partial class BooKShowcs : UserControl
     {

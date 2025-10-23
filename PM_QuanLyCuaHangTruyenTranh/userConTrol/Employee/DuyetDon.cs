@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Employee
+namespace PM.GUI.userConTrol.Employee
 {
     public partial class DuyetDon : UserControl
     {

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PM.GUI.FormThongBao;
 namespace PM.GUI.Main
 {
     public partial class Client : Form

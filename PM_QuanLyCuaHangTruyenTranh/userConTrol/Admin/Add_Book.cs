@@ -8,8 +8,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using PM.GUI.FormThongBao;
 
-namespace PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin
+namespace PM.GUI.userConTrol.Admin
 {
     public partial class Add_Book : UserControl
     {

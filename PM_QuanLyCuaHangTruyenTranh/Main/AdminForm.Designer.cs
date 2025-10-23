@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.edit_BOOk1 = new PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin.Edit_BOOk();
-            this.add_Book1 = new PM_QuanLyCuaHangTruyenTranh.userConTrol.Admin.Add_Book();
+            this.edit_BOOk1 = new PM.GUI.userConTrol.Admin.Edit_BOOk();
+            this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -146,7 +146,7 @@
             // guna2PictureBox7
             // 
             this.guna2PictureBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox7.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.guna2PictureBox7.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.guna2PictureBox7.ImageRotate = 0F;
             this.guna2PictureBox7.Location = new System.Drawing.Point(323, 136);
             this.guna2PictureBox7.Name = "guna2PictureBox7";
@@ -158,7 +158,7 @@
             // guna2PictureBox6
             // 
             this.guna2PictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox6.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.guna2PictureBox6.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.guna2PictureBox6.ImageRotate = 0F;
             this.guna2PictureBox6.Location = new System.Drawing.Point(323, 193);
             this.guna2PictureBox6.Name = "guna2PictureBox6";
@@ -170,7 +170,7 @@
             // guna2PictureBox5
             // 
             this.guna2PictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox5.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.guna2PictureBox5.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.guna2PictureBox5.ImageRotate = 0F;
             this.guna2PictureBox5.Location = new System.Drawing.Point(323, 289);
             this.guna2PictureBox5.Name = "guna2PictureBox5";
@@ -182,7 +182,7 @@
             // guna2PictureBox4
             // 
             this.guna2PictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox4.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.guna2PictureBox4.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.guna2PictureBox4.ImageRotate = 0F;
             this.guna2PictureBox4.Location = new System.Drawing.Point(323, 353);
             this.guna2PictureBox4.Name = "guna2PictureBox4";
@@ -194,7 +194,7 @@
             // guna2PictureBox3
             // 
             this.guna2PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox3.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.guna2PictureBox3.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.guna2PictureBox3.ImageRotate = 0F;
             this.guna2PictureBox3.Location = new System.Drawing.Point(323, 238);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
@@ -206,7 +206,7 @@
             // guna2PictureBox2
             // 
             this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox2.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.guna2PictureBox2.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.guna2PictureBox2.ImageRotate = 0F;
             this.guna2PictureBox2.Location = new System.Drawing.Point(323, 408);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
@@ -218,7 +218,7 @@
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox1.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.guna2PictureBox1.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(323, 467);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
@@ -230,7 +230,7 @@
             // PicWaitGif
             // 
             this.PicWaitGif.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PicWaitGif.Image = global::PM_QuanLyCuaHangTruyenTranh.Properties.Resources.cherry_blossoms_6383_128;
+            this.PicWaitGif.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.PicWaitGif.ImageRotate = 0F;
             this.PicWaitGif.Location = new System.Drawing.Point(323, 527);
             this.PicWaitGif.Name = "PicWaitGif";
