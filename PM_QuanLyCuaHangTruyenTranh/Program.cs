@@ -23,7 +23,7 @@ namespace PM_QuanLyCuaHangTruyenTranh
 
             Application.EnableVisualStyles();
              Application.SetCompatibleTextRenderingDefault(false);
-           /Application.Run(new Main.NhanVienForm());
+           Application.Run(new Main.NhanVienForm());
      
            // AppDbSeeder.Seed();
 
