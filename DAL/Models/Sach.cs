@@ -42,7 +42,7 @@ namespace PM.DAL.Models
         public byte[] BiaSach { get; set; }
 
         // ====== NAVIGATION COLLECTION ======
-        public virtual ICollection<BanQuyen> BanQuyens { get; set; }
+
         public virtual ICollection<CT_NhapKho> CT_NhapKhos { get; set; }
         public virtual ICollection<CT_DonHang> CT_DonHangs { get; set; }
 

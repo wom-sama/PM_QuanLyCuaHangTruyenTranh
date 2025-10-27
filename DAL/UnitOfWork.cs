@@ -31,7 +31,7 @@ namespace PM.DAL
         public IGenericRepository<KhuyenMai> KhuyenMaiRepository { get; private set; }
         public IGenericRepository<ThongBao> ThongBaoRepository { get; private set; }
         public IGenericRepository<ChucVu> ChucVuRepository { get; private set; }
-        public IGenericRepository<BanQuyen> BanQuyenRepository { get; private set; }
+      
         public IGenericRepository<KiemKe> KiemKeRepository { get; private set; }
         public IGenericRepository<ChuyenKho> ChuyenKhoRepository { get; private set; }
 
@@ -63,7 +63,7 @@ namespace PM.DAL
             KhuyenMaiRepository = new GenericRepository<KhuyenMai>(_context);
             ThongBaoRepository = new GenericRepository<ThongBao>(_context);
             ChucVuRepository = new GenericRepository<ChucVu>(_context);
-            BanQuyenRepository = new GenericRepository<BanQuyen>(_context);
+
             KiemKeRepository = new GenericRepository<KiemKe>(_context);
             ChuyenKhoRepository = new GenericRepository<ChuyenKho>(_context);
         }

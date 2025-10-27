@@ -32,7 +32,6 @@ namespace PM.DAL.Models
         public DbSet<KhuyenMai> KhuyenMais { get; set; }
         public DbSet<ThongBao> ThongBaos { get; set; }
         public DbSet<ChucVu> ChucVus { get; set; }
-        public DbSet<BanQuyen> BanQuyens { get; set; }
         public DbSet<KiemKe> KiemKes { get; set; }
         public DbSet<ChuyenKho> ChuyenKhos { get; set; }
 

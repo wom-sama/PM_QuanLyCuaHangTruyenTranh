@@ -62,6 +62,10 @@
     <Compile Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.Designer.cs">
       <DependentUpon>202510210254560_UpdateKhachHangTaiKhoanRelation1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510271320416_XoaBanQuyen.cs" />
+    <Compile Include="Migrations\202510271320416_XoaBanQuyen.Designer.cs">
+      <DependentUpon>202510271320416_XoaBanQuyen.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordHelperDAL.cs" />
     <Compile Include="Migrations\202510080702097_InitialCreate.cs" />
     <Compile Include="Migrations\202510080702097_InitialCreate.Designer.cs">
@@ -97,7 +101,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
-    <Compile Include="Models\BanQuyen.cs" />
     <Compile Include="Models\ChiNhanh.cs" />
     <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\ChuyenKho.cs" />
@@ -155,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.resx">
       <DependentUpon>202510210254560_UpdateKhachHangTaiKhoanRelation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510271320416_XoaBanQuyen.resx">
+      <DependentUpon>202510271320416_XoaBanQuyen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

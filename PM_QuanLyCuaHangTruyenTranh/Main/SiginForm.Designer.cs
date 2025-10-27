@@ -35,6 +35,8 @@
             this.lblDem = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.GNtxtRePass = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtOTP1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtOTP2 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -45,6 +47,7 @@
             this.GNbtnSendCode = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.label1 = new System.Windows.Forms.Label();
             this.GNtxtMail = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.GNbtnSignUp = new Guna.UI2.WinForms.Guna2Button();
             this.lblPass = new System.Windows.Forms.Label();
@@ -53,13 +56,11 @@
             this.GNtxtUN = new Guna.UI2.WinForms.Guna2TextBox();
             this.DemTg = new System.Windows.Forms.Timer(this.components);
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.iconSplitButton1 = new FontAwesome.Sharp.IconSplitButton();
             this.guna2ShadowPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +93,6 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.LightGray;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(800, 450);
             this.guna2ShadowPanel1.TabIndex = 1;
-//            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
             // 
             // lblDem
             // 
@@ -105,7 +105,6 @@
             this.lblDem.Size = new System.Drawing.Size(44, 23);
             this.lblDem.TabIndex = 31;
             this.lblDem.Text = "None";
-//            this.lblDem.Click += new System.EventHandler(this.lblDem_Click);
             // 
             // label3
             // 
@@ -118,7 +117,6 @@
             this.label3.Size = new System.Drawing.Size(132, 23);
             this.label3.TabIndex = 30;
             this.label3.Text = "Confirm Password";
-//            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // GNtxtRePass
             // 
@@ -141,7 +139,32 @@
             this.GNtxtRePass.SelectedText = "";
             this.GNtxtRePass.Size = new System.Drawing.Size(227, 23);
             this.GNtxtRePass.TabIndex = 29;
-//            this.GNtxtRePass.TextChanged += new System.EventHandler(this.GNtxtRePass_TextChanged);
+            // 
+            // guna2PictureBox3
+            // 
+            this.guna2PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.guna2PictureBox3, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2PictureBox3.Image = global::PM.GUI.Properties.Resources.megumitop;
+            this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Location = new System.Drawing.Point(26, 12);
+            this.guna2PictureBox3.Name = "guna2PictureBox3";
+            this.guna2PictureBox3.Size = new System.Drawing.Size(121, 102);
+            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox3.TabIndex = 28;
+            this.guna2PictureBox3.TabStop = false;
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.guna2PictureBox2, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2PictureBox2.Image = global::PM.GUI.Properties.Resources.sparkle_hanabi;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(12, 314);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(121, 102);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 27;
+            this.guna2PictureBox2.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
@@ -156,7 +179,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(156, 37);
             this.flowLayoutPanel1.TabIndex = 26;
-//            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // txtOTP1
             // 
@@ -294,7 +316,6 @@
             this.label2.Size = new System.Drawing.Size(48, 23);
             this.label2.TabIndex = 24;
             this.label2.Text = "Email";
-//            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // GNbtnSendCode
             // 
@@ -326,7 +347,6 @@
             this.label1.Size = new System.Drawing.Size(48, 23);
             this.label1.TabIndex = 20;
             this.label1.Text = "Email";
-//            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // GNtxtMail
             // 
@@ -350,6 +370,19 @@
             this.GNtxtMail.TabIndex = 19;
             this.GNtxtMail.TextChanged += new System.EventHandler(this.GNtxtMail_TextChanged);
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Transition1.SetDecoration(this.guna2PictureBox1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2PictureBox1.Image = global::PM.GUI.Properties.Resources.text;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(667, 328);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(121, 102);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 18;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -362,7 +395,6 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(565, 80);
             this.guna2HtmlLabel1.TabIndex = 17;
             this.guna2HtmlLabel1.Text = "Account Sign-Up";
-//            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
             // 
             // GNbtnSignUp
             // 
@@ -394,7 +426,6 @@
             this.lblPass.Size = new System.Drawing.Size(73, 23);
             this.lblPass.TabIndex = 13;
             this.lblPass.Text = "Password";
-//            this.lblPass.Click += new System.EventHandler(this.lblPass_Click);
             // 
             // lblUN
             // 
@@ -407,7 +438,6 @@
             this.lblUN.Size = new System.Drawing.Size(79, 23);
             this.lblUN.TabIndex = 12;
             this.lblUN.Text = "UserName";
-//            this.lblUN.Click += new System.EventHandler(this.lblUN_Click);
             // 
             // GNtxtPass
             // 
@@ -430,7 +460,6 @@
             this.GNtxtPass.SelectedText = "";
             this.GNtxtPass.Size = new System.Drawing.Size(227, 23);
             this.GNtxtPass.TabIndex = 11;
-//            this.GNtxtPass.TextChanged += new System.EventHandler(this.GNtxtPass_TextChanged);
             // 
             // GNtxtUN
             // 
@@ -452,8 +481,6 @@
             this.GNtxtUN.SelectedText = "";
             this.GNtxtUN.Size = new System.Drawing.Size(227, 23);
             this.GNtxtUN.TabIndex = 10;
-//            this.GNtxtUN.TextChanged += new System.EventHandler(this.GNtxtUN_TextChanged);
-//            this.GNtxtUN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GNtxtUN_KeyDown);
             // 
             // DemTg
             // 
@@ -481,47 +508,17 @@
             animation1.TransparencyCoeff = 0F;
             this.guna2Transition1.DefaultAnimation = animation1;
             // 
-            // guna2PictureBox3
+            // iconSplitButton1
             // 
-            this.guna2PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2Transition1.SetDecoration(this.guna2PictureBox3, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2PictureBox3.Image = global::PM.GUI.Properties.Resources.megumitop;
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(26, 12);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(121, 102);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox3.TabIndex = 28;
-            this.guna2PictureBox3.TabStop = false;
-//            this.guna2PictureBox3.Click += new System.EventHandler(this.guna2PictureBox3_Click);
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2Transition1.SetDecoration(this.guna2PictureBox2, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2PictureBox2.Image = global::PM.GUI.Properties.Resources.sparkle_hanabi;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(12, 314);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(121, 102);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 27;
-            this.guna2PictureBox2.TabStop = false;
-//            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2Transition1.SetDecoration(this.guna2PictureBox1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2PictureBox1.Image = global::PM.GUI.Properties.Resources.text;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(667, 328);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(121, 102);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 18;
-            this.guna2PictureBox1.TabStop = false;
-//            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
+            this.iconSplitButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconSplitButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconSplitButton1.IconColor = System.Drawing.Color.Black;
+            this.iconSplitButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconSplitButton1.IconSize = 48;
+            this.iconSplitButton1.Name = "iconSplitButton1";
+            this.iconSplitButton1.Rotation = 0D;
+            this.iconSplitButton1.Size = new System.Drawing.Size(23, 23);
+            this.iconSplitButton1.Text = "iconSplitButton1";
             // 
             // SignInForm
             // 
@@ -534,9 +531,9 @@
             this.Load += new System.EventHandler(this.SignInForm_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2ShadowPanel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -569,5 +566,6 @@
         private Guna.UI2.WinForms.Guna2TextBox GNtxtRePass;
         private System.Windows.Forms.Label lblDem;
         private Guna.UI2.WinForms.Guna2Transition guna2Transition1;
+        private FontAwesome.Sharp.IconSplitButton iconSplitButton1;
     }
 }

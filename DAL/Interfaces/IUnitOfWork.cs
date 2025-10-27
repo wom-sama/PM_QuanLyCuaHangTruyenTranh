@@ -27,7 +27,6 @@ namespace PM.DAL.Interfaces
         IGenericRepository<KhuyenMai> KhuyenMaiRepository { get; }
         IGenericRepository<ThongBao> ThongBaoRepository { get; }
         IGenericRepository<ChucVu> ChucVuRepository { get; }
-        IGenericRepository<BanQuyen> BanQuyenRepository { get; }
         IGenericRepository<KiemKe> KiemKeRepository { get; }
         IGenericRepository<ChuyenKho> ChuyenKhoRepository { get; }
 

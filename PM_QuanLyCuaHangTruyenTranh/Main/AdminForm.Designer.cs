@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.edit_BOOk1 = new PM.GUI.userConTrol.Admin.Edit_BOOk();
-            this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
             this.shadow_PannelCN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2GradientTileButton4 = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.guna2GradientTileButton3 = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.guna2GradientTileButton2 = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.BtnThem = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pannel_CN = new Guna.UI2.WinForms.Guna2Panel();
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
             this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2GradientTileButton2 = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2GradientTileButton3 = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2GradientTileButton4 = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.edit_BOOk1 = new PM.GUI.userConTrol.Admin.Edit_BOOk();
+            this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
             this.pannel_CT_CN.SuspendLayout();
             this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
+            this.pannel_CN.SuspendLayout();
             this.SuspendLayout();
             // 
             // pannel_CT_CN
@@ -62,25 +62,6 @@
             this.pannel_CT_CN.Size = new System.Drawing.Size(854, 477);
             this.pannel_CT_CN.TabIndex = 0;
             this.pannel_CT_CN.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
-            // 
-            // edit_BOOk1
-            // 
-            this.edit_BOOk1.AutoScroll = true;
-            this.edit_BOOk1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edit_BOOk1.Location = new System.Drawing.Point(0, 0);
-            this.edit_BOOk1.Name = "edit_BOOk1";
-            this.edit_BOOk1.Size = new System.Drawing.Size(854, 477);
-            this.edit_BOOk1.TabIndex = 1;
-            this.edit_BOOk1.Load += new System.EventHandler(this.edit_BOOk1_Load_1);
-            // 
-            // add_Book1
-            // 
-            this.add_Book1.BackColor = System.Drawing.Color.Transparent;
-            this.add_Book1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.add_Book1.Location = new System.Drawing.Point(0, 0);
-            this.add_Book1.Name = "add_Book1";
-            this.add_Book1.Size = new System.Drawing.Size(854, 477);
-            this.add_Book1.TabIndex = 0;
             // 
             // shadow_PannelCN
             // 
@@ -110,6 +91,60 @@
             this.PanelCN.Size = new System.Drawing.Size(249, 461);
             this.PanelCN.TabIndex = 0;
             this.PanelCN.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCN_Paint);
+            // 
+            // guna2GradientTileButton4
+            // 
+            this.guna2GradientTileButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2GradientTileButton4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientTileButton4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientTileButton4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientTileButton4.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientTileButton4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientTileButton4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GradientTileButton4.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientTileButton4.Location = new System.Drawing.Point(6, 324);
+            this.guna2GradientTileButton4.Name = "guna2GradientTileButton4";
+            this.guna2GradientTileButton4.Size = new System.Drawing.Size(243, 80);
+            this.guna2GradientTileButton4.TabIndex = 4;
+            this.guna2GradientTileButton4.Text = "Kho Sách";
+            // 
+            // guna2GradientTileButton3
+            // 
+            this.guna2GradientTileButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2GradientTileButton3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientTileButton3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientTileButton3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientTileButton3.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientTileButton3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientTileButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GradientTileButton3.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientTileButton3.Location = new System.Drawing.Point(6, 410);
+            this.guna2GradientTileButton3.Name = "guna2GradientTileButton3";
+            this.guna2GradientTileButton3.Size = new System.Drawing.Size(243, 80);
+            this.guna2GradientTileButton3.TabIndex = 3;
+            this.guna2GradientTileButton3.Text = "Kho Sách";
+            // 
+            // guna2GradientTileButton2
+            // 
+            this.guna2GradientTileButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2GradientTileButton2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientTileButton2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientTileButton2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientTileButton2.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientTileButton2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientTileButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GradientTileButton2.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientTileButton2.Location = new System.Drawing.Point(3, 227);
+            this.guna2GradientTileButton2.Name = "guna2GradientTileButton2";
+            this.guna2GradientTileButton2.Size = new System.Drawing.Size(243, 80);
+            this.guna2GradientTileButton2.TabIndex = 2;
+            this.guna2GradientTileButton2.Text = "Kho Sách";
             // 
             // guna2GradientTileButton1
             // 
@@ -149,19 +184,19 @@
             this.BtnThem.Text = "Thêm Sách";
             this.BtnThem.Click += new System.EventHandler(this.BtnThem_Click);
             // 
-            // guna2Panel1
+            // pannel_CN
             // 
-            this.guna2Panel1.AutoScroll = true;
-            this.guna2Panel1.Controls.Add(this.btnCN);
-            this.guna2Panel1.Controls.Add(this.titleCN);
-            this.guna2Panel1.Controls.Add(this.shadow_PannelCN);
-            this.guna2Panel1.Controls.Add(this.pannel_CT_CN);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1188, 702);
-            this.guna2Panel1.TabIndex = 30;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            this.pannel_CN.AutoScroll = true;
+            this.pannel_CN.Controls.Add(this.btnCN);
+            this.pannel_CN.Controls.Add(this.titleCN);
+            this.pannel_CN.Controls.Add(this.shadow_PannelCN);
+            this.pannel_CN.Controls.Add(this.pannel_CT_CN);
+            this.pannel_CN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pannel_CN.Location = new System.Drawing.Point(0, 0);
+            this.pannel_CN.Name = "pannel_CN";
+            this.pannel_CN.Size = new System.Drawing.Size(1188, 702);
+            this.pannel_CN.TabIndex = 30;
+            this.pannel_CN.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // btnCN
             // 
@@ -194,59 +229,24 @@
             this.titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.titleCN.Click += new System.EventHandler(this.titleCN_Click);
             // 
-            // guna2GradientTileButton2
+            // edit_BOOk1
             // 
-            this.guna2GradientTileButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2GradientTileButton2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton2.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2GradientTileButton2.ForeColor = System.Drawing.Color.White;
-            this.guna2GradientTileButton2.Location = new System.Drawing.Point(3, 227);
-            this.guna2GradientTileButton2.Name = "guna2GradientTileButton2";
-            this.guna2GradientTileButton2.Size = new System.Drawing.Size(243, 80);
-            this.guna2GradientTileButton2.TabIndex = 2;
-            this.guna2GradientTileButton2.Text = "Kho Sách";
+            this.edit_BOOk1.AutoScroll = true;
+            this.edit_BOOk1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edit_BOOk1.Location = new System.Drawing.Point(0, 0);
+            this.edit_BOOk1.Name = "edit_BOOk1";
+            this.edit_BOOk1.Size = new System.Drawing.Size(854, 477);
+            this.edit_BOOk1.TabIndex = 1;
+            this.edit_BOOk1.Load += new System.EventHandler(this.edit_BOOk1_Load_1);
             // 
-            // guna2GradientTileButton3
+            // add_Book1
             // 
-            this.guna2GradientTileButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2GradientTileButton3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton3.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2GradientTileButton3.ForeColor = System.Drawing.Color.White;
-            this.guna2GradientTileButton3.Location = new System.Drawing.Point(6, 410);
-            this.guna2GradientTileButton3.Name = "guna2GradientTileButton3";
-            this.guna2GradientTileButton3.Size = new System.Drawing.Size(243, 80);
-            this.guna2GradientTileButton3.TabIndex = 3;
-            this.guna2GradientTileButton3.Text = "Kho Sách";
-            // 
-            // guna2GradientTileButton4
-            // 
-            this.guna2GradientTileButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2GradientTileButton4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton4.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2GradientTileButton4.ForeColor = System.Drawing.Color.White;
-            this.guna2GradientTileButton4.Location = new System.Drawing.Point(6, 324);
-            this.guna2GradientTileButton4.Name = "guna2GradientTileButton4";
-            this.guna2GradientTileButton4.Size = new System.Drawing.Size(243, 80);
-            this.guna2GradientTileButton4.TabIndex = 4;
-            this.guna2GradientTileButton4.Text = "Kho Sách";
+            this.add_Book1.BackColor = System.Drawing.Color.Transparent;
+            this.add_Book1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.add_Book1.Location = new System.Drawing.Point(0, 0);
+            this.add_Book1.Name = "add_Book1";
+            this.add_Book1.Size = new System.Drawing.Size(854, 477);
+            this.add_Book1.TabIndex = 0;
             // 
             // AdminForm
             // 
@@ -255,7 +255,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Pink;
             this.ClientSize = new System.Drawing.Size(1188, 702);
-            this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.pannel_CN);
             this.HelpButton = true;
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -265,7 +265,7 @@
             this.pannel_CT_CN.ResumeLayout(false);
             this.shadow_PannelCN.ResumeLayout(false);
             this.PanelCN.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
+            this.pannel_CN.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -275,7 +275,7 @@
         private Guna.UI2.WinForms.Guna2ShadowPanel pannel_CT_CN;
         private Guna.UI2.WinForms.Guna2ShadowPanel shadow_PannelCN;
         private Guna.UI2.WinForms.Guna2Panel PanelCN;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel pannel_CN;
         private Guna.UI2.WinForms.Guna2HtmlLabel titleCN;
         private Guna.UI2.WinForms.Guna2GradientTileButton BtnThem;
         private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton1;

@@ -167,5 +167,10 @@ namespace PM.GUI.userConTrol.Admin
         {
             // Không chỉnh event gốc, giữ nguyên
         }
+
+        private void guna2RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
