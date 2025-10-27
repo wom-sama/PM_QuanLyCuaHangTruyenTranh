@@ -12,7 +12,6 @@ namespace BUS.DTOs
         public string TenKhachHang { get; set; }
         public string SDT { get; set; }
         public string TenNhanVien { get; set; }
-        public string LoaiDon { get; set; }  // Online / Trực tiếp
         public DateTime NgayTao { get; set; }
         public DateTime? NgayGiao { get; set; }
         public decimal TongTien { get; set; }

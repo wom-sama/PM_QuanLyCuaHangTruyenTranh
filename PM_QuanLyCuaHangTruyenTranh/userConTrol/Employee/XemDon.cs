@@ -18,6 +18,12 @@ namespace PM.GUI.userConTrol.Employee
 
         private void XemDon_Load(object sender, EventArgs e)
         {
+            // Đặt format ngày theo kiểu Việt Nam
+            dtTuNgay.Format = DateTimePickerFormat.Custom;
+            dtTuNgay.CustomFormat = "dd/MM/yyyy";
+
+            dtDenNgay.Format = DateTimePickerFormat.Custom;
+            dtDenNgay.CustomFormat = "dd/MM/yyyy";
             LoadDonHang();
             CapNhatSoLuongBadge();
             TinhChinhDataGridView();
@@ -67,13 +73,11 @@ namespace PM.GUI.userConTrol.Employee
         }
 
         // ==== Sự kiện lọc ====
-        private void btnTatCa_Click(object sender, EventArgs e) => LoadDonHang();
-        private void btnXuLy_Click(object sender, EventArgs e) => LoadDonHang("Đang xử lý");
-        private void btnDangGiao_Click(object sender, EventArgs e) => LoadDonHang("Đang giao");
-        private void btnĐaGiao_Click(object sender, EventArgs e) => LoadDonHang("Đã giao");
-        private void btnDaban_Click(object sender, EventArgs e) => LoadDonHang("Đã bán");
+    
 
-        /*private void btnLoc_Click(object sender, EventArgs e)
+     
+
+        private void btnLoc_Click_1(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();
             string loaiDon = cbLoaiDon.SelectedItem?.ToString() ?? "";
@@ -96,10 +100,10 @@ namespace PM.GUI.userConTrol.Employee
                 }
 
                 // 🗂 Lọc loại đơn
-                if (loaiDon == "Online")
+                /*f (loaiDon == "Online")
                     list = list.Where(d => d.LoaiDon == "Online").ToList();
                 else if (loaiDon == "Trực tiếp")
-                    list = list.Where(d => d.LoaiDon == "Trực tiếp").ToList();
+                    list = list.Where(d => d.LoaiDon == "Trực tiếp").ToList();*/
 
                 // 📅 Lọc theo ngày
                 list = list.Where(d => d.NgayTao >= tuNgay && d.NgayTao < denNgay).ToList();
@@ -115,8 +119,33 @@ namespace PM.GUI.userConTrol.Employee
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi lọc dữ liệu: " + ex.Message);
-            }*/
+            }
         }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dtDenNgay_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        // ==== Sự kiện lọc ====
+
+        private void btnXuLy_Click_1(object sender, EventArgs e) => LoadDonHang("Đang xử lý");
+
+        private void btnĐaGiao_Click_1(object sender, EventArgs e) => LoadDonHang("Đã giao");
+
+        private void btnTatCa_Click(object sender, EventArgs e) => LoadDonHang();
+        private void btnDangGiao_Click(object sender, EventArgs e) => LoadDonHang("Đang giao");
+        private void btnDaban_Click(object sender, EventArgs e) => LoadDonHang("Đã bán");
+
+        private void btnTaiLai_Click(object sender, EventArgs e) =>LoadDonHang();
+
+
+
     }
+}
 
 

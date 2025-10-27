@@ -62,7 +62,7 @@ namespace PM.GUI.userConTrol.Employee
             this.lblDonHang.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lblDonHang.Location = new System.Drawing.Point(30, 20);
             this.lblDonHang.Name = "lblDonHang";
-            this.lblDonHang.Size = new System.Drawing.Size(288, 32);
+            this.lblDonHang.Size = new System.Drawing.Size(334, 38);
             this.lblDonHang.TabIndex = 0;
             this.lblDonHang.Text = "📦 Danh sách đơn hàng";
             // 
@@ -73,7 +73,7 @@ namespace PM.GUI.userConTrol.Employee
             this.lblChiTiet.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lblChiTiet.Location = new System.Drawing.Point(720, 20);
             this.lblChiTiet.Name = "lblChiTiet";
-            this.lblChiTiet.Size = new System.Drawing.Size(252, 32);
+            this.lblChiTiet.Size = new System.Drawing.Size(294, 38);
             this.lblChiTiet.TabIndex = 1;
             this.lblChiTiet.Text = "📚 Chi tiết đơn hàng";
             // 
@@ -99,7 +99,7 @@ namespace PM.GUI.userConTrol.Employee
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDonHang.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDonHang.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDonHang.Location = new System.Drawing.Point(35, 60);
+            this.dgvDonHang.Location = new System.Drawing.Point(28, 60);
             this.dgvDonHang.Name = "dgvDonHang";
             this.dgvDonHang.RowHeadersVisible = false;
             this.dgvDonHang.RowHeadersWidth = 51;
@@ -128,7 +128,6 @@ namespace PM.GUI.userConTrol.Employee
             this.dgvDonHang.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDonHang.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvDonHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellClick);
-//            this.dgvDonHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonHang_CellContentClick);
             // 
             // dgvChiTiet
             // 
@@ -180,7 +179,6 @@ namespace PM.GUI.userConTrol.Employee
             this.dgvChiTiet.ThemeStyle.RowsStyle.Height = 28;
             this.dgvChiTiet.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvChiTiet.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-//            this.dgvChiTiet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView2_CellClick);
             // 
             // btnDuyet
             // 

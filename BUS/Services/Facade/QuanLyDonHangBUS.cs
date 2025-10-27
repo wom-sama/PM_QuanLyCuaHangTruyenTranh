@@ -44,7 +44,6 @@ namespace PM.BUS.Services.Facade
                 d.TrangThai
             }).ToList();
         }
-        /*/ dto
         public IEnumerable<DonHangDTO> LayDanhSachDonHangDTO(string trangThai = null)
         {
             var ds = _donHangService.GetAll();
@@ -58,13 +57,13 @@ namespace PM.BUS.Services.Facade
                 TenKhachHang = d.Khach?.HoTen,
                 SDT = d.Khach?.SoDienThoai,
                 TenNhanVien = d.NhanVien?.HoTen,
-                LoaiDon = d.LoaiDon,
+              
                 NgayTao = d.NgayDat,
                 NgayGiao = d.NgayGiao,
                 TongTien = d.TongTien,
                 TrangThai = d.TrangThai
             }).ToList();
-        }*/
+        }
 
 
         // ==================== CHI TIẾT ĐƠN ====================

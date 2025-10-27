@@ -205,6 +205,12 @@
     <Compile Include="userConTrol\Common\BooKShowcs.Designer.cs">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\CaLam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\CaLam.Designer.cs">
+      <DependentUpon>CaLam.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\DuyetDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Common\BooKShowcs.resx">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\CaLam.resx">
+      <DependentUpon>CaLam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\DuyetDon.resx">
       <DependentUpon>DuyetDon.cs</DependentUpon>
