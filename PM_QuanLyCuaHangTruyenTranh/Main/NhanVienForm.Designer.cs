@@ -28,31 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lenDon1 = new PM.GUI.userConTrol.Employee.LenDon();
+            this.giaoDienNV1 = new PM.GUI.userConTrol.Employee.GiaoDienNV();
             this.SuspendLayout();
             // 
-            // lenDon1
+            // giaoDienNV1
             // 
-            this.lenDon1.Location = new System.Drawing.Point(0, 0);
-            this.lenDon1.Name = "lenDon1";
-            this.lenDon1.Size = new System.Drawing.Size(1340, 709);
-            this.lenDon1.TabIndex = 0;
+            this.giaoDienNV1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.giaoDienNV1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.giaoDienNV1.Location = new System.Drawing.Point(0, 0);
+            this.giaoDienNV1.Name = "giaoDienNV1";
+            this.giaoDienNV1.Size = new System.Drawing.Size(1312, 694);
+            this.giaoDienNV1.TabIndex = 0;
+            this.giaoDienNV1.Load += new System.EventHandler(this.giaoDienNV1_Load);
             // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 694);
-            this.Controls.Add(this.lenDon1);
+            this.Controls.Add(this.giaoDienNV1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NhanVienForm";
             this.Text = "NhanVien";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private userConTrol.Employee.LenDon lenDon1;
+        private userConTrol.Employee.GiaoDienNV giaoDienNV1;
     }
 }
