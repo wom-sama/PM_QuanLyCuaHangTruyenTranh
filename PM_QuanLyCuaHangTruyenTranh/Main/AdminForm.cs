@@ -17,11 +17,13 @@ namespace PM.GUI.Main
     {
         // danh sach cac UserControl
         private List<UserControl> AdminControl = new List<UserControl>();
+        
 
         private bool panelVisible = false; // theo dõi trạng thái của pannel hiển thị các danh sách control 
         public AdminForm()
         {
             InitializeComponent();
+          
         }
 
         private void userControl11_Load(object sender, EventArgs e)
@@ -107,6 +109,7 @@ namespace PM.GUI.Main
             HienThiUserControl(add_Book1);
             titleCN.Text=BtnThem.Text;
             AdjustFontSize(titleCN);
+            btnCN_Click(sender, e);
         }
 
         private void guna2GradientTileButton1_Click(object sender, EventArgs e)
@@ -114,16 +117,12 @@ namespace PM.GUI.Main
             HienThiUserControl(edit_BOOk1);
             titleCN.Text = "Thông tin sách đang có trong cửa hàng";
             AdjustFontSize(titleCN);
+            btnCN_Click(sender, e);
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-        }
-
-        private void guna2PictureBox7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)
@@ -141,45 +140,15 @@ namespace PM.GUI.Main
 
         }
 
-        private void guna2PictureBox6_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void guna2PictureBox5_Click(object sender, EventArgs e)
-        {
 
-        }
+     
 
-        private void guna2PictureBox4_Click(object sender, EventArgs e)
-        {
+     
 
-        }
+     
 
-        private void guna2PictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2PictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PicWaitGif_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void edit_BOOk1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private async void btnCN_Click(object sender, EventArgs e)
         {
@@ -224,6 +193,9 @@ namespace PM.GUI.Main
             }
         }
 
-        
+        private void edit_BOOk1_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

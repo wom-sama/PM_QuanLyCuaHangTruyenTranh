@@ -32,6 +32,7 @@
             this.txtNameBook = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.picBia = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.hoveDelayTimer = new System.Windows.Forms.Timer(this.components);
             this.checkMouseTimer = new System.Windows.Forms.Timer(this.components);
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBia)).BeginInit();
@@ -53,8 +54,10 @@
             this.txtNameBook.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNameBook.Name = "txtNameBook";
             this.txtNameBook.PlaceholderText = "";
+            this.txtNameBook.ReadOnly = true;
             this.txtNameBook.SelectedText = "";
             this.txtNameBook.Size = new System.Drawing.Size(128, 45);
+            this.txtNameBook.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtNameBook.TabIndex = 1;
             this.txtNameBook.TextChanged += new System.EventHandler(this.txtNameBook_TextChanged);
             this.txtNameBook.MouseEnter += new System.EventHandler(this.txtNameBook_MouseEnter);
@@ -90,10 +93,14 @@
             this.picBia.MouseEnter += new System.EventHandler(this.picBia_MouseEnter);
             this.picBia.MouseLeave += new System.EventHandler(this.picBia_MouseLeave);
             // 
+            // hoveDelayTimer
+            // 
+            this.hoveDelayTimer.Enabled = true;
+            this.hoveDelayTimer.Interval = 250;
+            // 
             // checkMouseTimer
             // 
             this.checkMouseTimer.Enabled = true;
-            this.checkMouseTimer.Tick += new System.EventHandler(this.checkMouseTimer_Tick);
             // 
             // BooKShowcs
             // 
@@ -114,6 +121,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox picBia;
         private Guna.UI2.WinForms.Guna2TextBox txtNameBook;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private System.Windows.Forms.Timer hoveDelayTimer;
         private System.Windows.Forms.Timer checkMouseTimer;
     }
 }

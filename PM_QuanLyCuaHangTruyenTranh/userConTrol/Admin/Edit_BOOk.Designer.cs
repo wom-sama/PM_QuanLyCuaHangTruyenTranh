@@ -58,6 +58,9 @@
             // 
             // panelDanhSach
             // 
+            this.panelDanhSach.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDanhSach.AutoScroll = true;
             this.panelDanhSach.Location = new System.Drawing.Point(3, 106);
             this.panelDanhSach.Name = "panelDanhSach";
@@ -66,14 +69,12 @@
             // 
             // pannel_TongEditBook
             // 
-            this.pannel_TongEditBook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pannel_TongEditBook.Controls.Add(this.btnFind);
             this.pannel_TongEditBook.Controls.Add(this.flpTheLoai);
             this.pannel_TongEditBook.Controls.Add(this.btnTheLoai);
             this.pannel_TongEditBook.Controls.Add(this.txtFindTen);
             this.pannel_TongEditBook.Controls.Add(this.panelDanhSach);
+            this.pannel_TongEditBook.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannel_TongEditBook.Location = new System.Drawing.Point(0, 0);
             this.pannel_TongEditBook.Name = "pannel_TongEditBook";
             this.pannel_TongEditBook.Size = new System.Drawing.Size(736, 461);

@@ -3,31 +3,34 @@ using PM.DAL.Models;
 using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using PM.GUI.FormThongBao;
-using PM.GUI;
 
 namespace PM.GUI.userConTrol.Common
 {
     public partial class BooKShowcs : UserControl
     {
-        private SachService sachService = new SachService();
+        private readonly SachService sachService = new SachService();
         private Sach sach = new Sach();
-        private FormMessage f = new FormMessage("LOL");
-        private Timer hoverDelayTimer;
-        private bool isHovering = false;
+        private FormMessage f;
 
+        private Timer hoverDelayTimer;
+        private Timer fadeTimer;
+        private bool isHovering = false;
+        private double opacity = 0;
+        private bool fadingOut = false;
 
         public BooKShowcs()
         {
             InitializeComponent();
+            InitTimers();
         }
 
         public BooKShowcs(Sach book)
         {
             InitializeComponent();
             sach = book;
+            InitTimers();
         }
 
         private void BooKShowcs_Load(object sender, EventArgs e)
@@ -53,34 +56,21 @@ namespace PM.GUI.userConTrol.Common
                     return;
                 }
 
-                // ✅ Lấy thông tin sách mới nhất từ service
                 var sachMoi = sachService.GetById(sach.MaSach);
                 if (sachMoi != null)
                     sach = sachMoi;
 
-                // Gán tên sách
                 txtNameBook.Text = sach.TenSach ?? "Không có tên";
 
-                // Hiển thị ảnh bìa
                 if (sach.BiaSach != null && sach.BiaSach.Length > 0)
                 {
                     using (MemoryStream ms = new MemoryStream(sach.BiaSach))
-                    {
                         picBia.Image = Image.FromStream(ms);
-                    }
                 }
                 else
                 {
                     picBia.Image = Properties.Resources.sparkle_hanabi;
                 }
-
-                // Giao diện mượt hơn
-                txtNameBook.ReadOnly = true;
-                picBia.BorderRadius = 10;
-                picBia.SizeMode = PictureBoxSizeMode.Zoom;
-                picBia.FillColor = Color.FromArgb(240, 240, 240);
-                guna2ShadowPanel1.Radius = 15;
-                guna2ShadowPanel1.FillColor = Color.White;
             }
             catch (Exception ex)
             {
@@ -89,43 +79,149 @@ namespace PM.GUI.userConTrol.Common
             }
         }
 
-        private void txtNameBook_TextChanged(object sender, EventArgs e)
+        // ===============================
+        // 🕒 Khởi tạo Timer
+        // ===============================
+        private void InitTimers()
         {
-            // Giữ nguyên
+            hoverDelayTimer = new Timer { Interval = 1000 };
+            hoverDelayTimer.Tick += HoverDelayTimer_Tick;
+
+            fadeTimer = new Timer { Interval = 20 };
+            fadeTimer.Tick += FadeTimer_Tick;
+
+            picBia.MouseMove += PicBia_MouseMove; // Di chuyển form theo chuột
         }
 
+        // ===============================
+        // 🖱️ Sự kiện chuột
+        // ===============================
         private void picBia_MouseEnter(object sender, EventArgs e)
         {
-            guna2ShadowPanel1.ShadowColor = Color.FromArgb(180, 60, 60, 60);
-            guna2ShadowPanel1.ShadowDepth = 60;
-            guna2ShadowPanel1.FillColor = Color.FromArgb(250, 250, 250);
-            Point cursorPos = Cursor.Position;
-            f.Location = new Point(cursorPos.X + 15, cursorPos.Y + 15);
-            f.Show();
-            checkMouseTimer.Start();
+            isHovering = true;
+            hoverDelayTimer.Stop();
+            hoverDelayTimer.Start();
         }
 
         private void picBia_MouseLeave(object sender, EventArgs e)
         {
+            isHovering = false;
+            hoverDelayTimer.Stop();
+
             guna2ShadowPanel1.ShadowColor = Color.FromArgb(120, 0, 0, 0);
             guna2ShadowPanel1.ShadowDepth = 40;
             guna2ShadowPanel1.FillColor = Color.White;
-            checkMouseTimer.Start();
+
+            StartFadeOut();
         }
 
-        private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)
+        private void PicBia_MouseMove(object sender, MouseEventArgs e)
         {
-            // Giữ nguyên
+            if (f != null && f.Visible && !fadingOut)
+            {
+                Point cursorPos = Cursor.Position;
+                f.Location = new Point(cursorPos.X + 15, cursorPos.Y + 15);
+            }
         }
 
-        private void txtNameBook_MouseEnter(object sender, EventArgs e)
+        // ===============================
+        // ⏳ Delay trước khi show tooltip
+        // ===============================
+        private void HoverDelayTimer_Tick(object sender, EventArgs e)
         {
-            this.ActiveControl = null;
+            hoverDelayTimer.Stop();
+            if (!isHovering) return;
+
+            guna2ShadowPanel1.ShadowColor = Color.FromArgb(180, 60, 60, 60);
+            guna2ShadowPanel1.ShadowDepth = 60;
+            guna2ShadowPanel1.FillColor = Color.FromArgb(250, 250, 250);
+
+            ShowFormMessage();
         }
 
-        private void checkMouseTimer_Tick(object sender, EventArgs e)
+        // ===============================
+        // 🌫️ Hiển thị form + fade-in
+        // ===============================
+        private void ShowFormMessage()
         {
+            try
+            {
+                if (f == null || f.IsDisposed)
+                    f = new FormMessage(sach?.TenSach ?? "Thông tin sách");
 
+                if (!f.IsHandleCreated)
+                    f.CreateControl();
+
+                Point cursorPos = Cursor.Position;
+                f.StartPosition = FormStartPosition.Manual;
+                f.Location = new Point(cursorPos.X + 15, cursorPos.Y + 15);
+                f.TopMost = true;
+
+                if (!f.Visible)
+                    f.Show();
+
+                f.Opacity = 0; // ⚙️ Không lỗi vì đã có handle
+                opacity = 0;
+                fadingOut = false;
+                fadeTimer.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("⚠️ Lỗi ShowFormMessage: " + ex.Message);
+            }
         }
+
+        // ===============================
+        // 🌫️ Fade hiệu ứng (in & out)
+        // ===============================
+        private void FadeTimer_Tick(object sender, EventArgs e)
+        {
+            if (f == null || f.IsDisposed) { fadeTimer.Stop(); return; }
+
+            try
+            {
+                if (!fadingOut)
+                {
+                    opacity += 0.1;
+                    if (opacity >= 1)
+                    {
+                        opacity = 1;
+                        fadeTimer.Stop();
+                    }
+                }
+                else
+                {
+                    opacity -= 0.1;
+                    if (opacity <= 0)
+                    {
+                        opacity = 0;
+                        fadeTimer.Stop();
+                        f.Hide();
+                    }
+                }
+
+                if (f.IsHandleCreated)
+                    f.Opacity = opacity;
+            }
+            catch
+            {
+                fadeTimer.Stop();
+            }
+        }
+
+        private void StartFadeOut()
+        {
+            if (f == null || f.IsDisposed || !f.Visible) return;
+
+            fadingOut = true;
+            fadeTimer.Start();
+        }
+
+        // ===============================
+        // 🔧 Khác
+        // ===============================
+        private void txtNameBook_TextChanged(object sender, EventArgs e) { }
+        private void txtNameBook_MouseEnter(object sender, EventArgs e) { this.ActiveControl = null; }
+        private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e) { }
     }
 }
