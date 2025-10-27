@@ -45,6 +45,7 @@
             this.PicWaitGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnCN = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2ShadowPanel2.SuspendLayout();
             this.PanelCN.SuspendLayout();
@@ -71,6 +72,7 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(762, 477);
             this.guna2ShadowPanel1.TabIndex = 0;
+            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
             // 
             // edit_BOOk1
             // 
@@ -79,6 +81,7 @@
             this.edit_BOOk1.Name = "edit_BOOk1";
             this.edit_BOOk1.Size = new System.Drawing.Size(736, 461);
             this.edit_BOOk1.TabIndex = 1;
+            this.edit_BOOk1.Load += new System.EventHandler(this.edit_BOOk1_Load);
             // 
             // add_Book1
             // 
@@ -100,6 +103,7 @@
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel2.Size = new System.Drawing.Size(249, 461);
             this.guna2ShadowPanel2.TabIndex = 1;
+            this.guna2ShadowPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel2_Paint);
             // 
             // PanelCN
             // 
@@ -110,6 +114,7 @@
             this.PanelCN.Name = "PanelCN";
             this.PanelCN.Size = new System.Drawing.Size(220, 426);
             this.PanelCN.TabIndex = 0;
+            this.PanelCN.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCN_Paint);
             // 
             // guna2GradientTileButton1
             // 
@@ -154,6 +159,7 @@
             this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox7.TabIndex = 29;
             this.guna2PictureBox7.TabStop = false;
+            this.guna2PictureBox7.Click += new System.EventHandler(this.guna2PictureBox7_Click);
             // 
             // guna2PictureBox6
             // 
@@ -166,6 +172,7 @@
             this.guna2PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox6.TabIndex = 28;
             this.guna2PictureBox6.TabStop = false;
+            this.guna2PictureBox6.Click += new System.EventHandler(this.guna2PictureBox6_Click);
             // 
             // guna2PictureBox5
             // 
@@ -178,6 +185,7 @@
             this.guna2PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox5.TabIndex = 27;
             this.guna2PictureBox5.TabStop = false;
+            this.guna2PictureBox5.Click += new System.EventHandler(this.guna2PictureBox5_Click);
             // 
             // guna2PictureBox4
             // 
@@ -190,6 +198,7 @@
             this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox4.TabIndex = 26;
             this.guna2PictureBox4.TabStop = false;
+            this.guna2PictureBox4.Click += new System.EventHandler(this.guna2PictureBox4_Click);
             // 
             // guna2PictureBox3
             // 
@@ -202,6 +211,7 @@
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox3.TabIndex = 25;
             this.guna2PictureBox3.TabStop = false;
+            this.guna2PictureBox3.Click += new System.EventHandler(this.guna2PictureBox3_Click);
             // 
             // guna2PictureBox2
             // 
@@ -214,6 +224,7 @@
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox2.TabIndex = 24;
             this.guna2PictureBox2.TabStop = false;
+            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
             // 
             // guna2PictureBox1
             // 
@@ -226,6 +237,7 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 23;
             this.guna2PictureBox1.TabStop = false;
+            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
             // 
             // PicWaitGif
             // 
@@ -238,10 +250,12 @@
             this.PicWaitGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PicWaitGif.TabIndex = 22;
             this.PicWaitGif.TabStop = false;
+            this.PicWaitGif.Click += new System.EventHandler(this.PicWaitGif_Click);
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.AutoScroll = true;
+            this.guna2Panel1.Controls.Add(this.btnCN);
             this.guna2Panel1.Controls.Add(this.titleCN);
             this.guna2Panel1.Controls.Add(this.guna2ShadowPanel2);
             this.guna2Panel1.Controls.Add(this.guna2ShadowPanel1);
@@ -264,6 +278,21 @@
             this.titleCN.Text = "Chuc Nang";
             this.titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.titleCN.Click += new System.EventHandler(this.titleCN_Click);
+            // 
+            // btnCN
+            // 
+            this.btnCN.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCN.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCN.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCN.ForeColor = System.Drawing.Color.White;
+            this.btnCN.Location = new System.Drawing.Point(31, 57);
+            this.btnCN.Name = "btnCN";
+            this.btnCN.Size = new System.Drawing.Size(52, 45);
+            this.btnCN.TabIndex = 3;
+            this.btnCN.Text = "guna2Button1";
+            this.btnCN.Click += new System.EventHandler(this.btnCN_Click);
             // 
             // AdminForm
             // 
@@ -319,5 +348,6 @@
         private Guna.UI2.WinForms.Guna2GradientTileButton BtnThem;
         private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton1;
         private userConTrol.Admin.Edit_BOOk edit_BOOk1;
+        private Guna.UI2.WinForms.Guna2Button btnCN;
     }
 }

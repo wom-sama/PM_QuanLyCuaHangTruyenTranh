@@ -17,6 +17,7 @@ namespace PM.DAL.Models
 
         public string MoTa { get; set; }
 
+
         public virtual ICollection<NhanVien> NhanViens { get; set; }
     }
 }

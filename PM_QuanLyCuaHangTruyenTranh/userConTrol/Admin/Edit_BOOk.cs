@@ -24,8 +24,11 @@ namespace PM.GUI.userConTrol.Admin
 
         private void Edit_BOOk_Load(object sender, EventArgs e)
         {
+            // tránh chạy khi design
+            if (DesignMode) return;
             LoadAllBooks();
             flpTheLoai.Visible = false;
+            
         }
 
         // ==================== HIỂN THỊ DANH SÁCH SÁCH ====================

@@ -18,6 +18,7 @@ namespace PM.GUI.Main
         // danh sach cac UserControl
         private List<UserControl> AdminControl = new List<UserControl>();
 
+        private bool panelVisible = false; // theo dõi trạng thái của pannel hiển thị các danh sách control 
         public AdminForm()
         {
             InitializeComponent();
@@ -53,7 +54,8 @@ namespace PM.GUI.Main
                 item.Visible = false; // ẩn tất cả
                 item.Enabled = false; // khoa tat ca
             }
-
+            guna2ShadowPanel2.Visible = false;
+            guna2ShadowPanel2.Left = -guna2ShadowPanel2.Width; // ẩn ra ngoài màn hình
         }
         //hien thi control su dung
         private void HienThiUserControl(UserControl uc)
@@ -114,7 +116,99 @@ namespace PM.GUI.Main
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
+            Graphics g = e.Graphics;
+        }
 
+        private void guna2PictureBox7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2ShadowPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelCN_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PicWaitGif_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edit_BOOk1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnCN_Click(object sender, EventArgs e)
+        {
+
+            int targetX; // vị trí mục tiêu
+            guna2ShadowPanel2.Visible = true; // luôn hiện trước để thấy hiệu ứng
+
+            if (!panelVisible)
+            {
+                // Trượt ra
+                targetX = 41; // vị trí ban đầu trong Designer
+                while (guna2ShadowPanel2.Left < targetX)
+                {
+                    guna2ShadowPanel2.Left += 20;
+                    await Task.Delay(5);
+                }
+                guna2ShadowPanel2.Left = targetX;
+                panelVisible = true;
+            }
+            else
+            {
+                // Trượt vào (ẩn đi)
+                targetX = -guna2ShadowPanel2.Width;
+                while (guna2ShadowPanel2.Left > targetX)
+                {
+                    guna2ShadowPanel2.Left -= 20;
+                    await Task.Delay(5);
+                }
+                guna2ShadowPanel2.Visible = false;
+                panelVisible = false;
+            }
         }
     }
 }
