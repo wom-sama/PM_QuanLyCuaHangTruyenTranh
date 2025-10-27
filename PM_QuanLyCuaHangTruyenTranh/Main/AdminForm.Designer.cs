@@ -28,96 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.edit_BOOk1 = new PM.GUI.userConTrol.Admin.Edit_BOOk();
             this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
-            this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.shadow_PannelCN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.BtnThem = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox6 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.PicWaitGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ShadowPanel1.SuspendLayout();
-            this.guna2ShadowPanel2.SuspendLayout();
+            this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pannel_CT_CN.SuspendLayout();
+            this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicWaitGif)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2ShadowPanel1
+            // pannel_CT_CN
             // 
-            this.guna2ShadowPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2ShadowPanel1.BackColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Controls.Add(this.edit_BOOk1);
-            this.guna2ShadowPanel1.Controls.Add(this.add_Book1);
-            this.guna2ShadowPanel1.FillColor = System.Drawing.Color.RosyBrown;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(388, 193);
-            this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
-            this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(762, 477);
-            this.guna2ShadowPanel1.TabIndex = 0;
-            this.guna2ShadowPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
+            this.pannel_CT_CN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pannel_CT_CN.BackColor = System.Drawing.Color.White;
+            this.pannel_CT_CN.Controls.Add(this.edit_BOOk1);
+            this.pannel_CT_CN.Controls.Add(this.add_Book1);
+            this.pannel_CT_CN.FillColor = System.Drawing.Color.RosyBrown;
+            this.pannel_CT_CN.Location = new System.Drawing.Point(296, 193);
+            this.pannel_CT_CN.Name = "pannel_CT_CN";
+            this.pannel_CT_CN.ShadowColor = System.Drawing.Color.Black;
+            this.pannel_CT_CN.Size = new System.Drawing.Size(854, 477);
+            this.pannel_CT_CN.TabIndex = 0;
+            this.pannel_CT_CN.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
             // 
             // edit_BOOk1
             // 
             this.edit_BOOk1.AutoScroll = true;
-            this.edit_BOOk1.Location = new System.Drawing.Point(12, 16);
+            this.edit_BOOk1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edit_BOOk1.Location = new System.Drawing.Point(0, 0);
             this.edit_BOOk1.Name = "edit_BOOk1";
-            this.edit_BOOk1.Size = new System.Drawing.Size(736, 461);
+            this.edit_BOOk1.Size = new System.Drawing.Size(854, 477);
             this.edit_BOOk1.TabIndex = 1;
-            this.edit_BOOk1.Load += new System.EventHandler(this.edit_BOOk1_Load);
             // 
             // add_Book1
             // 
             this.add_Book1.BackColor = System.Drawing.Color.Transparent;
-            this.add_Book1.Location = new System.Drawing.Point(12, 15);
+            this.add_Book1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.add_Book1.Location = new System.Drawing.Point(0, 0);
             this.add_Book1.Name = "add_Book1";
-            this.add_Book1.Size = new System.Drawing.Size(736, 472);
+            this.add_Book1.Size = new System.Drawing.Size(854, 477);
             this.add_Book1.TabIndex = 0;
-            this.add_Book1.Load += new System.EventHandler(this.add_Book1_Load);
             // 
-            // guna2ShadowPanel2
+            // shadow_PannelCN
             // 
-            this.guna2ShadowPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel2.Controls.Add(this.PanelCN);
-            this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(41, 193);
-            this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
-            this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(249, 461);
-            this.guna2ShadowPanel2.TabIndex = 1;
-            this.guna2ShadowPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel2_Paint);
+            this.shadow_PannelCN.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.shadow_PannelCN.BackColor = System.Drawing.Color.Transparent;
+            this.shadow_PannelCN.Controls.Add(this.PanelCN);
+            this.shadow_PannelCN.FillColor = System.Drawing.Color.White;
+            this.shadow_PannelCN.Location = new System.Drawing.Point(41, 193);
+            this.shadow_PannelCN.Name = "shadow_PannelCN";
+            this.shadow_PannelCN.ShadowColor = System.Drawing.Color.Black;
+            this.shadow_PannelCN.Size = new System.Drawing.Size(249, 461);
+            this.shadow_PannelCN.TabIndex = 1;
+            this.shadow_PannelCN.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel2_Paint);
             // 
             // PanelCN
             // 
+            this.PanelCN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelCN.AutoScroll = true;
             this.PanelCN.Controls.Add(this.guna2GradientTileButton1);
             this.PanelCN.Controls.Add(this.BtnThem);
-            this.PanelCN.Location = new System.Drawing.Point(14, 15);
+            this.PanelCN.Location = new System.Drawing.Point(0, 0);
             this.PanelCN.Name = "PanelCN";
-            this.PanelCN.Size = new System.Drawing.Size(220, 426);
+            this.PanelCN.Size = new System.Drawing.Size(249, 461);
             this.PanelCN.TabIndex = 0;
             this.PanelCN.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCN_Paint);
             // 
             // guna2GradientTileButton1
             // 
+            this.guna2GradientTileButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2GradientTileButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2GradientTileButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2GradientTileButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -125,15 +116,18 @@
             this.guna2GradientTileButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2GradientTileButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GradientTileButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2GradientTileButton1.Location = new System.Drawing.Point(3, 115);
+            this.guna2GradientTileButton1.Location = new System.Drawing.Point(3, 166);
             this.guna2GradientTileButton1.Name = "guna2GradientTileButton1";
-            this.guna2GradientTileButton1.Size = new System.Drawing.Size(214, 45);
+            this.guna2GradientTileButton1.Size = new System.Drawing.Size(243, 80);
             this.guna2GradientTileButton1.TabIndex = 1;
             this.guna2GradientTileButton1.Text = "Kho Sách";
             this.guna2GradientTileButton1.Click += new System.EventHandler(this.guna2GradientTileButton1_Click);
             // 
             // BtnThem
             // 
+            this.BtnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.BtnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.BtnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -143,122 +137,18 @@
             this.BtnThem.ForeColor = System.Drawing.Color.White;
             this.BtnThem.Location = new System.Drawing.Point(3, 55);
             this.BtnThem.Name = "BtnThem";
-            this.BtnThem.Size = new System.Drawing.Size(214, 45);
+            this.BtnThem.Size = new System.Drawing.Size(243, 80);
             this.BtnThem.TabIndex = 0;
             this.BtnThem.Text = "Thêm Sách";
             this.BtnThem.Click += new System.EventHandler(this.BtnThem_Click);
-            // 
-            // guna2PictureBox7
-            // 
-            this.guna2PictureBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox7.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.guna2PictureBox7.ImageRotate = 0F;
-            this.guna2PictureBox7.Location = new System.Drawing.Point(323, 136);
-            this.guna2PictureBox7.Name = "guna2PictureBox7";
-            this.guna2PictureBox7.Size = new System.Drawing.Size(39, 28);
-            this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox7.TabIndex = 29;
-            this.guna2PictureBox7.TabStop = false;
-            this.guna2PictureBox7.Click += new System.EventHandler(this.guna2PictureBox7_Click);
-            // 
-            // guna2PictureBox6
-            // 
-            this.guna2PictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox6.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.guna2PictureBox6.ImageRotate = 0F;
-            this.guna2PictureBox6.Location = new System.Drawing.Point(323, 193);
-            this.guna2PictureBox6.Name = "guna2PictureBox6";
-            this.guna2PictureBox6.Size = new System.Drawing.Size(39, 28);
-            this.guna2PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox6.TabIndex = 28;
-            this.guna2PictureBox6.TabStop = false;
-            this.guna2PictureBox6.Click += new System.EventHandler(this.guna2PictureBox6_Click);
-            // 
-            // guna2PictureBox5
-            // 
-            this.guna2PictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox5.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.guna2PictureBox5.ImageRotate = 0F;
-            this.guna2PictureBox5.Location = new System.Drawing.Point(323, 289);
-            this.guna2PictureBox5.Name = "guna2PictureBox5";
-            this.guna2PictureBox5.Size = new System.Drawing.Size(39, 28);
-            this.guna2PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox5.TabIndex = 27;
-            this.guna2PictureBox5.TabStop = false;
-            this.guna2PictureBox5.Click += new System.EventHandler(this.guna2PictureBox5_Click);
-            // 
-            // guna2PictureBox4
-            // 
-            this.guna2PictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox4.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(323, 353);
-            this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(39, 28);
-            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox4.TabIndex = 26;
-            this.guna2PictureBox4.TabStop = false;
-            this.guna2PictureBox4.Click += new System.EventHandler(this.guna2PictureBox4_Click);
-            // 
-            // guna2PictureBox3
-            // 
-            this.guna2PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox3.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(323, 238);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(39, 28);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox3.TabIndex = 25;
-            this.guna2PictureBox3.TabStop = false;
-            this.guna2PictureBox3.Click += new System.EventHandler(this.guna2PictureBox3_Click);
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox2.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(323, 408);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(39, 28);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 24;
-            this.guna2PictureBox2.TabStop = false;
-            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2PictureBox1.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(323, 467);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(39, 28);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 23;
-            this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
-            // 
-            // PicWaitGif
-            // 
-            this.PicWaitGif.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PicWaitGif.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.PicWaitGif.ImageRotate = 0F;
-            this.PicWaitGif.Location = new System.Drawing.Point(323, 527);
-            this.PicWaitGif.Name = "PicWaitGif";
-            this.PicWaitGif.Size = new System.Drawing.Size(39, 28);
-            this.PicWaitGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicWaitGif.TabIndex = 22;
-            this.PicWaitGif.TabStop = false;
-            this.PicWaitGif.Click += new System.EventHandler(this.PicWaitGif_Click);
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.AutoScroll = true;
             this.guna2Panel1.Controls.Add(this.btnCN);
             this.guna2Panel1.Controls.Add(this.titleCN);
-            this.guna2Panel1.Controls.Add(this.guna2ShadowPanel2);
-            this.guna2Panel1.Controls.Add(this.guna2ShadowPanel1);
+            this.guna2Panel1.Controls.Add(this.shadow_PannelCN);
+            this.guna2Panel1.Controls.Add(this.pannel_CT_CN);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -266,21 +156,9 @@
             this.guna2Panel1.TabIndex = 30;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
-            // titleCN
-            // 
-            this.titleCN.AutoSize = false;
-            this.titleCN.BackColor = System.Drawing.Color.Transparent;
-            this.titleCN.Font = new System.Drawing.Font("Monotype Corsiva", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleCN.Location = new System.Drawing.Point(400, 13);
-            this.titleCN.Name = "titleCN";
-            this.titleCN.Size = new System.Drawing.Size(750, 151);
-            this.titleCN.TabIndex = 2;
-            this.titleCN.Text = "Chuc Nang";
-            this.titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.titleCN.Click += new System.EventHandler(this.titleCN_Click);
-            // 
             // btnCN
             // 
+            this.btnCN.BorderRadius = 15;
             this.btnCN.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCN.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -289,10 +167,25 @@
             this.btnCN.ForeColor = System.Drawing.Color.White;
             this.btnCN.Location = new System.Drawing.Point(31, 57);
             this.btnCN.Name = "btnCN";
-            this.btnCN.Size = new System.Drawing.Size(52, 45);
+            this.btnCN.Size = new System.Drawing.Size(76, 45);
             this.btnCN.TabIndex = 3;
-            this.btnCN.Text = "guna2Button1";
+            this.btnCN.Text = "Menu";
             this.btnCN.Click += new System.EventHandler(this.btnCN_Click);
+            // 
+            // titleCN
+            // 
+            this.titleCN.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.titleCN.AutoSize = false;
+            this.titleCN.BackColor = System.Drawing.Color.Transparent;
+            this.titleCN.Enabled = false;
+            this.titleCN.Font = new System.Drawing.Font("Monotype Corsiva", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleCN.Location = new System.Drawing.Point(141, 13);
+            this.titleCN.Name = "titleCN";
+            this.titleCN.Size = new System.Drawing.Size(1009, 151);
+            this.titleCN.TabIndex = 2;
+            this.titleCN.Text = "Chuc Nang";
+            this.titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleCN.Click += new System.EventHandler(this.titleCN_Click);
             // 
             // AdminForm
             // 
@@ -301,29 +194,16 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Pink;
             this.ClientSize = new System.Drawing.Size(1188, 702);
-            this.Controls.Add(this.guna2PictureBox7);
-            this.Controls.Add(this.guna2PictureBox6);
-            this.Controls.Add(this.guna2PictureBox5);
-            this.Controls.Add(this.guna2PictureBox4);
-            this.Controls.Add(this.guna2PictureBox3);
-            this.Controls.Add(this.guna2PictureBox2);
-            this.Controls.Add(this.guna2PictureBox1);
-            this.Controls.Add(this.PicWaitGif);
             this.Controls.Add(this.guna2Panel1);
+            this.HelpButton = true;
             this.Name = "AdminForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AdminForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdminForm_Load);
-            this.guna2ShadowPanel1.ResumeLayout(false);
-            this.guna2ShadowPanel2.ResumeLayout(false);
+            this.pannel_CT_CN.ResumeLayout(false);
+            this.shadow_PannelCN.ResumeLayout(false);
             this.PanelCN.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicWaitGif)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -331,23 +211,15 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
-        private Guna.UI2.WinForms.Guna2PictureBox PicWaitGif;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox4;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox5;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox6;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox7;
-        private userConTrol.Admin.Add_Book add_Book1;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pannel_CT_CN;
+        private Guna.UI2.WinForms.Guna2ShadowPanel shadow_PannelCN;
         private Guna.UI2.WinForms.Guna2Panel PanelCN;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel titleCN;
         private Guna.UI2.WinForms.Guna2GradientTileButton BtnThem;
         private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton1;
-        private userConTrol.Admin.Edit_BOOk edit_BOOk1;
         private Guna.UI2.WinForms.Guna2Button btnCN;
+        private userConTrol.Admin.Add_Book add_Book1;
+        private userConTrol.Admin.Edit_BOOk edit_BOOk1;
     }
 }

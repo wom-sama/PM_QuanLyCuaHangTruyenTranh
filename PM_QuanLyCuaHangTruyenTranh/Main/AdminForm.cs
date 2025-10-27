@@ -48,14 +48,16 @@ namespace PM.GUI.Main
         {
             AdjustFontSize(titleCN);
             // them cac UC vao list
-            AdminControl = this.guna2ShadowPanel1.Controls.OfType<UserControl>().ToList();
+            AdminControl = this.pannel_CT_CN.Controls.OfType<UserControl>().ToList();
             foreach (var item in AdminControl)
             {
                 item.Visible = false; // ẩn tất cả
                 item.Enabled = false; // khoa tat ca
             }
-            guna2ShadowPanel2.Visible = false;
-            guna2ShadowPanel2.Left = -guna2ShadowPanel2.Width; // ẩn ra ngoài màn hình
+            shadow_PannelCN.Visible = false;
+            shadow_PannelCN.Left = -shadow_PannelCN.Width;
+           
+
         }
         //hien thi control su dung
         private void HienThiUserControl(UserControl uc)
@@ -181,34 +183,47 @@ namespace PM.GUI.Main
 
         private async void btnCN_Click(object sender, EventArgs e)
         {
+            int panel2Start = -shadow_PannelCN.Width; // vị trí ẩn ban đầu
+            int panel2Target = 41;                      // vị trí hiện ra
+            int moveStep = 10;                          // tốc độ di chuyển
+            int delay = 5;                              // delay mỗi bước (ms)
 
-            int targetX; // vị trí mục tiêu
-            guna2ShadowPanel2.Visible = true; // luôn hiện trước để thấy hiệu ứng
+            shadow_PannelCN.Visible = true; // đảm bảo thấy panel trước khi trượt
 
             if (!panelVisible)
             {
-                // Trượt ra
-                targetX = 41; // vị trí ban đầu trong Designer
-                while (guna2ShadowPanel2.Left < targetX)
+                // 👉 Khi mở menu
+                while (shadow_PannelCN.Left < panel2Target)
                 {
-                    guna2ShadowPanel2.Left += 20;
-                    await Task.Delay(5);
+                    shadow_PannelCN.Left += moveStep;
+
+                    // Di chuyển panel1 song song theo hướng phải
+                    pannel_CT_CN.Left += moveStep / 2; // tốc độ chậm hơn để tạo cảm giác mượt
+                    await Task.Delay(delay);
                 }
-                guna2ShadowPanel2.Left = targetX;
+
+                // Đảm bảo đúng vị trí cuối cùng
+                shadow_PannelCN.Left = panel2Target;
                 panelVisible = true;
             }
             else
             {
-                // Trượt vào (ẩn đi)
-                targetX = -guna2ShadowPanel2.Width;
-                while (guna2ShadowPanel2.Left > targetX)
+                // 👉 Khi đóng menu
+                while (shadow_PannelCN.Left > panel2Start)
                 {
-                    guna2ShadowPanel2.Left -= 20;
-                    await Task.Delay(5);
+                    shadow_PannelCN.Left -= moveStep;
+
+                    // Panel1 trượt ngược lại vị trí ban đầu
+                    pannel_CT_CN.Left -= moveStep / 2;
+                    await Task.Delay(delay);
                 }
-                guna2ShadowPanel2.Visible = false;
+
+                shadow_PannelCN.Left = panel2Start;
+                shadow_PannelCN.Visible = false;
                 panelVisible = false;
             }
         }
+
+        
     }
 }

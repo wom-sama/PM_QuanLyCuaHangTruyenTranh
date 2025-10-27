@@ -15,6 +15,9 @@ namespace PM.GUI.userConTrol.Common
         private SachService sachService = new SachService();
         private Sach sach = new Sach();
         private FormMessage f = new FormMessage("LOL");
+        private Timer hoverDelayTimer;
+        private bool isHovering = false;
+
 
         public BooKShowcs()
         {

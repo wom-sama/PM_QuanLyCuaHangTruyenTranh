@@ -30,11 +30,11 @@
         {
             this.txtFindTen = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelDanhSach = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pannel_TongEditBook = new Guna.UI2.WinForms.Guna2Panel();
             this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.flpTheLoai = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTheLoai = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1.SuspendLayout();
+            this.pannel_TongEditBook.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFindTen
@@ -64,18 +64,20 @@
             this.panelDanhSach.Size = new System.Drawing.Size(730, 352);
             this.panelDanhSach.TabIndex = 2;
             // 
-            // guna2Panel1
+            // pannel_TongEditBook
             // 
-            this.guna2Panel1.Controls.Add(this.btnFind);
-            this.guna2Panel1.Controls.Add(this.flpTheLoai);
-            this.guna2Panel1.Controls.Add(this.btnTheLoai);
-            this.guna2Panel1.Controls.Add(this.txtFindTen);
-            this.guna2Panel1.Controls.Add(this.panelDanhSach);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(736, 461);
-            this.guna2Panel1.TabIndex = 3;
+            this.pannel_TongEditBook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pannel_TongEditBook.Controls.Add(this.btnFind);
+            this.pannel_TongEditBook.Controls.Add(this.flpTheLoai);
+            this.pannel_TongEditBook.Controls.Add(this.btnTheLoai);
+            this.pannel_TongEditBook.Controls.Add(this.txtFindTen);
+            this.pannel_TongEditBook.Controls.Add(this.panelDanhSach);
+            this.pannel_TongEditBook.Location = new System.Drawing.Point(0, 0);
+            this.pannel_TongEditBook.Name = "pannel_TongEditBook";
+            this.pannel_TongEditBook.Size = new System.Drawing.Size(736, 461);
+            this.pannel_TongEditBook.TabIndex = 3;
             // 
             // btnFind
             // 
@@ -121,11 +123,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.pannel_TongEditBook);
             this.Name = "Edit_BOOk";
             this.Size = new System.Drawing.Size(736, 461);
             this.Load += new System.EventHandler(this.Edit_BOOk_Load);
-            this.guna2Panel1.ResumeLayout(false);
+            this.pannel_TongEditBook.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,7 +136,7 @@
 
         private Guna.UI2.WinForms.Guna2TextBox txtFindTen;
         private System.Windows.Forms.FlowLayoutPanel panelDanhSach;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel pannel_TongEditBook;
         private Guna.UI2.WinForms.Guna2Button btnTheLoai;
         private System.Windows.Forms.FlowLayoutPanel flpTheLoai;
         private Guna.UI2.WinForms.Guna2Button btnFind;

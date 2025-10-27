@@ -61,6 +61,9 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.AutoScroll = true;
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
             this.guna2Panel1.Controls.Add(this.txtNamXuatBan);
@@ -84,7 +87,6 @@
             this.guna2Panel1.Controls.Add(this.txtMaSach);
             this.guna2Panel1.Controls.Add(this.GNtxtSoTrang);
             this.guna2Panel1.Controls.Add(this.GNtxtTacGia);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(736, 461);
