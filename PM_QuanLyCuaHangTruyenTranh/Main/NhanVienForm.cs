@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PM.GUI.userConTrol.Employee;
 namespace PM.GUI.Main
 {
     public partial class NhanVienForm : Form
