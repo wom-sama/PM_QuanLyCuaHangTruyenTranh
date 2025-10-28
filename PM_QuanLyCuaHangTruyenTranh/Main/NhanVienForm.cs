@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PM.GUI.userConTrol.Employee;
+
 namespace PM.GUI.Main
 {
     public partial class NhanVienForm : Form
@@ -15,11 +15,6 @@ namespace PM.GUI.Main
         public NhanVienForm()
         {
             InitializeComponent();
-        }
-
-        private void giaoDienNV1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

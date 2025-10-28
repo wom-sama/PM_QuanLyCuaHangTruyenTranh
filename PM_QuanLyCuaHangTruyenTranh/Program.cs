@@ -23,7 +23,7 @@ namespace PM.GUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main.NhanVienForm());
+            Application.Run(new Main.AdminForm());
 
            // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
 
@@ -118,7 +118,7 @@ db.Sachs.AddRange(sachs);
                       ["S012"] = ("https://i.pinimg.com/736x/5b/56/78/5b5678fc43d0cf4566e65546efd2cfa5.jpg", "9781974709939"),
                       ["S013"] = ("https://www.manga-news.com/public/images/vols/Dr_Stone_-_Tome_24_-_Gl_nat.jpg", "9781974702619"),
                       ["S014"] = ("https://i.pinimg.com/736x/c8/41/e7/c841e78626b3cf416ce1bc185e1543f6.jpg", "9781421582696"),
- ["S015"] = ("https://i.pinimg.com/originals/10/f6/85/10f68546e22d27fc4df8c6d221bbdcc6.png", "9781612622767"),
+                      ["S015"] = ("https://i.pinimg.com/originals/10/f6/85/10f68546e22d27fc4df8c6d221bbdcc6.png", "9781612622767"),
                       ["S016"] = ("https://i.pinimg.com/originals/e3/fa/75/e3fa753ceabf2095350e89f849485ca7.png", "9780316371249"),
                       ["S017"] = ("https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/a-silent-voice-anime-poster-elizabeth-king.jpg", "9781632360563"),
                       ["S018"] = ("https://i.pinimg.com/originals/e3/5a/e8/e35ae8083a43c49729d206bfe9036507.jpg", "9781612620732"),

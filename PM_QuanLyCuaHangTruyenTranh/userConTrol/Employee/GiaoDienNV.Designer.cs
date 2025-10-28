@@ -28,11 +28,11 @@ namespace PM.GUI.userConTrol.Employee
             this.btnDuyetDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnXemDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnCaLam = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pannelGD_tong = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelhienthi = new Guna.UI2.WinForms.Guna2Panel();
             this.btnMenu = new Guna.UI2.WinForms.Guna2Button();
             this.panelMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.panelhienthi = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel1.SuspendLayout();
+            this.pannelGD_tong.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,9 +46,10 @@ namespace PM.GUI.userConTrol.Employee
             this.btnChuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnChuong.ForeColor = System.Drawing.Color.Gold;
             this.btnChuong.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnChuong.Location = new System.Drawing.Point(1194, 32);
+            this.btnChuong.Location = new System.Drawing.Point(1061, 26);
+            this.btnChuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChuong.Name = "btnChuong";
-            this.btnChuong.Size = new System.Drawing.Size(83, 102);
+            this.btnChuong.Size = new System.Drawing.Size(74, 82);
             this.btnChuong.TabIndex = 0;
             this.btnChuong.Click += new System.EventHandler(this.btnChuong_Click);
             // 
@@ -57,9 +58,9 @@ namespace PM.GUI.userConTrol.Employee
             this.lblBadge.BackColor = System.Drawing.Color.Red;
             this.lblBadge.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.lblBadge.ForeColor = System.Drawing.Color.White;
-            this.lblBadge.Location = new System.Drawing.Point(1255, 19);
+            this.lblBadge.Location = new System.Drawing.Point(1116, 15);
             this.lblBadge.Name = "lblBadge";
-            this.lblBadge.Size = new System.Drawing.Size(45, 53);
+            this.lblBadge.Size = new System.Drawing.Size(40, 42);
             this.lblBadge.TabIndex = 1;
             this.lblBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblBadge.Visible = false;
@@ -71,9 +72,10 @@ namespace PM.GUI.userConTrol.Employee
             this.btnLenDon.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnLenDon.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLenDon.ForeColor = System.Drawing.Color.White;
-            this.btnLenDon.Location = new System.Drawing.Point(20, 60);
+            this.btnLenDon.Location = new System.Drawing.Point(18, 48);
+            this.btnLenDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLenDon.Name = "btnLenDon";
-            this.btnLenDon.Size = new System.Drawing.Size(180, 50);
+            this.btnLenDon.Size = new System.Drawing.Size(160, 40);
             this.btnLenDon.TabIndex = 2;
             this.btnLenDon.Text = "Lên đơn";
             this.btnLenDon.Click += new System.EventHandler(this.btnLenDon_Click);
@@ -84,9 +86,10 @@ namespace PM.GUI.userConTrol.Employee
             this.btnDuyetDon.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
             this.btnDuyetDon.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnDuyetDon.ForeColor = System.Drawing.Color.White;
-            this.btnDuyetDon.Location = new System.Drawing.Point(20, 130);
+            this.btnDuyetDon.Location = new System.Drawing.Point(18, 104);
+            this.btnDuyetDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDuyetDon.Name = "btnDuyetDon";
-            this.btnDuyetDon.Size = new System.Drawing.Size(180, 50);
+            this.btnDuyetDon.Size = new System.Drawing.Size(160, 40);
             this.btnDuyetDon.TabIndex = 3;
             this.btnDuyetDon.Text = "Duyệt đơn";
             this.btnDuyetDon.Click += new System.EventHandler(this.btnDuyetDon_Click);
@@ -97,9 +100,10 @@ namespace PM.GUI.userConTrol.Employee
             this.btnXemDon.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.btnXemDon.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnXemDon.ForeColor = System.Drawing.Color.White;
-            this.btnXemDon.Location = new System.Drawing.Point(20, 208);
+            this.btnXemDon.Location = new System.Drawing.Point(18, 166);
+            this.btnXemDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXemDon.Name = "btnXemDon";
-            this.btnXemDon.Size = new System.Drawing.Size(180, 50);
+            this.btnXemDon.Size = new System.Drawing.Size(160, 40);
             this.btnXemDon.TabIndex = 4;
             this.btnXemDon.Text = "Xem đơn";
             this.btnXemDon.Click += new System.EventHandler(this.btnXemDon_Click);
@@ -110,28 +114,39 @@ namespace PM.GUI.userConTrol.Employee
             this.btnCaLam.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCaLam.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCaLam.ForeColor = System.Drawing.Color.White;
-            this.btnCaLam.Location = new System.Drawing.Point(20, 289);
+            this.btnCaLam.Location = new System.Drawing.Point(18, 231);
+            this.btnCaLam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCaLam.Name = "btnCaLam";
-            this.btnCaLam.Size = new System.Drawing.Size(180, 50);
+            this.btnCaLam.Size = new System.Drawing.Size(160, 40);
             this.btnCaLam.TabIndex = 5;
             this.btnCaLam.Text = "Xem đơn";
             this.btnCaLam.Click += new System.EventHandler(this.btnCaLam_Click);
             // 
-            // guna2Panel1
+            // pannelGD_tong
             // 
-            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Panel1.Controls.Add(this.panelhienthi);
-            this.guna2Panel1.Controls.Add(this.btnMenu);
-            this.guna2Panel1.Controls.Add(this.panelMenu);
-            this.guna2Panel1.Controls.Add(this.btnChuong);
-            this.guna2Panel1.Controls.Add(this.lblBadge);
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1356, 983);
-            this.guna2Panel1.TabIndex = 6;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            this.pannelGD_tong.AutoScroll = true;
+            this.pannelGD_tong.Controls.Add(this.panelhienthi);
+            this.pannelGD_tong.Controls.Add(this.btnMenu);
+            this.pannelGD_tong.Controls.Add(this.panelMenu);
+            this.pannelGD_tong.Controls.Add(this.btnChuong);
+            this.pannelGD_tong.Controls.Add(this.lblBadge);
+            this.pannelGD_tong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pannelGD_tong.Location = new System.Drawing.Point(0, 0);
+            this.pannelGD_tong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pannelGD_tong.Name = "pannelGD_tong";
+            this.pannelGD_tong.Size = new System.Drawing.Size(1208, 843);
+            this.pannelGD_tong.TabIndex = 6;
+            this.pannelGD_tong.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // panelhienthi
+            // 
+            this.panelhienthi.AutoSize = true;
+            this.panelhienthi.Location = new System.Drawing.Point(263, 154);
+            this.panelhienthi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelhienthi.Name = "panelhienthi";
+            this.panelhienthi.Size = new System.Drawing.Size(1819, 1154);
+            this.panelhienthi.TabIndex = 7;
+            this.panelhienthi.Paint += new System.Windows.Forms.PaintEventHandler(this.panelhienthi_Paint);
             // 
             // btnMenu
             // 
@@ -139,9 +154,10 @@ namespace PM.GUI.userConTrol.Employee
             this.btnMenu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
             this.btnMenu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnMenu.ForeColor = System.Drawing.Color.White;
-            this.btnMenu.Location = new System.Drawing.Point(51, 84);
+            this.btnMenu.Location = new System.Drawing.Point(45, 67);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(180, 50);
+            this.btnMenu.Size = new System.Drawing.Size(160, 40);
             this.btnMenu.TabIndex = 6;
             this.btnMenu.Text = "Menu";
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -152,32 +168,25 @@ namespace PM.GUI.userConTrol.Employee
             this.panelMenu.Controls.Add(this.btnDuyetDon);
             this.panelMenu.Controls.Add(this.btnXemDon);
             this.panelMenu.Controls.Add(this.btnCaLam);
-            this.panelMenu.Location = new System.Drawing.Point(51, 192);
+            this.panelMenu.Location = new System.Drawing.Point(45, 154);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(217, 397);
+            this.panelMenu.Size = new System.Drawing.Size(193, 318);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2CustomGradientPanel1_Paint);
             // 
-            // panelhienthi
-            // 
-            this.panelhienthi.AutoSize = true;
-            this.panelhienthi.Location = new System.Drawing.Point(296, 192);
-            this.panelhienthi.Name = "panelhienthi";
-            this.panelhienthi.Size = new System.Drawing.Size(2046, 1443);
-            this.panelhienthi.TabIndex = 7;
-            this.panelhienthi.Paint += new System.Windows.Forms.PaintEventHandler(this.panelhienthi_Paint);
-            // 
             // GiaoDienNV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.Controls.Add(this.guna2Panel1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Controls.Add(this.pannelGD_tong);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GiaoDienNV";
-            this.Size = new System.Drawing.Size(1359, 1054);
+            this.Size = new System.Drawing.Size(1208, 843);
             this.Load += new System.EventHandler(this.GiaoDienNV_Load);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
+            this.pannelGD_tong.ResumeLayout(false);
+            this.pannelGD_tong.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -186,7 +195,7 @@ namespace PM.GUI.userConTrol.Employee
         #endregion
 
         private Guna.UI2.WinForms.Guna2Button btnCaLam;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel pannelGD_tong;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel panelMenu;
         private Guna.UI2.WinForms.Guna2Button btnMenu;
         private Guna.UI2.WinForms.Guna2Panel panelhienthi;

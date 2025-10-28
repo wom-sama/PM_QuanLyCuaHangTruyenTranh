@@ -33,24 +33,24 @@
             // 
             // giaoDienNV1
             // 
-            this.giaoDienNV1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.giaoDienNV1.AutoScroll = true;
+            this.giaoDienNV1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.giaoDienNV1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.giaoDienNV1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.giaoDienNV1.Location = new System.Drawing.Point(0, 0);
             this.giaoDienNV1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.giaoDienNV1.Name = "giaoDienNV1";
-            this.giaoDienNV1.Size = new System.Drawing.Size(1199, 582);
+            this.giaoDienNV1.Size = new System.Drawing.Size(1190, 796);
             this.giaoDienNV1.TabIndex = 0;
-            this.giaoDienNV1.Load += new System.EventHandler(this.giaoDienNV1_Load);
             // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 582);
+            this.ClientSize = new System.Drawing.Size(1190, 796);
             this.Controls.Add(this.giaoDienNV1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NhanVienForm";
-            this.Text = "NhanVien";
+            this.Text = "NhanVienForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 

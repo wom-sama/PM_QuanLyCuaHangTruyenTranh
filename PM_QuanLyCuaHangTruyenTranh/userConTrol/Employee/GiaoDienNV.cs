@@ -28,7 +28,7 @@ namespace PM.GUI.userConTrol.Employee
         private void GiaoDienNV_Load(object sender, EventArgs e)
         {
             // tránh load khi design
-            if(!DesignMode) {return;}
+            if(DesignMode) {return;}
             // 🟡 Tạo icon chuông FontAwesome
             iconBell = new IconPictureBox
             {

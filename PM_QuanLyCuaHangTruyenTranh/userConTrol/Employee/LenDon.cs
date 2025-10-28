@@ -44,7 +44,7 @@ namespace PM.GUI.userConTrol.Employee
         {
             if (!DesignMode)
             {
-                MessageBox.Show("Form đang load dữ liệu!");
+               // MessageBox.Show("Form đang load dữ liệu!");
 
                 dgvSach.MultiSelect = true;
                 dgvSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
