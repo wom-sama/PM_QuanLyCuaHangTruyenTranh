@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.edit_TacGia1 = new PM.GUI.userConTrol.Admin.Edit_TacGia();
+            this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
             this.SuspendLayout();
             // 
-            // edit_TacGia1
+            // add_Book1
             // 
-            this.edit_TacGia1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edit_TacGia1.Location = new System.Drawing.Point(0, 0);
-            this.edit_TacGia1.Name = "edit_TacGia1";
-            this.edit_TacGia1.Size = new System.Drawing.Size(800, 450);
-            this.edit_TacGia1.TabIndex = 0;
+            this.add_Book1.BackColor = System.Drawing.Color.White;
+            this.add_Book1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.add_Book1.Location = new System.Drawing.Point(0, 0);
+            this.add_Book1.Name = "add_Book1";
+            this.add_Book1.Size = new System.Drawing.Size(800, 450);
+            this.add_Book1.TabIndex = 0;
             // 
             // FromTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.edit_TacGia1);
+            this.Controls.Add(this.add_Book1);
             this.Name = "FromTest";
             this.Text = "FromTest";
             this.ResumeLayout(false);
@@ -53,6 +54,6 @@
 
         #endregion
 
-        private userConTrol.Admin.Edit_TacGia edit_TacGia1;
+        private userConTrol.Admin.Add_Book add_Book1;
     }
 }

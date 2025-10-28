@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.edit_BOOk1 = new PM.GUI.userConTrol.Admin.Edit_BOOk();
-            this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
             this.shadow_PannelCN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GradientTileButton4 = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -42,6 +40,8 @@
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
             this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.edit_TacGia1 = new PM.GUI.userConTrol.Admin.Edit_TacGia();
+            this.edit_BOOk1 = new PM.GUI.userConTrol.Admin.Edit_BOOk();
+            this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
             this.pannel_CT_CN.SuspendLayout();
             this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
@@ -64,25 +64,6 @@
             this.pannel_CT_CN.Size = new System.Drawing.Size(854, 477);
             this.pannel_CT_CN.TabIndex = 0;
             this.pannel_CT_CN.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
-            // 
-            // edit_BOOk1
-            // 
-            this.edit_BOOk1.AutoScroll = true;
-            this.edit_BOOk1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edit_BOOk1.Location = new System.Drawing.Point(0, 0);
-            this.edit_BOOk1.Name = "edit_BOOk1";
-            this.edit_BOOk1.Size = new System.Drawing.Size(854, 477);
-            this.edit_BOOk1.TabIndex = 1;
-            this.edit_BOOk1.Load += new System.EventHandler(this.edit_BOOk1_Load_1);
-            // 
-            // add_Book1
-            // 
-            this.add_Book1.BackColor = System.Drawing.Color.Transparent;
-            this.add_Book1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.add_Book1.Location = new System.Drawing.Point(0, 0);
-            this.add_Book1.Name = "add_Book1";
-            this.add_Book1.Size = new System.Drawing.Size(854, 477);
-            this.add_Book1.TabIndex = 0;
             // 
             // shadow_PannelCN
             // 
@@ -259,6 +240,25 @@
             this.edit_TacGia1.Size = new System.Drawing.Size(854, 477);
             this.edit_TacGia1.TabIndex = 2;
             // 
+            // edit_BOOk1
+            // 
+            this.edit_BOOk1.AutoScroll = true;
+            this.edit_BOOk1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edit_BOOk1.Location = new System.Drawing.Point(0, 0);
+            this.edit_BOOk1.Name = "edit_BOOk1";
+            this.edit_BOOk1.Size = new System.Drawing.Size(854, 477);
+            this.edit_BOOk1.TabIndex = 1;
+            this.edit_BOOk1.Load += new System.EventHandler(this.edit_BOOk1_Load_1);
+            // 
+            // add_Book1
+            // 
+            this.add_Book1.BackColor = System.Drawing.Color.Transparent;
+            this.add_Book1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.add_Book1.Location = new System.Drawing.Point(0, 0);
+            this.add_Book1.Name = "add_Book1";
+            this.add_Book1.Size = new System.Drawing.Size(854, 477);
+            this.add_Book1.TabIndex = 0;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -267,6 +267,7 @@
             this.BackColor = System.Drawing.Color.Pink;
             this.ClientSize = new System.Drawing.Size(1188, 702);
             this.Controls.Add(this.pannel_CN);
+            this.DoubleBuffered = true;
             this.HelpButton = true;
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

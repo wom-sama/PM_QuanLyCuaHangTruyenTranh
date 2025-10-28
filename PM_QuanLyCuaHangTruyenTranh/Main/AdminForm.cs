@@ -60,7 +60,7 @@ namespace PM.GUI.Main
             shadow_PannelCN.Visible = false;
             shadow_PannelCN.Left = -shadow_PannelCN.Width;
             //
-            this.DoubleBuffered = true;
+         
 
 
 

@@ -20,6 +20,8 @@ namespace PM.GUI.userConTrol.Admin
         private Guna2TextBox txtMa, txtTen, txtQuocTich, txtGhiChu;
         private Guna2Button btnSave, btnCancel;
         private FlowLayoutPanel pnlTop;
+        private bool _isAnimating = false;
+
 
         public Edit_TacGia()
         {
@@ -206,18 +208,23 @@ namespace PM.GUI.userConTrol.Admin
         // === Hiệu ứng slide + fade ===
         private async Task AnimatePanel(Guna2Panel panel, bool show)
         {
+            if (_isAnimating) return; // chặn spam khi đang chạy animation
+            _isAnimating = true;
+
+            // 🔒 Tạm vô hiệu hóa các nút thao tác CRUD
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = false;
+
             int targetWidth = 320;
-            int frameRate = 60; // 60fps
-            int totalDuration = show ? 220 : 160; // đóng nhanh hơn một chút
+            int frameRate = 120;
+            int totalDuration = show ? 220 : 160; // đóng nhanh hơn
             int frameDelay = 1000 / frameRate;
             int steps = totalDuration / frameDelay;
 
-            // Bật double buffering để tránh khung trắng khi render
             panel.GetType()
                 .GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.SetValue(panel, true, null);
 
-            panel.SuspendLayout(); // tạm dừng layout để giảm flicker
+            panel.SuspendLayout();
 
             if (show)
             {
@@ -228,13 +235,11 @@ namespace PM.GUI.userConTrol.Admin
                 for (int i = 0; i <= steps; i++)
                 {
                     double t = (double)i / steps;
-                    // Easing cubic-out
-                    double eased = 1 - Math.Pow(1 - t, 3);
+                    double eased = 1 - Math.Pow(1 - t, 3); // easing cubic-out
                     panel.Width = (int)(targetWidth * eased);
 
                     int opacity = (int)(255 * eased);
                     panel.BackColor = Color.FromArgb(opacity, 255, 255, 255);
-
                     await Task.Delay(frameDelay);
                 }
 
@@ -243,35 +248,35 @@ namespace PM.GUI.userConTrol.Admin
             }
             else
             {
-                // Đảm bảo panel vẫn hiển thị khi đang đóng
                 panel.Visible = true;
 
                 for (int i = steps; i >= 0; i--)
                 {
                     double t = (double)i / steps;
-                    // Easing cubic-in (đóng nhanh dần)
-                    double eased = t * t * t;
+                    double eased = t * t * t; // easing cubic-in
                     panel.Width = (int)(targetWidth * eased);
 
                     int opacity = (int)(255 * eased);
                     panel.BackColor = Color.FromArgb(opacity, 255, 255, 255);
-
                     await Task.Delay(frameDelay);
                 }
 
                 panel.Width = 0;
                 panel.Visible = false;
 
-                // Xóa khỏi parent sau khi animation hoàn tất
                 if (panel.Parent != null)
                     panel.Parent.Controls.Remove(panel);
 
                 pnlForm = null;
             }
 
-            panel.ResumeLayout(); // bật lại layout sau khi xong
-        }
+            panel.ResumeLayout();
 
+            // 🔓 Mở lại các nút CRUD sau khi animation hoàn tất
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = true;
+
+            _isAnimating = false;
+        }
 
 
         // === Hiệu ứng top panel khi load ===
