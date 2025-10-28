@@ -449,5 +449,10 @@ namespace PM.GUI.userConTrol.Employee
         {
             LoadSachData();
         }
+
+        private void picQR_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

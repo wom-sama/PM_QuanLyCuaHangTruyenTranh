@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PM.GUI;
 using PM.GUI.Main;
+using PM.GUI.userConTrol.Common;
 
 namespace PM.GUI.Main
 {
@@ -48,7 +49,7 @@ namespace PM.GUI.Main
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            AdjustFontSize(titleCN);
+            Edit_Lable.AdjustFontSize(titleCN);
             // them cac UC vao list
             AdminControl = this.pannel_CT_CN.Controls.OfType<UserControl>().ToList();
             foreach (var item in AdminControl)
@@ -86,29 +87,14 @@ namespace PM.GUI.Main
         {
 
         }
-        private void AdjustFontSize(Guna2HtmlLabel lbl)
-        {
-            if (string.IsNullOrEmpty(lbl.Text))
-                return;
-
-            Graphics g = lbl.CreateGraphics();
-            float fontSize = lbl.Font.Size;
-
-            SizeF textSize = g.MeasureString(lbl.Text, lbl.Font);
-            float ratio = Math.Min(lbl.Width / textSize.Width, lbl.Height / textSize.Height);
-
-            // Giới hạn cỡ chữ tối đa và tối thiểu
-            float newSize = Math.Max(8, lbl.Font.Size * ratio);
-
-            lbl.Font = new Font(lbl.Font.FontFamily, newSize, lbl.Font.Style);
-        }
+       
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
             //hien Add_Book
             HienThiUserControl(add_Book1);
             titleCN.Text=BtnThem.Text;
-            AdjustFontSize(titleCN);
+            Edit_Lable.AdjustFontSize(titleCN);
             btnCN_Click(sender, e);
         }
 
@@ -116,7 +102,7 @@ namespace PM.GUI.Main
         {
             HienThiUserControl(edit_BOOk1);
             titleCN.Text = "Thông tin sách đang có trong cửa hàng";
-            AdjustFontSize(titleCN);
+            Edit_Lable.AdjustFontSize(titleCN);
             btnCN_Click(sender, e);
         }
 

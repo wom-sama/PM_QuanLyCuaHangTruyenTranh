@@ -55,7 +55,6 @@
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.guna2ContextMenuStrip2 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.guna2AnimateWindow5 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQR)).BeginInit();
             this.btnMomo.SuspendLayout();
@@ -64,8 +63,6 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.AutoScroll = true;
-            this.guna2Panel1.Controls.Add(this.guna2Button1);
             this.guna2Panel1.Controls.Add(this.btnXuatdon);
             this.guna2Panel1.Controls.Add(this.btnXacNhan);
             this.guna2Panel1.Controls.Add(this.picQR);
@@ -78,97 +75,115 @@
             this.guna2Panel1.Controls.Add(this.btnTaoDon);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1340, 709);
+            this.guna2Panel1.Size = new System.Drawing.Size(1191, 567);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // btnXuatdon
             // 
+            this.btnXuatdon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXuatdon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnXuatdon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnXuatdon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnXuatdon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnXuatdon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnXuatdon.ForeColor = System.Drawing.Color.White;
-            this.btnXuatdon.Location = new System.Drawing.Point(659, 616);
+            this.btnXuatdon.Location = new System.Drawing.Point(586, 493);
+            this.btnXuatdon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXuatdon.Name = "btnXuatdon";
-            this.btnXuatdon.Size = new System.Drawing.Size(180, 45);
+            this.btnXuatdon.Size = new System.Drawing.Size(160, 36);
             this.btnXuatdon.TabIndex = 48;
             this.btnXuatdon.Text = "Xuất Đơn";
             this.btnXuatdon.Click += new System.EventHandler(this.btnXuatdon_Click);
             // 
             // btnXacNhan
             // 
+            this.btnXacNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXacNhan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnXacNhan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnXacNhan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnXacNhan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnXacNhan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnXacNhan.ForeColor = System.Drawing.Color.White;
-            this.btnXacNhan.Location = new System.Drawing.Point(910, 554);
+            this.btnXacNhan.Location = new System.Drawing.Point(809, 443);
+            this.btnXacNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(247, 45);
+            this.btnXacNhan.Size = new System.Drawing.Size(220, 36);
             this.btnXacNhan.TabIndex = 47;
             this.btnXacNhan.Text = "Xác Nhận Chuyển tiền";
             this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // picQR
             // 
+            this.picQR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picQR.ImageRotate = 0F;
-            this.picQR.Location = new System.Drawing.Point(608, 14);
+            this.picQR.Location = new System.Drawing.Point(531, 11);
+            this.picQR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picQR.Name = "picQR";
-            this.picQR.Size = new System.Drawing.Size(713, 509);
+            this.picQR.Size = new System.Drawing.Size(634, 407);
             this.picQR.TabIndex = 46;
             this.picQR.TabStop = false;
+            this.picQR.Click += new System.EventHandler(this.picQR_Click);
             // 
             // btnduyetdon
             // 
+            this.btnduyetdon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnduyetdon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnduyetdon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnduyetdon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnduyetdon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnduyetdon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnduyetdon.ForeColor = System.Drawing.Color.White;
-            this.btnduyetdon.Location = new System.Drawing.Point(1122, 646);
+            this.btnduyetdon.Location = new System.Drawing.Point(1005, 493);
+            this.btnduyetdon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnduyetdon.Name = "btnduyetdon";
-            this.btnduyetdon.Size = new System.Drawing.Size(180, 45);
+            this.btnduyetdon.Size = new System.Drawing.Size(160, 36);
             this.btnduyetdon.TabIndex = 45;
             this.btnduyetdon.Text = "Duyet Don";
             this.btnduyetdon.Click += new System.EventHandler(this.btnduyetdon_Click);
             // 
             // btnXemDon
             // 
+            this.btnXemDon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXemDon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnXemDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnXemDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnXemDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnXemDon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnXemDon.ForeColor = System.Drawing.Color.White;
-            this.btnXemDon.Location = new System.Drawing.Point(910, 616);
+            this.btnXemDon.Location = new System.Drawing.Point(809, 493);
+            this.btnXemDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXemDon.Name = "btnXemDon";
-            this.btnXemDon.Size = new System.Drawing.Size(180, 45);
+            this.btnXemDon.Size = new System.Drawing.Size(160, 36);
             this.btnXemDon.TabIndex = 44;
             this.btnXemDon.Text = "Xem Don";
             this.btnXemDon.Click += new System.EventHandler(this.btnXemDon_Click);
             // 
             // btnMomo
             // 
+            this.btnMomo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.btnMomo.Controls.Add(this.t);
             this.btnMomo.Controls.Add(this.guna2Button2);
             this.btnMomo.Controls.Add(this.txtTimSach);
-            this.btnMomo.Location = new System.Drawing.Point(60, 14);
+            this.btnMomo.Location = new System.Drawing.Point(53, 11);
+            this.btnMomo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMomo.Name = "btnMomo";
-            this.btnMomo.Size = new System.Drawing.Size(499, 695);
+            this.btnMomo.Size = new System.Drawing.Size(444, 556);
             this.btnMomo.TabIndex = 43;
             // 
             // t
             // 
             this.t.BackColor = System.Drawing.Color.Transparent;
             this.t.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.t.Location = new System.Drawing.Point(20, 38);
+            this.t.Location = new System.Drawing.Point(18, 30);
+            this.t.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.t.Name = "t";
-            this.t.Size = new System.Drawing.Size(122, 34);
+            this.t.Size = new System.Drawing.Size(105, 31);
             this.t.TabIndex = 49;
             this.t.Text = "Tìm Sách";
             // 
@@ -180,9 +195,10 @@
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(147, 540);
+            this.guna2Button2.Location = new System.Drawing.Point(131, 432);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button2.Size = new System.Drawing.Size(160, 36);
             this.guna2Button2.TabIndex = 46;
             this.guna2Button2.Text = "QR Thanh Toán";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
@@ -198,12 +214,12 @@
             this.txtTimSach.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTimSach.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTimSach.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTimSach.Location = new System.Drawing.Point(149, 37);
-            this.txtTimSach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTimSach.Location = new System.Drawing.Point(132, 30);
+            this.txtTimSach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTimSach.Name = "txtTimSach";
             this.txtTimSach.PlaceholderText = "";
             this.txtTimSach.SelectedText = "";
-            this.txtTimSach.Size = new System.Drawing.Size(286, 35);
+            this.txtTimSach.Size = new System.Drawing.Size(254, 28);
             this.txtTimSach.TabIndex = 34;
             this.txtTimSach.TextChanged += new System.EventHandler(this.txtTimSach_TextChanged);
             // 
@@ -218,12 +234,12 @@
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(847, -39);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2TextBox1.Location = new System.Drawing.Point(753, -31);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(452, 35);
+            this.guna2TextBox1.Size = new System.Drawing.Size(402, 28);
             this.guna2TextBox1.TabIndex = 40;
             this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
@@ -231,6 +247,9 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvSach.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSach.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,13 +269,13 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSach.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSach.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvSach.Location = new System.Drawing.Point(608, 14);
+            this.dgvSach.Location = new System.Drawing.Point(540, 11);
             this.dgvSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSach.Name = "dgvSach";
             this.dgvSach.RowHeadersVisible = false;
             this.dgvSach.RowHeadersWidth = 62;
             this.dgvSach.RowTemplate.Height = 28;
-            this.dgvSach.Size = new System.Drawing.Size(703, 509);
+            this.dgvSach.Size = new System.Drawing.Size(625, 407);
             this.dgvSach.TabIndex = 39;
             this.dgvSach.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSach.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -285,25 +304,26 @@
             // 
             this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel10.Location = new System.Drawing.Point(725, -39);
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(644, -31);
             this.guna2HtmlLabel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            this.guna2HtmlLabel10.Size = new System.Drawing.Size(91, 28);
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(76, 24);
             this.guna2HtmlLabel10.TabIndex = 41;
             this.guna2HtmlLabel10.Text = "Tìm sách";
             // 
             // btnTaoDon
             // 
+            this.btnTaoDon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTaoDon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTaoDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTaoDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTaoDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTaoDon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTaoDon.ForeColor = System.Drawing.Color.White;
-            this.btnTaoDon.Location = new System.Drawing.Point(608, 554);
+            this.btnTaoDon.Location = new System.Drawing.Point(540, 443);
             this.btnTaoDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTaoDon.Name = "btnTaoDon";
-            this.btnTaoDon.Size = new System.Drawing.Size(286, 45);
+            this.btnTaoDon.Size = new System.Drawing.Size(254, 36);
             this.btnTaoDon.TabIndex = 38;
             this.btnTaoDon.Text = "Tạo đơn";
             this.btnTaoDon.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -350,28 +370,14 @@
             this.guna2ContextMenuStrip2.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.guna2ContextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(689, 668);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button1.TabIndex = 49;
-            this.guna2Button1.Text = "guna2Button1";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
-            // 
             // LenDon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.Controls.Add(this.guna2Panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LenDon";
-            this.Size = new System.Drawing.Size(1340, 709);
+            this.Size = new System.Drawing.Size(1191, 567);
             this.Load += new System.EventHandler(this.LenDon_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
@@ -408,6 +414,5 @@
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow5;
         private Guna.UI2.WinForms.Guna2HtmlLabel t;
         private Guna.UI2.WinForms.Guna2Button btnXuatdon;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

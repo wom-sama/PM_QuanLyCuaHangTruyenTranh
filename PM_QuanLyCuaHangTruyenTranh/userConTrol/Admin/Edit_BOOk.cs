@@ -28,7 +28,7 @@ namespace PM.GUI.userConTrol.Admin
             if (DesignMode) return;
             LoadAllBooks();
             flpTheLoai.Visible = false;
-            
+
         }
 
         // ==================== HIỂN THỊ DANH SÁCH SÁCH ====================
@@ -42,6 +42,7 @@ namespace PM.GUI.userConTrol.Admin
                 BooKShowcs bookItem = new BooKShowcs(sach);
                 bookItem.Margin = new Padding(10);
                 panelDanhSach.Controls.Add(bookItem);
+                bookItem.OnBookClick += BookItem_OnBookClick;
             }
         }
 
@@ -121,6 +122,17 @@ namespace PM.GUI.userConTrol.Admin
             string keyword = txtFindTen.Text.Trim().ToLower();
             var filtered = sachService.Find(s => s.TenSach.ToLower().Contains(keyword));
             LoadAllBooks(filtered);
+        }
+        // khi click vào book ở edit
+        private void BookItem_OnBookClick(object sender, Sach sach)
+        {
+            // Ví dụ: hiển thị thông tin sách được chọn
+            MessageBox.Show(
+                $"📘 Bạn đã chọn sách:\n\nTên: {sach.TenSach}\nMã: {sach.MaSach}",
+                "Thông tin sách",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }

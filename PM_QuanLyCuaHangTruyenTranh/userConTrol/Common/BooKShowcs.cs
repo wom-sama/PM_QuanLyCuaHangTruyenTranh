@@ -20,6 +20,15 @@ namespace PM.GUI.userConTrol.Common
         private double opacity = 0;
         private bool fadingOut = false;
 
+        // ============================
+        // 🔹 Khai báo sự kiện click
+        // ============================
+        public event EventHandler<Sach> OnBookClick;
+
+        // Biến lưu trạng thái chọn
+        private static BooKShowcs currentlySelected = null;
+        private bool isSelected = false;
+
         public BooKShowcs()
         {
             InitializeComponent();
@@ -37,7 +46,7 @@ namespace PM.GUI.userConTrol.Common
         {
             try
             {
-                txtNameBook.ReadOnly = true;
+                //tenSachlbl.ReadOnly = true;
                 picBia.BorderRadius = 10;
                 picBia.FillColor = Color.FromArgb(245, 245, 245);
                 picBia.SizeMode = PictureBoxSizeMode.Zoom;
@@ -49,9 +58,15 @@ namespace PM.GUI.userConTrol.Common
                 guna2ShadowPanel1.ShadowColor = Color.FromArgb(120, 0, 0, 0);
                 guna2ShadowPanel1.FillColor = Color.White;
 
+                // 📘 Gán sự kiện click cho toàn control
+                this.Click += BooKShowcs_Click;
+                picBia.Click += BooKShowcs_Click;
+                tenSachlbl.Click += BooKShowcs_Click;
+                guna2ShadowPanel1.Click += BooKShowcs_Click;
+
                 if (sach == null || string.IsNullOrEmpty(sach.MaSach))
                 {
-                    txtNameBook.Text = "Không xác định";
+                    tenSachlbl.Text = "Không xác định";
                     picBia.Image = Properties.Resources.sparkle_hanabi;
                     return;
                 }
@@ -60,7 +75,7 @@ namespace PM.GUI.userConTrol.Common
                 if (sachMoi != null)
                     sach = sachMoi;
 
-                txtNameBook.Text = sach.TenSach ?? "Không có tên";
+                tenSachlbl.Text = sach.TenSach ?? "Không có tên";
 
                 if (sach.BiaSach != null && sach.BiaSach.Length > 0)
                 {
@@ -71,6 +86,7 @@ namespace PM.GUI.userConTrol.Common
                 {
                     picBia.Image = Properties.Resources.sparkle_hanabi;
                 }
+                Edit_Lable.AdjustFontSize(this.tenSachlbl);
             }
             catch (Exception ex)
             {
@@ -94,7 +110,7 @@ namespace PM.GUI.userConTrol.Common
         }
 
         // ===============================
-        // 🖱️ Sự kiện chuột
+        // 🖱️ Sự kiện chuột (hover)
         // ===============================
         private void picBia_MouseEnter(object sender, EventArgs e)
         {
@@ -108,9 +124,12 @@ namespace PM.GUI.userConTrol.Common
             isHovering = false;
             hoverDelayTimer.Stop();
 
-            guna2ShadowPanel1.ShadowColor = Color.FromArgb(120, 0, 0, 0);
-            guna2ShadowPanel1.ShadowDepth = 40;
-            guna2ShadowPanel1.FillColor = Color.White;
+            if (!isSelected)
+            {
+                guna2ShadowPanel1.ShadowColor = Color.FromArgb(120, 0, 0, 0);
+                guna2ShadowPanel1.ShadowDepth = 40;
+                guna2ShadowPanel1.FillColor = Color.White;
+            }
 
             StartFadeOut();
         }
@@ -218,10 +237,47 @@ namespace PM.GUI.userConTrol.Common
         }
 
         // ===============================
+        // 📘 Sự kiện click chọn sách
+        // ===============================
+        private void BooKShowcs_Click(object sender, EventArgs e)
+        {
+            // Nếu đã có item khác được chọn → bỏ chọn nó
+            if (currentlySelected != null && currentlySelected != this)
+                currentlySelected.Unselect();
+
+            SelectThis(); // chọn item hiện tại
+            currentlySelected = this;
+
+            // Gọi sự kiện ra ngoài
+            OnBookClick?.Invoke(this, sach);
+        }
+
+        private void SelectThis()
+        {
+            isSelected = true;
+            guna2ShadowPanel1.FillColor = Color.FromArgb(230, 245, 255);
+            guna2ShadowPanel1.ShadowColor = Color.FromArgb(80, 120, 200);
+            guna2ShadowPanel1.ShadowDepth = 70;
+        }
+
+        public void Unselect()
+        {
+            isSelected = false;
+            guna2ShadowPanel1.FillColor = Color.White;
+            guna2ShadowPanel1.ShadowColor = Color.FromArgb(120, 0, 0, 0);
+            guna2ShadowPanel1.ShadowDepth = 40;
+        }
+
+        // ===============================
         // 🔧 Khác
         // ===============================
         private void txtNameBook_TextChanged(object sender, EventArgs e) { }
         private void txtNameBook_MouseEnter(object sender, EventArgs e) { this.ActiveControl = null; }
         private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e) { }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

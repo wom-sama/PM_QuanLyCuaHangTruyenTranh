@@ -175,11 +175,11 @@
     <Compile Include="Main\SiginForm.Designer.cs">
       <DependentUpon>SiginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="userConTrol\Admin\AddTacGia.cs">
+    <Compile Include="userConTrol\Admin\EditTacGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="userConTrol\Admin\AddTacGia.Designer.cs">
-      <DependentUpon>AddTacGia.cs</DependentUpon>
+    <Compile Include="userConTrol\Admin\EditTacGia.Designer.cs">
+      <DependentUpon>EditTacGia.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Admin\Add_Book.cs">
       <SubType>UserControl</SubType>
@@ -205,6 +205,7 @@
     <Compile Include="userConTrol\Common\BooKShowcs.Designer.cs">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Common\Edit_Lable.cs" />
     <Compile Include="userConTrol\Employee\CaLam.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,12 +217,6 @@
     </Compile>
     <Compile Include="userConTrol\Employee\DuyetDon.Designer.cs">
       <DependentUpon>DuyetDon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userConTrol\Employee\GiaoDienNV.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userConTrol\Employee\GiaoDienNV.Designer.cs">
-      <DependentUpon>GiaoDienNV.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Employee\InHoaDon.cs">
       <SubType>UserControl</SubType>
@@ -253,6 +248,9 @@
     <EmbeddedResource Include="Main\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\FromTest.resx">
+      <DependentUpon>FromTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,8 +270,8 @@
     <EmbeddedResource Include="Main\SiginForm.resx">
       <DependentUpon>SiginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="userConTrol\Admin\AddTacGia.resx">
-      <DependentUpon>AddTacGia.cs</DependentUpon>
+    <EmbeddedResource Include="userConTrol\Admin\EditTacGia.resx">
+      <DependentUpon>EditTacGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\Add_Book.resx">
       <DependentUpon>Add_Book.cs</DependentUpon>
@@ -292,9 +290,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\DuyetDon.resx">
       <DependentUpon>DuyetDon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="userConTrol\Employee\GiaoDienNV.resx">
-      <DependentUpon>GiaoDienNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\InHoaDon.resx">
       <DependentUpon>InHoaDon.cs</DependentUpon>
