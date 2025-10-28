@@ -3,23 +3,41 @@ using PM.BUS.Helpers;
 using PM.BUS.Services;
 using PM.BUS.Services.DonHangsv;
 using System;
-using System.Windows.Forms;
 using System.Linq;
 using System.IO;
+using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 
 namespace PM.GUI.userConTrol.Employee
 {
     public partial class InHoaDon : UserControl
     {
+        private decimal TienKhachDua;
+        private decimal TienThua;
         private readonly DonHangService _donHangService;
         private string _maDonHienTai;
+
+        // Constructor 1 tham số
         public InHoaDon(string maDon)
         {
             InitializeComponent();
-            _donHangService = new DonHangService();  // ✅ BUS tự tạo UoW
+            _donHangService = new DonHangService();
             _maDonHienTai = maDon;
             LoadHoaDon(maDon);
+        }
+
+        // Constructor 3 tham số (mới)
+        public InHoaDon(string maDon, decimal tienKhachDua, decimal tienThua)
+            : this(maDon) // gọi constructor 1 tham số
+        {
+            this.TienKhachDua = tienKhachDua;
+            this.TienThua = tienThua;
+
+            // Nếu muốn hiển thị luôn lên label
+            lblTienKhachDua.Text = $"Tiền khách đưa: {TienKhachDua:N0} đ";
+            lblTienThua.Text = $"Tiền thừa: {TienThua:N0} đ";
         }
 
         private void LoadHoaDon(string maDon)
@@ -47,6 +65,10 @@ namespace PM.GUI.userConTrol.Employee
             }).ToList();
 
             lblTongTien.Text = $"Tổng cộng: {don.TongTien:N0} đ";
+
+            // Nếu constructor 3 tham số đã truyền, hiển thị luôn
+            lblTienKhachDua.Text = $"Tiền khách đưa: {TienKhachDua:N0} đ";
+            lblTienThua.Text = $"Tiền thừa: {TienThua:N0} đ";
         }
 
         private void btnXuatPDF_Click(object sender, EventArgs e)
@@ -68,46 +90,46 @@ namespace PM.GUI.userConTrol.Employee
             {
                 try
                 {
-                    // 1️⃣ Đường dẫn font Unicode
                     string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
-                    var baseFont = iTextSharp.text.pdf.BaseFont.CreateFont(fontPath, iTextSharp.text.pdf.BaseFont.IDENTITY_H, iTextSharp.text.pdf.BaseFont.EMBEDDED);
+                    var baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    // Dùng alias Font đã khai báo
                     var font = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL);
 
-                    // 2️⃣ Tạo PDF
+
+
                     using (var fs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
-                        var document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4, 20, 20, 20, 20);
-                        iTextSharp.text.pdf.PdfWriter.GetInstance(document, fs);
+                        var document = new Document(PageSize.A4, 20, 20, 20, 20);
+                        PdfWriter.GetInstance(document, fs);
                         document.Open();
 
-                        // 3️⃣ Thông tin hóa đơn
-                        document.Add(new iTextSharp.text.Paragraph("🏪 CỬA HÀNG TRUYỆN TRANH MANGA PLUS", font));
-                        document.Add(new iTextSharp.text.Paragraph("HÓA ĐƠN BÁN TRUYỆN", font));
-                        document.Add(new iTextSharp.text.Paragraph($"Mã đơn: {don.MaDonHang}", font));
-                        document.Add(new iTextSharp.text.Paragraph($"Ngày lập: {don.NgayDat:dd/MM/yyyy HH:mm}", font));
-                        document.Add(new iTextSharp.text.Paragraph($"Nhân viên: {don.MaNV}", font));
-                        document.Add(new iTextSharp.text.Paragraph("❤ Cảm ơn quý khách đã mua hàng!", font));
-                        document.Add(new iTextSharp.text.Paragraph(" ")); // xuống dòng
+                        document.Add(new Paragraph("🏪 CỬA HÀNG TRUYỆN TRANH MANGA PLUS", font));
+                        document.Add(new Paragraph("HÓA ĐƠN BÁN TRUYỆN", font));
+                        document.Add(new Paragraph($"Mã đơn: {don.MaDonHang}", font));
+                        document.Add(new Paragraph($"Ngày lập: {don.NgayDat:dd/MM/yyyy HH:mm}", font));
+                        document.Add(new Paragraph($"Nhân viên: {don.MaNV}", font));
+                        document.Add(new Paragraph("❤ Cảm ơn quý khách đã mua hàng!", font));
+                        document.Add(new Paragraph(" "));
 
-                        // 4️⃣ Bảng chi tiết
-                        var table = new iTextSharp.text.pdf.PdfPTable(4) { WidthPercentage = 100 };
-                        table.AddCell(new iTextSharp.text.Phrase("Tên Sách", font));
-                        table.AddCell(new iTextSharp.text.Phrase("Số Lượng", font));
-                        table.AddCell(new iTextSharp.text.Phrase("Đơn Giá", font));
-                        table.AddCell(new iTextSharp.text.Phrase("Thành Tiền", font));
+                        var table = new PdfPTable(4) { WidthPercentage = 100 };
+                        table.AddCell(new Phrase("Tên Sách", font));
+                        table.AddCell(new Phrase("Số Lượng", font));
+                        table.AddCell(new Phrase("Đơn Giá", font));
+                        table.AddCell(new Phrase("Thành Tiền", font));
 
                         foreach (var ct in don.CT_DonHangs)
                         {
-                            table.AddCell(new iTextSharp.text.Phrase(ct.Sach?.TenSach ?? "(Không rõ)", font));
-                            table.AddCell(new iTextSharp.text.Phrase(ct.SoLuong.ToString(), font));
-                            table.AddCell(new iTextSharp.text.Phrase(ct.DonGia.ToString("N0"), font));
-                            table.AddCell(new iTextSharp.text.Phrase(ct.ThanhTien.ToString("N0"), font));
+                            table.AddCell(new Phrase(ct.Sach?.TenSach ?? "(Không rõ)", font));
+                            table.AddCell(new Phrase(ct.SoLuong.ToString(), font));
+                            table.AddCell(new Phrase(ct.DonGia.ToString("N0"), font));
+                            table.AddCell(new Phrase(ct.ThanhTien.ToString("N0"), font));
                         }
 
                         document.Add(table);
 
-                        // 5️⃣ Tổng tiền
-                        document.Add(new iTextSharp.text.Paragraph($"Tổng cộng: {don.TongTien:N0} đ", font));
+                        document.Add(new Paragraph($"Tổng cộng: {don.TongTien:N0} đ", font));
+                        document.Add(new Paragraph($"Tiền khách đưa: {TienKhachDua:N0} đ", font));
+                        document.Add(new Paragraph($"Tiền thừa: {TienThua:N0} đ", font));
 
                         document.Close();
                     }

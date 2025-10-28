@@ -82,7 +82,7 @@
             this.btnTaiLai});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1215, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1215, 34);
             this.toolStrip1.TabIndex = 2;
             // 
             // btnTatCa
@@ -90,82 +90,82 @@
             this.btnTatCa.Image = ((System.Drawing.Image)(resources.GetObject("btnTatCa.Image")));
             this.btnTatCa.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTatCa.Name = "btnTatCa";
-            this.btnTatCa.Size = new System.Drawing.Size(151, 28);
+            this.btnTatCa.Size = new System.Drawing.Size(176, 29);
             this.btnTatCa.Text = "Tất Cả Đơn Hàng";
             this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 34);
             // 
             // btnXuLy
             // 
             this.btnXuLy.Image = ((System.Drawing.Image)(resources.GetObject("btnXuLy.Image")));
             this.btnXuLy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnXuLy.Name = "btnXuLy";
-            this.btnXuLy.Size = new System.Drawing.Size(184, 28);
+            this.btnXuLy.Size = new System.Drawing.Size(218, 29);
             this.btnXuLy.Text = "Đơn Hàng Đang Xử Lý";
             this.btnXuLy.Click += new System.EventHandler(this.btnXuLy_Click_1);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(0, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(0, 29);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 34);
             // 
             // btnDangGiao
             // 
             this.btnDangGiao.Image = ((System.Drawing.Image)(resources.GetObject("btnDangGiao.Image")));
             this.btnDangGiao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDangGiao.Name = "btnDangGiao";
-            this.btnDangGiao.Size = new System.Drawing.Size(180, 28);
+            this.btnDangGiao.Size = new System.Drawing.Size(211, 29);
             this.btnDangGiao.Text = "Đơn Hàng Đang Giao";
             this.btnDangGiao.Click += new System.EventHandler(this.btnDangGiao_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 34);
             // 
             // btnĐaGiao
             // 
             this.btnĐaGiao.Image = ((System.Drawing.Image)(resources.GetObject("btnĐaGiao.Image")));
             this.btnĐaGiao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnĐaGiao.Name = "btnĐaGiao";
-            this.btnĐaGiao.Size = new System.Drawing.Size(163, 28);
+            this.btnĐaGiao.Size = new System.Drawing.Size(190, 29);
             this.btnĐaGiao.Text = "Đơn Hàng Đã Giao";
             this.btnĐaGiao.Click += new System.EventHandler(this.btnĐaGiao_Click_1);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 34);
             // 
             // btnDaban
             // 
             this.btnDaban.Image = ((System.Drawing.Image)(resources.GetObject("btnDaban.Image")));
             this.btnDaban.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDaban.Name = "btnDaban";
-            this.btnDaban.Size = new System.Drawing.Size(157, 28);
+            this.btnDaban.Size = new System.Drawing.Size(183, 29);
             this.btnDaban.Text = "Đơn Hàng Đã Bán";
             this.btnDaban.Click += new System.EventHandler(this.btnDaban_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 34);
             // 
             // btnTaiLai
             // 
             this.btnTaiLai.Image = ((System.Drawing.Image)(resources.GetObject("btnTaiLai.Image")));
             this.btnTaiLai.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTaiLai.Name = "btnTaiLai";
-            this.btnTaiLai.Size = new System.Drawing.Size(80, 28);
+            this.btnTaiLai.Size = new System.Drawing.Size(88, 29);
             this.btnTaiLai.Text = "Tải Lại";
             this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
             // 
@@ -194,7 +194,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(9, 78);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(0, 99);
             this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersVisible = false;
@@ -228,8 +228,8 @@
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.DefaultText = "";
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSearch.Location = new System.Drawing.Point(9, 36);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Location = new System.Drawing.Point(4, 43);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Nhập mã đơn / tên KH / NV / SĐT...";
             this.txtSearch.SelectedText = "";
@@ -249,7 +249,7 @@
             "Tất cả",
             "Online",
             "Trực tiếp"});
-            this.cbLoaiDon.Location = new System.Drawing.Point(329, 36);
+            this.cbLoaiDon.Location = new System.Drawing.Point(322, 43);
             this.cbLoaiDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbLoaiDon.Name = "cbLoaiDon";
             this.cbLoaiDon.Size = new System.Drawing.Size(134, 36);
@@ -260,7 +260,7 @@
             this.dtTuNgay.Checked = true;
             this.dtTuNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtTuNgay.Location = new System.Drawing.Point(471, 36);
+            this.dtTuNgay.Location = new System.Drawing.Point(474, 43);
             this.dtTuNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtTuNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtTuNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -274,7 +274,7 @@
             this.dtDenNgay.Checked = true;
             this.dtDenNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDenNgay.Location = new System.Drawing.Point(613, 36);
+            this.dtDenNgay.Location = new System.Drawing.Point(617, 43);
             this.dtDenNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtDenNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtDenNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -288,7 +288,7 @@
             // 
             this.btnLoc.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnLoc.ForeColor = System.Drawing.Color.White;
-            this.btnLoc.Location = new System.Drawing.Point(756, 36);
+            this.btnLoc.Location = new System.Drawing.Point(756, 43);
             this.btnLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoc.Name = "btnLoc";
             this.btnLoc.Size = new System.Drawing.Size(89, 29);

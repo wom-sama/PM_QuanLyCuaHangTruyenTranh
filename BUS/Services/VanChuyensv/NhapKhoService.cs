@@ -172,6 +172,20 @@ namespace PM.BUS.Services.VanChuyensv
                 return false;
             }
         }
+        public IEnumerable<NhapKho> GetByKho(string maKho)
+        {
+            try
+            {
+                return _unitOfWork.NhapKhoRepository.GetAll()
+                    .Where(nk => nk.MaKho == maKho)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy phiếu nhập kho: " + ex.Message);
+                return new List<NhapKho>();
+            }
+        }
     }
 
 }

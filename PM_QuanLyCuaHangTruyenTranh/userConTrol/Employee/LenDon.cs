@@ -28,6 +28,9 @@ namespace PM.GUI.userConTrol.Employee
 
         private string lastCreatedOrderID = null;
         private decimal lastOrderTotal = 0;
+        private decimal tienKhachDua = 0;
+        private decimal tienThua = 0;
+
 
         public LenDon()
         {
@@ -103,7 +106,7 @@ namespace PM.GUI.userConTrol.Employee
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Giữ nguyên (không làm gì) như bản gốc
+           
         }
 
         // Sự kiện tạo đơn (giữ nguyên tên sự kiện)
@@ -208,7 +211,28 @@ namespace PM.GUI.userConTrol.Employee
                 // 🔹 Thông báo tạo đơn thành công
                 MessageBox.Show($"✅ Đơn hàng {maDonHang} đã được tạo thành công!\nTrạng thái: Chờ thanh toán\nTổng tiền: {tongTien:N0}đ",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Yêu cầu nhập tiền khách đưa
+                bool validInput = false;
+                while (!validInput)
+                {
+                    string inputTien = Interaction.InputBox($"Tổng tiền đơn: {tongTien:N0}đ\nNhập số tiền khách đưa:", "Thanh toán trực tiếp", tongTien.ToString("N0"));
+                    inputTien = inputTien.Replace(",", "").Trim(); // loại bỏ dấu phẩy nếu có
 
+                    if (decimal.TryParse(inputTien, out tienKhachDua) && tienKhachDua > 0)
+                    {
+                        validInput = true;
+                        tienThua = tienKhachDua - tongTien;
+
+                        if (tienThua >= 0)
+                            MessageBox.Show($"Khách đưa: {tienKhachDua:N0}đ\nTiền thừa: {tienThua:N0}đ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show($"Khách đưa chưa đủ tiền! Thiếu: {-tienThua:N0}đ", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Số tiền nhập không hợp lệ, vui lòng nhập lại!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
                 // Làm mới danh sách
                 LoadSachData();
             }
@@ -221,7 +245,7 @@ namespace PM.GUI.userConTrol.Employee
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
-            // giữ nguyên
+            
         }
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
@@ -246,33 +270,6 @@ namespace PM.GUI.userConTrol.Employee
                 .ToList();
 
             dgvSach.DataSource = data;
-        }
-
-        private void btnXemDon_Click(object sender, EventArgs e)
-        {
-            Form frm = new Form();
-            frm.Text = "Xem Đơn Hàng";
-
-            // Tạo instance của UserControl
-            XemDon xemDonUC = new XemDon();
-            xemDonUC.Dock = DockStyle.Fill; // cho UserControl chiếm toàn bộ form
-
-            frm.Controls.Add(xemDonUC);
-            frm.Show(); // hiển thị form
-        }
-
-   
-
-      
-
-        private void btnduyetdon_Click(object sender, EventArgs e)
-        {
-            Form frm = new Form();
-            frm.Text = "Duyệt Đơn Hàng";
-            DuyetDon uc = new DuyetDon();
-            uc.Dock = DockStyle.Fill;
-            frm.Controls.Add(uc);
-            frm.ShowDialog(); // modal
         }
 
         // Tạo QR (dùng QrHelper.TaoQRThanhToan)
@@ -373,7 +370,6 @@ namespace PM.GUI.userConTrol.Employee
                     return;
                 }
 
-                // Tìm đơn hàng vừa tạo thông qua service
                 var don = _donHangService.GetById(lastCreatedOrderID);
                 if (don == null)
                 {
@@ -381,16 +377,15 @@ namespace PM.GUI.userConTrol.Employee
                     return;
                 }
 
-                // Cập nhật trạng thái đơn hàng thành "Đã thanh toán"
                 don.TrangThai = "Đã thanh toán";
-                //don.LoaiDon = "Trực tiếp";
                 _donHangService.Update(don);
 
                 MessageBox.Show($"✅ Đơn hàng {lastCreatedOrderID} đã được thanh toán và sẵn sàng in!",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Mở form In Hóa Đơn
-                InHoaDon hoaDonUC = new InHoaDon(lastCreatedOrderID);
+                // Truyền luôn tiền khách đưa và tiền thừa
+                InHoaDon hoaDonUC = new InHoaDon(lastCreatedOrderID, tienKhachDua, tienThua);
+
                 Form frm = new Form();
                 frm.Text = "Hóa đơn bán hàng";
                 frm.Size = new Size(900, 700);
@@ -398,8 +393,8 @@ namespace PM.GUI.userConTrol.Employee
                 frm.Controls.Add(hoaDonUC);
                 frm.StartPosition = FormStartPosition.CenterScreen;
                 frm.ShowDialog();
-                ResetUIAfterPrint();
 
+                ResetUIAfterPrint();
                 LoadSachData();
             }
             catch (Exception ex)
@@ -443,11 +438,6 @@ namespace PM.GUI.userConTrol.Employee
             picQR.Visible = false;
             btnXacNhan.Visible = false;
             btnXacNhan.Enabled = false;
-        }
-
-        private void guna2Button1_Click_1(object sender, EventArgs e)
-        {
-            LoadSachData();
         }
 
         private void picQR_Click(object sender, EventArgs e)

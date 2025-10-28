@@ -17,7 +17,7 @@ namespace PM.GUI.Main
     {
         private bool isMenuVisible = false; // Trạng thái panel menu
         private Timer menuTimer;            // Timer để tạo hiệu ứng
-        private int targetWidth = 217;      // Độ rộng tối đa của panelMenu
+        private int targetWidth = 180;      // Độ rộng tối đa của panelMenu  
         private int slideSpeed = 15;        // Tốc độ trượt
 
         private readonly QuanLyDonHangBUS _bus = new QuanLyDonHangBUS();
@@ -25,6 +25,10 @@ namespace PM.GUI.Main
         private Label lblThongBao;         // Hiển thị số lượng đơn chờ
         private Timer timerCapNhat;        // Cập nhật định kỳ
         private ToolTip _toolTipThongBao;  // Tooltip hiển thị khi hover
+        private Timer timerPanelHienThi;
+        private int targetHeightPanelHienThi = 1200; // chiều cao bạn muốn
+        private int slideSpeedPanel = 15;
+
         public NhanVienForm()
         {
             InitializeComponent();
@@ -140,6 +144,12 @@ namespace PM.GUI.Main
             menuTimer = new Timer();
             menuTimer.Interval = 10; // 10ms mỗi tick => hiệu ứng mượt
             menuTimer.Tick += MenuTimer_Tick;
+            panelhienthi.Height = 0; // bắt đầu từ 0
+            timerPanelHienThi = new Timer();
+            timerPanelHienThi.Interval = 10;
+            timerPanelHienThi.Tick += TimerPanelHienThi_Tick;
+            timerPanelHienThi.Start();
+
         }
 
         private void btnChuong_Click(object sender, EventArgs e)
@@ -243,13 +253,32 @@ namespace PM.GUI.Main
             // Xóa các control cũ
             panelhienthi.Controls.Clear();
 
-            // Cấu hình UC
+            // Thêm UC mới nhưng để panel bắt đầu từ chiều cao 0
+            panelhienthi.Height = 0;
+            panelhienthi.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
             uc.BringToFront();
 
-            // Thêm vào panel hiển thị
-            panelhienthi.Controls.Add(uc);
+            // Bật timer trượt lên
+            timerPanelHienThi.Start();
+        }
+        private void TimerPanelHienThi_Tick(object sender, EventArgs e)
+        {
+            if (panelhienthi.Height < targetHeightPanelHienThi)
+            {
+                panelhienthi.Height += slideSpeedPanel;
+                if (panelhienthi.Height >= targetHeightPanelHienThi)
+                {
+                    panelhienthi.Height = targetHeightPanelHienThi;
+                    timerPanelHienThi.Stop();
+                }
+            }
         }
 
+        private void btnKho_Click(object sender, EventArgs e)
+        {
+            var uc = new Kho(HienThiUserControl); // ✅ truyền delegate
+            HienThiUserControl(uc);
+        }
     }
 }

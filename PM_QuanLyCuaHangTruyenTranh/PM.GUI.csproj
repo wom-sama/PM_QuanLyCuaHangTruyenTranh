@@ -212,6 +212,12 @@
     <Compile Include="userConTrol\Employee\CaLam.Designer.cs">
       <DependentUpon>CaLam.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\ChiTietKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\ChiTietKho.Designer.cs">
+      <DependentUpon>ChiTietKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\DuyetDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +229,12 @@
     </Compile>
     <Compile Include="userConTrol\Employee\InHoaDon.Designer.cs">
       <DependentUpon>InHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Employee\Kho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\Kho.Designer.cs">
+      <DependentUpon>Kho.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Employee\LenDon.cs">
       <SubType>UserControl</SubType>
@@ -288,11 +300,17 @@
     <EmbeddedResource Include="userConTrol\Employee\CaLam.resx">
       <DependentUpon>CaLam.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\ChiTietKho.resx">
+      <DependentUpon>ChiTietKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\DuyetDon.resx">
       <DependentUpon>DuyetDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\InHoaDon.resx">
       <DependentUpon>InHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\Kho.resx">
+      <DependentUpon>Kho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\LenDon.resx">
       <DependentUpon>LenDon.cs</DependentUpon>

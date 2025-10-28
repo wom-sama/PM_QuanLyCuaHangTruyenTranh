@@ -16,6 +16,8 @@ namespace PM.GUI.userConTrol.Employee
         private DataGridView dataGridViewCT;
         private Label lblTongTien;
         private Label lblCamOn;
+        private Label lblTienKhachDua; // mới
+        private Label lblTienThua;     // mới
         private Button btnXuatPDF;
 
         protected override void Dispose(bool disposing)
@@ -30,6 +32,8 @@ namespace PM.GUI.userConTrol.Employee
             this.panelInvoice = new System.Windows.Forms.Panel();
             this.lblCamOn = new System.Windows.Forms.Label();
             this.lblTongTien = new System.Windows.Forms.Label();
+            this.lblTienKhachDua = new System.Windows.Forms.Label();
+            this.lblTienThua = new System.Windows.Forms.Label();
             this.dataGridViewCT = new System.Windows.Forms.DataGridView();
             this.lblNhanVien = new System.Windows.Forms.Label();
             this.lblNgayLap = new System.Windows.Forms.Label();
@@ -46,6 +50,8 @@ namespace PM.GUI.userConTrol.Employee
             this.panelInvoice.BackColor = System.Drawing.Color.White;
             this.panelInvoice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInvoice.Controls.Add(this.lblCamOn);
+            this.panelInvoice.Controls.Add(this.lblTienThua);
+            this.panelInvoice.Controls.Add(this.lblTienKhachDua);
             this.panelInvoice.Controls.Add(this.lblTongTien);
             this.panelInvoice.Controls.Add(this.dataGridViewCT);
             this.panelInvoice.Controls.Add(this.lblNhanVien);
@@ -64,10 +70,10 @@ namespace PM.GUI.userConTrol.Employee
             // 
             this.lblCamOn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
             this.lblCamOn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblCamOn.Location = new System.Drawing.Point(0, 800);
+            this.lblCamOn.Location = new System.Drawing.Point(0, 840);
             this.lblCamOn.Name = "lblCamOn";
             this.lblCamOn.Size = new System.Drawing.Size(1012, 31);
-            this.lblCamOn.TabIndex = 7;
+            this.lblCamOn.TabIndex = 8;
             this.lblCamOn.Text = "❤ Cảm ơn quý khách đã mua hàng!";
             this.lblCamOn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -81,6 +87,26 @@ namespace PM.GUI.userConTrol.Employee
             this.lblTongTien.TabIndex = 6;
             this.lblTongTien.Text = "Tổng cộng: ";
             this.lblTongTien.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTienKhachDua
+            // 
+            this.lblTienKhachDua.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTienKhachDua.ForeColor = System.Drawing.Color.Green;
+            this.lblTienKhachDua.Location = new System.Drawing.Point(45, 760);
+            this.lblTienKhachDua.Name = "lblTienKhachDua";
+            this.lblTienKhachDua.Size = new System.Drawing.Size(400, 29);
+            this.lblTienKhachDua.TabIndex = 9;
+            this.lblTienKhachDua.Text = "Tiền khách đưa: ";
+            // 
+            // lblTienThua
+            // 
+            this.lblTienThua.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTienThua.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblTienThua.Location = new System.Drawing.Point(45, 790);
+            this.lblTienThua.Name = "lblTienThua";
+            this.lblTienThua.Size = new System.Drawing.Size(400, 29);
+            this.lblTienThua.TabIndex = 10;
+            this.lblTienThua.Text = "Tiền thừa: ";
             // 
             // dataGridViewCT
             // 
@@ -178,7 +204,6 @@ namespace PM.GUI.userConTrol.Employee
             this.panelInvoice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCT)).EndInit();
             this.ResumeLayout(false);
-
         }
     }
 }
