@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace PM.GUI.userConTrol.Client
 {
-    public partial class KeSach : UserControl
+    public partial class LichSuMuaHang : UserControl
     {
-        public KeSach()
+        public LichSuMuaHang()
         {
             InitializeComponent();
         }
     }
 }
-

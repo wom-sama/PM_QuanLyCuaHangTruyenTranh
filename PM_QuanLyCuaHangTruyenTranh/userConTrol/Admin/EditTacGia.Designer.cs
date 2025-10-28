@@ -39,13 +39,14 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(514, 346);
             this.guna2Panel1.TabIndex = 0;
-
-            // EditTacGia
+            // 
+            // Edit_TacGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.guna2Panel1);
-            this.Name = "EditTacGia";
+            this.DoubleBuffered = true;
+            this.Name = "Edit_TacGia";
             this.Size = new System.Drawing.Size(514, 346);
             this.ResumeLayout(false);
 

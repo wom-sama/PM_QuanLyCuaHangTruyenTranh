@@ -66,6 +66,10 @@
     <Compile Include="Migrations\202510271320416_XoaBanQuyen.Designer.cs">
       <DependentUpon>202510271320416_XoaBanQuyen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510281201096_AddNgaySinhAnhDaiDien.cs" />
+    <Compile Include="Migrations\202510281201096_AddNgaySinhAnhDaiDien.Designer.cs">
+      <DependentUpon>202510281201096_AddNgaySinhAnhDaiDien.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordHelperDAL.cs" />
     <Compile Include="Migrations\202510080702097_InitialCreate.cs" />
     <Compile Include="Migrations\202510080702097_InitialCreate.Designer.cs">
@@ -161,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510271320416_XoaBanQuyen.resx">
       <DependentUpon>202510271320416_XoaBanQuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510281201096_AddNgaySinhAnhDaiDien.resx">
+      <DependentUpon>202510281201096_AddNgaySinhAnhDaiDien.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,9 @@
 ﻿using Guna.UI2.WinForms;
 using PM.BUS.Services.Sachsv;
-using PM.DAL;
 using PM.DAL.Models;
 using PM.GUI.FormThongBao;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +19,9 @@ namespace PM.GUI.userConTrol.Admin
         private Guna2Panel pnlForm;
         private Guna2TextBox txtMa, txtTen, txtQuocTich, txtGhiChu;
         private Guna2Button btnSave, btnCancel;
+        private FlowLayoutPanel pnlTop;
+        private bool _isAnimating = false;
+
 
         public Edit_TacGia()
         {
@@ -26,11 +29,12 @@ namespace PM.GUI.userConTrol.Admin
 
             if (!DesignMode)
             {
-                var unitOfWork = new UnitOfWork();
-                _tacGiaService = new TacGiaService(unitOfWork);
+                
+                _tacGiaService = new TacGiaService();
 
                 BuildUI();
                 _ = LoadTacGiaAsync();
+                _ = AnimateTopPanelAsync(); // hiệu ứng load
             }
         }
 
@@ -53,14 +57,15 @@ namespace PM.GUI.userConTrol.Admin
             btnDelete = CreateButton("Xóa", Delete_Click);
             btnRefresh = CreateButton("Làm mới", async (s, e) => await LoadTacGiaAsync());
 
-            var pnlTop = new FlowLayoutPanel
+            pnlTop = new FlowLayoutPanel
             {
                 Dock = DockStyle.Top,
                 Height = 50,
-                FlowDirection = FlowDirection.LeftToRight
+                FlowDirection = FlowDirection.LeftToRight,
+                BackColor = Color.WhiteSmoke,
+                Padding = new Padding(10, 8, 10, 8)
             };
             pnlTop.Controls.AddRange(new Control[] { txtSearch, btnAdd, btnEdit, btnDelete, btnRefresh });
-            guna2Panel1.Controls.Add(pnlTop);
 
             dgvTacGia = new Guna2DataGridView
             {
@@ -68,7 +73,8 @@ namespace PM.GUI.userConTrol.Admin
                 AutoGenerateColumns = false,
                 ReadOnly = true,
                 AllowUserToAddRows = false,
-                SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+                Margin = new Padding(0, 5, 0, 0)
             };
 
             dgvTacGia.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã TG", DataPropertyName = "MaTacGia" });
@@ -77,6 +83,7 @@ namespace PM.GUI.userConTrol.Admin
             dgvTacGia.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ghi chú", DataPropertyName = "GhiChu", Width = 200 });
 
             guna2Panel1.Controls.Add(dgvTacGia);
+            guna2Panel1.Controls.Add(pnlTop);
         }
 
         private Guna2Button CreateButton(string text, EventHandler click)
@@ -134,8 +141,6 @@ namespace PM.GUI.userConTrol.Admin
             }
 
             var tg = (TacGia)dgvTacGia.SelectedRows[0].DataBoundItem;
-
-            // Có thể thay bằng form xác nhận riêng nếu bạn muốn
             if (MessageBox.Show($"Bạn có chắc muốn xóa tác giả \"{tg.TenTacGia}\"?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 await _tacGiaService.DeleteAsync(tg.MaTacGia);
@@ -144,28 +149,35 @@ namespace PM.GUI.userConTrol.Admin
             }
         }
 
-        // === Hiển thị form thêm/sửa với hiệu ứng slide ===
-        private void ShowForm(string title, TacGia tg = null)
+        // === Hiển thị form thêm/sửa với hiệu ứng ===
+        private async void ShowForm(string title, TacGia tg = null)
         {
+            // Nếu panel đang mở => đóng trước, sau đó mở lại
+            if (pnlForm != null && guna2Panel1.Controls.Contains(pnlForm))
+            {
+                await AnimatePanel(pnlForm, false); // chờ đóng xong
+            }
+
             pnlForm = new Guna2Panel
             {
-                Size = new System.Drawing.Size(300, 300),
+                Size = new Size(0, guna2Panel1.Height),
                 BorderRadius = 12,
                 BorderThickness = 1,
-                BorderColor = System.Drawing.Color.Gray,
-                BackColor = System.Drawing.Color.White,
+                BorderColor = Color.Gray,
+                BackColor = Color.White,
                 Dock = DockStyle.Right,
                 Padding = new Padding(10),
-                Visible = false
+                Visible = true,
+                ShadowDecoration = { Enabled = true, Depth = 10, Color = Color.FromArgb(60, 0, 0, 0) }
             };
 
             var lblTitle = new Label
             {
                 Text = title,
-                Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold),
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 Dock = DockStyle.Top,
                 Height = 35,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+                TextAlign = ContentAlignment.MiddleCenter
             };
 
             txtMa = new Guna2TextBox { PlaceholderText = "Mã tác giả", Text = tg?.MaTacGia };
@@ -174,7 +186,7 @@ namespace PM.GUI.userConTrol.Admin
             txtGhiChu = new Guna2TextBox { PlaceholderText = "Ghi chú", Text = tg?.GhiChu, Multiline = true, Height = 60 };
 
             btnSave = CreateButton("Lưu", async (s, e) => await Save_Click(tg));
-            btnCancel = CreateButton("Hủy", (s, e) => AnimatePanel(pnlForm, false));
+            btnCancel = CreateButton("Hủy", async (s, e) => await AnimatePanel(pnlForm, false));
 
             var flow = new FlowLayoutPanel
             {
@@ -188,35 +200,96 @@ namespace PM.GUI.userConTrol.Admin
             guna2Panel1.Controls.Add(pnlForm);
             pnlForm.BringToFront();
 
-            AnimatePanel(pnlForm, true);
+            await AnimatePanel(pnlForm, true);
         }
 
-        // === Hiệu ứng slide panel ===
-        private async void AnimatePanel(Guna2Panel panel, bool show)
+
+
+        // === Hiệu ứng slide + fade ===
+        private async Task AnimatePanel(Guna2Panel panel, bool show)
         {
-            int step = 20;
-            int targetWidth = 300;
+            if (_isAnimating) return; // chặn spam khi đang chạy animation
+            _isAnimating = true;
+
+            // 🔒 Tạm vô hiệu hóa các nút thao tác CRUD
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = false;
+
+            int targetWidth = 320;
+            int frameRate = 120;
+            int totalDuration = show ? 220 : 160; // đóng nhanh hơn
+            int frameDelay = 1000 / frameRate;
+            int steps = totalDuration / frameDelay;
+
+            panel.GetType()
+                .GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                ?.SetValue(panel, true, null);
+
+            panel.SuspendLayout();
 
             if (show)
             {
-                panel.Width = 0;
                 panel.Visible = true;
-                while (panel.Width < targetWidth)
+                panel.Width = 0;
+                panel.BackColor = Color.FromArgb(0, 255, 255, 255);
+
+                for (int i = 0; i <= steps; i++)
                 {
-                    panel.Width += step;
-                    await Task.Delay(5);
+                    double t = (double)i / steps;
+                    double eased = 1 - Math.Pow(1 - t, 3); // easing cubic-out
+                    panel.Width = (int)(targetWidth * eased);
+
+                    int opacity = (int)(255 * eased);
+                    panel.BackColor = Color.FromArgb(opacity, 255, 255, 255);
+                    await Task.Delay(frameDelay);
                 }
+
                 panel.Width = targetWidth;
+                panel.BackColor = Color.White;
             }
             else
             {
-                while (panel.Width > 0)
+                panel.Visible = true;
+
+                for (int i = steps; i >= 0; i--)
                 {
-                    panel.Width -= step;
-                    await Task.Delay(5);
+                    double t = (double)i / steps;
+                    double eased = t * t * t; // easing cubic-in
+                    panel.Width = (int)(targetWidth * eased);
+
+                    int opacity = (int)(255 * eased);
+                    panel.BackColor = Color.FromArgb(opacity, 255, 255, 255);
+                    await Task.Delay(frameDelay);
                 }
-                guna2Panel1.Controls.Remove(panel);
+
+                panel.Width = 0;
+                panel.Visible = false;
+
+                if (panel.Parent != null)
+                    panel.Parent.Controls.Remove(panel);
+
+                pnlForm = null;
             }
+
+            panel.ResumeLayout();
+
+            // 🔓 Mở lại các nút CRUD sau khi animation hoàn tất
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = true;
+
+            _isAnimating = false;
+        }
+
+
+        // === Hiệu ứng top panel khi load ===
+        private async Task AnimateTopPanelAsync()
+        {
+            pnlTop.Top = -pnlTop.Height;
+            await Task.Delay(100);
+            for (int i = -pnlTop.Height; i < 0; i += 5)
+            {
+                pnlTop.Top = i;
+                await Task.Delay(5);
+            }
+            pnlTop.Top = 0;
         }
 
         // === Lưu tác giả ===
@@ -253,7 +326,7 @@ namespace PM.GUI.userConTrol.Admin
             if (success)
             {
                 ShowMessage("Lưu thành công!");
-                AnimatePanel(pnlForm, false);
+               await AnimatePanel(pnlForm, false);
                 await LoadTacGiaAsync();
             }
             else
@@ -262,7 +335,7 @@ namespace PM.GUI.userConTrol.Admin
             }
         }
 
-        // === Hàm hiển thị FormMessage ===
+        // === Hiển thị FormMessage ===
         private void ShowMessage(string text)
         {
             var fm = new FormMessage(text);

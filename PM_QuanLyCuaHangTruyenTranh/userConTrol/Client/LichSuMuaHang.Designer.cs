@@ -1,6 +1,6 @@
 ﻿namespace PM.GUI.userConTrol.Client
 {
-    partial class KeSach
+    partial class LichSuMuaHang
     {
         /// <summary> 
         /// Required designer variable.

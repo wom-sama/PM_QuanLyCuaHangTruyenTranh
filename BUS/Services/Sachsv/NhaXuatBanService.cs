@@ -16,7 +16,10 @@ namespace PM.BUS.Services.Sachsv
         {
             _unitOfWork = unitOfWork;
         }
-
+    public NhaXuatBanService() 
+        { 
+            _unitOfWork= new UnitOfWork();
+        }
         // ==================== LẤY DỮ LIỆU ====================
 
         public IEnumerable<NhaXuatBan> GetAll()

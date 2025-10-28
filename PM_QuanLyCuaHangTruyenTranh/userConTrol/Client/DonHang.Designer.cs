@@ -1,6 +1,6 @@
 ﻿namespace PM.GUI.userConTrol.Client
 {
-    partial class KeSach
+    partial class DonHang
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // KeSach
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "KeSach";
+            this.Size = new System.Drawing.Size(1357, 758);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
