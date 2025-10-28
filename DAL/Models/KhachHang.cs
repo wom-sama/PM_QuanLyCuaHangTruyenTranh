@@ -24,6 +24,8 @@ namespace PM.DAL.Models
         public string DiaChi { get; set; }
 
         public DateTime NgayDangKy { get; set; } = DateTime.Now;
+        public byte[] AnhDaiDien { get; set; }
+        public DateTime NgaySinh { get; set; }
 
         // Quan hệ 1-1 tới TaiKhoan
         public virtual TaiKhoan TaiKhoan { get; set; }

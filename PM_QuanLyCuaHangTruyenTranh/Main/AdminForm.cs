@@ -59,7 +59,10 @@ namespace PM.GUI.Main
             }
             shadow_PannelCN.Visible = false;
             shadow_PannelCN.Left = -shadow_PannelCN.Width;
-           
+            //
+            this.DoubleBuffered = true;
+
+
 
         }
         //hien thi control su dung
@@ -181,6 +184,15 @@ namespace PM.GUI.Main
 
         private void edit_BOOk1_Load_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void btn_DSTG_Click(object sender, EventArgs e)
+        {
+            HienThiUserControl(edit_TacGia1);
+            titleCN.Text = btn_DSTG.Text;
+            Edit_Lable.AdjustFontSize(titleCN);
+            btnCN_Click(sender, e);
 
         }
     }

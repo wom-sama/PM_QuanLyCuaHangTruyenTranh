@@ -32,6 +32,8 @@ namespace PM.DAL.Models
 
         public bool TrangThai { get; set; }
 
+        public byte[] AnhDaiDien { get; set; }
+
         [ForeignKey("ChucVu")]
         public string MaChucVu { get; set; }
         public virtual ChucVu ChucVu { get; set; }

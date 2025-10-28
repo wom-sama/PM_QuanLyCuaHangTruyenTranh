@@ -16,6 +16,9 @@ namespace PM.BUS.Services.Sachsv
         {
             _unitOfWork = unitOfWork;
         }
+        public TacGiaService() {
+            _unitOfWork = new UnitOfWork();
+        }
 
         // ==================== LẤY DỮ LIỆU ====================
 
