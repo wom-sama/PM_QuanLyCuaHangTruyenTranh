@@ -154,9 +154,9 @@ namespace PM.GUI
                 db.SaveChanges();
 
                 // ----- 7. KhachHang -----
-                var kh1 = new KhachHang { TenDangNhap = tkKh1.TenDangNhap, HoTen = "Anh Nguyễn", SoDienThoai = "0911222333", Email = "anh@example.com", DiaChi = "Quận 3, TP.HCM", NgayDangKy = DateTime.Now, TaiKhoan = tkKh1 };
-                var kh2 = new KhachHang { TenDangNhap = tkKh2.TenDangNhap, HoTen = "Hương Lê", SoDienThoai = "0911333444", Email = "huong@example.com", DiaChi = "Cầu Giấy, Hà Nội", NgayDangKy = DateTime.Now, TaiKhoan = tkKh2 };
-                var kh3 = new KhachHang { TenDangNhap = tkKh3.TenDangNhap, HoTen = "Minh Trần", SoDienThoai = "0911444555", Email = "minh@example.com", DiaChi = "Phú Nhuận, TP.HCM", NgayDangKy = DateTime.Now, TaiKhoan = tkKh3 };
+                var kh1 = new KhachHang { TenDangNhap = tkKh1.TenDangNhap, HoTen = "Anh Nguyễn", SoDienThoai = "0911222333", Email = "anh@example.com", DiaChi = "Quận 3, TP.HCM",AnhDaiDien=null ,NgayDangKy = DateTime.Now, NgaySinh = DateTime.Now, TaiKhoan = tkKh1 };
+                var kh2 = new KhachHang { TenDangNhap = tkKh2.TenDangNhap, HoTen = "Hương Lê", SoDienThoai = "0911333444", Email = "huong@example.com", DiaChi = "Cầu Giấy, Hà Nội", AnhDaiDien=null,NgayDangKy = DateTime.Now, NgaySinh = DateTime.Now, TaiKhoan = tkKh2 };
+                var kh3 = new KhachHang { TenDangNhap = tkKh3.TenDangNhap, HoTen = "Minh Trần", SoDienThoai = "0911444555", Email = "minh@example.com", DiaChi = "Phú Nhuận, TP.HCM", AnhDaiDien=null,NgayDangKy = DateTime.Now,NgaySinh=DateTime.Now, TaiKhoan = tkKh3 };
                 db.KhachHangs.AddRange(new[] { kh1, kh2, kh3 });
                 db.SaveChanges();
 

@@ -25,11 +25,12 @@ namespace PM.GUI.userConTrol.Admin
 
         public Edit_TacGia()
         {
-            InitializeComponent();
+            
 
             if (!DesignMode)
             {
-                
+                InitializeComponent();
+
                 _tacGiaService = new TacGiaService();
 
                 BuildUI();

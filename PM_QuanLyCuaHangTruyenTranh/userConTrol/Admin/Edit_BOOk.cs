@@ -19,7 +19,9 @@ namespace PM.GUI.userConTrol.Admin
 
         public Edit_BOOk()
         {
+            if (!DesignMode) { 
             InitializeComponent();
+        }
         }
 
         private void Edit_BOOk_Load(object sender, EventArgs e)

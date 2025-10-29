@@ -79,12 +79,7 @@ namespace PM.GUI.Main
         }
         
         // khong hien thi ngay
-        private void add_Book1_Load(object sender, EventArgs e)
-        {
-            // an cac control
-            add_Book1.Visible = false;
-            add_Book1.Enabled = false;
-        }
+      
 
         private void titleCN_Click(object sender, EventArgs e)
         {

@@ -13,10 +13,10 @@ namespace PM.GUI.userConTrol.Admin
 {
     public partial class Add_Book : UserControl
     {
-        private readonly TacGiaService _tacGiaService = new TacGiaService();
-        private readonly TheLoaiService _theLoaiService = new TheLoaiService();
-        private readonly NhaXuatBanService _nxbService = new NhaXuatBanService();
-        private readonly SachService _sachService = new SachService();
+        private TacGiaService _tacGiaService;
+        private TheLoaiService _theLoaiService;
+        private NhaXuatBanService _nxbService;
+        private SachService _sachService;
 
         private byte[] _biaSachData;
 
@@ -29,9 +29,19 @@ namespace PM.GUI.userConTrol.Admin
 
         public Add_Book()
         {
-            InitializeComponent();
-            BuildUI();
-            Load += Add_Book_Load;
+           
+            if (!DesignMode) // 🔹 chỉ chạy khi đang chạy thật, không phải khi mở trong Designer
+            {
+                InitializeComponent();
+                _tacGiaService = new TacGiaService();
+                _theLoaiService = new TheLoaiService();
+                _nxbService = new NhaXuatBanService();
+                _sachService = new SachService();
+
+                BuildUI();
+                Load += Add_Book_Load;
+            }
+            
         }
 
         private void Add_Book_Load(object sender, EventArgs e)

@@ -34,6 +34,7 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@
             this.btnHistory = new System.Windows.Forms.Button();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblHoTen = new System.Windows.Forms.Label();
-            this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
@@ -105,8 +105,19 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(947, 457);
+            this.guna2Panel1.Size = new System.Drawing.Size(947, 461);
             this.guna2Panel1.TabIndex = 3;
+            // 
+            // picAvatar
+            // 
+            this.picAvatar.ImageRotate = 0F;
+            this.picAvatar.Location = new System.Drawing.Point(22, 12);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.picAvatar.Size = new System.Drawing.Size(182, 172);
+            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAvatar.TabIndex = 15;
+            this.picAvatar.TabStop = false;
             // 
             // panelMain
             // 
@@ -159,7 +170,7 @@
             this.btnSeeOrder.TabIndex = 9;
             this.btnSeeOrder.Text = "Xem đơn hàng";
             this.btnSeeOrder.UseVisualStyleBackColor = true;
-            this.btnSeeOrder.Click += new System.EventHandler(this.btnSeeOrder_Click);
+//            this.btnSeeOrder.Click += new System.EventHandler(this.btnSeeOrder_Click);
             // 
             // btnHistory
             // 
@@ -189,23 +200,12 @@
             this.lblHoTen.TabIndex = 4;
             this.lblHoTen.Text = "Họ và Tên:";
             // 
-            // picAvatar
-            // 
-            this.picAvatar.ImageRotate = 0F;
-            this.picAvatar.Location = new System.Drawing.Point(22, 12);
-            this.picAvatar.Name = "picAvatar";
-            this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.picAvatar.Size = new System.Drawing.Size(182, 172);
-            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picAvatar.TabIndex = 15;
-            this.picAvatar.TabStop = false;
-            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(947, 457);
+            this.ClientSize = new System.Drawing.Size(947, 461);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button2);

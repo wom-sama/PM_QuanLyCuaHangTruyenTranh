@@ -1,4 +1,5 @@
-﻿namespace PM.GUI.Main
+﻿
+namespace PM.GUI.Main
 {
     partial class AdminForm
     {
@@ -54,8 +55,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pannel_CT_CN.BackColor = System.Drawing.Color.White;
-            this.pannel_CT_CN.Controls.Add(this.edit_TacGia1);
-            this.pannel_CT_CN.Controls.Add(this.edit_BOOk1);
+           this.pannel_CT_CN.Controls.Add(this.edit_TacGia1);
+           this.pannel_CT_CN.Controls.Add(this.edit_BOOk1);
             this.pannel_CT_CN.Controls.Add(this.add_Book1);
             this.pannel_CT_CN.FillColor = System.Drawing.Color.RosyBrown;
             this.pannel_CT_CN.Location = new System.Drawing.Point(296, 193);
