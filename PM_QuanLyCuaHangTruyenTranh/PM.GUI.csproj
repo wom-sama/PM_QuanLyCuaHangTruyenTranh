@@ -193,6 +193,12 @@
     <Compile Include="userConTrol\Admin\Edit_BOOk.Designer.cs">
       <DependentUpon>Edit_BOOk.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\Edit_BOOK_CT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\Edit_BOOK_CT.Designer.cs">
+      <DependentUpon>Edit_BOOK_CT.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\KeSach.cs">
       <SubType>UserControl</SubType>
     </Compile>

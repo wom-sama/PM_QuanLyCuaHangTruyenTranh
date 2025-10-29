@@ -17,20 +17,24 @@ namespace PM.GUI.userConTrol.Admin
         private bool isTheLoaiVisible = false;
         private List<string> selectedTheLoais = new List<string>();
 
+        private Edit_BOOK_CT currentEditControl; // 🔹 Control chi tiết đang mở
+
         public Edit_BOOk()
         {
-            if (!DesignMode) { 
-            InitializeComponent();
-        }
+            if (!DesignMode)
+            {
+                InitializeComponent();
+            }
         }
 
         private void Edit_BOOk_Load(object sender, EventArgs e)
         {
-            // tránh chạy khi design
             if (DesignMode) return;
+
             LoadAllBooks();
             flpTheLoai.Visible = false;
-
+            btnThoat.Visible = false;
+            btnThoat.Enabled = false;
         }
 
         // ==================== HIỂN THỊ DANH SÁCH SÁCH ====================
@@ -46,6 +50,8 @@ namespace PM.GUI.userConTrol.Admin
                 panelDanhSach.Controls.Add(bookItem);
                 bookItem.OnBookClick += BookItem_OnBookClick;
             }
+
+            panelDanhSach.Visible = true;
         }
 
         // ==================== NÚT THỂ LOẠI ====================
@@ -61,13 +67,11 @@ namespace PM.GUI.userConTrol.Admin
             {
                 flpTheLoai.Visible = false;
                 panelDanhSach.Visible = true;
-
-                // Lọc sách theo thể loại đã chọn
                 FilterBooksBySelectedTheLoai();
             }
         }
 
-        // ==================== HIỂN THỊ CÁC THỂ LOẠI DƯỚI DẠNG CHECKBOX ====================
+        // ==================== HIỂN THỊ CÁC THỂ LOẠI ====================
         private void ShowTheLoaiList()
         {
             flpTheLoai.Controls.Clear();
@@ -109,7 +113,7 @@ namespace PM.GUI.userConTrol.Admin
         {
             if (selectedTheLoais.Count == 0)
             {
-                LoadAllBooks(); // nếu không chọn thể loại nào, hiển thị toàn bộ
+                LoadAllBooks();
                 return;
             }
 
@@ -125,16 +129,60 @@ namespace PM.GUI.userConTrol.Admin
             var filtered = sachService.Find(s => s.TenSach.ToLower().Contains(keyword));
             LoadAllBooks(filtered);
         }
-        // khi click vào book ở edit
+
+        // ==================== CLICK VÀO BOOK ITEM ====================
         private void BookItem_OnBookClick(object sender, Sach sach)
         {
-            // Ví dụ: hiển thị thông tin sách được chọn
-            MessageBox.Show(
-                $"📘 Bạn đã chọn sách:\n\nTên: {sach.TenSach}\nMã: {sach.MaSach}",
-                "Thông tin sách",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            // 1️⃣ Ẩn danh sách và các nút lọc
+            panelDanhSach.Visible = false;
+            flpTheLoai.Visible = false;
+            btnTheLoai.Enabled = false;
+            btnFind.Enabled = false;
+            txtFindTen.Enabled = false;
+
+            // 2️⃣ Tạo control Edit_BOOK_CT
+            currentEditControl = new Edit_BOOK_CT(sach.MaSach);
+            currentEditControl.Dock = DockStyle.Fill;
+
+            // 3️⃣ Khi user nhấn "Thoát" trong Edit_BOOK_CT
+            currentEditControl.OnExitClicked += (s2, e2) =>
+            {
+                RemoveEditControl();
+            };
+
+            // 4️⃣ Thêm vào giao diện
+            this.Controls.Add(currentEditControl);
+            currentEditControl.BringToFront();
+
+            // 5️⃣ Hiện nút thoát
+            btnThoat.Visible = true;
+            btnThoat.Enabled = true;
+        }
+
+        // ==================== NÚT THOÁT ====================
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            RemoveEditControl();
+        }
+
+        // ==================== HÀM XỬ LÝ KHI QUAY LẠI DANH SÁCH ====================
+        private void RemoveEditControl()
+        {
+            if (currentEditControl != null)
+            {
+                this.Controls.Remove(currentEditControl);
+                currentEditControl.Dispose();
+                currentEditControl = null;
+            }
+
+            btnThoat.Visible = false;
+            btnThoat.Enabled = false;
+            btnTheLoai.Enabled = true;
+            btnFind.Enabled = true;
+            txtFindTen.Enabled = true;
+
+            // Load lại danh sách
+            LoadAllBooks();
         }
     }
 }

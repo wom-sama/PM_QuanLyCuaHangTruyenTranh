@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.add_Book1 = new PM.GUI.userConTrol.Admin.Add_Book();
+            this.PanelTest = new Guna.UI2.WinForms.Guna2Panel();
             this.SuspendLayout();
             // 
-            // add_Book1
+            // PanelTest
             // 
-            this.add_Book1.BackColor = System.Drawing.Color.White;
-            this.add_Book1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.add_Book1.Location = new System.Drawing.Point(0, 0);
-            this.add_Book1.Name = "add_Book1";
-            this.add_Book1.Size = new System.Drawing.Size(800, 450);
-            this.add_Book1.TabIndex = 0;
+            this.PanelTest.AutoScroll = true;
+            this.PanelTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelTest.Location = new System.Drawing.Point(0, 0);
+            this.PanelTest.Name = "PanelTest";
+            this.PanelTest.Size = new System.Drawing.Size(800, 450);
+            this.PanelTest.TabIndex = 0;
             // 
             // FromTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.add_Book1);
+            this.Controls.Add(this.PanelTest);
             this.Name = "FromTest";
             this.Text = "FromTest";
             this.ResumeLayout(false);
@@ -54,6 +54,6 @@
 
         #endregion
 
-        private userConTrol.Admin.Add_Book add_Book1;
+        private Guna.UI2.WinForms.Guna2Panel PanelTest;
     }
 }

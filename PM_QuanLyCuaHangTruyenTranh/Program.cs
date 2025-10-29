@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PM.BUS.Helpers;
 
 namespace PM.GUI
 {
@@ -21,20 +22,23 @@ namespace PM.GUI
         static void Main()
         {
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main.NhanVienForm());
+             Application.EnableVisualStyles();
+             Application.SetCompatibleTextRenderingDefault(false);
+             Application.Run(new Main.AdminForm());
 
-           // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
-
-            //AppDbSeeder.Seed();
-            /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
-             string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
-             Console.WriteLine("Decrypted Email: " + senderEmail);
-             Console.WriteLine("Decrypted Password: " + senderPassword);
-             */
+           
 
 
-        }
+        // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
+
+        //AppDbSeeder.Seed();
+        /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
+         string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
+         Console.WriteLine("Decrypted Email: " + senderEmail);
+         Console.WriteLine("Decrypted Password: " + senderPassword);*/
+         
+
+
+    }
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PM.GUI.userConTrol.Admin;
 namespace PM.GUI.Main
 {
     public partial class FromTest : Form
@@ -15,6 +15,11 @@ namespace PM.GUI.Main
         public FromTest()
         {
             InitializeComponent();
+            var test1 = new Edit_BOOK_CT("S20251029145712777");
+            PanelTest.Controls.Add(test1);
+            test1.Dock = DockStyle.Fill;
         }
+
+       
     }
 }

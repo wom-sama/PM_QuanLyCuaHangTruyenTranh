@@ -61,7 +61,10 @@ namespace PM.BUS.Helpers
         }
 
 
-
+        public static void ink()
+        {
+            Console.WriteLine("==="+ProtectedKeyFile);
+        }
 
 
 
