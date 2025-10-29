@@ -94,9 +94,9 @@ namespace PM.BUS.Services.Facade
 
             var vanChuyen = new VanChuyen
             {
-                MaVanChuyen = "VC" + DateTime.Now.ToString("yyyyMMddHHmmss"),
+              //  MaVanChuyen = "VC" + DateTime.Now.ToString("yyyyMMddHHmmss"),
                 MaDonHang = don.MaDonHang,
-                DonViVanChuyen = "Giao nội bộ",
+              //  DonViVanChuyen = "Giao nội bộ",
                 NgayGiao = DateTime.Now,
                 TrangThai = "Đang giao"
             };

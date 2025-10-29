@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 
 namespace PM.GUI
@@ -279,11 +280,9 @@ namespace PM.GUI
                 db.HoaDons.Add(hd1);
                 db.SaveChanges();
 
-                // VanChuyen
-                var vc1 = new VanChuyen { MaVanChuyen = "VC001", MaDonHang = dh1.MaDonHang, DonViVanChuyen = "Giao hàng nhanh", NgayGiao = dh1.NgayGiao ?? DateTime.Now, TrangThai = "Đã giao" };
-                var vc2 = new VanChuyen { MaVanChuyen = "VC002", MaDonHang = dh2.MaDonHang, DonViVanChuyen = "VNPost", NgayGiao = DateTime.Now.AddDays(3), TrangThai = "Đang vận chuyển" };
-                db.VanChuyens.AddRange(new[] { vc1, vc2 });
-                db.SaveChanges();
+             
+
+          
 
                 // ----- 12. KhuyenMai -----
                 var km = new KhuyenMai
@@ -312,10 +311,188 @@ namespace PM.GUI
                 db.KiemKes.Add(kk1);
                 db.SaveChanges();
 
-                // ----- 16. ChuyenKho (ví dụ) -----
-                var ck1 = new ChuyenKho { MaPhieuChuyen = "CK001", NgayChuyen = DateTime.Now.AddDays(-5), MaKhoXuat = kho1.MaKho, MaKhoNhap = kho2.MaKho, GhiChu = "Chuyển bổ sung sách" };
-                db.ChuyenKhos.Add(ck1);
-                db.SaveChanges();
+
+
+
+
+
+
+                // -----------------------------
+                // SỬA LẠI & BỔ SUNG DỮ LIỆU CHI TIẾT (PHÙ HỢP MODEL)
+                // -----------------------------
+
+                // ===== CongViec =====
+                if (!db.CongViecs.Any())
+                {
+                    db.CongViecs.AddRange(new[]
+                    {
+        new CongViec { MaCongViec = 1, TenCongViec = "Kiểm kê kho", MoTa = "Kiểm tra và ghi nhận hàng tồn kho", LuongTheoGio = 0 },
+        new CongViec { MaCongViec = 2, TenCongViec = "Giao hàng", MoTa = "Giao đơn hàng đến khách", LuongTheoGio = 0 },
+        new CongViec { MaCongViec = 3, TenCongViec = "Bán hàng", MoTa = "Tư vấn và bán hàng tại quầy", LuongTheoGio = 0 },
+        new CongViec { MaCongViec = 4, TenCongViec = "Quản lý tồn kho", MoTa = "Theo dõi nhập - xuất - tồn kho", LuongTheoGio = 0 }
+    });
+                    db.SaveChanges();
+                }
+
+                // ===== PhanCong =====
+                // Lưu ý dùng MaNV trùng với MaNV bạn đã seed trước (NV01, NV02, NV03)
+                if (!db.PhanCongs.Any())
+                {
+                    db.PhanCongs.AddRange(new[]
+                    {
+        new PhanCong { MaNV = "NV01", MaCongViec = 1, TenCongViec = "Kiểm kê sách", MoTa = "Kiểm tra sách trong kho KHO01 - Ke A1", NgayBatDau = DateTime.Now.AddDays(-5), NgayKetThuc = null, HoanThanh = false },
+        new PhanCong { MaNV = "NV02", MaCongViec = 2, TenCongViec = "Giao hàng DH001", MoTa = "Giao đơn DH001 tới khách", NgayBatDau = DateTime.Now.AddDays(-4), NgayKetThuc = DateTime.Now.AddDays(-3), HoanThanh = true },
+        new PhanCong { MaNV = "NV03", MaCongViec = 3, TenCongViec = "Bán hàng ca sáng", MoTa = "Phụ trách quầy HCM ca sáng", NgayBatDau = DateTime.Now.AddDays(-2), HoanThanh = false },
+        new PhanCong { MaNV = "NV01", MaCongViec = 4, TenCongViec = "Quản lý tồn kho tháng", MoTa = "Theo dõi tồn kho đầu tháng", NgayBatDau = DateTime.Now.AddDays(-30), HoanThanh = true },
+        new PhanCong { MaNV = "NV03", MaCongViec = 2, TenCongViec = "Giao hàng COD DH002", MoTa = "Giao đơn DH002", NgayBatDau = DateTime.Now.AddDays(-7), HoanThanh = true }
+    });
+                    db.SaveChanges();
+                }
+
+                // ===== BangLuong =====
+                // Chú ý: model của bạn dùng ThangTinhLuong, PhuCap, Thuong, KhauTru
+                if (!db.BangLuongs.Any())
+                {
+                    db.BangLuongs.AddRange(new[]
+                    {
+        new BangLuong { MaNV = "NV01", LuongCoBan = 8000000m, PhuCap = 200000m, Thuong = 500000m, KhauTru = 200000m, ThangTinhLuong = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) },
+        new BangLuong { MaNV = "NV02", LuongCoBan = 7500000m, PhuCap = 150000m, Thuong = 300000m, KhauTru = 0m, ThangTinhLuong = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) },
+        new BangLuong { MaNV = "NV03", LuongCoBan = 7000000m, PhuCap = 100000m, Thuong = 400000m, KhauTru = 150000m, ThangTinhLuong = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) }
+    });
+                    db.SaveChanges();
+                }
+
+                // ===== DonViVanChuyen =====
+                // Dùng tên thuộc tính đúng: MaDVVC, TenDonVi, SoDienThoai, PhiCoBan, MoTa
+                if (!db.DonViVanChuyens.Any())
+                {
+                    db.DonViVanChuyens.AddRange(new[]
+                    {
+        new DonViVanChuyen { MaDVVC = "DVVC01", TenDonVi = "Giao Hàng Nhanh (GHN)", SoDienThoai = "0901234567", PhiCoBan = 30000m, MoTa = "Giao hàng nhanh trong nội thành" },
+        new DonViVanChuyen { MaDVVC = "DVVC02", TenDonVi = "Giao Hàng Tiết Kiệm (GHTK)", SoDienThoai = "0907654321", PhiCoBan = 25000m, MoTa = "Giá rẻ, giao vận toàn quốc" },
+        new DonViVanChuyen { MaDVVC = "DVVC03", TenDonVi = "VNPost Express", SoDienThoai = "1900545481", PhiCoBan = 20000m, MoTa = "Bưu điện nhanh" }
+    });
+                    db.SaveChanges();
+                }
+
+                // ===== Thêm đơn hàng (DH003..DH010) - dùng MaKhach đúng (kh_anh, kh_huong, kh_minh) và MaNV có thực =====
+                if (db.DonHangs.Count() < 10)
+                {
+                    var moreOrders = new[]
+                    {
+        new DonHang { MaDonHang = "DH003", MaKhach = "kh_anh", MaNV = "NV03", NgayDat = DateTime.Now.AddDays(-5), NgayGiao = null, TongTien = 320000m, LoaiDon = "Online", TrangThai = "Đang giao" },
+        new DonHang { MaDonHang = "DH004", MaKhach = "kh_huong", MaNV = "NV02", NgayDat = DateTime.Now.AddDays(-4), NgayGiao = DateTime.Now.AddDays(-2), TongTien = 520000m, LoaiDon = "Online", TrangThai = "Đã giao" },
+        new DonHang { MaDonHang = "DH005", MaKhach = "kh_minh", MaNV = "NV01", NgayDat = DateTime.Now.AddDays(-3), NgayGiao = null, TongTien = 780000m, LoaiDon = "Online", TrangThai = "Chờ xác nhận" },
+        new DonHang { MaDonHang = "DH006", MaKhach = "kh_anh", MaNV = "NV01", NgayDat = DateTime.Now.AddDays(-2), NgayGiao = null, TongTien = 450000m, LoaiDon = "Online", TrangThai = "Đã hủy" },
+        new DonHang { MaDonHang = "DH007", MaKhach = "kh_huong", MaNV = "NV03", NgayDat = DateTime.Now.AddDays(-2), NgayGiao = null, TongTien = 610000m, LoaiDon = "Online", TrangThai = "Đang xử lý" },
+        new DonHang { MaDonHang = "DH008", MaKhach = "kh_minh", MaNV = "NV02", NgayDat = DateTime.Now.AddDays(-1), NgayGiao = null, TongTien = 970000m, LoaiDon = "Online", TrangThai = "Đang giao" },
+        new DonHang { MaDonHang = "DH009", MaKhach = "kh_anh", MaNV = "NV02", NgayDat = DateTime.Now, NgayGiao = null, TongTien = 1120000m, LoaiDon = "Trực tiếp", TrangThai = "Đã giao" },
+        new DonHang { MaDonHang = "DH010", MaKhach = "kh_huong", MaNV = "NV01", NgayDat = DateTime.Now, NgayGiao = null, TongTien = 830000m, LoaiDon = "Online", TrangThai = "Chờ thanh toán" }
+    };
+                    db.DonHangs.AddRange(moreOrders);
+                    db.SaveChanges();
+                }
+
+                // ===== CT_DonHang cho các đơn mới =====
+                // Thêm vài dòng CT_DonHang minh họa (đảm bảo MaSach tồn tại: S001..S020)
+                if (!db.CT_DonHangs.Any(ct => ct.MaDonHang.StartsWith("DH00")))
+                {
+                    var ctList = new List<CT_DonHang>
+    {
+        new CT_DonHang { MaDonHang = "DH003", MaSach = "S003", SoLuong = 1, DonGia = 65000m, ThanhTien = 65000m },
+        new CT_DonHang { MaDonHang = "DH003", MaSach = "S005", SoLuong = 2, DonGia = 90000m, ThanhTien = 180000m },
+
+        new CT_DonHang { MaDonHang = "DH004", MaSach = "S007", SoLuong = 1, DonGia = 75000m, ThanhTien = 75000m },
+        new CT_DonHang { MaDonHang = "DH004", MaSach = "S010", SoLuong = 4, DonGia = 72000m, ThanhTien = 288000m },
+
+        new CT_DonHang { MaDonHang = "DH005", MaSach = "S012", SoLuong = 3, DonGia = 82000m, ThanhTien = 246000m },
+        new CT_DonHang { MaDonHang = "DH005", MaSach = "S013", SoLuong = 2, DonGia = 74000m, ThanhTien = 148000m },
+
+        new CT_DonHang { MaDonHang = "DH006", MaSach = "S002", SoLuong = 1, DonGia = 85000m, ThanhTien = 85000m },
+
+        new CT_DonHang { MaDonHang = "DH007", MaSach = "S008", SoLuong = 1, DonGia = 80000m, ThanhTien = 80000m },
+        new CT_DonHang { MaDonHang = "DH007", MaSach = "S011", SoLuong = 1, DonGia = 76000m, ThanhTien = 76000m },
+
+        new CT_DonHang { MaDonHang = "DH008", MaSach = "S014", SoLuong = 5, DonGia = 88000m, ThanhTien = 440000m },
+
+        new CT_DonHang { MaDonHang = "DH009", MaSach = "S015", SoLuong = 2, DonGia = 80000m, ThanhTien = 160000m },
+        new CT_DonHang { MaDonHang = "DH009", MaSach = "S016", SoLuong = 3, DonGia = 72000m, ThanhTien = 216000m },
+
+        new CT_DonHang { MaDonHang = "DH010", MaSach = "S017", SoLuong = 1, DonGia = 60000m, ThanhTien = 60000m },
+        new CT_DonHang { MaDonHang = "DH010", MaSach = "S018", SoLuong = 2, DonGia = 76000m, ThanhTien = 152000m }
+    };
+                    db.CT_DonHangs.AddRange(ctList);
+                    db.SaveChanges();
+                }
+
+                // ===== VanChuyen cho các đơn hàng mới =====
+                // VanChuyen.MaDonHang là key chính, và MaDVVC phải tồn tại
+                if (!db.VanChuyens.Any(v => v.MaDonHang.StartsWith("DH00")))
+                {
+                    var vans = new[]
+                    {
+        new VanChuyen { MaDonHang = "DH003", MaDVVC = "DVVC01", NgayTao = DateTime.Now.AddDays(-5), NgayGiao = null, TrangThai = "Đang giao", GhiChu = "Giao nhanh" },
+        new VanChuyen { MaDonHang = "DH004", MaDVVC = "DVVC02", NgayTao = DateTime.Now.AddDays(-4), NgayGiao = DateTime.Now.AddDays(-2), TrangThai = "Đã giao", GhiChu = "Đã hoàn tất" },
+        new VanChuyen { MaDonHang = "DH005", MaDVVC = "DVVC03", NgayTao = DateTime.Now.AddDays(-3), NgayGiao = null, TrangThai = "Chờ lấy hàng", GhiChu = "" },
+        new VanChuyen { MaDonHang = "DH006", MaDVVC = "DVVC02", NgayTao = DateTime.Now.AddDays(-2), NgayGiao = null, TrangThai = "Đã hủy", GhiChu = "Khách hủy" },
+        new VanChuyen { MaDonHang = "DH007", MaDVVC = "DVVC01", NgayTao = DateTime.Now.AddDays(-2), NgayGiao = null, TrangThai = "Đang xử lý", GhiChu = "" },
+        new VanChuyen { MaDonHang = "DH008", MaDVVC = "DVVC03", NgayTao = DateTime.Now.AddDays(-1), NgayGiao = null, TrangThai = "Đang giao", GhiChu = "" },
+        new VanChuyen { MaDonHang = "DH009", MaDVVC = "DVVC01", NgayTao = DateTime.Now, NgayGiao = DateTime.Now, TrangThai = "Đã giao", GhiChu = "" },
+        new VanChuyen { MaDonHang = "DH010", MaDVVC = "DVVC02", NgayTao = DateTime.Now, NgayGiao = null, TrangThai = "Chờ lấy hàng", GhiChu = "" }
+    };
+                    db.VanChuyens.AddRange(vans);
+                    db.SaveChanges();
+                }
+
+                // ===== KiemKe (bổ sung thêm) =====
+                if (!db.KiemKes.Any(k => k.MaKiemKe == "KK002"))
+                {
+                    db.KiemKes.AddRange(new[]
+                    {
+        new KiemKe { MaKiemKe = "KK002", MaNV = "NV02", MaKho = "KHO02", NgayKiemKe = DateTime.Now.AddDays(-3), GhiChu = "Kiểm kê bổ sung chi nhánh HN" },
+        new KiemKe { MaKiemKe = "KK003", MaNV = "NV03", MaKho = "KHO01", NgayKiemKe = DateTime.Now.AddDays(-1), GhiChu = "Kiểm tra tồn cuối tuần" }
+    });
+                    db.SaveChanges();
+                }
+
+                // ===== ChuyenKho (ghi đúng tên thuộc tính MaPhieuChuyen) =====
+                if (!db.ChuyenKhos.Any(c => c.MaPhieuChuyen == "CK001"))
+                {
+                    db.ChuyenKhos.AddRange(new[]
+                    {
+        new ChuyenKho { MaPhieuChuyen = "CK001", MaKhoXuat = "KHO01", MaKhoNhap = "KHO02", NgayChuyen = DateTime.Now.AddDays(-10), GhiChu = "Chuyển bổ sung hàng" },
+        new ChuyenKho { MaPhieuChuyen = "CK002", MaKhoXuat = "KHO02", MaKhoNhap = "KHO01", NgayChuyen = DateTime.Now.AddDays(-4), GhiChu = "Điều chuyển đáp ứng đơn" }
+    });
+                    db.SaveChanges();
+                }
+
+                // ===== ThongBao (một vài thông báo thêm) =====
+                if (!db.ThongBaos.Any(tb => tb.MaThongBao == "TB001"))
+                {
+                    db.ThongBaos.AddRange(new[]
+                    {
+        new ThongBao { MaThongBao = "TB001", TieuDe = "Khuyến mãi tháng 11", NoiDung = "Giảm 20% cho đơn hàng > 500k", NgayGui = DateTime.Now, NguoiNhan = "ALL" },
+        new ThongBao { MaThongBao = "TB002", TieuDe = "Lịch kiểm kê", NoiDung = "Kiểm kê toàn kho ngày 30/11", NgayGui = DateTime.Now, NguoiNhan = "NV01" },
+        new ThongBao { MaThongBao = "TB003", TieuDe = "Thông báo nghỉ lễ", NoiDung = "Cửa hàng nghỉ lễ 2 ngày", NgayGui = DateTime.Now, NguoiNhan = "ALL" }
+    });
+                    db.SaveChanges();
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 // commit
                 db.SaveChanges();

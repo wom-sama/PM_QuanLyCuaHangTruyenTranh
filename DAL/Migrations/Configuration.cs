@@ -1,4 +1,4 @@
-﻿namespace PM.GUI.Migrations
+﻿namespace DAL.Migrations
 {
     using System;
     using System.Data.Entity;

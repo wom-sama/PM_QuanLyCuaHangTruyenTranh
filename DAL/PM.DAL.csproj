@@ -54,56 +54,16 @@
     <Compile Include="AppDbSeeder.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\202510210247282_UpdateKhachHangTaiKhoanRelation.cs" />
-    <Compile Include="Migrations\202510210247282_UpdateKhachHangTaiKhoanRelation.Designer.cs">
-      <DependentUpon>202510210247282_UpdateKhachHangTaiKhoanRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.cs" />
-    <Compile Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.Designer.cs">
-      <DependentUpon>202510210254560_UpdateKhachHangTaiKhoanRelation1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510271320416_XoaBanQuyen.cs" />
-    <Compile Include="Migrations\202510271320416_XoaBanQuyen.Designer.cs">
-      <DependentUpon>202510271320416_XoaBanQuyen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510281201096_AddNgaySinhAnhDaiDien.cs" />
-    <Compile Include="Migrations\202510281201096_AddNgaySinhAnhDaiDien.Designer.cs">
-      <DependentUpon>202510281201096_AddNgaySinhAnhDaiDien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PasswordHelperDAL.cs" />
-    <Compile Include="Migrations\202510080702097_InitialCreate.cs" />
-    <Compile Include="Migrations\202510080702097_InitialCreate.Designer.cs">
-      <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510081032100_UpdatePasswordFieldLength.cs" />
-    <Compile Include="Migrations\202510081032100_UpdatePasswordFieldLength.Designer.cs">
-      <DependentUpon>202510081032100_UpdatePasswordFieldLength.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510091651052_AddSachTacGiaTheLoai.cs" />
-    <Compile Include="Migrations\202510091651052_AddSachTacGiaTheLoai.Designer.cs">
-      <DependentUpon>202510091651052_AddSachTacGiaTheLoai.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510091654202_AddSachTacGiaTheLoaiAgain.cs" />
-    <Compile Include="Migrations\202510091654202_AddSachTacGiaTheLoaiAgain.Designer.cs">
-      <DependentUpon>202510091654202_AddSachTacGiaTheLoaiAgain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.cs" />
-    <Compile Include="Migrations\202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.Designer.cs">
-      <DependentUpon>202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.cs" />
-    <Compile Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.Designer.cs">
-      <DependentUpon>202510091717573_UpdateSachTheLoaiRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510101234148_SuaLuuAnh.cs" />
-    <Compile Include="Migrations\202510101234148_SuaLuuAnh.Designer.cs">
-      <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510141635405_InitDatabase.cs" />
-    <Compile Include="Migrations\202510141635405_InitDatabase.Designer.cs">
-      <DependentUpon>202510141635405_InitDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202510290624511_init.cs" />
+    <Compile Include="Migrations\202510290624511_init.Designer.cs">
+      <DependentUpon>202510290624511_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BangLuong.cs" />
+    <Compile Include="Models\CongViec.cs" />
+    <Compile Include="Models\DonViVanChuyen.cs" />
+    <Compile Include="Models\PhanCong.cs" />
+    <Compile Include="PasswordHelperDAL.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\ChiNhanh.cs" />
     <Compile Include="Models\ChucVu.cs" />
@@ -133,46 +93,13 @@
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202510080702097_InitialCreate.resx">
-      <DependentUpon>202510080702097_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510081032100_UpdatePasswordFieldLength.resx">
-      <DependentUpon>202510081032100_UpdatePasswordFieldLength.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510091651052_AddSachTacGiaTheLoai.resx">
-      <DependentUpon>202510091651052_AddSachTacGiaTheLoai.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510091654202_AddSachTacGiaTheLoaiAgain.resx">
-      <DependentUpon>202510091654202_AddSachTacGiaTheLoaiAgain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.resx">
-      <DependentUpon>202510091701372_BoBangTacGia_ThemCotTacGiaVaoSach.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510091717573_UpdateSachTheLoaiRelation.resx">
-      <DependentUpon>202510091717573_UpdateSachTheLoaiRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510101234148_SuaLuuAnh.resx">
-      <DependentUpon>202510101234148_SuaLuuAnh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510141635405_InitDatabase.resx">
-      <DependentUpon>202510141635405_InitDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510210247282_UpdateKhachHangTaiKhoanRelation.resx">
-      <DependentUpon>202510210247282_UpdateKhachHangTaiKhoanRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510210254560_UpdateKhachHangTaiKhoanRelation1.resx">
-      <DependentUpon>202510210254560_UpdateKhachHangTaiKhoanRelation1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510271320416_XoaBanQuyen.resx">
-      <DependentUpon>202510271320416_XoaBanQuyen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510281201096_AddNgaySinhAnhDaiDien.resx">
-      <DependentUpon>202510281201096_AddNgaySinhAnhDaiDien.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202510290624511_init.resx">
+      <DependentUpon>202510290624511_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

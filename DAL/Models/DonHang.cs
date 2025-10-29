@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PM.DAL.Models
 {
@@ -23,15 +20,18 @@ namespace PM.DAL.Models
 
         public DateTime NgayDat { get; set; }
         public DateTime? NgayGiao { get; set; }
+
         public decimal TongTien { get; set; }
+
+        [StringLength(20)]
+        public string LoaiDon { get; set; } // "Online" hoặc "Trực tiếp"
+
+        [StringLength(50)]
         public string TrangThai { get; set; }
 
-        public virtual ICollection<CT_DonHang> CT_DonHangs { get; set; }
-        // ======= Thêm LoaiDon =======
-        //[Required]
-        //[MaxLength(20)]
-        //public string LoaiDon { get; set; }  // giá trị: "Online" hoặc "Trực tiếp"
+        // 🔹 Mỗi đơn có thể có 1 phiếu vận chuyển (nếu là Online)
+        public virtual VanChuyen VanChuyen { get; set; }
 
-        //public virtual ICollection<CT_DonHang> CT_DonHang { get; set; }
+        public virtual ICollection<CT_DonHang> CT_DonHangs { get; set; }
     }
 }

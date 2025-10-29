@@ -34,6 +34,11 @@ namespace PM.DAL.Models
         public DbSet<ChucVu> ChucVus { get; set; }
         public DbSet<KiemKe> KiemKes { get; set; }
         public DbSet<ChuyenKho> ChuyenKhos { get; set; }
+        public DbSet<CongViec> CongViecs { get; set; }
+        public DbSet<PhanCong> PhanCongs { get; set; }
+        public DbSet<BangLuong> BangLuongs { get; set; }
+        public DbSet<DonViVanChuyen> DonViVanChuyens { get; set; }
+   
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -57,6 +62,47 @@ namespace PM.DAL.Models
                 .WithMany() // không cần navigation ở NhanVien
                 .HasForeignKey(t => t.MaNhanVien)
                 .WillCascadeOnDelete(false);
+
+            // 3️⃣ NhanVien - ChucVu (1-nhiều)
+            modelBuilder.Entity<ChucVu>()
+                .HasMany(c => c.NhanViens)
+                .WithRequired(nv => nv.ChucVu)
+                .HasForeignKey(nv => nv.MaChucVu)
+                .WillCascadeOnDelete(false);
+
+            // 4️⃣ NhanVien - PhanCong (1-nhiều)
+            modelBuilder.Entity<NhanVien>()
+                .HasMany(nv => nv.PhanCongs)
+                .WithRequired(pc => pc.NhanVien)
+                .HasForeignKey(pc => pc.MaNV)
+                .WillCascadeOnDelete(false);
+
+            // 5️⃣ CongViec - PhanCong (1-nhiều, optional)
+            modelBuilder.Entity<CongViec>()
+                .HasMany(cv => cv.PhanCongs)
+                .WithOptional(pc => pc.CongViec)
+                .HasForeignKey(pc => pc.MaCongViec)
+                .WillCascadeOnDelete(false);
+
+            // 6️⃣ NhanVien - BangLuong (1-nhiều)
+            modelBuilder.Entity<NhanVien>()
+                .HasMany(nv => nv.BangLuongs)
+                .WithRequired(bl => bl.NhanVien)
+                .HasForeignKey(bl => bl.MaNV)
+                .WillCascadeOnDelete(false);
+            // 🔹 DonHang - VanChuyen (1 - 1)
+            modelBuilder.Entity<DonHang>()
+                .HasOptional(d => d.VanChuyen)
+                .WithRequired(v => v.DonHang)
+                .WillCascadeOnDelete(false);
+
+            // 🔹 DonViVanChuyen - VanChuyen (1 - nhiều)
+            modelBuilder.Entity<DonViVanChuyen>()
+                .HasMany(dv => dv.VanChuyens)
+                .WithRequired(v => v.DonViVanChuyen)
+                .HasForeignKey(v => v.MaDVVC)
+                .WillCascadeOnDelete(false);
+
         }
     }
 }

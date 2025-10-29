@@ -45,5 +45,7 @@ namespace PM.DAL.Models
         // Navigation
         public virtual ICollection<NhapKho> NhapKhos { get; set; }
         public virtual ICollection<DonHang> DonHangs { get; set; }
+        public virtual ICollection<PhanCong> PhanCongs { get; set; }
+        public virtual ICollection<BangLuong> BangLuongs { get; set; }
     }
 }
