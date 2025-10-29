@@ -25,7 +25,7 @@ namespace PM.GUI
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main.NhanVienForm());
 
-           // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
+            //AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
 
             //AppDbSeeder.Seed();
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
