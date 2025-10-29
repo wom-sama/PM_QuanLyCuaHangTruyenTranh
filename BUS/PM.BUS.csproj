@@ -99,6 +99,9 @@
     <Compile Include="Services\DonHangsv\GioHangService.cs" />
     <Compile Include="Services\DonHangsv\HoaDonService.cs" />
     <Compile Include="Services\Facade\QuanLyDonHangBUS.cs" />
+    <Compile Include="Services\LamViecsv\BangLuongService.cs" />
+    <Compile Include="Services\LamViecsv\CongViecService.cs" />
+    <Compile Include="Services\LamViecsv\PhanCongService.cs" />
     <Compile Include="Services\TaiKhoansv\AuthService.cs" />
     <Compile Include="Services\DonHangsv\CT_DonHangService.cs" />
     <Compile Include="Services\DonHangsv\DonHangService.cs" />

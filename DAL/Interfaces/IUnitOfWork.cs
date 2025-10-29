@@ -29,6 +29,10 @@ namespace PM.DAL.Interfaces
         IGenericRepository<ChucVu> ChucVuRepository { get; }
         IGenericRepository<KiemKe> KiemKeRepository { get; }
         IGenericRepository<ChuyenKho> ChuyenKhoRepository { get; }
+        IGenericRepository<PhanCong> PhanCongRepository { get; }
+        IGenericRepository<CongViec> CongViecRepository { get; }
+        IGenericRepository<BangLuong> BangLuongRepository { get; }
+
 
         int Save();              // Đồng bộ
         Task<int> SaveAsync();   // Bất đồng bộ

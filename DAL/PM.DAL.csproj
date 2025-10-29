@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppDbSeeder.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Migrations\202510290624511_init.cs" />
@@ -63,7 +62,6 @@
     <Compile Include="Models\CongViec.cs" />
     <Compile Include="Models\DonViVanChuyen.cs" />
     <Compile Include="Models\PhanCong.cs" />
-    <Compile Include="PasswordHelperDAL.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\ChiNhanh.cs" />
     <Compile Include="Models\ChucVu.cs" />

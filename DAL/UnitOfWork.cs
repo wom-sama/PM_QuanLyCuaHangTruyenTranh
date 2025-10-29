@@ -34,6 +34,9 @@ namespace PM.DAL
       
         public IGenericRepository<KiemKe> KiemKeRepository { get; private set; }
         public IGenericRepository<ChuyenKho> ChuyenKhoRepository { get; private set; }
+        public IGenericRepository<PhanCong> PhanCongRepository { get; private set; }
+        public IGenericRepository<CongViec> CongViecRepository { get; private set; }
+        public IGenericRepository<BangLuong> BangLuongRepository { get; private set; }
 
         public UnitOfWork() : this(new AppDbContext())
         {
@@ -66,6 +69,10 @@ namespace PM.DAL
 
             KiemKeRepository = new GenericRepository<KiemKe>(_context);
             ChuyenKhoRepository = new GenericRepository<ChuyenKho>(_context);
+
+            BangLuongRepository = new GenericRepository<BangLuong>(_context);
+            PhanCongRepository = new GenericRepository<PhanCong>(_context);
+            CongViecRepository = new GenericRepository<CongViec>(_context);
         }
 
         public int Save()
