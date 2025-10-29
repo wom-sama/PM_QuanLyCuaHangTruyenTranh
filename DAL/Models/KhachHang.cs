@@ -31,5 +31,7 @@ namespace PM.DAL.Models
         public virtual TaiKhoan TaiKhoan { get; set; }
 
         public virtual ICollection<HoaDon> HoaDons { get; set; } = new HashSet<HoaDon>();
+        [NotMapped]
+        public string TenKhach => HoTen;
     }
 }

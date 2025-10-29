@@ -38,7 +38,7 @@ namespace PM.GUI.Main
             try
             {
                 // 🧾 Lấy danh sách đơn cần duyệt
-                var donCho = _bus.LayDanhSachDonHangTheoTrangThai("Đã bán");
+                var donCho = _bus.LayDanhSachDonHangTheoTrangThai("Đang xử lý");
                 int soLuong = donCho?.Count() ?? 0;
 
                 if (soLuong > 0)
@@ -278,6 +278,12 @@ namespace PM.GUI.Main
         private void btnKho_Click(object sender, EventArgs e)
         {
             var uc = new Kho(HienThiUserControl); // ✅ truyền delegate
+            HienThiUserControl(uc);
+        }
+
+        private void btnGiaoHang_Click(object sender, EventArgs e)
+        {
+            var uc = new GiaoHang();
             HienThiUserControl(uc);
         }
     }

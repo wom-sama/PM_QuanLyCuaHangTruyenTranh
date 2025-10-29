@@ -24,5 +24,7 @@ namespace PM.DAL.Models
 
         [StringLength(255)]
         public string GhiChu { get; set; }
+        [NotMapped]
+        public string TenDonVi => DonViVanChuyen != null ? DonViVanChuyen.TenDonVi : "(Chưa có đơn vị)";
     }
 }
