@@ -130,6 +130,18 @@ namespace PM.BUS.Services.Facade
         {
             return _donHangService.GetById(maDonHang);
         }
+        // Hoàn tất giao đơn hàng
+        public bool HoanTatGiao(string maDonHang)
+        {
+            var don = _donHangService.GetById(maDonHang);
+            if (don == null) return false;
+
+            don.TrangThai = "Đã giao";
+            don.NgayGiao = DateTime.Now;
+            _donHangService.Update(don);
+
+            return true;
+        }
 
     }
 }

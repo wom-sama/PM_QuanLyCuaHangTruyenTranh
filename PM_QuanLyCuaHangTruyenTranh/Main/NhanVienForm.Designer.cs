@@ -39,6 +39,7 @@
             this.btnMenu = new Guna.UI2.WinForms.Guna2Button();
             this.panelMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.btnKho = new Guna.UI2.WinForms.Guna2Button();
+            this.btnGiaoHang = new Guna.UI2.WinForms.Guna2Button();
             this.pannelGD_tong.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
@@ -175,6 +176,7 @@
             // 
             this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelMenu.Controls.Add(this.btnGiaoHang);
             this.panelMenu.Controls.Add(this.btnKho);
             this.panelMenu.Controls.Add(this.btnLenDon);
             this.panelMenu.Controls.Add(this.btnDuyetDon);
@@ -199,6 +201,20 @@
             this.btnKho.TabIndex = 6;
             this.btnKho.Text = "Kho";
             this.btnKho.Click += new System.EventHandler(this.btnKho_Click);
+            // 
+            // btnGiaoHang
+            // 
+            this.btnGiaoHang.BorderRadius = 10;
+            this.btnGiaoHang.FillColor = System.Drawing.Color.Green;
+            this.btnGiaoHang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGiaoHang.ForeColor = System.Drawing.Color.White;
+            this.btnGiaoHang.Location = new System.Drawing.Point(20, 470);
+            this.btnGiaoHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGiaoHang.Name = "btnGiaoHang";
+            this.btnGiaoHang.Size = new System.Drawing.Size(180, 50);
+            this.btnGiaoHang.TabIndex = 7;
+            this.btnGiaoHang.Text = "Giao Hàng";
+            this.btnGiaoHang.Click += new System.EventHandler(this.btnGiaoHang_Click);
             // 
             // NhanVienForm
             // 
@@ -232,5 +248,6 @@
         private Guna.UI2.WinForms.Guna2Button btnMenu;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel panelMenu;
         private Guna.UI2.WinForms.Guna2Button btnKho;
+        private Guna.UI2.WinForms.Guna2Button btnGiaoHang;
     }
 }

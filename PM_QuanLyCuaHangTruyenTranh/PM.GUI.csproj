@@ -224,6 +224,12 @@
     <Compile Include="userConTrol\Employee\DuyetDon.Designer.cs">
       <DependentUpon>DuyetDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\GiaoHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\GiaoHang.Designer.cs">
+      <DependentUpon>GiaoHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\InHoaDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -305,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\DuyetDon.resx">
       <DependentUpon>DuyetDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\GiaoHang.resx">
+      <DependentUpon>GiaoHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\InHoaDon.resx">
       <DependentUpon>InHoaDon.cs</DependentUpon>

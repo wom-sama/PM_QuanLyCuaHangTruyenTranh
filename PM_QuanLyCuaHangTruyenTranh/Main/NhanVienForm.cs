@@ -280,5 +280,11 @@ namespace PM.GUI.Main
             var uc = new Kho(HienThiUserControl); // ✅ truyền delegate
             HienThiUserControl(uc);
         }
+
+        private void btnGiaoHang_Click(object sender, EventArgs e)
+        {
+            var uc = new GiaoHang();
+            HienThiUserControl(uc);
+        }
     }
 }
