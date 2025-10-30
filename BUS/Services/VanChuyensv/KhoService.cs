@@ -215,6 +215,31 @@ namespace PM.BUS.Services.VanChuyensv
                     .ToList();
             }
         }
+        public int LaySoLuongTon(string maSach)
+        {
+            try
+            {
+                // Tổng nhập từ chi tiết nhập kho
+                var tongNhap = _unitOfWork.CT_NhapKhoRepository
+                    .GetAll()
+                    .Where(ct => ct.MaSach == maSach)
+                    .Sum(ct => (int?)ct.SoLuong) ?? 0;
+
+                // Tổng bán từ chi tiết đơn hàng
+                var tongBan = _unitOfWork.CT_DonHangRepository
+                    .GetAll()
+                    .Where(ct => ct.MaSach == maSach)
+                    .Sum(ct => (int?)ct.SoLuong) ?? 0;
+
+                return tongNhap - tongBan;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi tính số lượng tồn: " + ex.Message);
+                return 0;
+            }
+        }
+
 
 
     }

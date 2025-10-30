@@ -57,6 +57,14 @@
     <Compile Include="Migrations\202510290624511_init.Designer.cs">
       <DependentUpon>202510290624511_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510301421574_Add_LuotBan_To_Sach.cs" />
+    <Compile Include="Migrations\202510301421574_Add_LuotBan_To_Sach.Designer.cs">
+      <DependentUpon>202510301421574_Add_LuotBan_To_Sach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510301422503_Add_LuotBan_To_Sach1.cs" />
+    <Compile Include="Migrations\202510301422503_Add_LuotBan_To_Sach1.Designer.cs">
+      <DependentUpon>202510301422503_Add_LuotBan_To_Sach1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangLuong.cs" />
     <Compile Include="Models\CongViec.cs" />
@@ -97,6 +105,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202510290624511_init.resx">
       <DependentUpon>202510290624511_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510301421574_Add_LuotBan_To_Sach.resx">
+      <DependentUpon>202510301421574_Add_LuotBan_To_Sach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510301422503_Add_LuotBan_To_Sach1.resx">
+      <DependentUpon>202510301422503_Add_LuotBan_To_Sach1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

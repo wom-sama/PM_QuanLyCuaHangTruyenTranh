@@ -199,11 +199,23 @@
     <Compile Include="userConTrol\Admin\Edit_BOOK_CT.Designer.cs">
       <DependentUpon>Edit_BOOK_CT.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Client\BookDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\BookDetailControl.Designer.cs">
+      <DependentUpon>BookDetailControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\KeSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userConTrol\Client\KeSach.Designer.cs">
       <DependentUpon>KeSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Client\Shop_BookView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\Shop_BookView.Designer.cs">
+      <DependentUpon>Shop_BookView.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Common\BooKShowcs.cs">
       <SubType>UserControl</SubType>
@@ -303,8 +315,14 @@
     <EmbeddedResource Include="userConTrol\Admin\Edit_BOOk.resx">
       <DependentUpon>Edit_BOOk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\BookDetailControl.resx">
+      <DependentUpon>BookDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\KeSach.resx">
       <DependentUpon>KeSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\Shop_BookView.resx">
+      <DependentUpon>Shop_BookView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Common\BooKShowcs.resx">
       <DependentUpon>BooKShowcs.cs</DependentUpon>

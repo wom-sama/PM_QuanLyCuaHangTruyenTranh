@@ -40,6 +40,7 @@ namespace PM.DAL.Models
         public string MoTa { get; set; }
         public bool TrangThai { get; set; }
         public byte[] BiaSach { get; set; }
+        public int LuotBan { get; set; } = 0;
 
         // ====== NAVIGATION COLLECTION ======
 
