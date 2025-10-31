@@ -3,7 +3,6 @@ using PM.DAL.Models;
 using PM.DAL.Repositories;
 using System;
 using System.Threading.Tasks;
-
 namespace PM.DAL
 {
     public class UnitOfWork : IUnitOfWork
@@ -102,5 +101,6 @@ namespace PM.DAL
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
     }
 }

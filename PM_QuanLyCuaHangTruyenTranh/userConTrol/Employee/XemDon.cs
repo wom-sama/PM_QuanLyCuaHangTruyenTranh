@@ -60,16 +60,16 @@ namespace PM.GUI.userConTrol.Employee
         private void CapNhatSoLuongBadge()
         {
             int tatCa = _bus.LayDanhSachDonHang(null).Count();
-            int dangXuLy = _bus.LayDanhSachDonHang("Đang xử lý").Count();
+            int dangXuLy = _bus.LayDanhSachDonHang("Chờ xử lý").Count();
             int dangGiao = _bus.LayDanhSachDonHang("Đang giao").Count();
             int daGiao = _bus.LayDanhSachDonHang("Đã giao").Count();
-            int daBan = _bus.LayDanhSachDonHang("Đã bán").Count();
+            int daBan = _bus.LayDanhSachDonHang("Đã thanh toán").Count();
 
             btnTatCa.Text = $"Tất cả ({tatCa})";
-            btnXuLy.Text = $"Đang xử lý ({dangXuLy})";
+            btnXuLy.Text = $"Chờ xử lý ({dangXuLy})";
             btnDangGiao.Text = $"Đang giao ({dangGiao})";
             btnĐaGiao.Text = $"Đã giao ({daGiao})";
-            btnDaban.Text = $"Đã bán ({daBan})";
+            btnDaban.Text = $"Đã thanh toán ({daBan})";
         }
 
         // ==== Sự kiện lọc ====
@@ -133,13 +133,13 @@ namespace PM.GUI.userConTrol.Employee
         }
         // ==== Sự kiện lọc ====
 
-        private void btnXuLy_Click_1(object sender, EventArgs e) => LoadDonHang("Đang xử lý");
+        private void btnXuLy_Click_1(object sender, EventArgs e) => LoadDonHang("Chờ xử lý");
 
         private void btnĐaGiao_Click_1(object sender, EventArgs e) => LoadDonHang("Đã giao");
 
         private void btnTatCa_Click(object sender, EventArgs e) => LoadDonHang();
         private void btnDangGiao_Click(object sender, EventArgs e) => LoadDonHang("Đang giao");
-        private void btnDaban_Click(object sender, EventArgs e) => LoadDonHang("Đã bán");
+        private void btnDaban_Click(object sender, EventArgs e) => LoadDonHang("Đã thanh toán");
 
         private void btnTaiLai_Click(object sender, EventArgs e) =>LoadDonHang();
 

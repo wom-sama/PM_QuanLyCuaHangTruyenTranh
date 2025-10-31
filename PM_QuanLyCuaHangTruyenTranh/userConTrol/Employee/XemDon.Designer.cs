@@ -106,6 +106,7 @@
             this.btnXuLy.Name = "btnXuLy";
             this.btnXuLy.Size = new System.Drawing.Size(218, 29);
             this.btnXuLy.Text = "Đơn Hàng Đang Xử Lý";
+            this.btnXuLy.ToolTipText = "Đơn Hàng Chờ Xử Lý";
             this.btnXuLy.Click += new System.EventHandler(this.btnXuLy_Click_1);
             // 
             // toolStripLabel2

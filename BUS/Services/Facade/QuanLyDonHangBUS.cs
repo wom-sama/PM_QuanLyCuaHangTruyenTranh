@@ -6,7 +6,6 @@ using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace PM.BUS.Services.Facade
 {
     public class QuanLyDonHangBUS
@@ -186,11 +185,6 @@ namespace PM.BUS.Services.Facade
                 return false; // trả về false nếu có lỗi
             }
         }
-
-
-
-
-
 
 
     }

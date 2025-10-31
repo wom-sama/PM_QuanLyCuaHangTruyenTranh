@@ -38,7 +38,7 @@ namespace PM.GUI.Main
             try
             {
                 // 🧾 Lấy danh sách đơn cần duyệt
-                var donCho = _bus.LayDanhSachDonHangTheoTrangThai("Đang xử lý");
+                var donCho = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý");
                 int soLuong = donCho?.Count() ?? 0;
 
                 if (soLuong > 0)
