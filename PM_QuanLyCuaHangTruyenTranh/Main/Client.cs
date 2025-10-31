@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using PM.GUI.FormThongBao;
+using PM.GUI.UserControls.Client;
 
 namespace PM.GUI.Main
 {
@@ -11,57 +12,78 @@ namespace PM.GUI.Main
             InitializeComponent();
         }
 
-        private void Client_Load(object sender, EventArgs e)
+        private void Client_Load_1(object sender, EventArgs e)
         {
-            // Dữ liệu ban đầu
-            txtHoTen.Text = "Nguyễn Văn A";
-            txtEmail.Text = "vana@example.com";
+            try
+            {
+                // Dữ liệu ban đầu
+                txtHoTen.Text = "Nguyễn Văn A";
+                txtEmail.Text = "vana@example.com";
+                txtHoTen.ReadOnly = true;
+                txtEmail.ReadOnly = true;
 
-            txtHoTen.ReadOnly = true;
-            txtEmail.ReadOnly = true;
+                // Khởi tạo ComboBox với 3 trạng thái
+                cboTrangThai.Items.Clear();
+                cboTrangThai.Items.Add("-- Chọn trạng thái --"); // Placeholder
+                cboTrangThai.Items.Add("Đang chuẩn bị hàng");
+                cboTrangThai.Items.Add("Đang vận chuyển");
+                cboTrangThai.Items.Add("Đã nhận hàng");
+                cboTrangThai.SelectedIndex = 0; // Chọn placeholder
 
-          // var profile = new userConTrol.Client.Profile_Edit();
-           // profile.ProfileUpdated += ProfileEdit_ProfileUpdated; // Đăng ký sự kiện
-           // LoadUserControl(profile);
+                // Gắn event
+                cboTrangThai.SelectedIndexChanged += cboTrangThai_SelectedIndexChanged_1;
+
+                // KHÔNG load UserControl mặc định - để panel trống
+                panelMain.Controls.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi khi load form",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadUserControl(UserControl uc)
         {
-            panelMain.Controls.Clear();
-            uc.Dock = DockStyle.Fill;
-            panelMain.Controls.Add(uc);
+            try
+            {
+                panelMain.Controls.Clear();
+                uc.Dock = DockStyle.Fill;
+                panelMain.Controls.Add(uc);
 
-            // Nếu là form chỉnh sửa hồ sơ thì gắn event luôn
-         //   if (uc is userConTrol.Client.Profile_Edit profileEdit)
-           // {
-             //  profileEdit.ProfileUpdated += ProfileEdit_ProfileUpdated;
-           // }
+                if (uc is userConTrol.Client.Profile_Edit profileEdit)
+                {
+                    profileEdit.ProfileUpdated += ProfileEdit_ProfileUpdated;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi load UserControl: {ex.Message}", "Lỗi");
+            }
         }
 
-        // ✅ Nhận dữ liệu cập nhật từ Profile_Edit
-     /*   private void ProfileEdit_ProfileUpdated(object sender, userConTrol.Client.UserProfileEventArgs e)
+        private void ProfileEdit_ProfileUpdated(object sender, userConTrol.Client.UserProfileEventArgs e)
         {
             txtHoTen.Text = e.FullName;
             txtEmail.Text = e.Email;
-
             MessageBox.Show("Dữ liệu trên Client đã được cập nhật!", "Thông báo");
-        }*/
+        }
 
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-           // var profile = new userConTrol.Client.Profile_Edit();
-           // profile.ProfileUpdated += ProfileEdit_ProfileUpdated; // Gắn lại event
-         //  LoadUserControl(profile);
+            var profile = new userConTrol.Client.Profile_Edit();
+            profile.ProfileUpdated += ProfileEdit_ProfileUpdated;
+            LoadUserControl(profile);
         }
 
-      /* private void btnSeeOrder_Click(object sender, EventArgs e)
+        private void btnSeeOrder_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new userConTrol.Client.DonHang());
-        }*/
+            LoadUserControl(new DonHang());
+        }
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
-           // LoadUserControl(new userConTrol.Client.LichSuMuaHang());
+            LoadUserControl(new userConTrol.Client.LichSuMuaHang());
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -81,6 +103,39 @@ namespace PM.GUI.Main
                 {
                     picAvatar.ImageLocation = ofd.FileName;
                 }
+            }
+        }
+
+        private void cboTrangThai_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string trangThai = cboTrangThai.SelectedItem?.ToString();
+
+                // Nếu chọn placeholder, xóa panel
+                if (string.IsNullOrEmpty(trangThai) || trangThai == "-- Chọn trạng thái --")
+                {
+                    panelMain.Controls.Clear();
+                    return;
+                }
+
+                // Tạo và load DonHang với trạng thái được chọn
+                var donHangUC = new PM.GUI.UserControls.Client.DonHang();
+
+                var method = typeof(PM.GUI.UserControls.Client.DonHang)
+                    .GetMethod("TaiDonHang", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (method != null)
+                {
+                    method.Invoke(donHangUC, new object[] { trangThai });
+                }
+
+                LoadUserControl(donHangUC);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lọc đơn hàng: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -199,11 +199,41 @@
     <Compile Include="userConTrol\Admin\Edit_BOOK_CT.Designer.cs">
       <DependentUpon>Edit_BOOK_CT.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\PhanCong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\PhanCong.Designer.cs">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Admin\TinhLuong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\TinhLuong.Designer.cs">
+      <DependentUpon>TinhLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Admin\ucThongKeLoiNhuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\ucThongKeLoiNhuan.Designer.cs">
+      <DependentUpon>ucThongKeLoiNhuan.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\BookDetailControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userConTrol\Client\BookDetailControl.Designer.cs">
       <DependentUpon>BookDetailControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Client\DonHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\DonHang.Designer.cs">
+      <DependentUpon>DonHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Client\FormVerify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\FormVerify.Designer.cs">
+      <DependentUpon>FormVerify.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Client\GioHang.cs">
       <SubType>UserControl</SubType>
@@ -217,23 +247,23 @@
     <Compile Include="userConTrol\Client\KeSach.Designer.cs">
       <DependentUpon>KeSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Client\LichSuMuaHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\LichSuMuaHang.Designer.cs">
+      <DependentUpon>LichSuMuaHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\MuaHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userConTrol\Client\MuaHang.Designer.cs">
       <DependentUpon>MuaHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="userConTrol\Client\MuaHangItem.cs">
+    <Compile Include="userConTrol\Client\ProfileEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="userConTrol\Client\MuaHangItem.Designer.cs">
-      <DependentUpon>MuaHangItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="userConTrol\Client\MuaHangList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="userConTrol\Client\MuaHangList.Designer.cs">
-      <DependentUpon>MuaHangList.cs</DependentUpon>
+    <Compile Include="userConTrol\Client\ProfileEdit.Designer.cs">
+      <DependentUpon>ProfileEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Client\Shop_BookView.cs">
       <SubType>UserControl</SubType>
@@ -342,14 +372,20 @@
     <EmbeddedResource Include="userConTrol\Client\BookDetailControl.resx">
       <DependentUpon>BookDetailControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="userConTrol\Client\GioHang.resx">
-      <DependentUpon>GioHang.cs</DependentUpon>
+    <EmbeddedResource Include="userConTrol\Client\DonHang.resx">
+      <DependentUpon>DonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\FormVerify.resx">
+      <DependentUpon>FormVerify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\KeSach.resx">
       <DependentUpon>KeSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\MuaHang.resx">
       <DependentUpon>MuaHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\ProfileEdit.resx">
+      <DependentUpon>ProfileEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\Shop_BookView.resx">
       <DependentUpon>Shop_BookView.cs</DependentUpon>
