@@ -3,16 +3,16 @@ using PM.DAL.Models;
 using PM.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PM.BUS.Services.LamViecsv
-
 {
     public class PhanCongService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-    public PhanCongService(IUnitOfWork unitOfWork)
+        public PhanCongService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -108,19 +108,6 @@ namespace PM.BUS.Services.LamViecsv
             }
         }
 
-        public async Task<PhanCong> GetByIdAsync(int maPhanCong)
-        {
-            try
-            {
-                return await _unitOfWork.PhanCongRepository.GetByIdAsync(maPhanCong);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi khi lấy phân công (async): " + ex.Message);
-                return null;
-            }
-        }
-
         public async Task<bool> AddAsync(PhanCong p)
         {
             try
@@ -133,22 +120,6 @@ namespace PM.BUS.Services.LamViecsv
             catch (Exception ex)
             {
                 Console.WriteLine("Lỗi khi thêm phân công (async): " + ex.Message);
-                return false;
-            }
-        }
-
-        public async Task<bool> UpdateAsync(PhanCong p)
-        {
-            try
-            {
-                if (p == null) return false;
-                _unitOfWork.PhanCongRepository.Update(p);
-                await _unitOfWork.SaveAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi khi cập nhật phân công (async): " + ex.Message);
                 return false;
             }
         }
@@ -170,5 +141,4 @@ namespace PM.BUS.Services.LamViecsv
             }
         }
     }
-
 }

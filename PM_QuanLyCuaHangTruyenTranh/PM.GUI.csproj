@@ -199,6 +199,24 @@
     <Compile Include="userConTrol\Admin\Edit_BOOK_CT.Designer.cs">
       <DependentUpon>Edit_BOOK_CT.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\PhanCong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\PhanCong.Designer.cs">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Admin\TinhLuong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\TinhLuong.Designer.cs">
+      <DependentUpon>TinhLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Admin\ucThongKeLoiNhuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\ucThongKeLoiNhuan.Designer.cs">
+      <DependentUpon>ucThongKeLoiNhuan.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\BookDetailControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
