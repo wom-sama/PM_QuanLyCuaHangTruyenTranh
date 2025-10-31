@@ -88,23 +88,16 @@ namespace PM.GUI.Main
                         nvForm.ShowDialog();
                         break;
                     case "Khach":
-                        // Lấy thông tin KhachHang từ database theo TenDangNhap của TaiKhoan
-                        using (var uow = new PM.DAL.UnitOfWork()) // hoặc context EF của bạn
+                        var kh = await authService.DangNhapVaLayKhachHang(username, password);
+                        if (kh != null)
                         {
-                            var kh = uow.KhachHangs.Get(tk.TenDangNhap); // Lấy KhachHang theo TenDangNhap
-                            if (kh == null)
-                            {
-                                new FormMessage("Khách hàng chưa có thông tin!").ShowDialog();
-                                return;
-                            }
-
-                            // Truyền KhachHang vào FromTest
-                            FromTest clientForm = new FromTest(kh);
-                            clientForm.StartPosition = FormStartPosition.CenterScreen;
-                            clientForm.ShowDialog();
+                            new FromTest(kh).ShowDialog();
+                        }
+                        else
+                        {
+                            new FormMessage("Đăng nhập thất bại!").ShowDialog();
                         }
                         break;
-
 
 
                 }

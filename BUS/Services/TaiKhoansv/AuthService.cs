@@ -11,7 +11,8 @@ namespace PM.BUS.Services.TaiKhoansv
     public class AuthService
     {
         private readonly UnitOfWork _uow;
-
+        private  TaiKhoanService _taiKhoanService;
+        private KhachHangService _khachHangService;
         public AuthService()
         {
             _uow = new UnitOfWork(new AppDbContext());
@@ -42,6 +43,25 @@ namespace PM.BUS.Services.TaiKhoansv
                 HoTen = hoTen
             };
         }
+
+        public async Task<KhachHang> DangNhapVaLayKhachHang(string username, string password)
+        {
+            // ✅ Nếu 2 service bị null thì khởi tạo lại
+            if (_taiKhoanService == null)
+                _taiKhoanService = new TaiKhoanService(_uow);
+            if (_khachHangService == null)
+                _khachHangService = new KhachHangService();
+
+            var tk = await _taiKhoanService.GetByIdAsync(username);
+
+            if (tk == null || !PasswordHelper.VerifyPassword(password, tk.MatKhau))
+                return null;
+
+            var kh = _khachHangService.TimTheoTenDangNhap(username);
+            return kh;
+        }
+        
+
 
         /// <summary>
         /// Tạo tài khoản mới cho khách hàng

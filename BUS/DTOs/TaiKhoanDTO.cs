@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PM.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,6 @@ namespace BUS.DTOs
 
         // Nếu cần hiển thị thêm thông tin
         public string HoTen { get; set; } // Từ NhanVien hoặc KhachHang
+        public KhachHang KhachHang { get; set; }
     }
 }

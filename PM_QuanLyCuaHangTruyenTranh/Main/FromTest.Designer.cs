@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.PanelTest = new Guna.UI2.WinForms.Guna2Panel();
-            this.shop_BookView1 = new PM.GUI.userConTrol.Customer.Shop_BookView();
+           // this.shop_BookView1 = new PM.GUI.userConTrol.Customer.Shop_BookView();
             this.PanelTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelTest
             // 
             this.PanelTest.AutoScroll = true;
-            this.PanelTest.Controls.Add(this.shop_BookView1);
+//            this.PanelTest.Controls.Add(this.shop_BookView1);
             this.PanelTest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelTest.Location = new System.Drawing.Point(0, 0);
             this.PanelTest.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -46,11 +46,11 @@
             // 
             // shop_BookView1
             // 
-            this.shop_BookView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.shop_BookView1.Location = new System.Drawing.Point(0, 0);
-            this.shop_BookView1.Name = "shop_BookView1";
-            this.shop_BookView1.Size = new System.Drawing.Size(900, 562);
-            this.shop_BookView1.TabIndex = 0;
+//            this.shop_BookView1.Dock = System.Windows.Forms.DockStyle.Fill;
+//            this.shop_BookView1.Location = new System.Drawing.Point(0, 0);
+  //          this.shop_BookView1.Name = "shop_BookView1";
+         //   this.shop_BookView1.Size = new System.Drawing.Size(900, 562);
+         //   this.shop_BookView1.TabIndex = 0;
             // 
             // FromTest
             // 
