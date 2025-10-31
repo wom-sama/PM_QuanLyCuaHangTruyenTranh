@@ -2,6 +2,7 @@
 using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.VanChuyensv;
 using PM.DAL;
+using PM.DAL.Interfaces;
 using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,15 @@ namespace PM.BUS.Services.Facade
         private readonly DonHangService _donHangService;
         private readonly CT_DonHangService _ctDonHangService;
         private readonly VanChuyenService _vanChuyenService;
+        private readonly UnitOfWork _unitOfWork;
 
         public QuanLyDonHangBUS()
         {
             // BUS được phép khởi tạo UoW
-            var uow = new UnitOfWork(new AppDbContext());
-            _donHangService = new DonHangService(uow);
-            _ctDonHangService = new CT_DonHangService(uow);
-            _vanChuyenService = new VanChuyenService(uow);
+            _unitOfWork = new UnitOfWork(new AppDbContext());
+            _donHangService = new DonHangService(_unitOfWork);
+            _ctDonHangService = new CT_DonHangService(_unitOfWork);
+            _vanChuyenService = new VanChuyenService(_unitOfWork);
         }
 
         // ==================== DANH SÁCH ĐƠN ====================
@@ -141,27 +143,23 @@ namespace PM.BUS.Services.Facade
 
             return true;
         }
-        public bool TaoDonHang(KhachHang kh, string loaiDon, string hinhThucThanhToan, decimal tongTien, List<CT_GioHang> items)
+        public bool TaoDonHang(KhachHang kh, string loaiDon, string maDVVC, string hinhThucThanhToan, decimal tongTien, List<CT_GioHang> items)
         {
             try
             {
-                // 1. Tạo đơn
                 var don = new DonHang
                 {
                     MaDonHang = "DH" + DateTime.Now.Ticks.ToString(),
                     MaKhach = kh.TenDangNhap,
                     NgayDat = DateTime.Now,
-                    LoaiDon = "Online",
+                    LoaiDon = loaiDon,
                     TrangThai = "Chờ xử lý",
                     TongTien = tongTien,
                     HinhThucThanhToan = hinhThucThanhToan,
                     NgayGiao = null
                 };
-
-                // 2. Thêm đơn vào DbSet (chưa save)
                 _donHangService.Add(don);
 
-                // 3. Thêm chi tiết đơn
                 foreach (var item in items)
                 {
                     var ct = new CT_DonHang
@@ -175,15 +173,25 @@ namespace PM.BUS.Services.Facade
                     _ctDonHangService.Add(ct);
                 }
 
-                // 4. Lưu tất cả vào database
-                _donHangService.UnitOfWork.Save();
+                var vc = new VanChuyen
+                {
+                    MaDonHang = don.MaDonHang,
+                    MaDVVC = maDVVC,
+                    NgayTao = DateTime.Now,
+                    TrangThai = "Chờ xử lý",
+                    GhiChu = ""
+                };
+                _vanChuyenService.Add(vc);
+
+                // Save tất cả (DonHang + CT + VanChuyen)
+                _unitOfWork.Save();
 
                 return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Lỗi khi tạo đơn hàng: " + ex);
-                return false; // trả về false nếu có lỗi
+                return false;
             }
         }
 

@@ -76,6 +76,15 @@ namespace PM.GUI.userConTrol.Customer
 
         private void btnMuaNgay_Click(object sender, EventArgs e)
         {
+
+            var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
+
+            if (soLuongTon <= 0)
+            {
+                MessageBox.Show($"❌ Sản phẩm '{_sach.TenSach}' hiện đã hết hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (_sach == null || _khachHang == null)
             {
                 MessageBox.Show("❌ Vui lòng đăng nhập để mua hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -103,6 +112,15 @@ namespace PM.GUI.userConTrol.Customer
 
         private void btnGioHang_Click(object sender, EventArgs e)
         {
+
+            var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
+
+            if (soLuongTon <= 0)
+            {
+                MessageBox.Show($"❌ Sản phẩm '{_sach.TenSach}' hiện đã hết hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (_sach == null || _khachHang == null)
             {
                 MessageBox.Show("❌ Vui lòng đăng nhập để thêm vào giỏ hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -130,14 +148,7 @@ namespace PM.GUI.userConTrol.Customer
 
             MessageBox.Show($"✅ Đã thêm {_sach.TenSach} vào giỏ hàng!", "Giỏ hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Nếu muốn, có thể mở luôn UserControl giỏ hàng
-            /*
-            GHControl cartControl = new GHControl(_currentGioHang.MaGioHang, _khachHang, _ctGioHangService, _gioHangService);
-            cartControl.Dock = DockStyle.Fill;
-            this.Parent.Controls.Add(cartControl);
-            cartControl.BringToFront();
-            this.Visible = false;
-            */
+           
         }
 
         private void btnBack_Click(object sender, EventArgs e)

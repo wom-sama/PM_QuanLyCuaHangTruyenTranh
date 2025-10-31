@@ -1,12 +1,13 @@
-﻿using PM.BUS.Services.DonHangsv;
+﻿using PM.BUS.Services;
+using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Facade;
 using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace PM.GUI.userConTrol.Client
 {
@@ -131,15 +132,23 @@ namespace PM.GUI.userConTrol.Client
             {
                 Location = new Point(10, y),
                 Width = 250,
-                DropDownStyle = ComboBoxStyle.DropDownList
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                DisplayMember = "TenDonVi",  // hiển thị tên
+                ValueMember = "MaDVVC"        // giá trị thực tế
             };
-            cbVanChuyen.Items.AddRange(new object[]
-            {
-                "Giao hàng nhanh (2-3 ngày)",
-                "Giao hàng tiết kiệm (3-5 ngày)",
-                "Hỏa tốc (trong ngày)"
-            });
-            cbVanChuyen.SelectedItem = vanChuyen != "" ? vanChuyen : cbVanChuyen.Items[0];
+
+            // lấy danh sách đơn vị vận chuyển từ DB
+            var donViService = new DonViVanChuyenService();  // bạn cần có service cho bảng DonViVanChuyen
+            var danhSachDVC = donViService.GetAll();         // ví dụ phương thức trả về List<DonViVanChuyen>
+
+            cbVanChuyen.DataSource = danhSachDVC;
+
+            // chọn giá trị nếu có
+            if (!string.IsNullOrEmpty(vanChuyen))
+                cbVanChuyen.SelectedValue = vanChuyen;
+            else if (cbVanChuyen.Items.Count > 0)
+                cbVanChuyen.SelectedIndex = 0;
+
             cbVanChuyen.SelectedIndexChanged += (s, e) => UpdateTongTien();
             pannelTong.Controls.Add(cbVanChuyen);
             y += 30;
@@ -209,43 +218,31 @@ namespace PM.GUI.userConTrol.Client
             pannelTong.Controls.Add(btnBack);
         }
 
+        private decimal tong = 0;
         private void UpdateTongTien()
         {
             decimal phiShip = 0;
-            switch (cbVanChuyen.SelectedItem?.ToString())
-            {
-                case "Giao hàng nhanh (2-3 ngày)": phiShip = 50000; break;
-                case "Giao hàng tiết kiệm (3-5 ngày)": phiShip = 40000; break;
-                case "Hỏa tốc (trong ngày)": phiShip = 60000; break;
-            }
+            if (cbVanChuyen.SelectedItem is DonViVanChuyen dvc)
+                phiShip = dvc.PhiCoBan;
 
-            decimal tong = _items.Sum(x => x.SoLuong * x.Sach.GiaBan) + phiShip;
+            tong = _items.Sum(x => x.SoLuong * x.Sach.GiaBan) + phiShip+50000;
             lblTongTien.Text = $"Tổng tiền: {tong:N0} ₫ (đã gồm phí ship)";
         }
 
         private void BtnDatHang_Click(object sender, EventArgs e)
         {
-            string hoTen = ((TextBox)pannelTong.Controls.OfType<TextBox>().FirstOrDefault()).Text;
-            string sdt = ((TextBox)pannelTong.Controls.OfType<TextBox>().Skip(1).FirstOrDefault()).Text;
-            string diaChi = ((TextBox)pannelTong.Controls.OfType<TextBox>().Skip(2).FirstOrDefault()).Text;
 
            
 
             // Lấy số trong chuỗi lblTongTien
-            string text = lblTongTien.Text;
-            var match = Regex.Match(text, @"[\d,]+"); // Tìm chuỗi số và dấu phẩy
-            decimal tongTien = 0;
+         
 
-            if (match.Success)
-            {
-                // Bỏ dấu phẩy, convert sang decimal
-                tongTien = decimal.Parse(match.Value.Replace(",", ""));
-            }
+         
 
             bool ok = new QuanLyDonHangBUS().TaoDonHang(
-                _khach,"Online",
+                _khach,"Online", cbVanChuyen.SelectedValue?.ToString(),
                 cbThanhToan.SelectedItem?.ToString(),
-                tongTien,
+                tong,
                 _items // danh sách CT_GioHang
             );
 
