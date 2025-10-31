@@ -259,6 +259,18 @@
     <Compile Include="userConTrol\Client\MuaHang.Designer.cs">
       <DependentUpon>MuaHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Client\MuaHangItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHangItem.Designer.cs">
+      <DependentUpon>MuaHangItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHangList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHangList.Designer.cs">
+      <DependentUpon>MuaHangList.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\ProfileEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>

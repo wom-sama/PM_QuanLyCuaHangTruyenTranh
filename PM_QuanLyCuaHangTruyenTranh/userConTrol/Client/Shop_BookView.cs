@@ -9,9 +9,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using GHControl = PM.GUI.userConTrol.Client.GioHang; // alias cho UserControl
 // Thêm ở đầu file
 using GHModel = PM.DAL.Models.GioHang;  // alias cho model
-using GHControl = PM.GUI.userConTrol.Client.GioHang; // alias cho UserControl
 namespace PM.GUI.userConTrol.Customer
 {
     public partial class Shop_BookView : UserControl
@@ -20,15 +20,21 @@ namespace PM.GUI.userConTrol.Customer
 
         // 🟩 Khách hàng hiện tại
         private KhachHang currentKhachHang;
-        private GioHangService _gioHangService = new GioHangService(new UnitOfWork());
-        private CT_GioHangService _ctGioHangService = new CT_GioHangService(new UnitOfWork());
+        private UnitOfWork _unitOfWork = new UnitOfWork();
+        private GioHangService _gioHangService;
+        private CT_GioHangService _ctGioHangService;
         private GioHang currentGioHang;
+      
 
         public Shop_BookView(KhachHang khachHang)
         {
             currentKhachHang = khachHang;
+            _unitOfWork = new UnitOfWork();
+            _gioHangService = new GioHangService(_unitOfWork);
+            _ctGioHangService = new CT_GioHangService(_unitOfWork);
             if (!DesignMode)
                 InitializeComponent();
+
         }
 
         private void Shop_BookView_Load(object sender, EventArgs e)
@@ -246,7 +252,7 @@ namespace PM.GUI.userConTrol.Customer
         private void LoadOrCreateCart()
         {
             currentGioHang = _gioHangService.GetAll()
-                .FirstOrDefault(g => g.MaKhach == currentKhachHang.TenDangNhap);
+         .FirstOrDefault(g => g.MaKhach == currentKhachHang.TenDangNhap);
 
             if (currentGioHang == null)
             {
@@ -257,6 +263,7 @@ namespace PM.GUI.userConTrol.Customer
                     CT_GioHangs = new List<CT_GioHang>()
                 };
                 _gioHangService.Add(currentGioHang);
+                _unitOfWork.Save();
             }
         }
     }

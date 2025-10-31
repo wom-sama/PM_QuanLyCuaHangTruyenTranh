@@ -14,6 +14,7 @@ namespace PM.GUI.userConTrol.Customer
         private KhachHang _khach; // 🟩 Thêm đối tượng khách hàng
         private Action _onBack;
         private CT_DonHangService _ctDonHangService = new CT_DonHangService();
+        private DonHangService _donHangService = new DonHangService();
 
         private int _soLuong = 1;
         private decimal _giaBan;
@@ -169,10 +170,13 @@ namespace PM.GUI.userConTrol.Customer
             var don = new DonHang
             {
                 MaDonHang = maDon,
+                MaKhach = _khach.TenDangNhap, // 🔹 Nhớ gán mã khách hàng
                 NgayDat = dtpNgayDat.Value,
                 LoaiDon = "Online",
                 TrangThai = "Chờ xử lý",
-                TongTien = _soLuong * _giaBan + _phiShip
+                TongTien = _soLuong * _giaBan + _phiShip,
+                HinhThucThanhToan = cbThanhToan.SelectedItem.ToString(),
+                NgayGiao = null
             };
 
             var ctdh = new CT_DonHang
@@ -186,11 +190,17 @@ namespace PM.GUI.userConTrol.Customer
 
             try
             {
+                // 🔹 Lưu đơn hàng trước
+                _donHangService.Add(don);
+
+                // 🔹 Sau đó lưu chi tiết đơn hàng
                 _ctDonHangService.Add(ctdh);
+
                 MessageBox.Show(
                     $"✅ Đặt hàng thành công!\nNgười nhận: {txtTen.Text}\nSĐT: {txtSDT.Text}\nĐịa chỉ: {txtDiaChi.Text}\n" +
                     $"Phí ship: {_phiShip:N0} ₫\nTổng thanh toán: {don.TongTien:N0} ₫",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 _onBack?.Invoke();
             }
             catch (Exception ex)
