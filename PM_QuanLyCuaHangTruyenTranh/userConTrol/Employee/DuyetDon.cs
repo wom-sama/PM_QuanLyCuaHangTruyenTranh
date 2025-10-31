@@ -17,7 +17,7 @@ namespace PM.GUI.userConTrol.Employee
             InitializeComponent();
             _bus = new QuanLyDonHangBUS();
 
-            // 🌈 Định dạng label sau khi InitializeComponent()
+            // Định dạng label sau khi InitializeComponent()
             var labels = new[] { lblTenKhach, lblSDT, lblEmail, lblDiaChi, lblDonViVC, lblTongTien, lblNgayDat, lblNgayGiao };
             int x = 20, y = 15, spacing = 22;
             foreach (var lbl in labels)
@@ -89,6 +89,38 @@ namespace PM.GUI.userConTrol.Employee
                     Thành_tiền = ct.ThanhTien
                 })
                 .ToList();
+
+            dgvChiTiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvChiTiet.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvChiTiet.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            dgvChiTiet.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(230, 230, 230);
+            dgvChiTiet.EnableHeadersVisualStyles = false;
+
+            dgvChiTiet.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dgvChiTiet.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            dgvChiTiet.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(210, 240, 255);
+            dgvChiTiet.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            // 🌈 Xen kẽ màu dòng để dễ nhìn
+            dgvChiTiet.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
+            dgvChiTiet.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+
+            // 🧩 Căn giữa số lượng và giá tiền
+            if (dgvChiTiet.Columns.Contains("Số_lượng"))
+                dgvChiTiet.Columns["Số_lượng"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            if (dgvChiTiet.Columns.Contains("Đơn_giá"))
+                dgvChiTiet.Columns["Đơn_giá"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            if (dgvChiTiet.Columns.Contains("Thành_tiền"))
+                dgvChiTiet.Columns["Thành_tiền"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            // 🚫 Không cho sửa trực tiếp
+            dgvChiTiet.ReadOnly = true;
+            dgvChiTiet.AllowUserToAddRows = false;
+            dgvChiTiet.AllowUserToDeleteRows = false;
+            dgvChiTiet.RowHeadersVisible = false;
+
+            // Bo góc nhẹ, khoảng cách dòng dễ nhìn
+            dgvChiTiet.RowTemplate.Height = 28;
         }
 
         private void XoaThongTinChiTiet()

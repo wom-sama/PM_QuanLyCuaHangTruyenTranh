@@ -116,6 +116,7 @@
     <Compile Include="Services\TaiKhoansv\TaiKhoanService.cs" />
     <Compile Include="Services\VanChuyensv\ChiNhanhService.cs" />
     <Compile Include="Services\VanChuyensv\CT_NhapKhoService.cs" />
+    <Compile Include="Services\VanChuyensv\DonViVanChuyenService.cs" />
     <Compile Include="Services\VanChuyensv\KhoService.cs" />
     <Compile Include="Services\VanChuyensv\KiemKeService.cs" />
     <Compile Include="Services\VanChuyensv\NhapKhoService.cs" />

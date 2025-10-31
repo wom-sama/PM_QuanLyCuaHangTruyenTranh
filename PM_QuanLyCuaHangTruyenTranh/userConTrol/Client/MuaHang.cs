@@ -1,26 +1,30 @@
-﻿using PM.DAL.Models;
+﻿using Guna.UI2.WinForms;
+using PM.BUS.Services;
 using PM.BUS.Services.DonHangsv;
+using PM.BUS.Services.VanChuyensv;
+using PM.DAL.Models;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 
 namespace PM.GUI.userConTrol.Customer
 {
     public partial class MuaHang : UserControl
     {
         private Sach _sach;
-        private KhachHang _khach; // 🟩 Thêm đối tượng khách hàng
+        private KhachHang _khach;
         private Action _onBack;
+        private DonViVanChuyenService _donViVanChuyenService = new DonViVanChuyenService();
         private CT_DonHangService _ctDonHangService = new CT_DonHangService();
         private DonHangService _donHangService = new DonHangService();
+        private VanChuyenService _vanChuyenService = new VanChuyenService(); 
 
         private int _soLuong = 1;
         private decimal _giaBan;
         private decimal _phiShip = 0;
 
-        // 🟩 Constructor mới có thêm KhachHang
         public MuaHang(Sach sach, KhachHang khach, Action onBack)
         {
             InitializeComponent();
@@ -49,7 +53,6 @@ namespace PM.GUI.userConTrol.Customer
             lblGiaSach.Text = $"{_sach.GiaBan:N0} ₫";
             lblSoLuong.Text = _soLuong.ToString();
 
-            // Ảnh bìa
             if (_sach.BiaSach != null && _sach.BiaSach.Length > 0)
             {
                 using (var ms = new MemoryStream(_sach.BiaSach))
@@ -60,27 +63,25 @@ namespace PM.GUI.userConTrol.Customer
                 picBiaSach.Image = Properties.Resources.sparkle_hanabi;
             }
 
-            // 🟩 Nếu có thông tin khách hàng -> tự động điền
             if (_khach != null)
             {
                 txtTen.Text = _khach.HoTen;
                 txtSDT.Text = _khach.SoDienThoai;
                 txtDiaChi.Text = _khach.DiaChi;
             }
-            // Cấu hình DateTimePicker theo chuẩn Việt Nam
+
             dtpNgayDat.Format = DateTimePickerFormat.Custom;
             dtpNgayDat.CustomFormat = "dd/MM/yyyy";
             dtpNgayDat.Value = DateTime.Now;
 
-            // 🟩 Dữ liệu cho combobox
-            cbVanChuyen.Items.Clear();
-            cbVanChuyen.Items.AddRange(new object[]
+            // 🟩 Lấy danh sách đơn vị vận chuyển từ DB
+            var dsVanChuyen = _donViVanChuyenService.GetAll().ToList();
+            if (dsVanChuyen.Any())
             {
-                "Giao hàng nhanh (2-3 ngày)",
-                "Giao hàng tiết kiệm (3-5 ngày)",
-                "Hỏa tốc (trong ngày)"
-            });
-            cbVanChuyen.SelectedIndex = 0;
+                cbVanChuyen.DataSource = dsVanChuyen;
+                cbVanChuyen.DisplayMember = "TenDonVi";
+                cbVanChuyen.ValueMember = "MaDVVC";
+            }
 
             cbThanhToan.Items.Clear();
             cbThanhToan.Items.AddRange(new object[]
@@ -90,8 +91,6 @@ namespace PM.GUI.userConTrol.Customer
                 "Ví điện tử (Momo, ZaloPay...)"
             });
             cbThanhToan.SelectedIndex = 0;
-
-            dtpNgayDat.Value = DateTime.Now;
 
             UpdatePhiShip();
             UpdateTongTien();
@@ -117,23 +116,14 @@ namespace PM.GUI.userConTrol.Customer
 
         private void UpdatePhiShip()
         {
-            if (cbVanChuyen.SelectedItem == null) return;
+            if (cbVanChuyen.SelectedValue == null) return;
 
-            switch (cbVanChuyen.SelectedItem.ToString())
-            {
-                case "Giao hàng nhanh (2-3 ngày)":
-                    _phiShip = 50000;
-                    break;
-                case "Giao hàng tiết kiệm (3-5 ngày)":
-                    _phiShip = 40000;
-                    break;
-                case "Hỏa tốc (trong ngày)":
-                    _phiShip = 60000;
-                    break;
-                default:
-                    _phiShip = 0;
-                    break;
-            }
+            var maVC = cbVanChuyen.SelectedValue.ToString();
+            var vc = _donViVanChuyenService.GetById(maVC);
+            if (vc != null)
+                _phiShip = vc.PhiCoBan + 10000; // 🟩 dùng đúng thuộc tính trong DB
+            else
+                _phiShip = 0;
         }
 
         private void cbVanChuyen_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,7 +160,7 @@ namespace PM.GUI.userConTrol.Customer
             var don = new DonHang
             {
                 MaDonHang = maDon,
-                MaKhach = _khach.TenDangNhap, // 🔹 Nhớ gán mã khách hàng
+                MaKhach = _khach.TenDangNhap,
                 NgayDat = dtpNgayDat.Value,
                 LoaiDon = "Online",
                 TrangThai = "Chờ xử lý",
@@ -188,13 +178,21 @@ namespace PM.GUI.userConTrol.Customer
                 ThanhTien = _soLuong * _giaBan
             };
 
+            // 🟩 Tạo phiếu vận chuyển tương ứng
+            var vc = new VanChuyen
+            {
+                MaDonHang = maDon,
+                MaDVVC = cbVanChuyen.SelectedValue.ToString(),
+                NgayTao = DateTime.Now,
+                TrangThai = "Đang xử lý",
+                GhiChu = $"Giao đến {txtDiaChi.Text}"
+            };
+
             try
             {
-                // 🔹 Lưu đơn hàng trước
                 _donHangService.Add(don);
-
-                // 🔹 Sau đó lưu chi tiết đơn hàng
                 _ctDonHangService.Add(ctdh);
+                _vanChuyenService.Add(vc); // 🟩 thêm dòng này
 
                 MessageBox.Show(
                     $"✅ Đặt hàng thành công!\nNgười nhận: {txtTen.Text}\nSĐT: {txtSDT.Text}\nĐịa chỉ: {txtDiaChi.Text}\n" +

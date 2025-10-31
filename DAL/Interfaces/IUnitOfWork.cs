@@ -32,6 +32,7 @@ namespace PM.DAL.Interfaces
         IGenericRepository<PhanCong> PhanCongRepository { get; }
         IGenericRepository<CongViec> CongViecRepository { get; }
         IGenericRepository<BangLuong> BangLuongRepository { get; }
+        IGenericRepository<DonViVanChuyen> DonViVanChuyenRepository { get; }
 
 
         int Save();              // Đồng bộ

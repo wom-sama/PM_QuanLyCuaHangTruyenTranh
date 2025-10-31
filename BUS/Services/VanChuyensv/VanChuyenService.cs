@@ -17,6 +17,11 @@ namespace PM.BUS.Services.VanChuyensv
             _unitOfWork = unitOfWork;
         }
 
+        public VanChuyenService()
+        {
+            _unitOfWork = new UnitOfWork();
+        }
+
         // ==================== LẤY DỮ LIỆU ====================
 
         public IEnumerable<VanChuyen> GetAll()
