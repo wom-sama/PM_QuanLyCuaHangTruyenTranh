@@ -46,9 +46,10 @@
             // 
             // shop_BookView1
             // 
+            this.shop_BookView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shop_BookView1.Location = new System.Drawing.Point(0, 0);
             this.shop_BookView1.Name = "shop_BookView1";
-            this.shop_BookView1.Size = new System.Drawing.Size(836, 573);
+            this.shop_BookView1.Size = new System.Drawing.Size(900, 562);
             this.shop_BookView1.TabIndex = 0;
             // 
             // FromTest

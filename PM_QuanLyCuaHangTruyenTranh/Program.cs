@@ -24,7 +24,7 @@ namespace PM.GUI
 
              Application.EnableVisualStyles();
              Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new Main.NhanVienForm());
+             Application.Run(new Main.LoginForm());
 
            
 

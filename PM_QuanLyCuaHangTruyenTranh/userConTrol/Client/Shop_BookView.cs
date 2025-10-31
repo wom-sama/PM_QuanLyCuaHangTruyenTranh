@@ -14,8 +14,12 @@ namespace PM.GUI.userConTrol.Customer
     {
         private SachService sachService = new SachService();
 
-        public Shop_BookView()
+        // 🟩 Khách hàng hiện tại
+        private KhachHang currentKhachHang;
+
+        public Shop_BookView(KhachHang khachHang)
         {
+            currentKhachHang = khachHang;
             if (!DesignMode)
                 InitializeComponent();
         }
@@ -62,24 +66,21 @@ namespace PM.GUI.userConTrol.Customer
                 BackColor = Color.WhiteSmoke
             };
 
-            // ✅ Nếu BiaSach là byte[] → chuyển thành ảnh
             if (sach.BiaSach != null && sach.BiaSach.Length > 0)
             {
                 try
                 {
                     using (MemoryStream ms = new MemoryStream(sach.BiaSach))
-                    {
                         pic.Image = Image.FromStream(ms);
-                    }
                 }
                 catch
                 {
-                    pic.Image = Properties.Resources.sparkle_hanabi; // ảnh mặc định
+                    pic.Image = Properties.Resources.sparkle_hanabi;
                 }
             }
             else
             {
-                pic.Image = Properties.Resources.sparkle_hanabi; // ảnh mặc định nếu chưa có
+                pic.Image = Properties.Resources.sparkle_hanabi;
             }
 
             // ----- TÊN SÁCH -----
@@ -134,40 +135,42 @@ namespace PM.GUI.userConTrol.Customer
         private void BtnMua_Click(object sender, EventArgs e)
         {
             var sach = (sender as Guna.UI2.WinForms.Guna2Button)?.Tag as Sach;
-            if (sach != null)
+            if (sach == null) return;
+
+            panelDanhSach.Visible = false;
+
+            MuaHang muaHang = null;
+
+            // Truyền KhachHang hiện tại và hành động back
+            muaHang = new MuaHang(sach, currentKhachHang, () =>
             {
-                MessageBox.Show($"🛒 Mua ngay: {sach.TenSach}\nGiá: {sach.GiaBan:N0} ₫",
-                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                pannelTong.Controls.Remove(muaHang);
+                panelDanhSach.Visible = true;
+            });
+
+            muaHang.Dock = DockStyle.Fill;
+            pannelTong.Controls.Add(muaHang);
+            muaHang.BringToFront();
         }
 
         // ================== CLICK VÀO SÁCH ==================
         private void OpenBookDetail(Sach sach)
         {
-            // Ẩn danh sách
             panelDanhSach.Visible = false;
 
-            // Khai báo biến trước
             BookDetailControl detailControl = null;
 
-            // Gán control chi tiết (truyền hành động quay lại)
-            detailControl = new BookDetailControl(sach, () =>
+            detailControl = new BookDetailControl(sach, currentKhachHang, () =>
             {
-                // Khi nhấn "Quay lại"
                 pannelTong.Controls.Remove(detailControl);
                 panelDanhSach.Visible = true;
             });
 
-            // Cấu hình hiển thị toàn màn hình
             detailControl.Dock = DockStyle.Fill;
             detailControl.AutoScroll = true;
-
-            // Thêm control chi tiết vào panel
             pannelTong.Controls.Add(detailControl);
             detailControl.BringToFront();
         }
-
-
 
         // ================== TÌM KIẾM ==================
         private void btnFind_Click(object sender, EventArgs e)

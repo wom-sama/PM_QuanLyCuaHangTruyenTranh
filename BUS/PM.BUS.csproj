@@ -112,6 +112,7 @@
     <Compile Include="Services\Sachsv\SachService.cs" />
     <Compile Include="Services\Sachsv\TacGiaService.cs" />
     <Compile Include="Services\Sachsv\TheLoaiService.cs" />
+    <Compile Include="Services\TaiKhoansv\TaiKhoanService.cs" />
     <Compile Include="Services\VanChuyensv\ChiNhanhService.cs" />
     <Compile Include="Services\VanChuyensv\CT_NhapKhoService.cs" />
     <Compile Include="Services\VanChuyensv\KhoService.cs" />

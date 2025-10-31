@@ -9,15 +9,18 @@ namespace PM.GUI.userConTrol.Customer
     public partial class BookDetailControl : UserControl
     {
         private Sach _sach;
+        private KhachHang _khachHang; // 🟩 Thêm thông tin khách hàng
         private Action _onBack;
 
-        public BookDetailControl(Sach sach, Action onBack)
+        // 🟩 Constructor mới
+        public BookDetailControl(Sach sach, KhachHang khachHang, Action onBack)
         {
             InitializeComponent();
 
             if (!DesignMode)
             {
                 _sach = sach;
+                _khachHang = khachHang;
                 _onBack = onBack;
             }
         }
@@ -55,11 +58,33 @@ namespace PM.GUI.userConTrol.Customer
             }
         }
 
-
         private void btnMuaNgay_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"🛒 Mua ngay: {_sach.TenSach} - {_sach.GiaBan:N0} ₫",
-                "Mua hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (_sach == null) return;
+            if (_khachHang == null)
+            {
+                MessageBox.Show("❌ Vui lòng đăng nhập để mua hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var parentPanel = this.Parent; // Lấy panel chứa BookDetailControl
+
+            // Ẩn control hiện tại
+            this.Visible = false;
+
+            // 🟩 Khai báo trước
+            MuaHang muaHang = null;
+
+            // 🟩 Khởi tạo MuaHang với KhachHang
+            muaHang = new MuaHang(_sach, _khachHang, () =>
+            {
+                parentPanel.Controls.Remove(muaHang);
+                this.Visible = true;
+            });
+
+            muaHang.Dock = DockStyle.Fill;
+            parentPanel.Controls.Add(muaHang);
+            muaHang.BringToFront();
         }
 
         private void btnGioHang_Click(object sender, EventArgs e)

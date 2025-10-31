@@ -25,6 +25,8 @@
             // 
             // txtFindTen
             // 
+            this.txtFindTen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFindTen.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFindTen.DefaultText = "";
             this.txtFindTen.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -38,6 +40,7 @@
             // 
             // btnFind
             // 
+            this.btnFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFind.BorderRadius = 10;
             this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnFind.ForeColor = System.Drawing.Color.White;
@@ -50,6 +53,7 @@
             // 
             // btnCart
             // 
+            this.btnCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCart.BorderRadius = 10;
             this.btnCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnCart.ForeColor = System.Drawing.Color.White;
@@ -62,6 +66,9 @@
             // 
             // panelDanhSach
             // 
+            this.panelDanhSach.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDanhSach.AutoScroll = true;
             this.panelDanhSach.Location = new System.Drawing.Point(3, 80);
             this.panelDanhSach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

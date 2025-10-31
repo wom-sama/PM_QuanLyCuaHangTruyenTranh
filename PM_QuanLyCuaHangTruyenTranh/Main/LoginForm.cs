@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using PM.BUS.Services.TaiKhoansv;
+using PM.DAL.Models;
 using PM.GUI.FormThongBao;
 using System;
 using System.Drawing;
@@ -87,10 +88,25 @@ namespace PM.GUI.Main
                         nvForm.ShowDialog();
                         break;
                     case "Khach":
-                       Client clientForm = new Client();
-                        clientForm.StartPosition = FormStartPosition.CenterScreen;
-                        clientForm.ShowDialog();
+                        // Lấy thông tin KhachHang từ database theo TenDangNhap của TaiKhoan
+                        using (var uow = new PM.DAL.UnitOfWork()) // hoặc context EF của bạn
+                        {
+                            var kh = uow.KhachHangs.Get(tk.TenDangNhap); // Lấy KhachHang theo TenDangNhap
+                            if (kh == null)
+                            {
+                                new FormMessage("Khách hàng chưa có thông tin!").ShowDialog();
+                                return;
+                            }
+
+                            // Truyền KhachHang vào FromTest
+                            FromTest clientForm = new FromTest(kh);
+                            clientForm.StartPosition = FormStartPosition.CenterScreen;
+                            clientForm.ShowDialog();
+                        }
                         break;
+
+
+
                 }
 
                 this.Show();

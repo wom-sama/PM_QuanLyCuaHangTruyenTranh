@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PM.DAL.Models;
+using PM.GUI.userConTrol.Admin;
+using PM.GUI.userConTrol.Customer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,17 +10,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PM.GUI.userConTrol.Admin;
 namespace PM.GUI.Main
 {
     public partial class FromTest : Form
     {
-        public FromTest()
+        private KhachHang currentKhachHang; // Lấy từ user đăng nhập
+        private Shop_BookView shopView;
+
+        public FromTest(KhachHang kh)
         {
             InitializeComponent();
-           
-        }
+            currentKhachHang = kh;
 
-       
+            shopView = new Shop_BookView(currentKhachHang)
+            {
+                Dock = DockStyle.Fill
+            };
+
+            PanelTest.Controls.Add(shopView);
+        }
     }
+
 }

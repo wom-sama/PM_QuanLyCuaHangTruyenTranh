@@ -205,11 +205,23 @@
     <Compile Include="userConTrol\Client\BookDetailControl.Designer.cs">
       <DependentUpon>BookDetailControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Client\GioHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\GioHang.Designer.cs">
+      <DependentUpon>GioHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\KeSach.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userConTrol\Client\KeSach.Designer.cs">
       <DependentUpon>KeSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHang.Designer.cs">
+      <DependentUpon>MuaHang.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Client\Shop_BookView.cs">
       <SubType>UserControl</SubType>
@@ -320,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\KeSach.resx">
       <DependentUpon>KeSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\MuaHang.resx">
+      <DependentUpon>MuaHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\Shop_BookView.resx">
       <DependentUpon>Shop_BookView.cs</DependentUpon>
