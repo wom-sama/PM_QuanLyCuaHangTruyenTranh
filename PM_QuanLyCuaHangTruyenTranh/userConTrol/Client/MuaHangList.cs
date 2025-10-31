@@ -229,12 +229,7 @@ namespace PM.GUI.userConTrol.Client
             string sdt = ((TextBox)pannelTong.Controls.OfType<TextBox>().Skip(1).FirstOrDefault()).Text;
             string diaChi = ((TextBox)pannelTong.Controls.OfType<TextBox>().Skip(2).FirstOrDefault()).Text;
 
-            var kh = new KhachHang
-            {
-                HoTen = hoTen,
-                SoDienThoai = sdt,
-                DiaChi = diaChi
-            };
+           
 
             // Lấy số trong chuỗi lblTongTien
             string text = lblTongTien.Text;
@@ -248,8 +243,7 @@ namespace PM.GUI.userConTrol.Client
             }
 
             bool ok = new QuanLyDonHangBUS().TaoDonHang(
-                kh,
-                cbVanChuyen.SelectedItem?.ToString(),
+                _khach,"Online",
                 cbThanhToan.SelectedItem?.ToString(),
                 tongTien,
                 _items // danh sách CT_GioHang
@@ -257,7 +251,7 @@ namespace PM.GUI.userConTrol.Client
 
             if (ok)
             {
-                MessageBox.Show("✅ Đặt hàng thành công! Đơn đã được gửi sang trạng thái 'Đang xử lý'.");
+                MessageBox.Show("✅ Đặt hàng thành công! Đơn đã được gửi sang trạng thái 'Chờ xử lý'.");
                 _onBack?.Invoke();
             }
             else

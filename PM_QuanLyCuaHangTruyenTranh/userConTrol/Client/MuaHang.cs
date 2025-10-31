@@ -153,6 +153,26 @@ namespace PM.GUI.userConTrol.Customer
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
+
+            if (!btnDatHang.Enabled) return;
+
+            // Kiểm tra số lượng tồn kho
+            var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
+
+            if (_soLuong <= 0)
+            {
+                MessageBox.Show("❌ Số lượng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (_soLuong > soLuongTon)
+            {
+                MessageBox.Show($"❌ Số lượng '{_sach.TenSach}' vượt quá số lượng tồn kho ({soLuongTon})!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             if (!btnDatHang.Enabled) return;
 
             string maDon = "DH" + DateTime.Now.Ticks.ToString();

@@ -20,7 +20,7 @@ namespace PM.GUI.userConTrol.Customer
 
         // 🟩 Khách hàng hiện tại
         private KhachHang currentKhachHang;
-        private UnitOfWork _unitOfWork = new UnitOfWork();
+        private UnitOfWork _unitOfWork;
         private GioHangService _gioHangService;
         private CT_GioHangService _ctGioHangService;
         private GioHang currentGioHang;

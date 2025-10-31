@@ -148,13 +148,14 @@ namespace PM.BUS.Services.Facade
                 // 1. Tạo đơn
                 var don = new DonHang
                 {
-                    MaDonHang = "DH" + DateTime.Now.Ticks,
-                    Khach = kh,
+                    MaDonHang = "DH" + DateTime.Now.Ticks.ToString(),
+                    MaKhach = kh.TenDangNhap,
                     NgayDat = DateTime.Now,
+                    LoaiDon = "Online",
+                    TrangThai = "Chờ xử lý",
                     TongTien = tongTien,
-                    TrangThai = "Đang xử lý",
-                    LoaiDon = loaiDon,
-                    HinhThucThanhToan = hinhThucThanhToan
+                    HinhThucThanhToan = hinhThucThanhToan,
+                    NgayGiao = null
                 };
 
                 // 2. Thêm đơn vào DbSet (chưa save)
