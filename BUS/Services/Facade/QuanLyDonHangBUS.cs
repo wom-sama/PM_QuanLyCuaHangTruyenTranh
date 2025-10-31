@@ -142,6 +142,56 @@ namespace PM.BUS.Services.Facade
 
             return true;
         }
+        public bool TaoDonHang(KhachHang kh, string loaiDon, string hinhThucThanhToan, decimal tongTien, List<CT_GioHang> items)
+        {
+            try
+            {
+                // 1. Tạo đơn
+                var don = new DonHang
+                {
+                    MaDonHang = "DH" + DateTime.Now.Ticks,
+                    Khach = kh,
+                    NgayDat = DateTime.Now,
+                    TongTien = tongTien,
+                    TrangThai = "Đang xử lý",
+                    LoaiDon = loaiDon,
+                    HinhThucThanhToan = hinhThucThanhToan
+                };
+
+                // 2. Thêm đơn vào DbSet (chưa save)
+                _donHangService.Add(don);
+
+                // 3. Thêm chi tiết đơn
+                foreach (var item in items)
+                {
+                    var ct = new CT_DonHang
+                    {
+                        MaDonHang = don.MaDonHang,
+                        MaSach = item.Sach.MaSach,
+                        SoLuong = item.SoLuong,
+                        DonGia = item.Sach.GiaBan,
+                        ThanhTien = item.SoLuong * item.Sach.GiaBan
+                    };
+                    _ctDonHangService.Add(ct);
+                }
+
+                // 4. Lưu tất cả vào database
+                _donHangService.UnitOfWork.Save();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi tạo đơn hàng: " + ex);
+                return false; // trả về false nếu có lỗi
+            }
+        }
+
+
+
+
+
+
 
     }
 }

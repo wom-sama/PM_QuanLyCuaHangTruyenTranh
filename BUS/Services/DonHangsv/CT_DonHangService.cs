@@ -11,8 +11,9 @@ namespace PM.BUS.Services.DonHangsv
     public class CT_DonHangService
     {
         private readonly IUnitOfWork _unitOfWork;
+        public IUnitOfWork UnitOfWork => _unitOfWork;
 
-    public CT_DonHangService(IUnitOfWork unitOfWork)
+        public CT_DonHangService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

@@ -1,4 +1,6 @@
-﻿using PM.BUS.Services.Sachsv;
+﻿using PM.BUS.Services.DonHangsv;
+using PM.BUS.Services.Sachsv;
+using PM.DAL;
 using PM.DAL.Models;
 using PM.GUI.userConTrol.Common;
 using System;
@@ -7,7 +9,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-
+// Thêm ở đầu file
+using GHModel = PM.DAL.Models.GioHang;  // alias cho model
+using GHControl = PM.GUI.userConTrol.Client.GioHang; // alias cho UserControl
 namespace PM.GUI.userConTrol.Customer
 {
     public partial class Shop_BookView : UserControl
@@ -16,6 +20,9 @@ namespace PM.GUI.userConTrol.Customer
 
         // 🟩 Khách hàng hiện tại
         private KhachHang currentKhachHang;
+        private GioHangService _gioHangService = new GioHangService(new UnitOfWork());
+        private CT_GioHangService _ctGioHangService = new CT_GioHangService(new UnitOfWork());
+        private GioHang currentGioHang;
 
         public Shop_BookView(KhachHang khachHang)
         {
@@ -27,6 +34,7 @@ namespace PM.GUI.userConTrol.Customer
         private void Shop_BookView_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
+            LoadOrCreateCart(); // ✅ KHỞI TẠO GIỎ HÀNG CHO KHÁCH HÀNG
             LoadAllBooks();
         }
 
@@ -137,11 +145,30 @@ namespace PM.GUI.userConTrol.Customer
             var sach = (sender as Guna.UI2.WinForms.Guna2Button)?.Tag as Sach;
             if (sach == null) return;
 
-            panelDanhSach.Visible = false;
+            if (currentGioHang == null) LoadOrCreateCart();
 
-            MuaHang muaHang = null;
+            // Kiểm tra xem sách đã có trong giỏ chưa
+            var ct = currentGioHang.CT_GioHangs.FirstOrDefault(c => c.MaSach == sach.MaSach);
+            if (ct != null)
+            {
+                ct.SoLuong++;
+                _ctGioHangService.Update(ct);
+            }
+            else
+            {
+                ct = new CT_GioHang
+                {
+                    MaGioHang = currentGioHang.MaGioHang,
+                    MaSach = sach.MaSach,
+                    SoLuong = 1
+                };
+                _ctGioHangService.Add(ct);
+                currentGioHang.CT_GioHangs.Add(ct);
+            }
 
-            // Truyền KhachHang hiện tại và hành động back
+
+            // Mở MuaHang
+            MuaHang muaHang = null; // khai báo trước
             muaHang = new MuaHang(sach, currentKhachHang, () =>
             {
                 pannelTong.Controls.Remove(muaHang);
@@ -151,7 +178,9 @@ namespace PM.GUI.userConTrol.Customer
             muaHang.Dock = DockStyle.Fill;
             pannelTong.Controls.Add(muaHang);
             muaHang.BringToFront();
+
         }
+
 
         // ================== CLICK VÀO SÁCH ==================
         private void OpenBookDetail(Sach sach)
@@ -183,13 +212,52 @@ namespace PM.GUI.userConTrol.Customer
         // ================== NÚT GIỎ HÀNG ==================
         private void btnCart_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("🛒 Mở giỏ hàng (chức năng đang phát triển).",
-                "Giỏ hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (currentGioHang == null)
+                LoadOrCreateCart();
+
+            panelDanhSach.Visible = false;
+
+            // Khai báo biến trước
+            GHControl cartControl = null;
+
+            // Tạo UserControl giỏ hàng với onBack
+            cartControl = new GHControl(
+                currentGioHang.MaGioHang,
+                currentKhachHang,
+                _ctGioHangService,
+                _gioHangService,
+                () => // onBack
+                {
+                    pannelTong.Controls.Remove(cartControl); // Xóa control giỏ hàng
+                    panelDanhSach.Visible = true;           // Hiển thị lại danh sách sách
+                }
+            );
+
+            cartControl.Dock = DockStyle.Fill;
+            pannelTong.Controls.Add(cartControl);
+            cartControl.BringToFront();
         }
+
 
         private void pannelTong_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void LoadOrCreateCart()
+        {
+            currentGioHang = _gioHangService.GetAll()
+                .FirstOrDefault(g => g.MaKhach == currentKhachHang.TenDangNhap);
+
+            if (currentGioHang == null)
+            {
+                currentGioHang = new GHModel
+                {
+                    MaGioHang = "GH" + DateTime.Now.Ticks,
+                    MaKhach = currentKhachHang.TenDangNhap,
+                    CT_GioHangs = new List<CT_GioHang>()
+                };
+                _gioHangService.Add(currentGioHang);
+            }
         }
     }
 }

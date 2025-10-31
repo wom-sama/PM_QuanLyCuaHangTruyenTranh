@@ -31,7 +31,11 @@ namespace PM.DAL.Models
 
         // 🔹 Mỗi đơn có thể có 1 phiếu vận chuyển (nếu là Online)
         public virtual VanChuyen VanChuyen { get; set; }
+        [StringLength(50)]
+        public string HinhThucThanhToan { get; set; }
+
 
         public virtual ICollection<CT_DonHang> CT_DonHangs { get; set; }
+
     }
 }

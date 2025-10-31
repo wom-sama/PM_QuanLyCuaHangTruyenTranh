@@ -11,6 +11,7 @@ namespace PM.BUS.Services.DonHangsv
     public class DonHangService
     {
         private readonly IUnitOfWork _unitOfWork;
+        public IUnitOfWork UnitOfWork => _unitOfWork;
         public DonHangService()
         {
             _unitOfWork = new UnitOfWork();

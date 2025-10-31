@@ -66,6 +66,10 @@ namespace PM.GUI.userConTrol.Customer
                 txtSDT.Text = _khach.SoDienThoai;
                 txtDiaChi.Text = _khach.DiaChi;
             }
+            // Cấu hình DateTimePicker theo chuẩn Việt Nam
+            dtpNgayDat.Format = DateTimePickerFormat.Custom;
+            dtpNgayDat.CustomFormat = "dd/MM/yyyy";
+            dtpNgayDat.Value = DateTime.Now;
 
             // 🟩 Dữ liệu cho combobox
             cbVanChuyen.Items.Clear();
@@ -199,6 +203,11 @@ namespace PM.GUI.userConTrol.Customer
         private void btnBack_Click(object sender, EventArgs e)
         {
             _onBack?.Invoke();
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

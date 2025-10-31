@@ -12,7 +12,6 @@ namespace PM.GUI.userConTrol.Customer
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.picBiaSach = new Guna.UI2.WinForms.Guna2PictureBox();
             this.lblTenSach = new System.Windows.Forms.Label();
             this.lblGiaSach = new System.Windows.Forms.Label();
             this.btnGiam = new Guna.UI2.WinForms.Guna2Button();
@@ -34,6 +33,7 @@ namespace PM.GUI.userConTrol.Customer
             this.dtpNgayDat = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btnDatHang = new Guna.UI2.WinForms.Guna2Button();
             this.btnBack = new Guna.UI2.WinForms.Guna2Button();
+            this.picBiaSach = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBiaSach)).BeginInit();
             this.SuspendLayout();
@@ -67,16 +67,6 @@ namespace PM.GUI.userConTrol.Customer
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(700, 600);
             this.guna2Panel1.TabIndex = 0;
-            // 
-            // picBiaSach
-            // 
-            this.picBiaSach.ImageRotate = 0F;
-            this.picBiaSach.Location = new System.Drawing.Point(45, 30);
-            this.picBiaSach.Name = "picBiaSach";
-            this.picBiaSach.Size = new System.Drawing.Size(150, 200);
-            this.picBiaSach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBiaSach.TabIndex = 22;
-            this.picBiaSach.TabStop = false;
             // 
             // lblTenSach
             // 
@@ -299,6 +289,17 @@ namespace PM.GUI.userConTrol.Customer
             this.btnBack.Size = new System.Drawing.Size(120, 35);
             this.btnBack.TabIndex = 43;
             this.btnBack.Text = "← Quay lại";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
+            // 
+            // picBiaSach
+            // 
+            this.picBiaSach.ImageRotate = 0F;
+            this.picBiaSach.Location = new System.Drawing.Point(45, 30);
+            this.picBiaSach.Name = "picBiaSach";
+            this.picBiaSach.Size = new System.Drawing.Size(150, 200);
+            this.picBiaSach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBiaSach.TabIndex = 22;
+            this.picBiaSach.TabStop = false;
             // 
             // MuaHang
             // 

@@ -1,6 +1,7 @@
-﻿using PM.DAL;
-using PM.DAL.Models;
+﻿using DAL.Migrations;
+using PM.DAL;
 using PM.DAL.Interfaces;
+using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -184,6 +185,11 @@ namespace PM.BUS.Services.DonHangsv
                 return false;
             }
         }
+        public Sach GetSachById(string maSach)
+        {
+            return _unitOfWork.SachRepository.GetAll().FirstOrDefault(s => s.MaSach == maSach);
+        }
+
     }
 
 
