@@ -1,18 +1,28 @@
-﻿using PM.DAL.Models;
+﻿using PM.BUS.Services.DonHangsv;
+using PM.DAL.Models;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+
+// Alias để tránh trùng tên
+using GHModel = PM.DAL.Models.GioHang;
+using GHControl = PM.GUI.userConTrol.Client.GioHang;
 
 namespace PM.GUI.userConTrol.Customer
 {
     public partial class BookDetailControl : UserControl
     {
         private Sach _sach;
-        private KhachHang _khachHang; // 🟩 Thêm thông tin khách hàng
+        private KhachHang _khachHang;
         private Action _onBack;
 
-        // 🟩 Constructor mới
+        // Services giỏ hàng
+        private GioHangService _gioHangService;
+        private CT_GioHangService _ctGioHangService;
+        private GHModel _currentGioHang;
+
         public BookDetailControl(Sach sach, KhachHang khachHang, Action onBack)
         {
             InitializeComponent();
@@ -22,6 +32,13 @@ namespace PM.GUI.userConTrol.Customer
                 _sach = sach;
                 _khachHang = khachHang;
                 _onBack = onBack;
+
+                // Khởi tạo service
+                var unit = new PM.DAL.UnitOfWork();
+                _gioHangService = new GioHangService(unit);
+                _ctGioHangService = new CT_GioHangService(unit);
+
+                LoadOrCreateCart();
             }
         }
 
@@ -33,20 +50,19 @@ namespace PM.GUI.userConTrol.Customer
             lblGiaBan.Text = $"{_sach.GiaBan:N0} ₫";
             lblLuotBan.Text = $"Lượt bán: {_sach.LuotBan}";
 
-            // 🟩 Lấy số lượng tồn thực tế
+            // Lấy số lượng tồn thực tế
             var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
             int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
             lblSoLuong.Text = $"Số lượng còn: {soLuongTon}";
 
             txtMoTa.Text = _sach.MoTa ?? "Chưa có mô tả cho cuốn sách này.";
-
             lblSoTrang.Text = $"Số trang: {_sach.SoTrang}";
             lblNamXB.Text = $"Năm XB: {_sach.NamXuatBan}";
             lblTacGia.Text = $"Tác giả: {_sach.TacGia?.TenTacGia ?? "Không rõ"}";
             lblTheLoai.Text = $"Thể loại: {_sach.TheLoai?.TenTheLoai ?? "Không rõ"}";
             lblNXB.Text = $"NXB: {_sach.NhaXuatBan?.TenNXB ?? "Không rõ"}";
 
-            // 🖼 Ảnh bìa
+            // Ảnh bìa
             if (_sach.BiaSach != null && _sach.BiaSach.Length > 0)
             {
                 using (var ms = new MemoryStream(_sach.BiaSach))
@@ -60,22 +76,19 @@ namespace PM.GUI.userConTrol.Customer
 
         private void btnMuaNgay_Click(object sender, EventArgs e)
         {
-            if (_sach == null) return;
-            if (_khachHang == null)
+            if (_sach == null || _khachHang == null)
             {
                 MessageBox.Show("❌ Vui lòng đăng nhập để mua hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var parentPanel = this.Parent; // Lấy panel chứa BookDetailControl
+            var parentPanel = this.Parent;
 
-            // Ẩn control hiện tại
             this.Visible = false;
 
-            // 🟩 Khai báo trước
+            // 🔹 Khai báo trước biến muaHang
             MuaHang muaHang = null;
 
-            // 🟩 Khởi tạo MuaHang với KhachHang
             muaHang = new MuaHang(_sach, _khachHang, () =>
             {
                 parentPanel.Controls.Remove(muaHang);
@@ -87,15 +100,64 @@ namespace PM.GUI.userConTrol.Customer
             muaHang.BringToFront();
         }
 
+
         private void btnGioHang_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"✅ Đã thêm {_sach.TenSach} vào giỏ hàng!",
-                "Giỏ hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (_sach == null || _khachHang == null)
+            {
+                MessageBox.Show("❌ Vui lòng đăng nhập để thêm vào giỏ hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kiểm tra sách đã có trong giỏ chưa
+            var ct = _currentGioHang.CT_GioHangs.FirstOrDefault(c => c.MaSach == _sach.MaSach);
+            if (ct != null)
+            {
+                ct.SoLuong++;
+                _ctGioHangService.Update(ct);
+            }
+            else
+            {
+                ct = new CT_GioHang
+                {
+                    MaGioHang = _currentGioHang.MaGioHang,
+                    MaSach = _sach.MaSach,
+                    SoLuong = 1
+                };
+                _ctGioHangService.Add(ct);
+                _currentGioHang.CT_GioHangs.Add(ct);
+            }
+
+            MessageBox.Show($"✅ Đã thêm {_sach.TenSach} vào giỏ hàng!", "Giỏ hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Nếu muốn, có thể mở luôn UserControl giỏ hàng
+            /*
+            GHControl cartControl = new GHControl(_currentGioHang.MaGioHang, _khachHang, _ctGioHangService, _gioHangService);
+            cartControl.Dock = DockStyle.Fill;
+            this.Parent.Controls.Add(cartControl);
+            cartControl.BringToFront();
+            this.Visible = false;
+            */
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             _onBack?.Invoke();
+        }
+
+        private void LoadOrCreateCart()
+        {
+            _currentGioHang = _gioHangService.GetAll().FirstOrDefault(g => g.MaKhach == _khachHang.TenDangNhap);
+            if (_currentGioHang == null)
+            {
+                _currentGioHang = new GHModel
+                {
+                    MaGioHang = "GH" + DateTime.Now.Ticks,
+                    MaKhach = _khachHang.TenDangNhap,
+                    CT_GioHangs = new System.Collections.Generic.List<CT_GioHang>()
+                };
+                _gioHangService.Add(_currentGioHang);
+            }
         }
     }
 }

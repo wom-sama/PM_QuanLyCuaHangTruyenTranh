@@ -223,6 +223,18 @@
     <Compile Include="userConTrol\Client\MuaHang.Designer.cs">
       <DependentUpon>MuaHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Client\MuaHangItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHangItem.Designer.cs">
+      <DependentUpon>MuaHangItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHangList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\MuaHangList.Designer.cs">
+      <DependentUpon>MuaHangList.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Client\Shop_BookView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -329,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\BookDetailControl.resx">
       <DependentUpon>BookDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\GioHang.resx">
+      <DependentUpon>GioHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\KeSach.resx">
       <DependentUpon>KeSach.cs</DependentUpon>
