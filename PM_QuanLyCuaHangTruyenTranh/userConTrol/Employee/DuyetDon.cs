@@ -30,13 +30,13 @@ namespace PM.GUI.userConTrol.Employee
             }
 
             // Nạp danh sách đơn hàng
-            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Đang xử lý");
+            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý");
             dgvChiTiet.DataSource = null;
         }
 
         private void LoadDonHang()
         {
-            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Đang xử lý");
+            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý");
             dgvChiTiet.DataSource = null;
             selectedMaDonHang = null;
             XoaThongTinChiTiet();
@@ -114,7 +114,7 @@ namespace PM.GUI.userConTrol.Employee
                 return;
             }
 
-            if (donHang.TrangThai != "Đang xử lý")
+            if (donHang.TrangThai != "Chờ xử lý")
             {
                 MessageBox.Show("⚠️ Chỉ duyệt các đơn đang xử lý!");
                 return;
