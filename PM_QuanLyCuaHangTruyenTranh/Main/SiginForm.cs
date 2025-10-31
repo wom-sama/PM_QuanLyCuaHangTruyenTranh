@@ -75,6 +75,7 @@ namespace PM.GUI
         {
             GNbtnSendCode.Enabled = false;
             GNbtnSendCode.Visible = false;
+            this.MaximizeBox = false;
 
             // Thêm hiệu ứng hover
             foreach (var txt in new[] { txtOTP1, txtOTP2, txtOTP3, txtOTP4, txtOTP5, GNtxtMail, GNtxtUN, GNtxtPass, GNtxtRePass })

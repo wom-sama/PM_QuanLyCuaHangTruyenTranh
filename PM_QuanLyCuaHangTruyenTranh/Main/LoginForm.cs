@@ -31,6 +31,8 @@ namespace PM.GUI.Main
 
             GNcmbVAI.Items.AddRange(new string[] { "", "Admin", "Nhân viên", "Khách" });
             GNcmbVAI.SelectedIndex = 0;
+            
+            this.MaximizeBox = false;
         }
 
         private async void GNbtnLogin_Click(object sender, EventArgs e)

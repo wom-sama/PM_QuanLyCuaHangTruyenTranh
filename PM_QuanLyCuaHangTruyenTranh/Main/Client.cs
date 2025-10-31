@@ -14,6 +14,8 @@ namespace PM.GUI.Main
 
         private void Client_Load_1(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximizeBox = false;
             try
             {
                 // Dữ liệu ban đầu

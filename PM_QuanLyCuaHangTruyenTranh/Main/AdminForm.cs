@@ -1,172 +1,91 @@
 ﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PM.GUI;
-using PM.GUI.Main;
 using PM.GUI.userConTrol.Common;
+using PM.GUI.userConTrol.Admin; // nhớ import namespace chứa UC
 
 namespace PM.GUI.Main
 {
     public partial class AdminForm : Form
     {
-        // danh sach cac UserControl
-        private List<UserControl> AdminControl = new List<UserControl>();
-        
+        private bool panelVisible = false;
+        private UserControl currentControl; // lưu control đang hiển thị
 
-        private bool panelVisible = false; // theo dõi trạng thái của pannel hiển thị các danh sách control 
         public AdminForm()
         {
             InitializeComponent();
-          
-        }
-
-        private void userControl11_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void userControl21_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
             Edit_Lable.AdjustFontSize(titleCN);
-            // them cac UC vao list
-            AdminControl = this.pannel_CT_CN.Controls.OfType<UserControl>().ToList();
-            foreach (var item in AdminControl)
-            {
-                item.Visible = false; // ẩn tất cả
-                item.Enabled = false; // khoa tat ca
-            }
             shadow_PannelCN.Visible = false;
             shadow_PannelCN.Left = -shadow_PannelCN.Width;
-            //
-         
 
-
-
+            // luôn full màn hình
+           // this.FormBorderStyle = FormBorderStyle.None;
+         //   this.WindowState = FormWindowState.Normal;
+           // this.WindowState = FormWindowState.Maximized;
+        //    this.Bounds = Screen.PrimaryScreen.Bounds;
+            this.MaximizeBox = false;
+         //   this.MinimizeBox = false;
         }
-        //hien thi control su dung
-        private void HienThiUserControl(UserControl uc)
+
+        // Hàm hiển thị UserControl động
+        private void HienThiUserControl(UserControl newUC)
         {
-            foreach (var item in AdminControl)
+            try
             {
-                item.Visible = false; // ẩn tất cả
-                item.Enabled = false; // khoa tat ca
+                // Xóa control cũ nếu có
+                if (currentControl != null)
+                {
+                    shadow_PannelCN.Controls.Remove(currentControl);
+                    currentControl.Dispose();
+                }
+
+                // Gắn control mới
+                newUC.Dock = DockStyle.Fill;
+                shadow_PannelCN.Controls.Add(newUC);
+                currentControl = newUC;
             }
-
-            uc.Visible = true; // chỉ hiện UC được chọn
-            uc.Enabled = true; // mo khoa UC duoc chon
-        }
-        
-        // khong hien thi ngay
-      
-
-        private void titleCN_Click(object sender, EventArgs e)
-        {
-
-        }
-       
-
-        private void BtnThem_Click(object sender, EventArgs e)
-        {
-            //hien Add_Book
-            HienThiUserControl(add_Book1);
-            titleCN.Text=BtnThem.Text;
-            Edit_Lable.AdjustFontSize(titleCN);
-            btnCN_Click(sender, e);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi hiển thị control: " + ex.Message);
+            }
         }
 
-        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        // Animation panel (mở/đóng)
+        private async Task TogglePanelAsync()
         {
-            HienThiUserControl(edit_BOOk1);
-            titleCN.Text = "Thông tin sách đang có trong cửa hàng";
-            Edit_Lable.AdjustFontSize(titleCN);
-            btnCN_Click(sender, e);
-        }
+            int panel2Start = -shadow_PannelCN.Width;
+            int panel2Target = 41;
+            int moveStep = 10;
+            int delay = 5;
 
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-        }
-
-        private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2ShadowPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void PanelCN_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-
-
-     
-
-     
-
-     
-
-
-        private async void btnCN_Click(object sender, EventArgs e)
-        {
-            int panel2Start = -shadow_PannelCN.Width; // vị trí ẩn ban đầu
-            int panel2Target = 41;                      // vị trí hiện ra
-            int moveStep = 10;                          // tốc độ di chuyển
-            int delay = 5;                              // delay mỗi bước (ms)
-
-            shadow_PannelCN.Visible = true; // đảm bảo thấy panel trước khi trượt
+            shadow_PannelCN.Visible = true;
 
             if (!panelVisible)
             {
-                // 👉 Khi mở menu
                 while (shadow_PannelCN.Left < panel2Target)
                 {
                     shadow_PannelCN.Left += moveStep;
-
-                    // Di chuyển panel1 song song theo hướng phải
-                    pannel_CT_CN.Left += moveStep / 2; // tốc độ chậm hơn để tạo cảm giác mượt
+                    pannel_CT_CN.Left += moveStep / 2;
                     await Task.Delay(delay);
                 }
 
-                // Đảm bảo đúng vị trí cuối cùng
                 shadow_PannelCN.Left = panel2Target;
                 panelVisible = true;
             }
             else
             {
-                // 👉 Khi đóng menu
                 while (shadow_PannelCN.Left > panel2Start)
                 {
                     shadow_PannelCN.Left -= moveStep;
-
-                    // Panel1 trượt ngược lại vị trí ban đầu
                     pannel_CT_CN.Left -= moveStep / 2;
                     await Task.Delay(delay);
                 }
@@ -177,23 +96,51 @@ namespace PM.GUI.Main
             }
         }
 
-        private void edit_BOOk1_Load_1(object sender, EventArgs e)
+        private async void btnCN_Click(object sender, EventArgs e)
         {
+            await TogglePanelAsync();
+        }
 
+        // ==== CÁC BUTTON SỰ KIỆN CŨ - GIỮ NGUYÊN ====
+
+        private void BtnThem_Click(object sender, EventArgs e)
+        {
+            var uc = new Add_Book(); // tạo mới control
+            HienThiUserControl(uc);
+            titleCN.Text = BtnThem.Text;
+            Edit_Lable.AdjustFontSize(titleCN);
+            _ = TogglePanelAsync(); // hiển thị panel
+        }
+
+        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        {
+            var uc = new Edit_BOOk(); // ví dụ UC hiển thị sách
+            HienThiUserControl(uc);
+            titleCN.Text = "Thông tin sách đang có trong cửa hàng";
+            Edit_Lable.AdjustFontSize(titleCN);
+            _ = TogglePanelAsync();
         }
 
         private void btn_DSTG_Click(object sender, EventArgs e)
         {
-            HienThiUserControl(edit_TacGia1);
+            var uc = new Edit_TacGia(); // ví dụ UC hiển thị tác giả
+            HienThiUserControl(uc);
             titleCN.Text = btn_DSTG.Text;
             Edit_Lable.AdjustFontSize(titleCN);
-            btnCN_Click(sender, e);
-
+            _ = TogglePanelAsync();
         }
 
-        private void guna2GradientTileButton4_Click(object sender, EventArgs e)
-        {
-
-        }
+        // ==== SỰ KIỆN KHÁC GIỮ NGUYÊN ====
+        private void userControl11_Load(object sender, EventArgs e) { }
+        private void userControl21_Load(object sender, EventArgs e) { }
+        private void guna2Button1_Click(object sender, EventArgs e) { }
+        private void guna2Button2_Click(object sender, EventArgs e) { }
+        private void titleCN_Click(object sender, EventArgs e) { }
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e) { }
+        private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e) { }
+        private void guna2ShadowPanel2_Paint(object sender, PaintEventArgs e) { }
+        private void PanelCN_Paint(object sender, PaintEventArgs e) { }
+        private void edit_BOOk1_Load_1(object sender, EventArgs e) { }
+        private void guna2GradientTileButton4_Click(object sender, EventArgs e) { }
     }
 }

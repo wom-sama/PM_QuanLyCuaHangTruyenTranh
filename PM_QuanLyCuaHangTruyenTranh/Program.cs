@@ -22,23 +22,26 @@ namespace PM.GUI
         static void Main()
         {
 
-              Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-              Application.Run(new Main.Form1());
+            Application.EnableVisualStyles();
+           Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Main.LoginForm());
 
-           
-
-
-         // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
-
-        //AppDbSeeder.Seed();
-        /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
-         string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
-         Console.WriteLine("Decrypted Email: " + senderEmail);
-         Console.WriteLine("Decrypted Password: " + senderPassword);*/
-         
+         //   byte[] originalKey = AESHelper.GetOriginalKey();
+         //   Console.WriteLine(Encoding.UTF8.GetString(originalKey));
 
 
-    }
+
+
+            // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
+
+            //AppDbSeeder.Seed();
+            /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
+             string senderPassword = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderPass"]);
+             Console.WriteLine("Decrypted Email: " + senderEmail);
+             Console.WriteLine("Decrypted Password: " + senderPassword);*/
+
+
+
+        }
     }
 }

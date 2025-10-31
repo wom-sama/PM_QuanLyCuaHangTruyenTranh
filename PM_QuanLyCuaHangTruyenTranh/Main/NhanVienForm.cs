@@ -90,6 +90,9 @@ namespace PM.GUI.Main
                 Location = new Point((btnChuong.Width - 40) / 2, (btnChuong.Height - 40) / 2)
             };
             btnChuong.Controls.Add(iconBell);
+           // this.WindowState = FormWindowState.Normal;
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximizeBox = false;
 
             // 🔴 Label thông báo (badge)
             lblThongBao = new Label

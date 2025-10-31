@@ -138,6 +138,13 @@ namespace PM.BUS.Helpers
             }
 
         }
+
+        public static byte[] GetOriginalKey()
+        {
+            string base64 = File.ReadAllText(ProtectedKeyFile).Trim();
+            byte[] protectedBytes = Convert.FromBase64String(base64);
+            return ProtectedData.Unprotect(protectedBytes, null, DataProtectionScope.CurrentUser);
+        }
         //overload để giải mã với IV từ email
         public static string DecryptString(string cipherText, string email)
         {
