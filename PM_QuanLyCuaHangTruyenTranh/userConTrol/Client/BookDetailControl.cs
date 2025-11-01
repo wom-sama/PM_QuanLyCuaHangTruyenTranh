@@ -34,7 +34,7 @@ namespace PM.GUI.userConTrol.Customer
                 _onBack = onBack;
 
                 // Khởi tạo service
-                var unit = new PM.DAL.UnitOfWork();
+                var unit = new DAL.UnitOfWork();
                 _gioHangService = new GioHangService(unit);
                 _ctGioHangService = new CT_GioHangService(unit);
 

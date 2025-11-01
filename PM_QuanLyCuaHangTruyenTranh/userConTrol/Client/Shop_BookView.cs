@@ -154,24 +154,7 @@ namespace PM.GUI.userConTrol.Customer
 
             if (currentGioHang == null) LoadOrCreateCart();
 
-            // Kiểm tra xem sách đã có trong giỏ chưa
-            var ct = currentGioHang.CT_GioHangs.FirstOrDefault(c => c.MaSach == sach.MaSach);
-            if (ct != null)
-            {
-                ct.SoLuong++;
-                _ctGioHangService.Update(ct);
-            }
-            else
-            {
-                ct = new CT_GioHang
-                {
-                    MaGioHang = currentGioHang.MaGioHang,
-                    MaSach = sach.MaSach,
-                    SoLuong = 1
-                };
-                _ctGioHangService.Add(ct);
-                currentGioHang.CT_GioHangs.Add(ct);
-            }
+          
 
 
             // Mở MuaHang

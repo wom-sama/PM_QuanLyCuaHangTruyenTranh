@@ -35,7 +35,6 @@ namespace PM.GUI.userConTrol.Customer
             // Gắn sự kiện
             btnTang.Click += btnTang_Click;
             btnGiam.Click += btnGiam_Click;
-            btnDatHang.Click += btnDatHang_Click;
             btnBack.Click += btnBack_Click;
             txtTen.TextChanged += txtTen_TextChanged;
             txtSDT.TextChanged += txtSDT_TextChanged;
@@ -165,10 +164,12 @@ namespace PM.GUI.userConTrol.Customer
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
+           
             if (!btnDatHang.Enabled) return;
+            
 
             // Kiểm tra số lượng tồn kho
-            var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
+            var khoService = new KhoService(new DAL.UnitOfWork());
             int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
 
             if (_soLuong <= 0)
@@ -210,6 +211,7 @@ namespace PM.GUI.userConTrol.Customer
             };
 
             // 🟩 Tạo phiếu vận chuyển tương ứng
+           
             var vc = new VanChuyen
             {
                 MaDonHang = maDon,
@@ -218,6 +220,8 @@ namespace PM.GUI.userConTrol.Customer
                 TrangThai = "Đang xử lý",
                 GhiChu = $"Giao đến {txtDiaChi.Text}"
             };
+
+          
 
             try
             {
@@ -230,7 +234,8 @@ namespace PM.GUI.userConTrol.Customer
                     $"Phí ship: {_phiShip:N0} ₫\nTổng thanh toán: {don.TongTien:N0} ₫",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _onBack?.Invoke();
+                      _onBack?.Invoke();
+               
             }
             catch (Exception ex)
             {
