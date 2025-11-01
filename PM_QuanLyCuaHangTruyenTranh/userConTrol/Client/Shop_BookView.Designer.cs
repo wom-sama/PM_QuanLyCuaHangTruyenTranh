@@ -30,12 +30,12 @@
             this.txtFindTen.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFindTen.DefaultText = "";
             this.txtFindTen.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtFindTen.Location = new System.Drawing.Point(80, 25);
+            this.txtFindTen.Location = new System.Drawing.Point(33, 25);
             this.txtFindTen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFindTen.Name = "txtFindTen";
             this.txtFindTen.PlaceholderText = "Tìm kiếm sách...";
             this.txtFindTen.SelectedText = "";
-            this.txtFindTen.Size = new System.Drawing.Size(500, 41);
+            this.txtFindTen.Size = new System.Drawing.Size(421, 41);
             this.txtFindTen.TabIndex = 0;
             // 
             // btnFind
@@ -44,11 +44,11 @@
             this.btnFind.BorderRadius = 10;
             this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(590, 25);
+            this.btnFind.Location = new System.Drawing.Point(476, 25);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(80, 41);
+            this.btnFind.Size = new System.Drawing.Size(137, 41);
             this.btnFind.TabIndex = 1;
-            this.btnFind.Text = "Tìm";
+            this.btnFind.Text = "Tìm kiếm";
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnCart
@@ -57,9 +57,9 @@
             this.btnCart.BorderRadius = 10;
             this.btnCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnCart.ForeColor = System.Drawing.Color.White;
-            this.btnCart.Location = new System.Drawing.Point(680, 25);
+            this.btnCart.Location = new System.Drawing.Point(633, 25);
             this.btnCart.Name = "btnCart";
-            this.btnCart.Size = new System.Drawing.Size(120, 41);
+            this.btnCart.Size = new System.Drawing.Size(167, 41);
             this.btnCart.TabIndex = 0;
             this.btnCart.Text = "🛒 Giỏ hàng";
             this.btnCart.Click += new System.EventHandler(this.btnCart_Click);

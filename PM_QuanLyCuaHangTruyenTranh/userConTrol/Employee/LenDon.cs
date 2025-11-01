@@ -24,8 +24,6 @@ namespace PM.GUI.userConTrol.Employee
         private readonly DonHangService _donHangService;
         private readonly CT_DonHangService _ctDonHangService;
     
-
-
         private string lastCreatedOrderID = null;
         private decimal lastOrderTotal = 0;
         private decimal tienKhachDua = 0;
@@ -100,8 +98,7 @@ namespace PM.GUI.userConTrol.Employee
 
             picQR.SizeMode = PictureBoxSizeMode.Zoom;
             picQR.Visible = false;
-            btnXacNhan.Visible = false;
-            btnXacNhan.Enabled = false;
+            
         }
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -288,19 +285,12 @@ namespace PM.GUI.userConTrol.Employee
                 string accountNo = "6910973464";
                 string accountName = "TRAN DUY TAN";
 
-                // Tạo URL QR dùng QrHelper (theo signature bạn cung cấp)
                 string qrUrl = QrHelper.TaoQRThanhToan(bankCode, accountNo, accountName, lastOrderTotal, lastCreatedOrderID);
 
-                // Hiển thị QR trong PictureBox có sẵn
                 picQR.Visible = true;
                 picQR.SizeMode = PictureBoxSizeMode.Zoom;
                 picQR.Load(qrUrl);
 
-                // Hiện nút xác nhận thanh toán
-                btnXacNhan.Visible = true;
-                btnXacNhan.Enabled = true;
-
-                // Tùy chọn: ẩn các phần khác nếu muốn gọn hơn
                 dgvSach.Enabled = false;
                 btnTaoDon.Enabled = false;
             }
@@ -311,54 +301,6 @@ namespace PM.GUI.userConTrol.Employee
             }
         }
 
-        // Xác nhận thanh toán (giữ nguyên event)
-        private void btnXacNhan_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(lastCreatedOrderID))
-                {
-                    MessageBox.Show("⚠️ Chưa có đơn hàng nào để xác nhận!",
-                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Lấy đơn hàng bằng service
-                var don = _donHangService.GetById(lastCreatedOrderID);
-                if (don == null)
-                {
-                    MessageBox.Show("Không tìm thấy đơn hàng cần xác nhận!",
-                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Cập nhật trạng thái thanh toán
-                don.TrangThai = "Đã thanh toán";
-                _donHangService.Update(don);
-
-                MessageBox.Show($"✅ Đơn hàng {lastCreatedOrderID} đã được thanh toán thành công!",
-                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Mở giao diện in hóa đơn
-                InHoaDon hoaDonUC = new InHoaDon(lastCreatedOrderID);
-                Form frm = new Form();
-                frm.Text = "Hóa đơn bán hàng";
-                frm.Size = new Size(900, 700);
-                hoaDonUC.Dock = DockStyle.Fill;
-                frm.Controls.Add(hoaDonUC);
-                frm.StartPosition = FormStartPosition.CenterScreen;
-                frm.ShowDialog();
-                ResetUIAfterPrint();
-
-                // Làm mới dữ liệu sau khi in
-                LoadSachData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi xác nhận thanh toán: " + ex.Message,
-                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void btnXuatdon_Click(object sender, EventArgs e)
         {
@@ -401,6 +343,7 @@ namespace PM.GUI.userConTrol.Employee
             {
                 MessageBox.Show("Lỗi khi xuất đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void txtTimSach_TextChanged(object sender, EventArgs e)
@@ -436,8 +379,11 @@ namespace PM.GUI.userConTrol.Employee
             dgvSach.Enabled = true;
             btnTaoDon.Enabled = true;
             picQR.Visible = false;
-            btnXacNhan.Visible = false;
-            btnXacNhan.Enabled = false;
+            // Reset trạng thái đơn
+            lastCreatedOrderID = null;
+            lastOrderTotal = 0;
+            tienKhachDua = 0;
+            tienThua = 0;
         }
 
         private void picQR_Click(object sender, EventArgs e)

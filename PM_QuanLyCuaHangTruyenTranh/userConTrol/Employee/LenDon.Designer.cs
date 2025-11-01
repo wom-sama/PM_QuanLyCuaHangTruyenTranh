@@ -37,7 +37,6 @@
             this.btnMomo = new Guna.UI2.WinForms.Guna2Panel();
             this.btnXuatdon = new Guna.UI2.WinForms.Guna2Button();
             this.t = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnXacNhan = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.txtTimSach = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnTaoDon = new Guna.UI2.WinForms.Guna2Button();
@@ -94,7 +93,6 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.btnMomo.Controls.Add(this.btnXuatdon);
             this.btnMomo.Controls.Add(this.t);
-            this.btnMomo.Controls.Add(this.btnXacNhan);
             this.btnMomo.Controls.Add(this.guna2Button2);
             this.btnMomo.Controls.Add(this.txtTimSach);
             this.btnMomo.Controls.Add(this.btnTaoDon);
@@ -127,25 +125,9 @@
             this.t.Location = new System.Drawing.Point(18, 12);
             this.t.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.t.Name = "t";
-            this.t.Size = new System.Drawing.Size(105, 31);
+            this.t.Size = new System.Drawing.Size(122, 34);
             this.t.TabIndex = 49;
             this.t.Text = "Tìm Sách";
-            // 
-            // btnXacNhan
-            // 
-            this.btnXacNhan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXacNhan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXacNhan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXacNhan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnXacNhan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXacNhan.ForeColor = System.Drawing.Color.White;
-            this.btnXacNhan.Location = new System.Drawing.Point(18, 439);
-            this.btnXacNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(401, 36);
-            this.btnXacNhan.TabIndex = 47;
-            this.btnXacNhan.Text = "Xác Nhận Chuyển tiền";
-            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // guna2Button2
             // 
@@ -283,7 +265,7 @@
             this.guna2HtmlLabel10.Location = new System.Drawing.Point(644, -31);
             this.guna2HtmlLabel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            this.guna2HtmlLabel10.Size = new System.Drawing.Size(76, 24);
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(91, 28);
             this.guna2HtmlLabel10.TabIndex = 41;
             this.guna2HtmlLabel10.Text = "Tìm sách";
             // 
@@ -367,7 +349,6 @@
         private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip2;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2PictureBox picQR;
-        private Guna.UI2.WinForms.Guna2Button btnXacNhan;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow5;
         private Guna.UI2.WinForms.Guna2HtmlLabel t;
         private Guna.UI2.WinForms.Guna2Button btnXuatdon;

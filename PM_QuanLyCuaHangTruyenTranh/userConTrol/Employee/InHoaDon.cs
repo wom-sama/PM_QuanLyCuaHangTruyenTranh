@@ -79,42 +79,41 @@ namespace PM.GUI.userConTrol.Employee
             {
                 try
                 {
-                    // Dùng font Unicode hỗ trợ tiếng Việt tốt
                     string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "tahoma.ttf");
                     var baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                     var font = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL);
 
                     using (var fs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
-                        // Tăng margin để không bị cắt chữ
                         var document = new Document(PageSize.A4, 40, 40, 40, 40);
                         PdfWriter.GetInstance(document, fs);
                         document.Open();
 
-                        // ======= PHẦN TIÊU ĐỀ =======
-                        Paragraph title = new Paragraph("CỬA HÀNG TRUYỆN TRANH MANGA PLUS", font);
-                        title.Alignment = Element.ALIGN_CENTER;
-                        title.SpacingAfter = 8f;
+                        Paragraph title = new Paragraph("CỬA HÀNG TRUYỆN TRANH MANGA PLUS", font)
+                        {
+                            Alignment = Element.ALIGN_CENTER,
+                            SpacingAfter = 8f
+                        };
                         document.Add(title);
 
-                        Paragraph subtitle = new Paragraph("HÓA ĐƠN BÁN TRUYỆN", font);
-                        subtitle.Alignment = Element.ALIGN_CENTER;
-                        subtitle.SpacingAfter = 15f;
+                        Paragraph subtitle = new Paragraph("HÓA ĐƠN BÁN TRUYỆN", font)
+                        {
+                            Alignment = Element.ALIGN_CENTER,
+                            SpacingAfter = 15f
+                        };
                         document.Add(subtitle);
 
-                        // ======= THÔNG TIN HÓA ĐƠN =======
-                        Paragraph thongtin = new Paragraph($"Mã đơn: {don.MaDonHang}\n" +
-                                                            $"Ngày lập: {don.NgayDat:dd/MM/yyyy HH:mm}\n" +
-                                                            $"Nhân viên: {don.MaNV}", font);
+                        Paragraph thongtin = new Paragraph(
+                            $"Mã đơn: {don.MaDonHang}\n" +
+                            $"Ngày lập: {don.NgayDat:dd/MM/yyyy HH:mm}\n" +
+                            $"Nhân viên: {don.MaNV}", font);
                         thongtin.SpacingAfter = 15f;
                         document.Add(thongtin);
 
-                        // ======= BẢNG SẢN PHẨM =======
                         PdfPTable table = new PdfPTable(4) { WidthPercentage = 100 };
                         table.SetWidths(new float[] { 40f, 15f, 20f, 25f });
-
-                        // Header
                         string[] headers = { "Tên Sách", "Số Lượng", "Đơn Giá", "Thành Tiền" };
+
                         foreach (var header in headers)
                         {
                             PdfPCell cell = new PdfPCell(new Phrase(header, font))
@@ -126,7 +125,6 @@ namespace PM.GUI.userConTrol.Employee
                             table.AddCell(cell);
                         }
 
-                        // Dữ liệu chi tiết
                         foreach (var ct in don.CT_DonHangs)
                         {
                             table.AddCell(new Phrase(ct.Sach?.TenSach ?? "(Không rõ)", font));
@@ -138,7 +136,6 @@ namespace PM.GUI.userConTrol.Employee
                         table.SpacingAfter = 15f;
                         document.Add(table);
 
-                        // ======= TỔNG KẾT =======
                         Paragraph summary = new Paragraph(
                             $"Tổng cộng: {don.TongTien:N0} đ\n" +
                             $"Tiền khách đưa: {TienKhachDua:N0} đ\n" +
@@ -147,16 +144,25 @@ namespace PM.GUI.userConTrol.Employee
                         summary.SpacingAfter = 20f;
                         document.Add(summary);
 
-                        // ======= LỜI CẢM ƠN =======
-                        Paragraph thank = new Paragraph("❤ Cảm ơn quý khách đã mua hàng!", font);
-                        thank.Alignment = Element.ALIGN_CENTER;
-                        thank.SpacingBefore = 10f;
+                        Paragraph thank = new Paragraph("❤ Cảm ơn quý khách đã mua hàng!", font)
+                        {
+                            Alignment = Element.ALIGN_CENTER,
+                            SpacingBefore = 10f
+                        };
                         document.Add(thank);
 
                         document.Close();
                     }
 
+                    // ✅ Hiện thông báo và đóng form sau khi nhấn OK
                     MessageBox.Show("✅ Xuất hóa đơn PDF thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Đóng form chứa UserControl này
+                    Form parentForm = this.FindForm();
+                    if (parentForm != null)
+                    {
+                        parentForm.Close();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -164,6 +170,7 @@ namespace PM.GUI.userConTrol.Employee
                 }
             }
         }
+
 
         private void lblTongTien_Click(object sender, EventArgs e)
         {
