@@ -37,30 +37,20 @@ namespace PM.GUI.Main
         {
             try
             {
-                // 🧾 Lấy danh sách đơn cần duyệt
-                var donCho = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý");
-                int soLuong = donCho?.Count() ?? 0;
-
+                int soLuong = _bus.DemDonHangChoXuLy(); // ✅ dùng hàm đếm
                 if (soLuong > 0)
                 {
                     lblThongBao.Visible = true;
                     lblThongBao.Text = soLuong > 99 ? "99+" : soLuong.ToString();
-
-                    // 🧩 Tự co giãn theo nội dung
                     int width = (lblThongBao.Text.Length == 1) ? 24 :
                                 (lblThongBao.Text.Length == 2) ? 28 : 36;
                     lblThongBao.Size = new Size(width, 24);
-
-                    // 🧭 Cập nhật lại vị trí (vì size thay đổi)
                     lblThongBao.Location = new Point(btnChuong.Width - lblThongBao.Width - 8, -3);
-
-                    // 🎨 Bo tròn lại
                     System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
                     gp.AddEllipse(0, 0, lblThongBao.Width - 1, lblThongBao.Height - 1);
                     lblThongBao.Region = new Region(gp);
                     lblThongBao.Invalidate();
 
-                    // 💬 Cập nhật tooltip
                     _toolTipThongBao.SetToolTip(btnChuong, $"Có {soLuong} đơn hàng đang chờ duyệt");
                 }
                 else
@@ -74,6 +64,7 @@ namespace PM.GUI.Main
                 Console.WriteLine("Lỗi khi cập nhật thông báo: " + ex.Message);
             }
         }
+
 
         private void NhanVienForm_Load(object sender, EventArgs e)
         {
@@ -94,7 +85,7 @@ namespace PM.GUI.Main
             this.WindowState = FormWindowState.Maximized;
             this.MaximizeBox = false;
 
-            // 🔴 Label thông báo (badge)
+            //  Label thông báo (badge)
             lblThongBao = new Label
             {
                 Text = "",
@@ -151,7 +142,11 @@ namespace PM.GUI.Main
             timerPanelHienThi = new Timer();
             timerPanelHienThi.Interval = 10;
             timerPanelHienThi.Tick += TimerPanelHienThi_Tick;
-            timerPanelHienThi.Start();
+            timerPanelHienThi.Start();           
+
+            // Đăng ký sự kiện BUS -> cập nhật chuông khi có đơn mới duyệt
+            _bus.OnDonHangDuyet += () => CapNhatThongBao();
+            _bus.OnDonHangHoanTat += () => CapNhatThongBao();
 
         }
 
@@ -160,7 +155,10 @@ namespace PM.GUI.Main
             try
             {
                 // 🟩 Khi nhấn chuông -> mở giao diện duyệt đơn
-                DuyetDon duyetDonUC = new DuyetDon();
+                DuyetDon duyetDonUC = new DuyetDon(_bus);
+
+                duyetDonUC.OnDonHangDuyet += () => CapNhatThongBao();
+                // 🔔 Khi duyệt thành công trong UC => cập nhật lại chuông ngay
                 Form form = new Form
                 {
                     Text = "Duyệt đơn hàng",
@@ -168,12 +166,14 @@ namespace PM.GUI.Main
                     Height = 600,
                     StartPosition = FormStartPosition.CenterScreen
                 };
+
                 duyetDonUC.Dock = DockStyle.Fill;
                 form.Controls.Add(duyetDonUC);
-                form.ShowDialog();
 
-                // Sau khi đóng form duyệt, cập nhật lại chuông
-                CapNhatThongBao();
+                // 🔁 Khi form con đóng => cập nhật lại chuông lần nữa (đảm bảo sync DB)
+                form.FormClosed += (s, ev) => CapNhatThongBao();
+
+                form.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -181,7 +181,8 @@ namespace PM.GUI.Main
             }
         }
 
-        // 🖱️ Click vào dấu "!" cũng mở duyệt đơn
+
+        //  Click vào dấu "!" cũng mở duyệt đơn
         private void lblBadge_Click(object sender, EventArgs e)
         {
             btnChuong_Click(sender, e);
@@ -195,7 +196,8 @@ namespace PM.GUI.Main
 
         private void btnDuyetDon_Click(object sender, EventArgs e)
         {
-            var uc = new DuyetDon();
+            var uc = new DuyetDon(_bus);
+            uc.OnDonHangDuyet += () => CapNhatThongBao(); // 🔔 đồng bộ chuông
             HienThiUserControl(uc);
         }
 
@@ -210,9 +212,6 @@ namespace PM.GUI.Main
             var uc = new CaLam();
             HienThiUserControl(uc);
         }
-
-
-
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
@@ -249,8 +248,7 @@ namespace PM.GUI.Main
             }
         }
 
-      
-        // 🧩 Hàm hiển thị UserControl trong panelhienthi
+        //  Hàm hiển thị UserControl trong panelhienthi
         private void HienThiUserControl(UserControl uc)
         {
             // Xóa các control cũ
@@ -280,7 +278,7 @@ namespace PM.GUI.Main
 
         private void btnKho_Click(object sender, EventArgs e)
         {
-            var uc = new Kho(HienThiUserControl); // ✅ truyền delegate
+            var uc = new Kho(HienThiUserControl); //  truyền delegate
             HienThiUserControl(uc);
         }
 
