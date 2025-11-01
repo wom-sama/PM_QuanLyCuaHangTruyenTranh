@@ -17,6 +17,7 @@ namespace PM.GUI.userConTrol.Admin
         private TheLoaiService _theLoaiService;
         private NhaXuatBanService _nxbService;
         private SachService _sachService;
+        private NhanVien _currentNV;
 
         private byte[] _biaSachData;
 
@@ -27,7 +28,8 @@ namespace PM.GUI.userConTrol.Admin
         private Label lblTitle;
         private Guna2Panel Pannel_AddBook_main;
 
-        public Add_Book()
+
+        public Add_Book(NhanVien a)
         {
            
             if (!DesignMode) // 🔹 chỉ chạy khi đang chạy thật, không phải khi mở trong Designer
@@ -37,6 +39,7 @@ namespace PM.GUI.userConTrol.Admin
                 _theLoaiService = new TheLoaiService();
                 _nxbService = new NhaXuatBanService();
                 _sachService = new SachService();
+                _currentNV = a;
 
                 BuildUI();
                 Load += Add_Book_Load;

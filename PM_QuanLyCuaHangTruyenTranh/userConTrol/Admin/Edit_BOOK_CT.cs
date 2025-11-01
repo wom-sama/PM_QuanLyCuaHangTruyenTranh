@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Sachsv;
 using PM.DAL.Models;
 using System;
@@ -19,6 +20,8 @@ namespace PM.GUI.userConTrol.Admin
         private Guna2PictureBox picBia;
         private Guna2Button btnLuu, btnXoa, btnChonAnh, btnThoat;
         private Guna2Panel mainPanel;
+        private Guna2ComboBox cbNhaXB, cbTacGia;
+        private Label lblLuotBan;
 
         private int fadeAlpha = 0;
         private Timer fadeTimer;
@@ -47,7 +50,7 @@ namespace PM.GUI.userConTrol.Admin
                 BorderColor = Color.LightGray,
                 Padding = new Padding(20),
                 Width = 820,
-                Height = 450,
+                Height = 600,
                 ShadowDecoration = { Enabled = true }
             };
             this.Controls.Add(mainPanel);
@@ -88,6 +91,44 @@ namespace PM.GUI.userConTrol.Admin
             txtGiaBan = CreateTextBox("Giá bán...", leftX, topY + spacingY * 3);
             txtMoTa = CreateTextBox("Mô tả...", leftX, topY + spacingY * 4, 400, 60, true);
 
+
+
+            // Combobox Nhà xuất bản
+            cbNhaXB = new Guna2ComboBox
+            {
+                Width = 400,
+                Height = 40,
+                Location = new Point(leftX, topY + spacingY * 5+10),
+               
+            };
+
+            // Combobox Tác giả
+            cbTacGia = new Guna2ComboBox
+            {
+                Width = 400,
+                Height = 40,
+                Location = new Point(leftX, topY + spacingY * 6+10),
+                
+            };
+
+            // Label lượt bán
+            lblLuotBan = new Label
+            {
+                Text = "Lượt bán: 0",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                ForeColor = Color.DarkBlue,
+                AutoSize = true,
+                Location = new Point(500, 350)
+            };
+
+            mainPanel.Controls.AddRange(new Control[] { cbNhaXB, cbTacGia, lblLuotBan });
+
+
+
+
+
+
+
             picBia = new Guna2PictureBox
             {
                 Size = new Size(180, 220),
@@ -116,7 +157,7 @@ namespace PM.GUI.userConTrol.Admin
                 BorderRadius = 8,
                 Width = 130,
                 Height = 40,
-                Location = new Point(230, 380)
+                Location = new Point(230, 500)
             };
             btnLuu.Click += async (s, e) => await SaveChangesAsync();
 
@@ -127,7 +168,7 @@ namespace PM.GUI.userConTrol.Admin
                 BorderRadius = 8,
                 Width = 130,
                 Height = 40,
-                Location = new Point(380, 380)
+                Location = new Point(380, 500)
             };
             btnXoa.Click += async (s, e) => await DeleteBookAsync();
 
@@ -210,6 +251,25 @@ namespace PM.GUI.userConTrol.Admin
             {
                 picBia.Image = null;
             }
+            // Load danh sách NXB
+  
+            var listNXB = new NhaXuatBanService().GetAll();
+            cbNhaXB.DataSource = listNXB;
+            cbNhaXB.DisplayMember = "TenNXB";
+            cbNhaXB.ValueMember = "MaNXB";
+            cbNhaXB.SelectedValue = _sach.MaNXB;
+
+            // Load tác giả
+            var listTG = new TacGiaService().GetAll();
+            cbTacGia.DataSource = listTG;
+            cbTacGia.DisplayMember = "TenTacGia";
+            cbTacGia.ValueMember = "MaTacGia";
+            cbTacGia.SelectedValue = _sach.MaTacGia;
+
+            // Load lượt bán sách (sum số lượng bán trong CT_DonHang)
+            var luotBan = await new CT_DonHangService().LaySoLuongBanDuocTheoSachAsync(_maSach);
+            lblLuotBan.Text = $"Lượt bán: {luotBan}";
+
         }
 
         private void BtnChonAnh_Click(object sender, EventArgs e)
@@ -238,6 +298,9 @@ namespace PM.GUI.userConTrol.Admin
                 _sach.GiaNhap = decimal.Parse(txtGiaNhap.Text);
                 _sach.GiaBan = decimal.Parse(txtGiaBan.Text);
                 _sach.MoTa = txtMoTa.Text.Trim();
+                _sach.MaNXB = cbNhaXB.SelectedValue?.ToString();
+                _sach.MaTacGia = cbTacGia.SelectedValue?.ToString();
+
 
                 if (picBia.Image != null)
                 {

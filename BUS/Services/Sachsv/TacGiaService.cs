@@ -200,6 +200,20 @@ namespace PM.BUS.Services.Sachsv
                 return false;
             }
         }
+
+        public async Task<int> LaySoLuongSach (string maTacGia)
+        {
+            try
+            {
+                var sachList = await _unitOfWork.SachRepository.GetAllAsync();
+                return sachList.Count(s => s.MaTacGia == maTacGia);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy số lượng sách của tác giả: " + ex.Message);
+                return 0;
+            }
+        }
     }
 
 }

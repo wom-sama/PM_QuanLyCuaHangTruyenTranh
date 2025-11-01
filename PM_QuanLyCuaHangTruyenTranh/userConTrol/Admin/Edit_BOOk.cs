@@ -19,7 +19,7 @@ namespace PM.GUI.userConTrol.Admin
 
         private Edit_BOOK_CT currentEditControl; // 🔹 Control chi tiết đang mở
 
-        public Edit_BOOk()
+        public Edit_BOOk(NhanVien a)
         {
             if (!DesignMode)
             {

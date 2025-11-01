@@ -113,6 +113,26 @@ namespace PM.GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NenAdmin1 {
+            get {
+                object obj = ResourceManager.GetObject("NenAdmin1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NenAdminGif1 {
+            get {
+                object obj = ResourceManager.GetObject("NenAdminGif1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rick_roll {
             get {
                 object obj = ResourceManager.GetObject("rick-roll", resourceCulture);

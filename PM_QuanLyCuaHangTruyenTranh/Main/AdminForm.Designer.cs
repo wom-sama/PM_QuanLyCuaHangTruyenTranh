@@ -29,7 +29,9 @@ namespace PM.GUI.Main
         /// </summary>
         private void InitializeComponent()
         {
-            this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.pannel_Admin = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnCN = new Guna.UI2.WinForms.Guna2Button();
+            this.lbl_titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.shadow_PannelCN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
             this.Btn_ThongBao = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -49,32 +51,62 @@ namespace PM.GUI.Main
             this.btn_DSTG = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btnKho = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.BtnThem = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.pannel_Admin = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnCN = new Guna.UI2.WinForms.Guna2Button();
-            this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.pannel_Admin.SuspendLayout();
             this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
-            this.pannel_Admin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pannel_CT_CN
+            // pannel_Admin
             // 
-            this.pannel_CT_CN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pannel_CT_CN.BackColor = System.Drawing.Color.White;
-            this.pannel_CT_CN.FillColor = System.Drawing.Color.RosyBrown;
-            this.pannel_CT_CN.Location = new System.Drawing.Point(296, 193);
-            this.pannel_CT_CN.Name = "pannel_CT_CN";
-            this.pannel_CT_CN.ShadowColor = System.Drawing.Color.Black;
-            this.pannel_CT_CN.Size = new System.Drawing.Size(854, 477);
-            this.pannel_CT_CN.TabIndex = 0;
+            this.pannel_Admin.AutoScroll = true;
+            this.pannel_Admin.Controls.Add(this.btnCN);
+            this.pannel_Admin.Controls.Add(this.lbl_titleCN);
+            this.pannel_Admin.Controls.Add(this.shadow_PannelCN);
+            this.pannel_Admin.Controls.Add(this.pannel_CT_CN);
+            this.pannel_Admin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pannel_Admin.Location = new System.Drawing.Point(0, 0);
+            this.pannel_Admin.Name = "pannel_Admin";
+            this.pannel_Admin.Size = new System.Drawing.Size(1188, 702);
+            this.pannel_Admin.TabIndex = 30;
+            // 
+            // btnCN
+            // 
+            this.btnCN.BorderRadius = 15;
+            this.btnCN.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCN.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCN.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCN.ForeColor = System.Drawing.Color.White;
+            this.btnCN.Location = new System.Drawing.Point(41, 109);
+            this.btnCN.Name = "btnCN";
+            this.btnCN.Size = new System.Drawing.Size(90, 45);
+            this.btnCN.TabIndex = 3;
+            this.btnCN.Text = "Menu";
+            this.btnCN.Click += new System.EventHandler(this.btnCN_Click_1);
+            // 
+            // lbl_titleCN
+            // 
+            this.lbl_titleCN.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_titleCN.AutoSize = false;
+            this.lbl_titleCN.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_titleCN.Enabled = false;
+            this.lbl_titleCN.Font = new System.Drawing.Font("Monotype Corsiva", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_titleCN.Location = new System.Drawing.Point(141, 13);
+            this.lbl_titleCN.Name = "lbl_titleCN";
+            this.lbl_titleCN.Size = new System.Drawing.Size(1009, 151);
+            this.lbl_titleCN.TabIndex = 2;
+            this.lbl_titleCN.Text = "Chuc Nang";
+            this.lbl_titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // shadow_PannelCN
             // 
             this.shadow_PannelCN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.shadow_PannelCN.BackColor = System.Drawing.Color.Transparent;
+            this.shadow_PannelCN.BackColor = System.Drawing.Color.Pink;
             this.shadow_PannelCN.Controls.Add(this.PanelCN);
             this.shadow_PannelCN.FillColor = System.Drawing.Color.White;
             this.shadow_PannelCN.Location = new System.Drawing.Point(41, 193);
@@ -88,6 +120,7 @@ namespace PM.GUI.Main
             this.PanelCN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelCN.AutoScroll = true;
+            this.PanelCN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PanelCN.Controls.Add(this.Btn_ThongBao);
             this.PanelCN.Controls.Add(this.btn_CH);
             this.PanelCN.Controls.Add(this.btn_TTCN);
@@ -105,6 +138,9 @@ namespace PM.GUI.Main
             this.PanelCN.Controls.Add(this.btn_DSTG);
             this.PanelCN.Controls.Add(this.btnKho);
             this.PanelCN.Controls.Add(this.BtnThem);
+            this.PanelCN.Controls.Add(this.guna2PictureBox1);
+            this.PanelCN.FillColor = System.Drawing.Color.Transparent;
+            this.PanelCN.ForeColor = System.Drawing.Color.Transparent;
             this.PanelCN.Location = new System.Drawing.Point(3, 16);
             this.PanelCN.Name = "PanelCN";
             this.PanelCN.Size = new System.Drawing.Size(243, 447);
@@ -192,6 +228,7 @@ namespace PM.GUI.Main
             this.btn_Chung.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Chung.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Chung.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Chung.FillColor2 = System.Drawing.Color.Yellow;
             this.btn_Chung.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Chung.ForeColor = System.Drawing.Color.White;
             this.btn_Chung.Location = new System.Drawing.Point(0, 548);
@@ -229,6 +266,7 @@ namespace PM.GUI.Main
             this.btn_LoiLo.Size = new System.Drawing.Size(153, 40);
             this.btn_LoiLo.TabIndex = 10;
             this.btn_LoiLo.Text = "Loi Lo";
+            this.btn_LoiLo.Click += new System.EventHandler(this.btn_LoiLo_Click);
             // 
             // btn_CuaHang
             // 
@@ -237,6 +275,7 @@ namespace PM.GUI.Main
             this.btn_CuaHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_CuaHang.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_CuaHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_CuaHang.FillColor2 = System.Drawing.Color.Yellow;
             this.btn_CuaHang.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_CuaHang.ForeColor = System.Drawing.Color.White;
             this.btn_CuaHang.Location = new System.Drawing.Point(0, 413);
@@ -282,6 +321,7 @@ namespace PM.GUI.Main
             this.btn_Sach.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Sach.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Sach.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Sach.FillColor2 = System.Drawing.Color.Yellow;
             this.btn_Sach.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Sach.ForeColor = System.Drawing.Color.White;
             this.btn_Sach.Location = new System.Drawing.Point(0, 3);
@@ -297,6 +337,7 @@ namespace PM.GUI.Main
             this.btn_QLTK.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_QLTK.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_QLTK.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_QLTK.FillColor2 = System.Drawing.Color.Yellow;
             this.btn_QLTK.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_QLTK.ForeColor = System.Drawing.Color.White;
             this.btn_QLTK.Location = new System.Drawing.Point(0, 275);
@@ -319,6 +360,7 @@ namespace PM.GUI.Main
             this.btn_NhanVien.Size = new System.Drawing.Size(153, 40);
             this.btn_NhanVien.TabIndex = 3;
             this.btn_NhanVien.Text = "Nhan Vien";
+            this.btn_NhanVien.Click += new System.EventHandler(this.btn_NhanVien_Click);
             // 
             // btn_DSTG
             // 
@@ -334,6 +376,7 @@ namespace PM.GUI.Main
             this.btn_DSTG.Size = new System.Drawing.Size(156, 40);
             this.btn_DSTG.TabIndex = 2;
             this.btn_DSTG.Text = "Danh sách tác Giả";
+            this.btn_DSTG.Click += new System.EventHandler(this.btn_DSTG_Click);
             // 
             // btnKho
             // 
@@ -349,6 +392,7 @@ namespace PM.GUI.Main
             this.btnKho.Size = new System.Drawing.Size(153, 40);
             this.btnKho.TabIndex = 1;
             this.btnKho.Text = "Kho Sách";
+            this.btnKho.Click += new System.EventHandler(this.btnKho_Click);
             // 
             // BtnThem
             // 
@@ -364,49 +408,29 @@ namespace PM.GUI.Main
             this.BtnThem.Size = new System.Drawing.Size(156, 40);
             this.BtnThem.TabIndex = 0;
             this.BtnThem.Text = "Thêm Sách";
+            this.BtnThem.Click += new System.EventHandler(this.BtnThem_Click);
             // 
-            // pannel_Admin
+            // guna2PictureBox1
             // 
-            this.pannel_Admin.AutoScroll = true;
-            this.pannel_Admin.Controls.Add(this.btnCN);
-            this.pannel_Admin.Controls.Add(this.titleCN);
-            this.pannel_Admin.Controls.Add(this.shadow_PannelCN);
-            this.pannel_Admin.Controls.Add(this.pannel_CT_CN);
-            this.pannel_Admin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pannel_Admin.Location = new System.Drawing.Point(0, 0);
-            this.pannel_Admin.Name = "pannel_Admin";
-            this.pannel_Admin.Size = new System.Drawing.Size(1188, 702);
-            this.pannel_Admin.TabIndex = 30;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(-3, -11);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(249, 471);
+            this.guna2PictureBox1.TabIndex = 4;
+            this.guna2PictureBox1.TabStop = false;
             // 
-            // btnCN
+            // pannel_CT_CN
             // 
-            this.btnCN.BorderRadius = 15;
-            this.btnCN.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCN.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCN.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCN.ForeColor = System.Drawing.Color.White;
-            this.btnCN.Location = new System.Drawing.Point(41, 109);
-            this.btnCN.Name = "btnCN";
-            this.btnCN.Size = new System.Drawing.Size(90, 45);
-            this.btnCN.TabIndex = 3;
-            this.btnCN.Text = "Menu";
-            this.btnCN.Click += new System.EventHandler(this.btnCN_Click_1);
-            // 
-            // titleCN
-            // 
-            this.titleCN.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.titleCN.AutoSize = false;
-            this.titleCN.BackColor = System.Drawing.Color.Transparent;
-            this.titleCN.Enabled = false;
-            this.titleCN.Font = new System.Drawing.Font("Monotype Corsiva", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleCN.Location = new System.Drawing.Point(141, 13);
-            this.titleCN.Name = "titleCN";
-            this.titleCN.Size = new System.Drawing.Size(1009, 151);
-            this.titleCN.TabIndex = 2;
-            this.titleCN.Text = "Chuc Nang";
-            this.titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pannel_CT_CN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pannel_CT_CN.BackColor = System.Drawing.Color.Gray;
+            this.pannel_CT_CN.FillColor = System.Drawing.Color.White;
+            this.pannel_CT_CN.Location = new System.Drawing.Point(296, 193);
+            this.pannel_CT_CN.Name = "pannel_CT_CN";
+            this.pannel_CT_CN.ShadowColor = System.Drawing.Color.IndianRed;
+            this.pannel_CT_CN.Size = new System.Drawing.Size(854, 477);
+            this.pannel_CT_CN.TabIndex = 0;
             // 
             // AdminForm
             // 
@@ -423,9 +447,10 @@ namespace PM.GUI.Main
             this.Text = "AdminForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdminForm_Load);
+            this.pannel_Admin.ResumeLayout(false);
             this.shadow_PannelCN.ResumeLayout(false);
             this.PanelCN.ResumeLayout(false);
-            this.pannel_Admin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -436,7 +461,7 @@ namespace PM.GUI.Main
         private Guna.UI2.WinForms.Guna2ShadowPanel shadow_PannelCN;
         private Guna.UI2.WinForms.Guna2Panel PanelCN;
         private Guna.UI2.WinForms.Guna2Panel pannel_Admin;
-        private Guna.UI2.WinForms.Guna2HtmlLabel titleCN;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_titleCN;
         private Guna.UI2.WinForms.Guna2GradientTileButton BtnThem;
         private Guna.UI2.WinForms.Guna2GradientTileButton btnKho;
         private Guna.UI2.WinForms.Guna2Button btnCN;
@@ -455,5 +480,6 @@ namespace PM.GUI.Main
         private Guna.UI2.WinForms.Guna2GradientTileButton Btn_ThongBao;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_CH;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_TTCN;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

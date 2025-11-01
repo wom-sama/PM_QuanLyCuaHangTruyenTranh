@@ -20,7 +20,7 @@ namespace PM.GUI.userConTrol.Employee
             _bus = bus ?? throw new ArgumentNullException(nameof(bus)); // đảm bảo không null
 
             // Định dạng label sau khi InitializeComponent()
-            var labels = new[] { lblTenKhach, lblSDT, lblEmail, lblDiaChi, lblDonViVC, lblTongTien, lblNgayDat, lblNgayGiao };
+            var labels = new[] { lblTenKhach, lblSDT, lblEmail, lblDiaChi, lblDonViVC, lblTongTien,lblNgayDat, lblNgayGiao,lblHTTT};
             int x = 20, y = 15, spacing = 22;
             foreach (var lbl in labels)
             {
@@ -81,6 +81,7 @@ namespace PM.GUI.userConTrol.Employee
             lblNgayGiao.Text = don.NgayGiao != null
                 ? $"📦 Ngày giao: {don.NgayGiao:dd/MM/yyyy}"
                 : $"📦 Ngày giao: Chưa giao";
+            lblHTTT.Text = $"💳 Hình thức TT: {don.HinhThucThanhToan}";
 
             // 📦 Danh sách sản phẩm
             dgvChiTiet.DataSource = don.CT_DonHangs
@@ -104,11 +105,11 @@ namespace PM.GUI.userConTrol.Employee
             dgvChiTiet.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(210, 240, 255);
             dgvChiTiet.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
-            // 🌈 Xen kẽ màu dòng để dễ nhìn
+            // Xen kẽ màu dòng để dễ nhìn
             dgvChiTiet.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
             dgvChiTiet.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
 
-            // 🧩 Căn giữa số lượng và giá tiền
+            // Căn giữa số lượng và giá tiền
             if (dgvChiTiet.Columns.Contains("Số_lượng"))
                 dgvChiTiet.Columns["Số_lượng"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             if (dgvChiTiet.Columns.Contains("Đơn_giá"))
@@ -116,7 +117,7 @@ namespace PM.GUI.userConTrol.Employee
             if (dgvChiTiet.Columns.Contains("Thành_tiền"))
                 dgvChiTiet.Columns["Thành_tiền"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            // 🚫 Không cho sửa trực tiếp
+            //  Không cho sửa trực tiếp
             dgvChiTiet.ReadOnly = true;
             dgvChiTiet.AllowUserToAddRows = false;
             dgvChiTiet.AllowUserToDeleteRows = false;

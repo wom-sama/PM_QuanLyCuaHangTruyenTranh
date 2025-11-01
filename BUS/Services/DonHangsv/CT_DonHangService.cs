@@ -202,6 +202,22 @@ namespace PM.BUS.Services.DonHangsv
                 return false;
             }
         }
+
+
+
+        public async Task<int>LaySoLuongBanDuocTheoSachAsync(string maSach)
+        {
+            try
+            {
+                var ctDonHangs = await _unitOfWork.CT_DonHangRepository.GetAllAsync();
+                return ctDonHangs.Where(ct => ct.MaSach == maSach).Sum(ct => ct.SoLuong);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi tính số lượng bán được theo sách (async): " + ex.Message);
+                return 0;
+            }
+        }
     }
 
 
