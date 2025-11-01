@@ -86,12 +86,12 @@ namespace PM.GUI
                 };
                 db.ChiNhanhs.AddRange(new[] { chiNhanh1, chiNhanh2 });
                 db.SaveChanges();
-
+                // ----- Kho -----
                 var kho1 = new Kho { MaKho = "KHO01", TenKho = "Kho HCM - Trung Tâm", MaChiNhanh = chiNhanh1.MaChiNhanh, LoaiKho = "Chính", TrangThai = true };
                 var kho2 = new Kho { MaKho = "KHO02", TenKho = "Kho HN - Trung Tâm", MaChiNhanh = chiNhanh2.MaChiNhanh, LoaiKho = "Chính", TrangThai = true };
                 db.Khos.AddRange(new[] { kho1, kho2 });
                 db.SaveChanges();
-
+                // -----ke sach -----
                 var ke1 = new KeSach { MaKe = "KE01", TenKe = "Kệ A1", MaKho = kho1.MaKho };
                 var ke2 = new KeSach { MaKe = "KE02", TenKe = "Kệ B1", MaKho = kho2.MaKho };
                 db.KeSachs.AddRange(new[] { ke1, ke2 });

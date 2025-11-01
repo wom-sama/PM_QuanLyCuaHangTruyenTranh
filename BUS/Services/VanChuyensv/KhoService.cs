@@ -215,30 +215,46 @@ namespace PM.BUS.Services.VanChuyensv
                     .ToList();
             }
         }
-        public int LaySoLuongTon(string maSach)
+        public int LaySoLuongTon(string maSach, string maKho)
         {
             try
             {
-                // Tổng nhập từ chi tiết nhập kho
-                var tongNhap = _unitOfWork.CT_NhapKhoRepository
-                    .GetAll()
-                    .Where(ct => ct.MaSach == maSach)
-                    .Sum(ct => (int?)ct.SoLuong) ?? 0;
+                // 🔹 Tổng nhập từ phiếu nhập thuộc kho này
+                var tongNhap = (from nk in _unitOfWork.NhapKhoRepository.GetAll()
+                                join ctn in _unitOfWork.CT_NhapKhoRepository.GetAll()
+                                    on nk.MaPhieuNhap equals ctn.MaPhieuNhap
+                                where nk.MaKho == maKho && ctn.MaSach == maSach
+                                select (int?)ctn.SoLuong).Sum() ?? 0;
 
-                // Tổng bán từ chi tiết đơn hàng
-                var tongBan = _unitOfWork.CT_DonHangRepository
-                    .GetAll()
-                    .Where(ct => ct.MaSach == maSach)
-                    .Sum(ct => (int?)ct.SoLuong) ?? 0;
+                // 🔹 Tổng bán: hiện DonHang KHÔNG có MaKho, nên chỉ trừ tổng số sách bán ra (không phân kho)
+                var tongBan = (from ctdh in _unitOfWork.CT_DonHangRepository.GetAll()
+                               where ctdh.MaSach == maSach
+                               select (int?)ctdh.SoLuong).Sum() ?? 0;
 
-                return tongNhap - tongBan;
+                // 🔹 Tổng chuyển đi
+                var tongChuyenDi = (from ck in _unitOfWork.ChuyenKhoRepository.GetAll()
+                                    join ctnk in _unitOfWork.CT_NhapKhoRepository.GetAll()
+                                        on ck.MaPhieuChuyen equals ctnk.MaPhieuNhap
+                                    where ck.MaKhoXuat == maKho && ctnk.MaSach == maSach
+                                    select (int?)ctnk.SoLuong).Sum() ?? 0;
+
+                // 🔹 Tổng chuyển đến
+                var tongChuyenDen = (from ck in _unitOfWork.ChuyenKhoRepository.GetAll()
+                                     join ctnk in _unitOfWork.CT_NhapKhoRepository.GetAll()
+                                         on ck.MaPhieuChuyen equals ctnk.MaPhieuNhap
+                                     where ck.MaKhoNhap == maKho && ctnk.MaSach == maSach
+                                     select (int?)ctnk.SoLuong).Sum() ?? 0;
+
+                // 🔹 Tổng tồn thực tế
+                return tongNhap + tongChuyenDen - tongBan - tongChuyenDi;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi khi tính số lượng tồn: " + ex.Message);
+                Console.WriteLine("Lỗi khi lấy số lượng tồn kho: " + ex.Message);
                 return 0;
             }
         }
+
 
 
 

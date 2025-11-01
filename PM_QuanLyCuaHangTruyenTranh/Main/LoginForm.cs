@@ -79,15 +79,29 @@ namespace PM.GUI.Main
                 switch (tk.Quyen)
                 {
                     case "Admin":
-                        AdminForm adminForm = new AdminForm();
-                        adminForm.StartPosition = FormStartPosition.CenterScreen;
-                        adminForm.ShowDialog();
-
+                      
+                        // truyền nhân viên hiện tại vào form admin 
+                        var admin = await authService.DangNhapVaLayNhanVien(username, password);
+                        if (admin != null)
+                        {
+                            new AdminForm(admin).ShowDialog();
+                        }
+                        else
+                        {
+                            new FormMessage("Đăng nhập thất bại!").ShowDialog();
+                        }
                         break;
                     case "NhanVien":
-                         NhanVienForm nvForm = new NhanVienForm();
-                        nvForm.StartPosition = FormStartPosition.CenterScreen;
-                        nvForm.ShowDialog();
+                        // truyền nhân viên hiện tại vào form nhân viên
+                        var nv = await authService.DangNhapVaLayNhanVien(username, password);
+                        if (nv != null)
+                            {
+                            new NhanVienForm(nv).ShowDialog();
+                        }
+                        else
+                        {
+                            new FormMessage("Đăng nhập thất bại!").ShowDialog();
+                        }
                         break;
                     case "Khach":
                         var kh = await authService.DangNhapVaLayKhachHang(username, password);

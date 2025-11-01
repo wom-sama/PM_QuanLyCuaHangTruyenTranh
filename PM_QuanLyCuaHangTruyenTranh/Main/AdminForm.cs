@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using PM.DAL.Models;
 
 namespace PM.GUI.Main
 {
@@ -16,13 +17,23 @@ namespace PM.GUI.Main
 
 
         // thuộc tính và phương thức khác của AdminForm...
+        // biến nhân    viên hiện tại
+        NhanVien currentNV;
+        //
+
+
 
         public AdminForm()
         {
             InitializeComponent();
             CaiDatAnimation();
         }
-
+        public AdminForm(NhanVien main9)
+        {
+            currentNV = main9;
+            InitializeComponent();
+            CaiDatAnimation();
+        }
         private void CaiDatAnimation()
         {
             animTimer = new Timer();

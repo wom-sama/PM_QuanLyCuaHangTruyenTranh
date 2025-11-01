@@ -1,6 +1,7 @@
 ﻿using FontAwesome.Sharp;
 using PM.BUS.Services.Facade;
 using PM.GUI.userConTrol.Employee;
+using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,8 +30,16 @@ namespace PM.GUI.Main
         private int targetHeightPanelHienThi = 1200; // chiều cao bạn muốn
         private int slideSpeedPanel = 15;
 
+        // Biến Chứa nhân viên hiện tại
+        private NhanVien currentNV;
         public NhanVienForm()
         {
+            InitializeComponent();
+        }
+
+        public NhanVienForm(NhanVien nv)
+        {
+            currentNV = nv;
             InitializeComponent();
         }
         private void CapNhatThongBao()
@@ -278,7 +287,7 @@ namespace PM.GUI.Main
 
         private void btnKho_Click(object sender, EventArgs e)
         {
-            var uc = new Kho(HienThiUserControl); //  truyền delegate
+            var uc = new userConTrol.Employee.Kho(HienThiUserControl); //  truyền delegate
             HienThiUserControl(uc);
         }
 
