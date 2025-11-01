@@ -195,7 +195,17 @@ namespace PM.BUS.Services.Sachsv
             }
 
         }
-
+        //luot ban
+        public void TangLuotBan(string maSach, int soLuong)
+        {
+            var sach = _unitOfWork.SachRepository.GetById(maSach);
+            if (sach != null)
+            {
+                sach.LuotBan += soLuong;
+                _unitOfWork.SachRepository.Update(sach);
+                _unitOfWork.Save();
+            }
+        }
 
 
     }

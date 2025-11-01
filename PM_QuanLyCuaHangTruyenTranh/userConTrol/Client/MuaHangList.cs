@@ -2,6 +2,7 @@
 using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Facade;
 using PM.DAL.Models;
+using PM.GUI.userConTrol.Customer;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -162,9 +163,8 @@ namespace PM.GUI.userConTrol.Client
             };
             cbThanhToan.Items.AddRange(new object[]
             {
-                "COD",
+                "COD( Thanh toán khi nhận hàng )",
                 "Chuyển khoản ngân hàng",
-                "Ví điện tử"
             });
             cbThanhToan.SelectedItem = thanhToan != "" ? thanhToan : cbThanhToan.Items[0];
             pannelTong.Controls.Add(cbThanhToan);
@@ -232,31 +232,70 @@ namespace PM.GUI.userConTrol.Client
 
         private void BtnDatHang_Click(object sender, EventArgs e)
         {
-            // Lấy số trong chuỗi lblTongTien
-            bool ok = new QuanLyDonHangBUS().TaoDonHang(
-                _khach,"Online", cbVanChuyen.SelectedValue?.ToString(),
+            // 🟢 Nếu chọn phương thức là "Chuyển khoản ngân hàng" → hiển thị QR thanh toán
+            if (cbThanhToan.SelectedItem?.ToString() == "Chuyển khoản ngân hàng")
+            {
+                string maDon = "DH" + DateTime.Now.Ticks.ToString();
+
+                var qrControl = new ThanhToanQR(maDon, tong, () =>
+                {
+                    // ✅ Callback sau khi xác nhận thanh toán thành công
+                    bool ok = new QuanLyDonHangBUS().TaoDonHang(
+                        _khach,
+                        "Online",
+                        cbVanChuyen.SelectedValue?.ToString(),
+                        cbThanhToan.SelectedItem?.ToString(),
+                        tong,
+                        _items
+                    );
+
+                    if (ok)
+                    {
+                        MessageBox.Show("✅ Thanh toán và đặt hàng thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Xóa giỏ hàng sau khi đặt
+                        new QuanLyDonHangBUS().XoaGioHangSauKhiDat(_khach.TenDangNhap);
+
+                        // Quay lại giao diện trước đó
+                        _onBack?.Invoke();
+                    }
+                    else
+                    {
+                        MessageBox.Show("❌ Đặt hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                });
+
+                // 🧩 Thêm UserControl QR vào giao diện
+                qrControl.Dock = DockStyle.Fill;
+                this.Parent.Controls.Add(qrControl);
+                qrControl.BringToFront();
+                this.Hide(); // Ẩn MuaHangList để hiển thị giao diện QR
+
+                return;
+            }
+
+            // 🟩 Trường hợp COD (Thanh toán khi nhận hàng)
+            bool okCOD = new QuanLyDonHangBUS().TaoDonHang(
+                _khach,
+                "Online",
+                cbVanChuyen.SelectedValue?.ToString(),
                 cbThanhToan.SelectedItem?.ToString(),
                 tong,
-                _items // danh sách CT_GioHang
+                _items
             );
 
-            if (ok)
+            if (okCOD)
             {
                 MessageBox.Show("✅ Đặt hàng thành công! Đơn đã được gửi sang trạng thái 'Chờ xử lý'.");
-
-                var qlDonHangBus = new QuanLyDonHangBUS();
-                qlDonHangBus.XoaGioHangSauKhiDat(_khach.TenDangNhap);
-
-                // 🟢 Chỉ cần gọi callback, reload sẽ được thực hiện trong callback ở GioHang
+                new QuanLyDonHangBUS().XoaGioHangSauKhiDat(_khach.TenDangNhap);
                 _onBack?.Invoke();
             }
             else
             {
                 MessageBox.Show("❌ Đặt hàng thất bại!");
             }
-
-
         }
+
 
 
     }

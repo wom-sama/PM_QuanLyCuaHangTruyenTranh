@@ -136,6 +136,7 @@ namespace PM.BUS.Services.Facade
             return _donHangService.GetById(maDonHang);
         }
         // Hoàn tất giao đơn hàng
+        // ==================== HOÀN TẤT GIAO ĐƠN ====================
         public bool HoanTatGiao(string maDonHang)
         {
             var don = _donHangService.GetById(maDonHang);
@@ -144,10 +145,24 @@ namespace PM.BUS.Services.Facade
             don.TrangThai = "Đã giao";
             don.NgayGiao = DateTime.Now;
             _donHangService.Update(don);
-            _unitOfWork.Save();
-            OnDonHangHoanTat?.Invoke(); // 🔔 Thông báo form cập nhật chuông
+
+            // ✅ Cập nhật lượt bán cho từng sách trong đơn
+            foreach (var ct in don.CT_DonHangs)
+            {
+                var sach = ct.Sach;
+                if (sach != null)
+                {
+                    sach.LuotBan += ct.SoLuong;
+                    _unitOfWork.SachRepository.Update(sach);
+                }
+            }
+
+            _unitOfWork.Save(); // 💾 Lưu tất cả thay đổi (Đơn + Sách)
+            OnDonHangHoanTat?.Invoke(); // 🔔 Gửi sự kiện để form cập nhật giao diện
+
             return true;
         }
+
         public bool TaoDonHang(KhachHang kh, string loaiDon, string maDVVC, string hinhThucThanhToan, decimal tongTien, List<CT_GioHang> items)
         {
             try
