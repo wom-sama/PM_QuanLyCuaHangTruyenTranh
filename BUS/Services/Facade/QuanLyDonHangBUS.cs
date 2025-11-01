@@ -219,6 +219,28 @@ namespace PM.BUS.Services.Facade
             return _donHangService.GetAll()
                 .Count(d => d.TrangThai == "Chờ xử lý");
         }
+        // Khong Duyệt Đơn
+        public bool KhongDuyetDon(string maDonHang)
+        {
+            var don = LayDonHangTheoMa(maDonHang);
+            if (don == null) return false;
+
+            if (don.TrangThai != "Chờ xử lý") return false;
+
+            don.TrangThai = "Không duyệt";
+            return _donHangService.Update(don); 
+        }
+        // Hủy Giao Đơn
+        public bool HuyGiaoDon(string maDonHang)
+        {
+            var don = LayDonHangTheoMa(maDonHang);
+            if (don == null) return false;
+
+            if (don.TrangThai != "Đang giao") return false;
+
+            don.TrangThai = "Đơn Hàng Không Giao"; // trạng thái mới
+            return _donHangService.Update(don); 
+        }
 
 
 

@@ -59,24 +59,26 @@ namespace PM.GUI.userConTrol.Employee
 
         private void CapNhatSoLuongBadge()
         {
-            int tatCa = _bus.LayDanhSachDonHang(null).Count();
+            int tatCa = _bus.LayDanhSachDonHang(null).Count(); //Dếm tất cả đơn hàng
             int dangXuLy = _bus.LayDanhSachDonHang("Chờ xử lý").Count();
             int dangGiao = _bus.LayDanhSachDonHang("Đang giao").Count();
             int daGiao = _bus.LayDanhSachDonHang("Đã giao").Count();
             int daBan = _bus.LayDanhSachDonHang("Đã thanh toán").Count();
+            int khongDuyet = _bus.LayDanhSachDonHang("Không duyệt").Count();
+            int daHuy = _bus.LayDanhSachDonHang("Đơn Hàng Không Giao").Count();
 
-            btnTatCa.Text = $"Tất cả ({tatCa})";
+
+            btnTatCa.Text = $"Tất cả ({tatCa})"; // Cập nhật số lượng trên nút
             btnXuLy.Text = $"Chờ xử lý ({dangXuLy})";
             btnDangGiao.Text = $"Đang giao ({dangGiao})";
             btnĐaGiao.Text = $"Đã giao ({daGiao})";
             btnDaban.Text = $"Đã thanh toán ({daBan})";
+            btnKhongDuyet.Text = $"Không duyệt({khongDuyet})";
+            btnDaHuy.Text = $"Đơn Hàng Không Giao({daHuy})";
         }
 
         // ==== Sự kiện lọc ====
-    
-
-     
-
+   
         private void btnLoc_Click_1(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();
@@ -142,6 +144,10 @@ namespace PM.GUI.userConTrol.Employee
         private void btnDaban_Click(object sender, EventArgs e) => LoadDonHang("Đã thanh toán");
 
         private void btnTaiLai_Click(object sender, EventArgs e) =>LoadDonHang();
+
+        private void btnKhongDuyet_Click(object sender, EventArgs e) => LoadDonHang("Không duyệt");
+
+        private void btnDaHuy_Click(object sender, EventArgs e) => LoadDonHang("Đơn Hàng Không Giao");
 
 
 

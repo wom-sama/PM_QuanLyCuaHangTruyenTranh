@@ -164,5 +164,10 @@ namespace PM.GUI.userConTrol.Employee
                 }
             }
         }
+
+        private void lblTongTien_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

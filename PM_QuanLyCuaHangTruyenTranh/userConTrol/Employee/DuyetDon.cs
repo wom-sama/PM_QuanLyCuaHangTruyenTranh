@@ -179,5 +179,39 @@ namespace PM.GUI.userConTrol.Employee
         {
 
         }
+
+        private void btnKhongDuyet_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(selectedMaDonHang))
+            {
+                MessageBox.Show("⚠️ Vui lòng chọn đơn hàng trước!", "Thông báo");
+                return;
+            }
+
+            var donHang = _bus.LayDonHangTheoMa(selectedMaDonHang);
+            if (donHang == null)
+            {
+                MessageBox.Show("❌ Không tìm thấy đơn hàng!");
+                return;
+            }
+
+            if (donHang.TrangThai != "Chờ xử lý")
+            {
+                MessageBox.Show("⚠️ Chỉ có thể hủy các đơn đang xử lý!");
+                return;
+            }
+
+            bool ok = _bus.KhongDuyetDon(selectedMaDonHang);
+            if (ok)
+            {
+                MessageBox.Show($"❌ Đơn {selectedMaDonHang} đã được đánh dấu là 'Không duyệt'!");
+                LoadDonHang();
+                OnDonHangDuyet?.Invoke(); // 🔔 báo lại cho form cha cập nhật chuông
+            }
+            else
+            {
+                MessageBox.Show("❌ Thao tác không thành công!");
+            }
+        }
     }
 }
