@@ -301,7 +301,7 @@ namespace PM.GUI.userConTrol.Customer
             this.btnBack.Size = new System.Drawing.Size(120, 35);
             this.btnBack.TabIndex = 43;
             this.btnBack.Text = "← Quay lại";
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // MuaHang
             // 
