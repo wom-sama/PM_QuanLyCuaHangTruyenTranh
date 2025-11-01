@@ -22,7 +22,7 @@ namespace PM.GUI.userConTrol.Employee
         private Label lblNgayGiao;
         private Label lblTitleDonHang;
         private Label lblTitleChiTiet;
-
+        private Label lblHTTT;
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -51,6 +51,7 @@ namespace PM.GUI.userConTrol.Employee
             this.lblNgayGiao = new System.Windows.Forms.Label();
             this.dgvChiTiet = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnDuyetDon = new Guna.UI2.WinForms.Guna2Button();
+            this.lblHTTT = new System.Windows.Forms.Label();
             this.btnTaiLai = new Guna.UI2.WinForms.Guna2Button();
             this.lblTitleDonHang = new System.Windows.Forms.Label();
             this.lblTitleChiTiet = new System.Windows.Forms.Label();
@@ -141,6 +142,7 @@ namespace PM.GUI.userConTrol.Employee
             this.panelThongTin.Controls.Add(this.lblTongTien);
             this.panelThongTin.Controls.Add(this.lblNgayDat);
             this.panelThongTin.Controls.Add(this.lblNgayGiao);
+            this.panelThongTin.Controls.Add(this.lblHTTT);
             this.panelThongTin.FillColor = System.Drawing.Color.White;
             this.panelThongTin.Location = new System.Drawing.Point(720, 108);
             this.panelThongTin.Name = "panelThongTin";

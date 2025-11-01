@@ -154,10 +154,8 @@ namespace PM.GUI.userConTrol.Customer
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
-           
             if (!btnDatHang.Enabled) return;
-            
-            
+
             // Kiểm tra số lượng tồn kho
             var khoService = new KhoService(new DAL.UnitOfWork());
             int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach, _maChiNhanh);
@@ -173,9 +171,6 @@ namespace PM.GUI.userConTrol.Customer
                 MessageBox.Show($"❌ Số lượng '{_sach.TenSach}' vượt quá số lượng tồn kho ({soLuongTon})!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-
-            if (!btnDatHang.Enabled) return;
 
             string maDon = "DH" + DateTime.Now.Ticks.ToString();
 
@@ -200,8 +195,6 @@ namespace PM.GUI.userConTrol.Customer
                 ThanhTien = _soLuong * _giaBan
             };
 
-            // 🟩 Tạo phiếu vận chuyển tương ứng
-           
             var vc = new VanChuyen
             {
                 MaDonHang = maDon,
@@ -211,28 +204,55 @@ namespace PM.GUI.userConTrol.Customer
                 GhiChu = $"Giao đến {txtDiaChi.Text}"
             };
 
-          
-
             try
             {
-                _donHangService.Add(don);
-                _ctDonHangService.Add(ctdh);
-                _vanChuyenService.Add(vc); // 🟩 thêm dòng này
+                // 🟧 Nếu chọn thanh toán qua ngân hàng
+                if (cbThanhToan.SelectedItem.ToString() == "Chuyển khoản ngân hàng")
+                {
+                    var qrControl = new ThanhToanQR(maDon, _soLuong * _giaBan + _phiShip, () =>
+                    {
+                        // Khi người dùng xác nhận thanh toán
+                        _donHangService.Add(don);
+                        _ctDonHangService.Add(ctdh);
+                        _vanChuyenService.Add(vc);
 
-                MessageBox.Show(
-                    $"✅ Đặt hàng thành công!\nNgười nhận: {txtTen.Text}\nSĐT: {txtSDT.Text}\nĐịa chỉ: {txtDiaChi.Text}\n" +
-                    $"Phí ship: {_phiShip:N0} ₫\nTổng thanh toán: {don.TongTien:N0} ₫",
-                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("✅ Thanh toán và đặt hàng thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                      _onBack?.Invoke();
-               
+                        // 🟢 Gọi lại _onBack để quay lại danh sách sách (Shop_BookView)
+                        if (this.Parent != null)
+                        {
+                            this.Parent.Controls.Remove(this); // xóa control MuaHang
+                        }
+                        _onBack?.Invoke(); // chạy callback để hiển thị lại danh sách
+                    });
+
+                    qrControl.Dock = DockStyle.Fill;
+                    this.Parent.Controls.Add(qrControl);
+                    qrControl.BringToFront();
+                    this.Hide(); // Ẩn form mua hàng để hiển thị QR
+                }
+
+                else
+                {
+                    // 🟩 Trường hợp COD
+                    _donHangService.Add(don);
+                    _ctDonHangService.Add(ctdh);
+                    _vanChuyenService.Add(vc);
+
+                    MessageBox.Show(
+                        $"✅ Đặt hàng thành công!\nNgười nhận: {txtTen.Text}\nSĐT: {txtSDT.Text}\nĐịa chỉ: {txtDiaChi.Text}\n" +
+                        $"Phí ship: {_phiShip:N0} ₫\nTổng thanh toán: {don.TongTien:N0} ₫",
+                        "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    _onBack?.Invoke();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Lỗi khi đặt hàng: " + ex.Message,
-                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("❌ Lỗi khi đặt hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {

@@ -20,7 +20,7 @@ namespace PM.GUI.userConTrol.Employee
             _bus = bus ?? throw new ArgumentNullException(nameof(bus)); // đảm bảo không null
 
             // Định dạng label sau khi InitializeComponent()
-            var labels = new[] { lblTenKhach, lblSDT, lblEmail, lblDiaChi, lblDonViVC, lblTongTien, lblNgayDat, lblNgayGiao };
+            var labels = new[] { lblTenKhach, lblSDT, lblEmail, lblDiaChi, lblDonViVC, lblTongTien, lblNgayDat, lblNgayGiao, lblHTTT };
             int x = 20, y = 15, spacing = 22;
             foreach (var lbl in labels)
             {
@@ -81,7 +81,7 @@ namespace PM.GUI.userConTrol.Employee
             lblNgayGiao.Text = don.NgayGiao != null
                 ? $"📦 Ngày giao: {don.NgayGiao:dd/MM/yyyy}"
                 : $"📦 Ngày giao: Chưa giao";
-
+            lblHTTT.Text = $"💳 Hình thức TT: {don.HinhThucThanhToan}";
             // 📦 Danh sách sản phẩm
             dgvChiTiet.DataSource = don.CT_DonHangs
                 .Select(ct => new

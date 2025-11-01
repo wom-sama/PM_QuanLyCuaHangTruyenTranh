@@ -283,6 +283,12 @@
     <Compile Include="userConTrol\Client\Shop_BookView.Designer.cs">
       <DependentUpon>Shop_BookView.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Client\ThanhToanQR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Client\ThanhToanQR.Designer.cs">
+      <DependentUpon>ThanhToanQR.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Common\BooKShowcs.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -401,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Client\Shop_BookView.resx">
       <DependentUpon>Shop_BookView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Client\ThanhToanQR.resx">
+      <DependentUpon>ThanhToanQR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Common\BooKShowcs.resx">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
