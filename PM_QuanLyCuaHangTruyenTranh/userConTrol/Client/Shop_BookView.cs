@@ -1,5 +1,6 @@
 ﻿using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Sachsv;
+using PM.BUS.Services.VanChuyensv;
 using PM.DAL;
 using PM.DAL.Models;
 using PM.GUI.userConTrol.Common;
@@ -232,6 +233,7 @@ namespace PM.GUI.userConTrol.Customer
                 currentKhachHang,
                 _ctGioHangService,
                 _gioHangService,
+                new KhoService(_unitOfWork),
                 () => // onBack
                 {
                     pannelTong.Controls.Remove(cartControl); // Xóa control giỏ hàng

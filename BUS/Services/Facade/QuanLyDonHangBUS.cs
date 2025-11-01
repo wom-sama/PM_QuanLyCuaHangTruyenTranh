@@ -194,6 +194,22 @@ namespace PM.BUS.Services.Facade
                 return false;
             }
         }
+        public void XoaGioHangSauKhiDat(string maKhach)
+        {
+            // Dùng lại UnitOfWork hiện có
+            var gioHangService = new GioHangService(_unitOfWork);
+            var ctGioHangService = new CT_GioHangService(_unitOfWork);
+
+            var gioHang = gioHangService.GetAll()
+                .FirstOrDefault(g => g.MaKhach == maKhach);
+
+            if (gioHang != null)
+            {
+                ctGioHangService.DeleteByGioHangId(gioHang.MaGioHang);
+                _unitOfWork.Save(); // ✅ Save qua UnitOfWork của BUS
+            }
+        }
+
 
 
     }

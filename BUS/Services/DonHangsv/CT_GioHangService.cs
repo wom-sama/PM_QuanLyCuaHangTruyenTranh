@@ -185,6 +185,19 @@ namespace PM.BUS.Services.DonHangsv
                 return false;
             }
         }
+        public void DeleteByGioHangId(string maGioHang)
+        {
+            var list = _unitOfWork.CT_GioHangRepository
+                .GetAll()
+                .Where(c => c.MaGioHang == maGioHang)
+                .ToList();
+
+            foreach (var item in list)
+            {
+                _unitOfWork.CT_GioHangRepository.Delete(item);
+            }
+        }
+
     }
 
 }

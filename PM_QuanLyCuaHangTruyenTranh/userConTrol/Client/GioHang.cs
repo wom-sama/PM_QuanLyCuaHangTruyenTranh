@@ -1,4 +1,5 @@
 ﻿using PM.BUS.Services.DonHangsv;
+using PM.BUS.Services.VanChuyensv;
 using PM.DAL.Models;
 using PM.GUI.userConTrol.Customer;
 using System;
@@ -13,19 +14,27 @@ namespace PM.GUI.userConTrol.Client
     {
         private CT_GioHangService _ctGioHangService;
         private GioHangService _gioHangService;
+        private KhoService _khoService;
         private string _maGioHang;
         private KhachHang _khach;
 
         private List<CT_GioHang> _items;
         private Action _onBack;
 
-        public GioHang(string maGioHang, KhachHang khach, CT_GioHangService ctService, GioHangService ghService, Action onBack)
+        public GioHang(
+            string maGioHang,
+            KhachHang khach,
+            CT_GioHangService ctService,
+            GioHangService ghService,
+            KhoService khoService,
+            Action onBack)
         {
             InitializeComponent();
             _maGioHang = maGioHang;
             _khach = khach;
             _ctGioHangService = ctService;
             _gioHangService = ghService;
+            _khoService = khoService; // ✅ gán service kho
             _onBack = onBack;
 
             LoadGioHang();
@@ -39,7 +48,7 @@ namespace PM.GUI.userConTrol.Client
                         .Where(x => x.MaGioHang == _maGioHang)
                         .ToList();
 
-            // Load đầy đủ thông tin Sach nếu null
+            // Load đầy đủ thông tin sách nếu null
             foreach (var item in _items)
             {
                 if (item.Sach == null)
@@ -63,7 +72,7 @@ namespace PM.GUI.userConTrol.Client
                     Location = new Point(5, 10),
                     SizeMode = PictureBoxSizeMode.StretchImage
                 };
-                if (item.Sach.BiaSach != null && item.Sach.BiaSach.Length > 0)
+                if (item.Sach?.BiaSach != null && item.Sach.BiaSach.Length > 0)
                 {
                     using (var ms = new System.IO.MemoryStream(item.Sach.BiaSach))
                         pic.Image = Image.FromStream(ms);
@@ -103,7 +112,7 @@ namespace PM.GUI.userConTrol.Client
                 };
                 panelItem.Controls.Add(lblSoLuong);
 
-                // Nút +
+                // ===== Nút tăng số lượng =====
                 Button btnTang = new Button
                 {
                     Text = "+",
@@ -112,13 +121,39 @@ namespace PM.GUI.userConTrol.Client
                 };
                 btnTang.Click += (s, e) =>
                 {
-                    item.SoLuong++;
-                    lblSoLuong.Text = item.SoLuong.ToString();
-                    _ctGioHangService.Update(item);
+                    try
+                    {
+                        int soLuongTon = _khoService.LaySoLuongTon(item.MaSach);
+
+                        // Tổng số lượng của sản phẩm này trong giỏ
+                        int tongTrongGio = _ctGioHangService.GetAll()
+                            .Where(x => x.MaGioHang == _maGioHang && x.MaSach == item.MaSach)
+                            .Sum(x => x.SoLuong);
+
+                        if (tongTrongGio < soLuongTon)
+                        {
+                            item.SoLuong++;
+                            lblSoLuong.Text = item.SoLuong.ToString();
+                            _ctGioHangService.Update(item);
+                        }
+                        else
+                        {
+                            MessageBox.Show(
+                                $"Sản phẩm '{item.Sach?.TenSach}' chỉ còn {soLuongTon} trong kho.",
+                                "Không đủ hàng",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi tăng số lượng: " + ex.Message);
+                    }
                 };
                 panelItem.Controls.Add(btnTang);
 
-                // Nút -
+                // ===== Nút giảm số lượng =====
                 Button btnGiam = new Button
                 {
                     Text = "-",
@@ -135,14 +170,17 @@ namespace PM.GUI.userConTrol.Client
                     }
                     else
                     {
-                        // hỏi trước khi xóa
                         var res = MessageBox.Show(
-                            $"Bạn có muốn xóa '{item.Sach.TenSach}' khỏi giỏ hàng?",
-                            "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            $"Bạn có muốn xóa '{item.Sach?.TenSach}' khỏi giỏ hàng?",
+                            "Xác nhận xóa",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                        );
+
                         if (res == DialogResult.Yes)
                         {
                             _ctGioHangService.Delete(item.MaGioHang, item.MaSach);
-                            LoadGioHang(); // load lại giỏ hàng
+                            LoadGioHang(); // reload lại giỏ hàng
                         }
                     }
                 };
@@ -152,7 +190,7 @@ namespace PM.GUI.userConTrol.Client
                 y += 110;
             }
 
-            // Nút Mua ngay
+            // ===== Nút Mua Ngay =====
             Button btnMuaNgay = new Button
             {
                 Text = "Mua ngay",
@@ -164,7 +202,7 @@ namespace PM.GUI.userConTrol.Client
             btnMuaNgay.Click += BtnMuaNgay_Click;
             pannelTong.Controls.Add(btnMuaNgay);
 
-            // Nút Quay lại
+            // ===== Nút Quay lại =====
             Button btnBack = new Button
             {
                 Text = "Quay lại",
@@ -186,22 +224,21 @@ namespace PM.GUI.userConTrol.Client
             }
 
             var parentPanel = this.Parent;
-
             this.Visible = false;
 
-            // Khai báo biến trước để lambda có thể sử dụng
             MuaHangList muaHangList = null;
 
             muaHangList = new MuaHangList(
                 items: _items,
                 khach: _khach,
-                vanChuyen: "",       // bạn có thể truyền giá trị thực tế
-                thanhToan: "",       // bạn có thể truyền giá trị thực tế
-                ngayDat: null,       // sẽ lấy DateTime.Now nếu null
+                vanChuyen: "",
+                thanhToan: "",
+                ngayDat: null,
                 onBack: () =>
                 {
                     parentPanel.Controls.Remove(muaHangList);
                     this.Visible = true;
+                    this.ReloadData(); // 🟢 Reload giỏ hàng khi quay lại
                 }
             );
 
@@ -210,11 +247,23 @@ namespace PM.GUI.userConTrol.Client
             muaHangList.BringToFront();
         }
 
-
-
         private void BtnBack_Click(object sender, EventArgs e)
         {
             _onBack?.Invoke();
         }
+        public void ReloadData()
+        {
+            try
+            {
+                // Gọi lại hàm load giỏ hàng hiện có
+                LoadGioHang();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi làm mới giỏ hàng: " + ex.Message,
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

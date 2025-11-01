@@ -18,9 +18,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XemDon));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnTatCa = new System.Windows.Forms.ToolStripButton();
@@ -37,10 +37,10 @@
             this.btnTaiLai = new System.Windows.Forms.ToolStripButton();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cbLoaiDon = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dtTuNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtDenNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btnLoc = new Guna.UI2.WinForms.Guna2Button();
+            this.cbLoaiDon = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
@@ -172,28 +172,28 @@
             // 
             // guna2DataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.guna2DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.guna2DataGridView1.ColumnHeadersHeight = 34;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(0, 99);
             this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -234,8 +234,49 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Nhập mã đơn / tên KH / NV / SĐT...";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(311, 29);
+            this.txtSearch.Size = new System.Drawing.Size(463, 50);
             this.txtSearch.TabIndex = 5;
+            // 
+            // dtTuNgay
+            // 
+            this.dtTuNgay.Checked = true;
+            this.dtTuNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtTuNgay.Location = new System.Drawing.Point(474, 43);
+            this.dtTuNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtTuNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtTuNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtTuNgay.Name = "dtTuNgay";
+            this.dtTuNgay.Size = new System.Drawing.Size(133, 50);
+            this.dtTuNgay.TabIndex = 7;
+            this.dtTuNgay.Value = new System.DateTime(2025, 10, 22, 14, 58, 50, 74);
+            // 
+            // dtDenNgay
+            // 
+            this.dtDenNgay.Checked = true;
+            this.dtDenNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtDenNgay.Location = new System.Drawing.Point(617, 43);
+            this.dtDenNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtDenNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtDenNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtDenNgay.Name = "dtDenNgay";
+            this.dtDenNgay.Size = new System.Drawing.Size(133, 50);
+            this.dtDenNgay.TabIndex = 8;
+            this.dtDenNgay.Value = new System.DateTime(2025, 10, 22, 14, 58, 50, 105);
+            this.dtDenNgay.ValueChanged += new System.EventHandler(this.dtDenNgay_ValueChanged);
+            // 
+            // btnLoc
+            // 
+            this.btnLoc.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnLoc.ForeColor = System.Drawing.Color.White;
+            this.btnLoc.Location = new System.Drawing.Point(756, 43);
+            this.btnLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(89, 50);
+            this.btnLoc.TabIndex = 9;
+            this.btnLoc.Text = "Lọc";
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click_1);
             // 
             // cbLoaiDon
             // 
@@ -250,52 +291,12 @@
             "Tất cả",
             "Online",
             "Trực tiếp"});
-            this.cbLoaiDon.Location = new System.Drawing.Point(322, 43);
+            this.cbLoaiDon.Location = new System.Drawing.Point(936, 36);
             this.cbLoaiDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbLoaiDon.Name = "cbLoaiDon";
             this.cbLoaiDon.Size = new System.Drawing.Size(134, 36);
             this.cbLoaiDon.TabIndex = 6;
-            // 
-            // dtTuNgay
-            // 
-            this.dtTuNgay.Checked = true;
-            this.dtTuNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtTuNgay.Location = new System.Drawing.Point(474, 43);
-            this.dtTuNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtTuNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtTuNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtTuNgay.Name = "dtTuNgay";
-            this.dtTuNgay.Size = new System.Drawing.Size(133, 29);
-            this.dtTuNgay.TabIndex = 7;
-            this.dtTuNgay.Value = new System.DateTime(2025, 10, 22, 14, 58, 50, 74);
-            // 
-            // dtDenNgay
-            // 
-            this.dtDenNgay.Checked = true;
-            this.dtDenNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDenNgay.Location = new System.Drawing.Point(617, 43);
-            this.dtDenNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtDenNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtDenNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtDenNgay.Name = "dtDenNgay";
-            this.dtDenNgay.Size = new System.Drawing.Size(133, 29);
-            this.dtDenNgay.TabIndex = 8;
-            this.dtDenNgay.Value = new System.DateTime(2025, 10, 22, 14, 58, 50, 105);
-            this.dtDenNgay.ValueChanged += new System.EventHandler(this.dtDenNgay_ValueChanged);
-            // 
-            // btnLoc
-            // 
-            this.btnLoc.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnLoc.ForeColor = System.Drawing.Color.White;
-            this.btnLoc.Location = new System.Drawing.Point(756, 43);
-            this.btnLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLoc.Name = "btnLoc";
-            this.btnLoc.Size = new System.Drawing.Size(89, 29);
-            this.btnLoc.TabIndex = 9;
-            this.btnLoc.Text = "Lọc";
-            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click_1);
+            this.cbLoaiDon.Visible = false;
             // 
             // XemDon
             // 
@@ -317,7 +318,6 @@
 
         // 🟦 Khai báo control
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Guna.UI2.WinForms.Guna2ComboBox cbLoaiDon;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtTuNgay;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtDenNgay;
         private Guna.UI2.WinForms.Guna2Button btnLoc;
@@ -336,5 +336,6 @@
         private System.Windows.Forms.ToolStripButton btnTaiLai;
         private System.Windows.Forms.ToolStripButton btnDaban;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private Guna.UI2.WinForms.Guna2ComboBox cbLoaiDon;
     }
 }

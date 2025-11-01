@@ -138,8 +138,8 @@ namespace PM.GUI.userConTrol.Client
             };
 
             // lấy danh sách đơn vị vận chuyển từ DB
-            var donViService = new DonViVanChuyenService();  // bạn cần có service cho bảng DonViVanChuyen
-            var danhSachDVC = donViService.GetAll();         // ví dụ phương thức trả về List<DonViVanChuyen>
+            var donViService = new DonViVanChuyenService();  // service cho bảng DonViVanChuyen
+            var danhSachDVC = donViService.GetAll();         // phương thức trả về List<DonViVanChuyen>
 
             cbVanChuyen.DataSource = danhSachDVC;
 
@@ -176,6 +176,7 @@ namespace PM.GUI.userConTrol.Client
                 Location = new Point(10, y),
                 Format = DateTimePickerFormat.Custom,
                 CustomFormat = "dd/MM/yyyy",
+                Enabled = false,
                 Value = ngayDat
             };
             pannelTong.Controls.Add(dtpNgayDat);
@@ -231,14 +232,7 @@ namespace PM.GUI.userConTrol.Client
 
         private void BtnDatHang_Click(object sender, EventArgs e)
         {
-
-           
-
             // Lấy số trong chuỗi lblTongTien
-         
-
-         
-
             bool ok = new QuanLyDonHangBUS().TaoDonHang(
                 _khach,"Online", cbVanChuyen.SelectedValue?.ToString(),
                 cbThanhToan.SelectedItem?.ToString(),
@@ -249,12 +243,19 @@ namespace PM.GUI.userConTrol.Client
             if (ok)
             {
                 MessageBox.Show("✅ Đặt hàng thành công! Đơn đã được gửi sang trạng thái 'Chờ xử lý'.");
+
+                var qlDonHangBus = new QuanLyDonHangBUS();
+                qlDonHangBus.XoaGioHangSauKhiDat(_khach.TenDangNhap);
+
+                // 🟢 Chỉ cần gọi callback, reload sẽ được thực hiện trong callback ở GioHang
                 _onBack?.Invoke();
             }
             else
             {
                 MessageBox.Show("❌ Đặt hàng thất bại!");
             }
+
+
         }
 
 

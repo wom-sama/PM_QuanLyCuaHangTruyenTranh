@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-
 namespace PM.GUI.userConTrol.Employee
 {
     public partial class InHoaDon : UserControl
@@ -30,12 +29,11 @@ namespace PM.GUI.userConTrol.Employee
 
         // Constructor 3 tham số (mới)
         public InHoaDon(string maDon, decimal tienKhachDua, decimal tienThua)
-            : this(maDon) // gọi constructor 1 tham số
+            : this(maDon)
         {
             this.TienKhachDua = tienKhachDua;
             this.TienThua = tienThua;
 
-            // Nếu muốn hiển thị luôn lên label
             lblTienKhachDua.Text = $"Tiền khách đưa: {TienKhachDua:N0} đ";
             lblTienThua.Text = $"Tiền thừa: {TienThua:N0} đ";
         }
@@ -49,13 +47,6 @@ namespace PM.GUI.userConTrol.Employee
                 return;
             }
 
-            lblTenCuaHang.Text = "🏪 CỬA HÀNG TRUYỆN TRANH MANGA PLUS";
-            lblTieuDe.Text = "HÓA ĐƠN BÁN TRUYỆN";
-            lblMaDon.Text = $"Mã đơn: {don.MaDonHang}";
-            lblNgayLap.Text = $"Ngày lập: {don.NgayDat:dd/MM/yyyy HH:mm}";
-            lblNhanVien.Text = $"Nhân viên: {don.MaNV}";
-            lblCamOn.Text = "❤ Cảm ơn quý khách đã mua hàng!";
-
             dataGridViewCT.DataSource = don.CT_DonHangs.Select(ct => new
             {
                 Tên_Sách = ct.Sach?.TenSach ?? "(Không rõ)",
@@ -65,8 +56,6 @@ namespace PM.GUI.userConTrol.Employee
             }).ToList();
 
             lblTongTien.Text = $"Tổng cộng: {don.TongTien:N0} đ";
-
-            // Nếu constructor 3 tham số đã truyền, hiển thị luôn
             lblTienKhachDua.Text = $"Tiền khách đưa: {TienKhachDua:N0} đ";
             lblTienThua.Text = $"Tiền thừa: {TienThua:N0} đ";
         }
@@ -90,33 +79,54 @@ namespace PM.GUI.userConTrol.Employee
             {
                 try
                 {
-                    string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
+                    // Dùng font Unicode hỗ trợ tiếng Việt tốt
+                    string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "tahoma.ttf");
                     var baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                    // Dùng alias Font đã khai báo
                     var font = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL);
-
-
 
                     using (var fs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
-                        var document = new Document(PageSize.A4, 20, 20, 20, 20);
+                        // Tăng margin để không bị cắt chữ
+                        var document = new Document(PageSize.A4, 40, 40, 40, 40);
                         PdfWriter.GetInstance(document, fs);
                         document.Open();
 
-                        document.Add(new Paragraph("🏪 CỬA HÀNG TRUYỆN TRANH MANGA PLUS", font));
-                        document.Add(new Paragraph("HÓA ĐƠN BÁN TRUYỆN", font));
-                        document.Add(new Paragraph($"Mã đơn: {don.MaDonHang}", font));
-                        document.Add(new Paragraph($"Ngày lập: {don.NgayDat:dd/MM/yyyy HH:mm}", font));
-                        document.Add(new Paragraph($"Nhân viên: {don.MaNV}", font));
-                        document.Add(new Paragraph("❤ Cảm ơn quý khách đã mua hàng!", font));
-                        document.Add(new Paragraph(" "));
+                        // ======= PHẦN TIÊU ĐỀ =======
+                        Paragraph title = new Paragraph("CỬA HÀNG TRUYỆN TRANH MANGA PLUS", font);
+                        title.Alignment = Element.ALIGN_CENTER;
+                        title.SpacingAfter = 8f;
+                        document.Add(title);
 
-                        var table = new PdfPTable(4) { WidthPercentage = 100 };
-                        table.AddCell(new Phrase("Tên Sách", font));
-                        table.AddCell(new Phrase("Số Lượng", font));
-                        table.AddCell(new Phrase("Đơn Giá", font));
-                        table.AddCell(new Phrase("Thành Tiền", font));
+                        Paragraph subtitle = new Paragraph("HÓA ĐƠN BÁN TRUYỆN", font);
+                        subtitle.Alignment = Element.ALIGN_CENTER;
+                        subtitle.SpacingAfter = 15f;
+                        document.Add(subtitle);
 
+                        // ======= THÔNG TIN HÓA ĐƠN =======
+                        Paragraph thongtin = new Paragraph($"Mã đơn: {don.MaDonHang}\n" +
+                                                            $"Ngày lập: {don.NgayDat:dd/MM/yyyy HH:mm}\n" +
+                                                            $"Nhân viên: {don.MaNV}", font);
+                        thongtin.SpacingAfter = 15f;
+                        document.Add(thongtin);
+
+                        // ======= BẢNG SẢN PHẨM =======
+                        PdfPTable table = new PdfPTable(4) { WidthPercentage = 100 };
+                        table.SetWidths(new float[] { 40f, 15f, 20f, 25f });
+
+                        // Header
+                        string[] headers = { "Tên Sách", "Số Lượng", "Đơn Giá", "Thành Tiền" };
+                        foreach (var header in headers)
+                        {
+                            PdfPCell cell = new PdfPCell(new Phrase(header, font))
+                            {
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                Padding = 5f,
+                                BackgroundColor = new BaseColor(230, 230, 230)
+                            };
+                            table.AddCell(cell);
+                        }
+
+                        // Dữ liệu chi tiết
                         foreach (var ct in don.CT_DonHangs)
                         {
                             table.AddCell(new Phrase(ct.Sach?.TenSach ?? "(Không rõ)", font));
@@ -125,16 +135,28 @@ namespace PM.GUI.userConTrol.Employee
                             table.AddCell(new Phrase(ct.ThanhTien.ToString("N0"), font));
                         }
 
+                        table.SpacingAfter = 15f;
                         document.Add(table);
 
-                        document.Add(new Paragraph($"Tổng cộng: {don.TongTien:N0} đ", font));
-                        document.Add(new Paragraph($"Tiền khách đưa: {TienKhachDua:N0} đ", font));
-                        document.Add(new Paragraph($"Tiền thừa: {TienThua:N0} đ", font));
+                        // ======= TỔNG KẾT =======
+                        Paragraph summary = new Paragraph(
+                            $"Tổng cộng: {don.TongTien:N0} đ\n" +
+                            $"Tiền khách đưa: {TienKhachDua:N0} đ\n" +
+                            $"Tiền thừa: {TienThua:N0} đ", font);
+                        summary.Alignment = Element.ALIGN_RIGHT;
+                        summary.SpacingAfter = 20f;
+                        document.Add(summary);
+
+                        // ======= LỜI CẢM ƠN =======
+                        Paragraph thank = new Paragraph("❤ Cảm ơn quý khách đã mua hàng!", font);
+                        thank.Alignment = Element.ALIGN_CENTER;
+                        thank.SpacingBefore = 10f;
+                        document.Add(thank);
 
                         document.Close();
                     }
 
-                    MessageBox.Show("✅ Xuất hóa đơn PDF thành công!", "Thành công");
+                    MessageBox.Show("✅ Xuất hóa đơn PDF thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
