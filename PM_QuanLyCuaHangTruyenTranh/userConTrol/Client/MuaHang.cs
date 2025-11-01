@@ -151,9 +151,20 @@ namespace PM.GUI.userConTrol.Customer
         private void txtSDT_TextChanged(object sender, EventArgs e) => UpdateButtonState();
         private void txtDiaChi_TextChanged(object sender, EventArgs e) => UpdateButtonState();
 
-        private void btnDatHang_Click(object sender, EventArgs e)
+        
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            _onBack?.Invoke();
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDatHang_Click(object sender, EventArgs e)
+        {
             if (!btnDatHang.Enabled) return;
 
             // Kiểm tra số lượng tồn kho
@@ -226,16 +237,6 @@ namespace PM.GUI.userConTrol.Customer
                 MessageBox.Show("❌ Lỗi khi đặt hàng: " + ex.Message,
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            _onBack?.Invoke();
-        }
-
-        private void btnBack_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

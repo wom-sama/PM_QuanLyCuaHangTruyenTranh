@@ -11,11 +11,13 @@ namespace PM.GUI.userConTrol.Employee
     {
         private readonly QuanLyDonHangBUS _bus;
         private string selectedMaDonHang = null;
+        public event Action OnDonHangDuyet; // 🔔 sự kiện callback
 
-        public DuyetDon()
+        // ✅ Constructor nhận bus từ form cha
+        public DuyetDon(QuanLyDonHangBUS bus)
         {
             InitializeComponent();
-            _bus = new QuanLyDonHangBUS();
+            _bus = bus ?? throw new ArgumentNullException(nameof(bus)); // đảm bảo không null
 
             // Định dạng label sau khi InitializeComponent()
             var labels = new[] { lblTenKhach, lblSDT, lblEmail, lblDiaChi, lblDonViVC, lblTongTien, lblNgayDat, lblNgayGiao };
@@ -39,6 +41,7 @@ namespace PM.GUI.userConTrol.Employee
             dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý");
             dgvChiTiet.DataSource = null;
             selectedMaDonHang = null;
+            OnDonHangDuyet?.Invoke(); // 🔔 đảm bảo luôn sync chuông khi tải lại
             XoaThongTinChiTiet();
         }
 
@@ -154,23 +157,24 @@ namespace PM.GUI.userConTrol.Employee
 
             bool ok = _bus.DuyetDon(selectedMaDonHang);
             if (ok)
+            {
                 MessageBox.Show($"✅ Đơn {selectedMaDonHang} đã chuyển sang trạng thái 'Đang giao'!");
+                LoadDonHang();
+                OnDonHangDuyet?.Invoke(); // 🔔 Báo lại cho form cha cập nhật chuông
+            }
             else
+            {
                 MessageBox.Show("❌ Duyệt đơn thất bại!");
+            }
 
             LoadDonHang();
         }
+
 
         private void BtnTaiLai_Click(object sender, EventArgs e)
         {
             LoadDonHang();
         }
-
-        private void dgvDonHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgvDonHang_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 

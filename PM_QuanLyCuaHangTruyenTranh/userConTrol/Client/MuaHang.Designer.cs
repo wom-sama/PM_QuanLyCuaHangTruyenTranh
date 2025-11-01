@@ -289,6 +289,7 @@ namespace PM.GUI.userConTrol.Customer
             this.btnDatHang.Size = new System.Drawing.Size(200, 40);
             this.btnDatHang.TabIndex = 42;
             this.btnDatHang.Text = "Đặt hàng";
+            this.btnDatHang.Click += new System.EventHandler(this.btnDatHang_Click);
             // 
             // btnBack
             // 

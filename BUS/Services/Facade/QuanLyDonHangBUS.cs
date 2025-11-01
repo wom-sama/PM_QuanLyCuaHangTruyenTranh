@@ -15,6 +15,8 @@ namespace PM.BUS.Services.Facade
         private readonly CT_DonHangService _ctDonHangService;
         private readonly VanChuyenService _vanChuyenService;
         private readonly UnitOfWork _unitOfWork;
+        public event Action OnDonHangDuyet; // 🔔 Sự kiện báo khi duyệt đơn
+        public event Action OnDonHangHoanTat; // 🔔 Sự kiện báo khi hoàn tất giao
 
         public QuanLyDonHangBUS()
         {
@@ -103,6 +105,8 @@ namespace PM.BUS.Services.Facade
             };
 
             _vanChuyenService.Add(vanChuyen);
+            _unitOfWork.Save(); // 🧩 Đừng quên lưu thay đổi vào DB
+            OnDonHangDuyet?.Invoke(); // 🔔 Gọi event để form cập nhật chuông
             return true;
         }
         public List<object> LayChiTiet(string maDonHang)
@@ -140,7 +144,8 @@ namespace PM.BUS.Services.Facade
             don.TrangThai = "Đã giao";
             don.NgayGiao = DateTime.Now;
             _donHangService.Update(don);
-
+            _unitOfWork.Save();
+            OnDonHangHoanTat?.Invoke(); // 🔔 Thông báo form cập nhật chuông
             return true;
         }
         public bool TaoDonHang(KhachHang kh, string loaiDon, string maDVVC, string hinhThucThanhToan, decimal tongTien, List<CT_GioHang> items)
@@ -208,6 +213,11 @@ namespace PM.BUS.Services.Facade
                 ctGioHangService.DeleteByGioHangId(gioHang.MaGioHang);
                 _unitOfWork.Save(); // ✅ Save qua UnitOfWork của BUS
             }
+        }
+        public int DemDonHangChoXuLy()
+        {
+            return _donHangService.GetAll()
+                .Count(d => d.TrangThai == "Chờ xử lý");
         }
 
 
