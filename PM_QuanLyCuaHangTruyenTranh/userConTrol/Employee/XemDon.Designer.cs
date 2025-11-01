@@ -18,9 +18,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XemDon));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnTatCa = new System.Windows.Forms.ToolStripButton();
@@ -34,13 +34,16 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDaban = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnKhongDuyet = new System.Windows.Forms.ToolStripButton();
             this.btnTaiLai = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.btnDaHuy = new System.Windows.Forms.ToolStripButton();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cbLoaiDon = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dtTuNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtDenNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btnLoc = new Guna.UI2.WinForms.Guna2Button();
-            this.cbLoaiDon = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
@@ -60,7 +63,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1215, 606);
+            this.guna2Panel1.Size = new System.Drawing.Size(1711, 606);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
@@ -79,10 +82,13 @@
             this.toolStripSeparator4,
             this.btnDaban,
             this.toolStripSeparator5,
-            this.btnTaiLai});
+            this.btnKhongDuyet,
+            this.btnDaHuy,
+            this.btnTaiLai,
+            this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1215, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(1711, 34);
             this.toolStrip1.TabIndex = 2;
             // 
             // btnTatCa
@@ -161,6 +167,15 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 34);
             // 
+            // btnKhongDuyet
+            // 
+            this.btnKhongDuyet.Image = ((System.Drawing.Image)(resources.GetObject("btnKhongDuyet.Image")));
+            this.btnKhongDuyet.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnKhongDuyet.Name = "btnKhongDuyet";
+            this.btnKhongDuyet.Size = new System.Drawing.Size(231, 29);
+            this.btnKhongDuyet.Text = "Đơn Hàng Không Duyệt";
+            this.btnKhongDuyet.Click += new System.EventHandler(this.btnKhongDuyet_Click);
+            // 
             // btnTaiLai
             // 
             this.btnTaiLai.Image = ((System.Drawing.Image)(resources.GetObject("btnTaiLai.Image")));
@@ -170,37 +185,51 @@
             this.btnTaiLai.Text = "Tải Lại";
             this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(0, 29);
+            // 
+            // btnDaHuy
+            // 
+            this.btnDaHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnDaHuy.Image")));
+            this.btnDaHuy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDaHuy.Name = "btnDaHuy";
+            this.btnDaHuy.Size = new System.Drawing.Size(186, 29);
+            this.btnDaHuy.Text = "Đơn Hàng Đã Hủy";
+            this.btnDaHuy.Click += new System.EventHandler(this.btnDaHuy_Click);
+            // 
             // guna2DataGridView1
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.guna2DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.guna2DataGridView1.ColumnHeadersHeight = 34;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(0, 99);
             this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 62;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(1181, 393);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(1677, 393);
             this.guna2DataGridView1.TabIndex = 4;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -236,6 +265,26 @@
             this.txtSearch.SelectedText = "";
             this.txtSearch.Size = new System.Drawing.Size(463, 50);
             this.txtSearch.TabIndex = 5;
+            // 
+            // cbLoaiDon
+            // 
+            this.cbLoaiDon.BackColor = System.Drawing.Color.Transparent;
+            this.cbLoaiDon.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbLoaiDon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLoaiDon.FocusedColor = System.Drawing.Color.Empty;
+            this.cbLoaiDon.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbLoaiDon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbLoaiDon.ItemHeight = 30;
+            this.cbLoaiDon.Items.AddRange(new object[] {
+            "Tất cả",
+            "Online",
+            "Trực tiếp"});
+            this.cbLoaiDon.Location = new System.Drawing.Point(936, 36);
+            this.cbLoaiDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbLoaiDon.Name = "cbLoaiDon";
+            this.cbLoaiDon.Size = new System.Drawing.Size(134, 36);
+            this.cbLoaiDon.TabIndex = 6;
+            this.cbLoaiDon.Visible = false;
             // 
             // dtTuNgay
             // 
@@ -278,33 +327,13 @@
             this.btnLoc.Text = "Lọc";
             this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click_1);
             // 
-            // cbLoaiDon
-            // 
-            this.cbLoaiDon.BackColor = System.Drawing.Color.Transparent;
-            this.cbLoaiDon.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbLoaiDon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLoaiDon.FocusedColor = System.Drawing.Color.Empty;
-            this.cbLoaiDon.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbLoaiDon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbLoaiDon.ItemHeight = 30;
-            this.cbLoaiDon.Items.AddRange(new object[] {
-            "Tất cả",
-            "Online",
-            "Trực tiếp"});
-            this.cbLoaiDon.Location = new System.Drawing.Point(936, 36);
-            this.cbLoaiDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbLoaiDon.Name = "cbLoaiDon";
-            this.cbLoaiDon.Size = new System.Drawing.Size(134, 36);
-            this.cbLoaiDon.TabIndex = 6;
-            this.cbLoaiDon.Visible = false;
-            // 
             // XemDon
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.guna2Panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "XemDon";
-            this.Size = new System.Drawing.Size(1215, 606);
+            this.Size = new System.Drawing.Size(1711, 606);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -337,5 +366,8 @@
         private System.Windows.Forms.ToolStripButton btnDaban;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private Guna.UI2.WinForms.Guna2ComboBox cbLoaiDon;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton btnKhongDuyet;
+        private System.Windows.Forms.ToolStripButton btnDaHuy;
     }
 }

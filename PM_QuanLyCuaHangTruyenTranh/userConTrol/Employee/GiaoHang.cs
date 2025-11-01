@@ -50,5 +50,29 @@ namespace PM.GUI.userConTrol.Employee
                 MessageBox.Show("Có lỗi xảy ra, không thể xác nhận giao!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnHuyGiao_Click(object sender, EventArgs e)
+        {
+            if (dgvDonHang.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string maDonHang = dgvDonHang.CurrentRow.Cells["MaDonHang"].Value.ToString();
+
+            // Hủy giao
+            bool success = _bus.HuyGiaoDon(maDonHang);
+            if (success)
+            {
+                MessageBox.Show($"Đơn hàng {maDonHang} đã được hủy giao!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadDonHang(); // reload danh sách
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi xảy ra, không thể hủy giao!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
