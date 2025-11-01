@@ -21,15 +21,17 @@ namespace PM.GUI.userConTrol.Customer
 
         // 🟩 Khách hàng hiện tại
         private KhachHang currentKhachHang;
+        private NhanVien onlineNhanVien;
         private UnitOfWork _unitOfWork;
         private GioHangService _gioHangService;
         private CT_GioHangService _ctGioHangService;
         private GioHang currentGioHang;
       
 
-        public Shop_BookView(KhachHang khachHang)
+        public Shop_BookView(KhachHang khachHang, NhanVien nhanVien)
         {
             currentKhachHang = khachHang;
+            onlineNhanVien = nhanVien;
             _unitOfWork = new UnitOfWork();
             _gioHangService = new GioHangService(_unitOfWork);
             _ctGioHangService = new CT_GioHangService(_unitOfWork);
@@ -159,7 +161,7 @@ namespace PM.GUI.userConTrol.Customer
 
             // Mở MuaHang
             MuaHang muaHang = null; // khai báo trước
-            muaHang = new MuaHang(sach, currentKhachHang, () =>
+            muaHang = new MuaHang(sach, currentKhachHang,onlineNhanVien.MaChiNhanh, () =>
             {
                 pannelTong.Controls.Remove(muaHang);
                 panelDanhSach.Visible = true;
@@ -179,7 +181,7 @@ namespace PM.GUI.userConTrol.Customer
 
             BookDetailControl detailControl = null;
 
-            detailControl = new BookDetailControl(sach, currentKhachHang, () =>
+            detailControl = new BookDetailControl(sach, currentKhachHang,onlineNhanVien.MaChiNhanh, () =>
             {
                 pannelTong.Controls.Remove(detailControl);
                 panelDanhSach.Visible = true;
@@ -212,7 +214,7 @@ namespace PM.GUI.userConTrol.Customer
 
             // Tạo UserControl giỏ hàng với onBack
             cartControl = new GHControl(
-                currentGioHang.MaGioHang,
+                currentGioHang.MaGioHang,onlineNhanVien.MaChiNhanh,
                 currentKhachHang,
                 _ctGioHangService,
                 _gioHangService,

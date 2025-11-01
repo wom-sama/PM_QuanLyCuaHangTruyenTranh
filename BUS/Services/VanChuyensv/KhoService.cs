@@ -215,45 +215,96 @@ namespace PM.BUS.Services.VanChuyensv
                     .ToList();
             }
         }
-        public int LaySoLuongTon(string maSach, string maKho)
+      
+
+
+        public int LaySoLuongTon(string maSach, string maChiNhanh)
         {
             try
             {
-                // 🔹 Tổng nhập từ phiếu nhập thuộc kho này
-                var tongNhap = (from nk in _unitOfWork.NhapKhoRepository.GetAll()
+                // Lấy tất cả kho thuộc chi nhánh
+                var danhSachKho = _unitOfWork.KhoRepository
+                    .GetAll()
+                    .Where(k => k.MaChiNhanh == maChiNhanh)
+                    .Select(k => k.MaKho)
+                    .ToList();
+
+                int tongNhap = (from nk in _unitOfWork.NhapKhoRepository.GetAll()
                                 join ctn in _unitOfWork.CT_NhapKhoRepository.GetAll()
                                     on nk.MaPhieuNhap equals ctn.MaPhieuNhap
-                                where nk.MaKho == maKho && ctn.MaSach == maSach
+                                where danhSachKho.Contains(nk.MaKho)
+                                      && ctn.MaSach == maSach
                                 select (int?)ctn.SoLuong).Sum() ?? 0;
 
-                // 🔹 Tổng bán: hiện DonHang KHÔNG có MaKho, nên chỉ trừ tổng số sách bán ra (không phân kho)
-                var tongBan = (from ctdh in _unitOfWork.CT_DonHangRepository.GetAll()
-                               where ctdh.MaSach == maSach
+                // Lấy danh sách nhân viên của chi nhánh
+                var danhSachNhanVien = _unitOfWork.NhanVienRepository
+                    .GetAll()
+                    .Where(nv => nv.MaChiNhanh == maChiNhanh)
+                    .Select(nv => nv.MaNV)
+                    .ToList();
+
+                int tongBan = (from dh in _unitOfWork.DonHangRepository.GetAll()
+                               join ctdh in _unitOfWork.CT_DonHangRepository.GetAll()
+                                   on dh.MaDonHang equals ctdh.MaDonHang
+                               where danhSachNhanVien.Contains(dh.MaNV)
+                                     && ctdh.MaSach == maSach
                                select (int?)ctdh.SoLuong).Sum() ?? 0;
 
-                // 🔹 Tổng chuyển đi
-                var tongChuyenDi = (from ck in _unitOfWork.ChuyenKhoRepository.GetAll()
-                                    join ctnk in _unitOfWork.CT_NhapKhoRepository.GetAll()
-                                        on ck.MaPhieuChuyen equals ctnk.MaPhieuNhap
-                                    where ck.MaKhoXuat == maKho && ctnk.MaSach == maSach
-                                    select (int?)ctnk.SoLuong).Sum() ?? 0;
-
-                // 🔹 Tổng chuyển đến
-                var tongChuyenDen = (from ck in _unitOfWork.ChuyenKhoRepository.GetAll()
-                                     join ctnk in _unitOfWork.CT_NhapKhoRepository.GetAll()
-                                         on ck.MaPhieuChuyen equals ctnk.MaPhieuNhap
-                                     where ck.MaKhoNhap == maKho && ctnk.MaSach == maSach
-                                     select (int?)ctnk.SoLuong).Sum() ?? 0;
-
-                // 🔹 Tổng tồn thực tế
-                return tongNhap + tongChuyenDen - tongBan - tongChuyenDi;
+                return tongNhap - tongBan;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi khi lấy số lượng tồn kho: " + ex.Message);
+                Console.WriteLine("Lỗi khi tính tồn kho chi nhánh: " + ex.Message);
                 return 0;
             }
         }
+
+
+
+        public void CapNhatTonSauKhiNhap(string maPhieuNhap, string maSach, int soLuong, decimal Gia)
+        {
+            try
+            {
+                var chiTiet = new CT_NhapKho
+                {
+                    MaPhieuNhap = maPhieuNhap,
+                    MaSach = maSach,
+                    SoLuong = soLuong,
+                    DonGia = Gia,
+                };
+
+                _unitOfWork.CT_NhapKhoRepository.Add(chiTiet);
+                _unitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi nhập kho: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -18,6 +18,10 @@ namespace PM.BUS.Services.TaiKhoansv
             _unitOfWork = unitOfWork;
         }
 
+        public NhanVienService() : this(new UnitOfWork())
+        {
+        }
+
         // ==================== LẤY DỮ LIỆU ====================
 
         public IEnumerable<NhanVien> GetAll()

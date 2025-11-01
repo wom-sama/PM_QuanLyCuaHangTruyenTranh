@@ -100,7 +100,8 @@ namespace PM.GUI
                 // ----- 5. Chuc Vu + Nhan Vien -----
                 var cvQuanLy = new ChucVu { MaChucVu = "CV01", TenChucVu = "Quản lý", MoTa = "Quản lý cửa hàng" };
                 var cvNhanVien = new ChucVu { MaChucVu = "CV02", TenChucVu = "Nhân viên bán hàng", MoTa = "Tiếp đón và bán hàng" };
-                db.ChucVus.AddRange(new[] { cvQuanLy, cvNhanVien });
+                var cvOnline = new ChucVu { MaChucVu = "CV_ONLINE", TenChucVu = "Nhân viên xử lý đơn hàng online", MoTa = "Dùng cho các nghiệp vụ hệ thống, không đại diện cá nhân thực tế" };
+                db.ChucVus.AddRange(new[] { cvQuanLy, cvNhanVien, cvOnline });
                 db.SaveChanges();
 
                 var nv1 = new NhanVien
@@ -142,7 +143,34 @@ namespace PM.GUI
                     MaChucVu = cvNhanVien.MaChucVu,
                     MaChiNhanh = chiNhanh1.MaChiNhanh
                 };
-                db.NhanViens.AddRange(new[] { nv1, nv2, nv3 });
+                var nvOnlineHCM = new NhanVien
+                {
+                    MaNV = "NV_ONLINE_HCM",
+                    HoTen = "Nhân viên Online - HCM",
+                    GioiTinh = "Khác",
+                    NgaySinh = new DateTime(2000, 1, 1),
+                    SoDienThoai = "0000000000",
+                    Email = "online.hcm@cuahangg.com",
+                    DiaChi = "TP.HCM",
+                    TrangThai = true,
+                    MaChucVu = cvOnline.MaChucVu,
+                    MaChiNhanh = chiNhanh1.MaChiNhanh
+                };
+
+                var nvOnlineHN = new NhanVien
+                {
+                    MaNV = "NV_ONLINE_HN",
+                    HoTen = "Nhân viên Online - HN",
+                    GioiTinh = "Khác",
+                    NgaySinh = new DateTime(2000, 1, 1),
+                    SoDienThoai = "0000000000",
+                    Email = "online.hn@cuahangg.com",
+                    DiaChi = "Hà Nội",
+                    TrangThai = true,
+                    MaChucVu = cvOnline.MaChucVu,
+                    MaChiNhanh = chiNhanh2.MaChiNhanh
+                }   ;
+                db.NhanViens.AddRange(new[] { nv1, nv2, nv3 , nvOnlineHCM, nvOnlineHN});
                 db.SaveChanges();
 
                 // ----- 6. Tai Khoan (admin, staff, customers) -----
@@ -218,11 +246,28 @@ namespace PM.GUI
 
                 var ctNhap = new[]
                 {
-                    new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S001", SoLuong = 50, DonGia = 30000 },
-                    new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S002", SoLuong = 40, DonGia = 28000 },
-                    new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S003", SoLuong = 30, DonGia = 20000 },
-                    new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S004", SoLuong = 20, DonGia = 32000 },
-                };
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S001", SoLuong = 50, DonGia = 30000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S002", SoLuong = 40, DonGia = 28000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S003", SoLuong = 30, DonGia = 20000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S004", SoLuong = 20, DonGia = 32000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S005", SoLuong = 25, DonGia = 25000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S006", SoLuong = 35, DonGia = 27000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S007", SoLuong = 45, DonGia = 29000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S008", SoLuong = 30, DonGia = 31000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S009", SoLuong = 40, DonGia = 33000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S010", SoLuong = 20, DonGia = 35000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S011", SoLuong = 25, DonGia = 26000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S012", SoLuong = 28, DonGia = 24000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S013", SoLuong = 32, DonGia = 30000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S014", SoLuong = 38, DonGia = 28000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S015", SoLuong = 40, DonGia = 26000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S016", SoLuong = 22, DonGia = 27000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S017", SoLuong = 26, DonGia = 31000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S018", SoLuong = 34, DonGia = 33000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S019", SoLuong = 28, DonGia = 29000 },
+                  new CT_NhapKho { MaPhieuNhap = phieuNhap1.MaPhieuNhap, MaSach = "S020", SoLuong = 36, DonGia = 32000 }
+};
+
                 db.CT_NhapKhos.AddRange(ctNhap);
                 db.SaveChanges();
 

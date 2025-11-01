@@ -1,4 +1,6 @@
-﻿using PM.DAL.Models;
+﻿using PM.BUS.Services.TaiKhoansv;
+using PM.BUS.Services;
+using PM.DAL.Models;
 using PM.GUI.userConTrol.Admin;
 using PM.GUI.userConTrol.Customer;
 using System;
@@ -21,8 +23,9 @@ namespace PM.GUI.Main
         {
             InitializeComponent();
             currentKhachHang = kh;
-
-            shopView = new Shop_BookView(currentKhachHang)
+            NhanVienService sv=new NhanVienService();
+            NhanVien a= sv.GetById("NV_ONLINE_HCM");
+            shopView = new Shop_BookView(currentKhachHang,a)
             {
                 Dock = DockStyle.Fill
             };

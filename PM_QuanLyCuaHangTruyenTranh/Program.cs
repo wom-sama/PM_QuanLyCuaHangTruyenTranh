@@ -32,7 +32,7 @@ namespace PM.GUI
 
 
 
-            // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
+            //AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
 
             //AppDbSeeder.Seed();
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);

@@ -17,12 +17,14 @@ namespace PM.GUI.userConTrol.Client
         private KhoService _khoService;
         private string _maGioHang;
         private KhachHang _khach;
+        private string  maChiNhanh;
 
         private List<CT_GioHang> _items;
         private Action _onBack;
 
+
         public GioHang(
-            string maGioHang,
+            string maGioHang,string maChiNhanh,
             KhachHang khach,
             CT_GioHangService ctService,
             GioHangService ghService,
@@ -34,8 +36,9 @@ namespace PM.GUI.userConTrol.Client
             _khach = khach;
             _ctGioHangService = ctService;
             _gioHangService = ghService;
-            _khoService = khoService; // ✅ gán service kho
+            _khoService = khoService; //  gán service kho
             _onBack = onBack;
+            this.maChiNhanh = maChiNhanh;
 
             LoadGioHang();
         }
@@ -123,7 +126,7 @@ namespace PM.GUI.userConTrol.Client
                 {
                     try
                     {
-                        int soLuongTon = _khoService.LaySoLuongTon(item.MaSach);
+                        int soLuongTon = _khoService.LaySoLuongTon(item.MaSach,this.maChiNhanh);
 
                         // Tổng số lượng của sản phẩm này trong giỏ
                         int tongTrongGio = _ctGioHangService.GetAll()

@@ -14,6 +14,10 @@ namespace PM.GUI.userConTrol.Customer
 {
     public partial class BookDetailControl : UserControl
     {
+        // thuoc tinh rieng
+        string _maChiNhanh;
+
+        //
         private Sach _sach;
         private KhachHang _khachHang;
         private Action _onBack;
@@ -23,7 +27,7 @@ namespace PM.GUI.userConTrol.Customer
         private CT_GioHangService _ctGioHangService;
         private GHModel _currentGioHang;
 
-        public BookDetailControl(Sach sach, KhachHang khachHang, Action onBack)
+        public BookDetailControl(Sach sach, KhachHang khachHang, string maChiNhanh, Action onBack)
         {
             InitializeComponent();
 
@@ -32,6 +36,7 @@ namespace PM.GUI.userConTrol.Customer
                 _sach = sach;
                 _khachHang = khachHang;
                 _onBack = onBack;
+                this._maChiNhanh = maChiNhanh;
 
                 // Khởi tạo service
                 var unit = new DAL.UnitOfWork();
@@ -40,6 +45,8 @@ namespace PM.GUI.userConTrol.Customer
 
                 LoadOrCreateCart();
             }
+
+            _maChiNhanh = maChiNhanh;
         }
 
         private void BookDetailControl_Load(object sender, EventArgs e)
@@ -52,7 +59,7 @@ namespace PM.GUI.userConTrol.Customer
 
             // Lấy số lượng tồn thực tế
             var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
-            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach,_maChiNhanh);
             lblSoLuong.Text = $"Số lượng còn: {soLuongTon}";
 
             txtMoTa.Text = _sach.MoTa ?? "Chưa có mô tả cho cuốn sách này.";
@@ -78,7 +85,7 @@ namespace PM.GUI.userConTrol.Customer
         {
 
             var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
-            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach,_maChiNhanh);
 
             if (soLuongTon <= 0)
             {
@@ -98,7 +105,7 @@ namespace PM.GUI.userConTrol.Customer
             // 🔹 Khai báo trước biến muaHang
             MuaHang muaHang = null;
 
-            muaHang = new MuaHang(_sach, _khachHang, () =>
+            muaHang = new MuaHang(_sach, _khachHang, _maChiNhanh, () =>
             {
                 parentPanel.Controls.Remove(muaHang);
                 this.Visible = true;
@@ -114,7 +121,7 @@ namespace PM.GUI.userConTrol.Customer
         {
 
             var khoService = new PM.BUS.Services.VanChuyensv.KhoService(new PM.DAL.UnitOfWork());
-            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach,_maChiNhanh);
 
             if (soLuongTon <= 0)
             {

@@ -24,13 +24,15 @@ namespace PM.GUI.userConTrol.Customer
         private int _soLuong = 1;
         private decimal _giaBan;
         private decimal _phiShip = 0;
+        private string _maChiNhanh;
 
-        public MuaHang(Sach sach, KhachHang khach, Action onBack)
+        public MuaHang(Sach sach, KhachHang khach, string maChiNhanh, Action onBack)
         {
             InitializeComponent();
             _sach = sach;
             _khach = khach;
             _onBack = onBack;
+            _maChiNhanh = maChiNhanh;
 
             // Gắn sự kiện
             btnTang.Click += btnTang_Click;
@@ -40,6 +42,7 @@ namespace PM.GUI.userConTrol.Customer
             txtSDT.TextChanged += txtSDT_TextChanged;
             txtDiaChi.TextChanged += txtDiaChi_TextChanged;
             cbVanChuyen.SelectedIndexChanged += cbVanChuyen_SelectedIndexChanged;
+            _maChiNhanh = maChiNhanh;
         }
 
         private void MuaHang_Load(object sender, EventArgs e)
@@ -170,7 +173,7 @@ namespace PM.GUI.userConTrol.Customer
             
             // Kiểm tra số lượng tồn kho
             var khoService = new KhoService(new DAL.UnitOfWork());
-            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach, _maChiNhanh);
 
             if (_soLuong <= 0)
             {
