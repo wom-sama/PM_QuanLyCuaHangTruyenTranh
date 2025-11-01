@@ -14,6 +14,9 @@ namespace PM.GUI.Main
         private Timer animTimer;             // bộ hẹn giờ animation
         private int menuWidth;               // chiều rộng panel ban đầu
 
+
+        // thuộc tính và phương thức khác của AdminForm...
+
         public AdminForm()
         {
             InitializeComponent();
