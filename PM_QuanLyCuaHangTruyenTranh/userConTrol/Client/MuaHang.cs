@@ -154,7 +154,7 @@ namespace PM.GUI.userConTrol.Customer
            
             if (!btnDatHang.Enabled) return;
             
-
+            
             // Kiểm tra số lượng tồn kho
             var khoService = new KhoService(new DAL.UnitOfWork());
             int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach);

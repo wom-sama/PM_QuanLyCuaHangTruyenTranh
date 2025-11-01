@@ -61,6 +61,19 @@ namespace PM.BUS.Services.TaiKhoansv
             return kh;
         }
         
+        public async Task<NhanVien> DangNhapVaLayNhanVien(string username, string password)
+        {
+            // ✅ Nếu 2 service bị null thì khởi tạo lại
+            if (_taiKhoanService == null)
+                _taiKhoanService = new TaiKhoanService(_uow);
+            if (_khachHangService == null)
+                _khachHangService = new KhachHangService();
+            var tk = await _taiKhoanService.GetByIdAsync(username);
+            if (tk == null || !PasswordHelper.VerifyPassword(password, tk.MatKhau))
+                return null;
+            var nv = await _uow.NhanVienRepository.GetByIdAsync(tk.MaNhanVien);
+            return nv;
+        }
 
 
         /// <summary>
