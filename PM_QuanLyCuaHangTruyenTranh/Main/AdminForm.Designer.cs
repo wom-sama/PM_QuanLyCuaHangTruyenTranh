@@ -32,9 +32,14 @@ namespace PM.GUI.Main
             this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.shadow_PannelCN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
+            this.Btn_ThongBao = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btn_CH = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btn_TTCN = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btn_NhapKho = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.Btn_chiNhanh = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btn_Chung = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btn_BangLuong = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btn_LoiLo = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_CuaHang = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.Btn_Khach = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btn_TheLoai = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -47,7 +52,6 @@ namespace PM.GUI.Main
             this.pannel_Admin = new Guna.UI2.WinForms.Guna2Panel();
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
             this.titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btn_Chung = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
             this.pannel_Admin.SuspendLayout();
@@ -65,11 +69,11 @@ namespace PM.GUI.Main
             this.pannel_CT_CN.ShadowColor = System.Drawing.Color.Black;
             this.pannel_CT_CN.Size = new System.Drawing.Size(854, 477);
             this.pannel_CT_CN.TabIndex = 0;
-            this.pannel_CT_CN.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel1_Paint);
             // 
             // shadow_PannelCN
             // 
-            this.shadow_PannelCN.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.shadow_PannelCN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.shadow_PannelCN.BackColor = System.Drawing.Color.Transparent;
             this.shadow_PannelCN.Controls.Add(this.PanelCN);
             this.shadow_PannelCN.FillColor = System.Drawing.Color.White;
@@ -78,17 +82,20 @@ namespace PM.GUI.Main
             this.shadow_PannelCN.ShadowColor = System.Drawing.Color.Black;
             this.shadow_PannelCN.Size = new System.Drawing.Size(249, 477);
             this.shadow_PannelCN.TabIndex = 1;
-            this.shadow_PannelCN.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2ShadowPanel2_Paint);
             // 
             // PanelCN
             // 
             this.PanelCN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelCN.AutoScroll = true;
+            this.PanelCN.Controls.Add(this.Btn_ThongBao);
+            this.PanelCN.Controls.Add(this.btn_CH);
+            this.PanelCN.Controls.Add(this.btn_TTCN);
+            this.PanelCN.Controls.Add(this.btn_NhapKho);
+            this.PanelCN.Controls.Add(this.Btn_chiNhanh);
             this.PanelCN.Controls.Add(this.btn_Chung);
             this.PanelCN.Controls.Add(this.btn_BangLuong);
             this.PanelCN.Controls.Add(this.btn_LoiLo);
-            this.PanelCN.Controls.Add(this.guna2Button1);
             this.PanelCN.Controls.Add(this.btn_CuaHang);
             this.PanelCN.Controls.Add(this.Btn_Khach);
             this.PanelCN.Controls.Add(this.btn_TheLoai);
@@ -98,11 +105,100 @@ namespace PM.GUI.Main
             this.PanelCN.Controls.Add(this.btn_DSTG);
             this.PanelCN.Controls.Add(this.btnKho);
             this.PanelCN.Controls.Add(this.BtnThem);
-            this.PanelCN.Location = new System.Drawing.Point(3, 3);
+            this.PanelCN.Location = new System.Drawing.Point(3, 16);
             this.PanelCN.Name = "PanelCN";
-            this.PanelCN.Size = new System.Drawing.Size(249, 474);
+            this.PanelCN.Size = new System.Drawing.Size(243, 447);
             this.PanelCN.TabIndex = 0;
-            this.PanelCN.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCN_Paint);
+            // 
+            // Btn_ThongBao
+            // 
+            this.Btn_ThongBao.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_ThongBao.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_ThongBao.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_ThongBao.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_ThongBao.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_ThongBao.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_ThongBao.ForeColor = System.Drawing.Color.White;
+            this.Btn_ThongBao.Location = new System.Drawing.Point(3, 734);
+            this.Btn_ThongBao.Name = "Btn_ThongBao";
+            this.Btn_ThongBao.Size = new System.Drawing.Size(153, 40);
+            this.Btn_ThongBao.TabIndex = 17;
+            this.Btn_ThongBao.Text = "Thông Báo";
+            // 
+            // btn_CH
+            // 
+            this.btn_CH.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_CH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_CH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_CH.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_CH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_CH.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_CH.ForeColor = System.Drawing.Color.White;
+            this.btn_CH.Location = new System.Drawing.Point(3, 688);
+            this.btn_CH.Name = "btn_CH";
+            this.btn_CH.Size = new System.Drawing.Size(153, 40);
+            this.btn_CH.TabIndex = 16;
+            this.btn_CH.Text = "Cửa Hàng";
+            // 
+            // btn_TTCN
+            // 
+            this.btn_TTCN.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_TTCN.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_TTCN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_TTCN.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_TTCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_TTCN.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_TTCN.ForeColor = System.Drawing.Color.White;
+            this.btn_TTCN.Location = new System.Drawing.Point(3, 642);
+            this.btn_TTCN.Name = "btn_TTCN";
+            this.btn_TTCN.Size = new System.Drawing.Size(153, 40);
+            this.btn_TTCN.TabIndex = 15;
+            this.btn_TTCN.Text = "Cá Nhân";
+            // 
+            // btn_NhapKho
+            // 
+            this.btn_NhapKho.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_NhapKho.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_NhapKho.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_NhapKho.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_NhapKho.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_NhapKho.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_NhapKho.ForeColor = System.Drawing.Color.White;
+            this.btn_NhapKho.Location = new System.Drawing.Point(0, 233);
+            this.btn_NhapKho.Name = "btn_NhapKho";
+            this.btn_NhapKho.Size = new System.Drawing.Size(153, 40);
+            this.btn_NhapKho.TabIndex = 14;
+            this.btn_NhapKho.Text = "Nhap Kho";
+            // 
+            // Btn_chiNhanh
+            // 
+            this.Btn_chiNhanh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_chiNhanh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_chiNhanh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_chiNhanh.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_chiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_chiNhanh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_chiNhanh.ForeColor = System.Drawing.Color.White;
+            this.Btn_chiNhanh.Location = new System.Drawing.Point(3, 594);
+            this.Btn_chiNhanh.Name = "Btn_chiNhanh";
+            this.Btn_chiNhanh.Size = new System.Drawing.Size(153, 40);
+            this.Btn_chiNhanh.TabIndex = 13;
+            this.Btn_chiNhanh.Text = "Chi nhánh";
+            // 
+            // btn_Chung
+            // 
+            this.btn_Chung.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Chung.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Chung.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Chung.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Chung.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Chung.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Chung.ForeColor = System.Drawing.Color.White;
+            this.btn_Chung.Location = new System.Drawing.Point(0, 548);
+            this.btn_Chung.Name = "btn_Chung";
+            this.btn_Chung.Size = new System.Drawing.Size(202, 40);
+            this.btn_Chung.TabIndex = 12;
+            this.btn_Chung.Text = "Cai dat chung";
             // 
             // btn_BangLuong
             // 
@@ -113,7 +209,7 @@ namespace PM.GUI.Main
             this.btn_BangLuong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_BangLuong.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_BangLuong.ForeColor = System.Drawing.Color.White;
-            this.btn_BangLuong.Location = new System.Drawing.Point(0, 460);
+            this.btn_BangLuong.Location = new System.Drawing.Point(0, 502);
             this.btn_BangLuong.Name = "btn_BangLuong";
             this.btn_BangLuong.Size = new System.Drawing.Size(153, 40);
             this.btn_BangLuong.TabIndex = 11;
@@ -128,26 +224,11 @@ namespace PM.GUI.Main
             this.btn_LoiLo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_LoiLo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_LoiLo.ForeColor = System.Drawing.Color.White;
-            this.btn_LoiLo.Location = new System.Drawing.Point(0, 414);
+            this.btn_LoiLo.Location = new System.Drawing.Point(0, 456);
             this.btn_LoiLo.Name = "btn_LoiLo";
             this.btn_LoiLo.Size = new System.Drawing.Size(153, 40);
             this.btn_LoiLo.TabIndex = 10;
             this.btn_LoiLo.Text = "Loi Lo";
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderRadius = 15;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(212, 414);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(13, 259);
-            this.guna2Button1.TabIndex = 9;
-            this.guna2Button1.Text = "Menu";
             // 
             // btn_CuaHang
             // 
@@ -158,7 +239,7 @@ namespace PM.GUI.Main
             this.btn_CuaHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_CuaHang.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_CuaHang.ForeColor = System.Drawing.Color.White;
-            this.btn_CuaHang.Location = new System.Drawing.Point(0, 371);
+            this.btn_CuaHang.Location = new System.Drawing.Point(0, 413);
             this.btn_CuaHang.Name = "btn_CuaHang";
             this.btn_CuaHang.Size = new System.Drawing.Size(202, 40);
             this.btn_CuaHang.TabIndex = 8;
@@ -173,7 +254,7 @@ namespace PM.GUI.Main
             this.Btn_Khach.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.Btn_Khach.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_Khach.ForeColor = System.Drawing.Color.White;
-            this.Btn_Khach.Location = new System.Drawing.Point(0, 325);
+            this.Btn_Khach.Location = new System.Drawing.Point(0, 367);
             this.Btn_Khach.Name = "Btn_Khach";
             this.Btn_Khach.Size = new System.Drawing.Size(153, 40);
             this.Btn_Khach.TabIndex = 7;
@@ -218,12 +299,11 @@ namespace PM.GUI.Main
             this.btn_QLTK.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_QLTK.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_QLTK.ForeColor = System.Drawing.Color.White;
-            this.btn_QLTK.Location = new System.Drawing.Point(0, 233);
+            this.btn_QLTK.Location = new System.Drawing.Point(0, 275);
             this.btn_QLTK.Name = "btn_QLTK";
             this.btn_QLTK.Size = new System.Drawing.Size(202, 40);
             this.btn_QLTK.TabIndex = 4;
             this.btn_QLTK.Text = "Quản Lý Tai Khoan";
-            this.btn_QLTK.Click += new System.EventHandler(this.guna2GradientTileButton4_Click);
             // 
             // btn_NhanVien
             // 
@@ -234,7 +314,7 @@ namespace PM.GUI.Main
             this.btn_NhanVien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_NhanVien.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_NhanVien.ForeColor = System.Drawing.Color.White;
-            this.btn_NhanVien.Location = new System.Drawing.Point(0, 279);
+            this.btn_NhanVien.Location = new System.Drawing.Point(0, 321);
             this.btn_NhanVien.Name = "btn_NhanVien";
             this.btn_NhanVien.Size = new System.Drawing.Size(153, 40);
             this.btn_NhanVien.TabIndex = 3;
@@ -254,7 +334,6 @@ namespace PM.GUI.Main
             this.btn_DSTG.Size = new System.Drawing.Size(156, 40);
             this.btn_DSTG.TabIndex = 2;
             this.btn_DSTG.Text = "Danh sách tác Giả";
-            this.btn_DSTG.Click += new System.EventHandler(this.btn_DSTG_Click);
             // 
             // btnKho
             // 
@@ -270,7 +349,6 @@ namespace PM.GUI.Main
             this.btnKho.Size = new System.Drawing.Size(153, 40);
             this.btnKho.TabIndex = 1;
             this.btnKho.Text = "Kho Sách";
-            this.btnKho.Click += new System.EventHandler(this.guna2GradientTileButton1_Click);
             // 
             // BtnThem
             // 
@@ -286,7 +364,6 @@ namespace PM.GUI.Main
             this.BtnThem.Size = new System.Drawing.Size(156, 40);
             this.BtnThem.TabIndex = 0;
             this.BtnThem.Text = "Thêm Sách";
-            this.BtnThem.Click += new System.EventHandler(this.BtnThem_Click);
             // 
             // pannel_Admin
             // 
@@ -300,7 +377,6 @@ namespace PM.GUI.Main
             this.pannel_Admin.Name = "pannel_Admin";
             this.pannel_Admin.Size = new System.Drawing.Size(1188, 702);
             this.pannel_Admin.TabIndex = 30;
-            this.pannel_Admin.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // btnCN
             // 
@@ -311,12 +387,11 @@ namespace PM.GUI.Main
             this.btnCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnCN.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCN.ForeColor = System.Drawing.Color.White;
-            this.btnCN.Location = new System.Drawing.Point(31, 57);
+            this.btnCN.Location = new System.Drawing.Point(41, 109);
             this.btnCN.Name = "btnCN";
             this.btnCN.Size = new System.Drawing.Size(90, 45);
             this.btnCN.TabIndex = 3;
             this.btnCN.Text = "Menu";
-            this.btnCN.Click += new System.EventHandler(this.btnCN_Click);
             // 
             // titleCN
             // 
@@ -331,22 +406,6 @@ namespace PM.GUI.Main
             this.titleCN.TabIndex = 2;
             this.titleCN.Text = "Chuc Nang";
             this.titleCN.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.titleCN.Click += new System.EventHandler(this.titleCN_Click);
-            // 
-            // btn_Chung
-            // 
-            this.btn_Chung.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Chung.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Chung.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Chung.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Chung.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Chung.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_Chung.ForeColor = System.Drawing.Color.White;
-            this.btn_Chung.Location = new System.Drawing.Point(0, 506);
-            this.btn_Chung.Name = "btn_Chung";
-            this.btn_Chung.Size = new System.Drawing.Size(202, 40);
-            this.btn_Chung.TabIndex = 12;
-            this.btn_Chung.Text = "Cai dat chung";
             // 
             // AdminForm
             // 
@@ -387,9 +446,13 @@ namespace PM.GUI.Main
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_TheLoai;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_CuaHang;
         private Guna.UI2.WinForms.Guna2GradientTileButton Btn_Khach;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_BangLuong;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_LoiLo;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_Chung;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btn_NhapKho;
+        private Guna.UI2.WinForms.Guna2GradientTileButton Btn_chiNhanh;
+        private Guna.UI2.WinForms.Guna2GradientTileButton Btn_ThongBao;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btn_CH;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btn_TTCN;
     }
 }
