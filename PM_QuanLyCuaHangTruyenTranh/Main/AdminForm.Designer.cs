@@ -149,7 +149,7 @@ namespace PM.GUI.Main
             this.btn_TTCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_TTCN.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_TTCN.ForeColor = System.Drawing.Color.White;
-            this.btn_TTCN.Location = new System.Drawing.Point(3, 642);
+            this.btn_TTCN.Location = new System.Drawing.Point(0, 642);
             this.btn_TTCN.Name = "btn_TTCN";
             this.btn_TTCN.Size = new System.Drawing.Size(153, 40);
             this.btn_TTCN.TabIndex = 15;
@@ -196,7 +196,7 @@ namespace PM.GUI.Main
             this.btn_Chung.ForeColor = System.Drawing.Color.White;
             this.btn_Chung.Location = new System.Drawing.Point(0, 548);
             this.btn_Chung.Name = "btn_Chung";
-            this.btn_Chung.Size = new System.Drawing.Size(202, 40);
+            this.btn_Chung.Size = new System.Drawing.Size(219, 40);
             this.btn_Chung.TabIndex = 12;
             this.btn_Chung.Text = "Cai dat chung";
             // 
@@ -241,7 +241,7 @@ namespace PM.GUI.Main
             this.btn_CuaHang.ForeColor = System.Drawing.Color.White;
             this.btn_CuaHang.Location = new System.Drawing.Point(0, 413);
             this.btn_CuaHang.Name = "btn_CuaHang";
-            this.btn_CuaHang.Size = new System.Drawing.Size(202, 40);
+            this.btn_CuaHang.Size = new System.Drawing.Size(219, 40);
             this.btn_CuaHang.TabIndex = 8;
             this.btn_CuaHang.Text = "Thong ke";
             // 
@@ -286,7 +286,7 @@ namespace PM.GUI.Main
             this.btn_Sach.ForeColor = System.Drawing.Color.White;
             this.btn_Sach.Location = new System.Drawing.Point(0, 3);
             this.btn_Sach.Name = "btn_Sach";
-            this.btn_Sach.Size = new System.Drawing.Size(202, 40);
+            this.btn_Sach.Size = new System.Drawing.Size(219, 40);
             this.btn_Sach.TabIndex = 5;
             this.btn_Sach.Text = "Sách";
             // 
@@ -301,7 +301,7 @@ namespace PM.GUI.Main
             this.btn_QLTK.ForeColor = System.Drawing.Color.White;
             this.btn_QLTK.Location = new System.Drawing.Point(0, 275);
             this.btn_QLTK.Name = "btn_QLTK";
-            this.btn_QLTK.Size = new System.Drawing.Size(202, 40);
+            this.btn_QLTK.Size = new System.Drawing.Size(219, 40);
             this.btn_QLTK.TabIndex = 4;
             this.btn_QLTK.Text = "Quản Lý Tai Khoan";
             // 
@@ -392,6 +392,7 @@ namespace PM.GUI.Main
             this.btnCN.Size = new System.Drawing.Size(90, 45);
             this.btnCN.TabIndex = 3;
             this.btnCN.Text = "Menu";
+            this.btnCN.Click += new System.EventHandler(this.btnCN_Click_1);
             // 
             // titleCN
             // 
