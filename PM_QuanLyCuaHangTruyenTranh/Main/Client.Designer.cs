@@ -100,6 +100,8 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
+            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel1.Controls.Add(this.picAvatar);
             this.guna2Panel1.Controls.Add(this.panelMain);
             this.guna2Panel1.Controls.Add(this.btnEditProfile);
@@ -107,7 +109,7 @@
             this.guna2Panel1.Controls.Add(this.guna2GroupBox1);
             this.guna2Panel1.Controls.Add(this.picRoleGif);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.FillColor = System.Drawing.Color.Pink;
+            this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -116,7 +118,7 @@
             // 
             // picAvatar
             // 
-            this.picAvatar.BackColor = System.Drawing.Color.Pink;
+            this.picAvatar.BackColor = System.Drawing.Color.Transparent;
             this.picAvatar.FillColor = System.Drawing.Color.LightPink;
             this.picAvatar.ImageRotate = 0F;
             this.picAvatar.Location = new System.Drawing.Point(25, 0);
@@ -127,6 +129,7 @@
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picAvatar.TabIndex = 15;
             this.picAvatar.TabStop = false;
+            this.picAvatar.UseTransparentBackground = true;
             // 
             // panelMain
             // 
@@ -162,7 +165,7 @@
             // 
             // guna2GroupBox1
             // 
-            this.guna2GroupBox1.BackColor = System.Drawing.Color.HotPink;
+            this.guna2GroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox1.Controls.Add(this.cboTrangThai);
             this.guna2GroupBox1.Controls.Add(this.btnHistory);
             this.guna2GroupBox1.Controls.Add(this.txtHoTen);
@@ -179,6 +182,7 @@
             this.guna2GroupBox1.Size = new System.Drawing.Size(495, 764);
             this.guna2GroupBox1.TabIndex = 16;
             this.guna2GroupBox1.Text = "Hồ sơ của tôi";
+            this.guna2GroupBox1.UseTransparentBackground = true;
             // 
             // cboTrangThai
             // 
