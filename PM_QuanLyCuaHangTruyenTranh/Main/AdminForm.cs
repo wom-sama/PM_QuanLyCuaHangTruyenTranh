@@ -255,7 +255,8 @@ namespace PM.GUI.Main
                case "btn_LoiLo":
                    return new ucThongKeLoiNhuan { Dock = DockStyle.Fill };
                 case "btn_phanCong":
-                    return new userConTrol.Admin.PhanCong { Dock = DockStyle.Fill };
+                    return new userConTrol.Admin.PhanCong(currentNV.MaChiNhanh) { Dock = DockStyle.Fill };
+                case "btn_BangLuong": return new TinhLuong { Dock = DockStyle.Fill };
 
 
 
@@ -306,6 +307,12 @@ namespace PM.GUI.Main
             MoPanelConTheoNut("btn_phanCong");
             btnCN_Click_1(sender, e);
 
+        }
+
+        private void btn_BangLuong_Click(object sender, EventArgs e)
+        {
+            MoPanelConTheoNut("btn_BangLuong");
+            btnCN_Click_1(sender, e);
         }
     }
     }

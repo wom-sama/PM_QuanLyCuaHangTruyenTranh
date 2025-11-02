@@ -10,13 +10,15 @@ namespace PM.GUI.userConTrol.Admin
     public partial class PhanCong : UserControl
     {
         private readonly PhanCongService _phanCongService;
+        private string _maChiNhanh; 
 
-        public PhanCong()
+        public PhanCong(string maChiNhanh)
         {
             InitializeComponent();
             _phanCongService = new PhanCongService(new UnitOfWork());
             SetupGrid();
             LoadData();
+            _maChiNhanh = maChiNhanh;
         }
 
         private void SetupGrid()
@@ -202,6 +204,11 @@ namespace PM.GUI.userConTrol.Admin
             {
                 MessageBox.Show("Lỗi xóa: " + ex.Message);
             }
+        }
+
+        private void panel_tmp_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
