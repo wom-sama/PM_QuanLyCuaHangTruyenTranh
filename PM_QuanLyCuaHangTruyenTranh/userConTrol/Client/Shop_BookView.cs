@@ -280,5 +280,10 @@ namespace PM.GUI.userConTrol.Customer
         {
 
         }
+
+        private void btnCaNhan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

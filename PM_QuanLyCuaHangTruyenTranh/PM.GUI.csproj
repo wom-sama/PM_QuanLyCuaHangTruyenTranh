@@ -459,6 +459,9 @@
     <EmbeddedResource Include="userConTrol\Employee\LenDon.resx">
       <DependentUpon>LenDon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\ThongBao.resx">
+      <DependentUpon>ThongBao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\XemDon.resx">
       <DependentUpon>XemDon.cs</DependentUpon>
     </EmbeddedResource>

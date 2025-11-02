@@ -28,10 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.panelDanhSach = new Guna.UI2.WinForms.Guna2Panel();
+            this.SuspendLayout();
+            // 
+            // panelDanhSach
+            // 
+            this.panelDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDanhSach.Location = new System.Drawing.Point(0, 0);
+            this.panelDanhSach.Name = "panelDanhSach";
+            this.panelDanhSach.Size = new System.Drawing.Size(1469, 785);
+            this.panelDanhSach.TabIndex = 0;
+            // 
+            // ThongBao
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelDanhSach);
+            this.Name = "ThongBao";
+            this.Size = new System.Drawing.Size(1469, 785);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Guna.UI2.WinForms.Guna2Panel panelDanhSach;
     }
 }

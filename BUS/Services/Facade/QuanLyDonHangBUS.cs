@@ -7,6 +7,7 @@ using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PM.BUS.Services; // thêm namespace chứa ThongBaoService
 namespace PM.BUS.Services.Facade
 {
     public class QuanLyDonHangBUS
@@ -15,6 +16,7 @@ namespace PM.BUS.Services.Facade
         private readonly CT_DonHangService _ctDonHangService;
         private readonly VanChuyenService _vanChuyenService;
         private readonly UnitOfWork _unitOfWork;
+        private readonly ThongBaoService _thongBaoService;
         public event Action OnDonHangDuyet; // 🔔 Sự kiện báo khi duyệt đơn
         public event Action OnDonHangHoanTat; // 🔔 Sự kiện báo khi hoàn tất giao
 
@@ -25,6 +27,7 @@ namespace PM.BUS.Services.Facade
             _donHangService = new DonHangService(_unitOfWork);
             _ctDonHangService = new CT_DonHangService(_unitOfWork);
             _vanChuyenService = new VanChuyenService(_unitOfWork);
+            _thongBaoService = new ThongBaoService(_unitOfWork);
         }
 
         // ==================== DANH SÁCH ĐƠN ====================
@@ -105,7 +108,15 @@ namespace PM.BUS.Services.Facade
             };
 
             _vanChuyenService.Add(vanChuyen);
-            _unitOfWork.Save(); // 🧩 Đừng quên lưu thay đổi vào DB
+            _unitOfWork.Save(); //  lưu thay đổi vào DB                          
+            _thongBaoService.Add(new ThongBao // ✅ Gửi thông báo cho khách hàng
+            {
+                MaThongBao = "TB" + DateTime.Now.Ticks,
+                TieuDe = "Đơn hàng được duyệt",
+                NoiDung = $"Đơn hàng {don.MaDonHang} của bạn đã được duyệt và sẽ giao trong vòng 3-5 ngày.",
+                NguoiNhan = don.MaKhach,
+                NgayGui = DateTime.Now
+            });
             OnDonHangDuyet?.Invoke(); // 🔔 Gọi event để form cập nhật chuông
             return true;
         }
@@ -240,12 +251,26 @@ namespace PM.BUS.Services.Facade
         {
             var don = LayDonHangTheoMa(maDonHang);
             if (don == null) return false;
-
             if (don.TrangThai != "Chờ xử lý") return false;
 
             don.TrangThai = "Không duyệt";
-            return _donHangService.Update(don); 
+            var result = _donHangService.Update(don);
+
+            if (result)
+            {
+                _thongBaoService.Add(new ThongBao
+                {
+                    MaThongBao = "TB" + DateTime.Now.Ticks,
+                    TieuDe = "Đơn hàng không được duyệt",
+                    NoiDung = $"Đơn hàng {don.MaDonHang} đã bị từ chối duyệt vui lòng liên hệ admin 0378952722 để biết thêm chi tiết.",
+                    NguoiNhan = don.MaKhach,
+                    NgayGui = DateTime.Now
+                });
+            }
+
+            return result;
         }
+
         // Hủy Giao Đơn
         public bool HuyGiaoDon(string maDonHang)
         {

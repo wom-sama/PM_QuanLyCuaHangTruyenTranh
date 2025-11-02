@@ -306,5 +306,11 @@ namespace PM.GUI.Main
             isMenuVisible = !isMenuVisible; // Đảo trạng thái
             menuTimer.Start();              // Kích hoạt hiệu ứng
         }
+
+        private void btnThongBao_Click(object sender, EventArgs e)
+        {
+            var ucThongBao = new PM.GUI.userConTrol.Employee.ThongBao(currentNV);
+            HienThiUserControl(ucThongBao);
+        }
     }
 }
