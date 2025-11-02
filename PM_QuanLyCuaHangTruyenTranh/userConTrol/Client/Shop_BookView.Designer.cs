@@ -23,7 +23,9 @@
             this.pannelTong = new Guna.UI2.WinForms.Guna2Panel();
             this.cbChiNhanh = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ColorTransition1 = new Guna.UI2.WinForms.Guna2ColorTransition(this.components);
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.pannelTong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFindTen
@@ -33,6 +35,7 @@
             this.txtFindTen.DefaultText = "";
             this.txtFindTen.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtFindTen.Location = new System.Drawing.Point(183, 20);
+            this.txtFindTen.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtFindTen.Name = "txtFindTen";
             this.txtFindTen.PlaceholderText = "Tìm kiếm sách...";
             this.txtFindTen.SelectedText = "";
@@ -60,7 +63,7 @@
             this.btnCart.BorderRadius = 10;
             this.btnCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnCart.ForeColor = System.Drawing.Color.White;
-            this.btnCart.Location = new System.Drawing.Point(563, 20);
+            this.btnCart.Location = new System.Drawing.Point(551, 20);
             this.btnCart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCart.Name = "btnCart";
             this.btnCart.Size = new System.Drawing.Size(148, 33);
@@ -76,7 +79,7 @@
             this.panelDanhSach.AutoScroll = true;
             this.panelDanhSach.Location = new System.Drawing.Point(3, 64);
             this.panelDanhSach.Name = "panelDanhSach";
-            this.panelDanhSach.Size = new System.Drawing.Size(738, 392);
+            this.panelDanhSach.Size = new System.Drawing.Size(740, 453);
             this.panelDanhSach.TabIndex = 2;
             // 
             // pannelTong
@@ -86,7 +89,6 @@
             this.pannelTong.Controls.Add(this.btnFind);
             this.pannelTong.Controls.Add(this.txtFindTen);
             this.pannelTong.Controls.Add(this.panelDanhSach);
-            this.pannelTong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannelTong.Location = new System.Drawing.Point(0, 0);
             this.pannelTong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pannelTong.Name = "pannelTong";
@@ -119,16 +121,31 @@
         System.Drawing.Color.Blue,
         System.Drawing.Color.Orange};
             // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2CirclePictureBox1.Image = global::PM.GUI.Properties.Resources.Untitled123;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(703, 0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.guna2CirclePictureBox1.TabIndex = 0;
+            this.guna2CirclePictureBox1.TabStop = false;
+            this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click);
+            // 
             // Shop_BookView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.pannelTong);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Shop_BookView";
-            this.Size = new System.Drawing.Size(743, 458);
+            this.Size = new System.Drawing.Size(876, 517);
             this.Load += new System.EventHandler(this.Shop_BookView_Load);
             this.pannelTong.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +159,6 @@
         private Guna.UI2.WinForms.Guna2Panel pannelTong;
         private Guna.UI2.WinForms.Guna2ComboBox cbChiNhanh;
         private Guna.UI2.WinForms.Guna2ColorTransition guna2ColorTransition1;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
     }
 }

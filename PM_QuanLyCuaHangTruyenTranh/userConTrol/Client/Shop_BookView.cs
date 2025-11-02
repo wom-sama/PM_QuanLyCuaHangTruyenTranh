@@ -295,7 +295,18 @@ namespace PM.GUI.userConTrol.Customer
             this.FindForm().Hide();
         }
 
+        private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
+        {
+            Form parentForm = this.FindForm();
 
+            PM.GUI.Main.Client clientForm = new PM.GUI.Main.Client(currentKhachHang);
 
+            clientForm.FormClosed += (s, args) =>
+            {
+                parentForm.Show();
+            };
+            clientForm.Show();
+            parentForm.Hide();
+        }
     }
 }

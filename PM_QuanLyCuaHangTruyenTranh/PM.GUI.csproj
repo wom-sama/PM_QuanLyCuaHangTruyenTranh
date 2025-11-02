@@ -535,6 +535,10 @@
   <ItemGroup>
     <None Include="Resources\NenAdminGif1.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Untitled123.png" />
+    <None Include="Resources\Untitled1231.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

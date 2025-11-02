@@ -128,7 +128,7 @@
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.Color.Pink;
+            this.panelMain.BackColor = System.Drawing.Color.Transparent;
             this.panelMain.Location = new System.Drawing.Point(477, 44);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(899, 757);
@@ -170,7 +170,7 @@
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(13, 190);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(440, 611);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(458, 611);
             this.guna2GroupBox1.TabIndex = 16;
             this.guna2GroupBox1.Text = "Hồ sơ của tôi";
             this.guna2GroupBox1.UseTransparentBackground = true;

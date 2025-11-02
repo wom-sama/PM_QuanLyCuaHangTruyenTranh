@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PM.GUI.Main;
 
 
 namespace PM.GUI
@@ -24,7 +25,7 @@ namespace PM.GUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-          Application.Run(new Main.LoginForm());
+            Application.Run(new Main.LoginForm());
 
             //   byte[] originalKey = AESHelper.GetOriginalKey();
             //   Console.WriteLine(Encoding.UTF8.GetString(originalKey));
@@ -32,7 +33,7 @@ namespace PM.GUI
 
 
 
-          // AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
+            //AppDbSeeder.Seed();  ///dòng này dùng để thêm dữ liệu mẫu vào database
 
             //AppDbSeeder.Seed();
             /* string senderEmail = AESHelper.DecryptString(ConfigurationManager.AppSettings["EncryptedSenderEmail"]);
