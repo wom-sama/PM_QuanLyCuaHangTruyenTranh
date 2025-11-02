@@ -18,8 +18,8 @@ namespace PM.GUI.Main
     {
         private bool isMenuVisible = false; // Trạng thái panel menu
         private Timer menuTimer;            // Timer để tạo hiệu ứng
-        private int targetWidth = 180;      // Độ rộng tối đa của panelMenu  
-        private int slideSpeed = 15;        // Tốc độ trượt
+        private int targetWidth = 150;      // Độ rộng tối đa của panelMenu  
+        private int slideSpeed = 200;        // Tốc độ trượt
 
         private readonly QuanLyDonHangBUS _bus = new QuanLyDonHangBUS();
         private IconPictureBox iconBell;   // Chuông thông báo
@@ -41,6 +41,10 @@ namespace PM.GUI.Main
         {
             currentNV = nv;
             InitializeComponent();
+            panelMenu.BackColor = Color.Transparent;
+            panelMenu.Parent = pannelGD_tong; // nếu pannelGD_tong là nền chính
+            panelMenu.BringToFront();
+
         }
         private void CapNhatThongBao()
         {
@@ -295,6 +299,12 @@ namespace PM.GUI.Main
         {
             var uc = new GiaoHang();
             HienThiUserControl(uc);
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isMenuVisible = !isMenuVisible; // Đảo trạng thái
+            menuTimer.Start();              // Kích hoạt hiệu ứng
         }
     }
 }

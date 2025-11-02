@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanVienForm));
             this.panelhienthi = new Guna.UI2.WinForms.Guna2Panel();
             this.btnChuong = new Guna.UI2.WinForms.Guna2Button();
             this.lblBadge = new System.Windows.Forms.Label();
@@ -36,12 +37,14 @@
             this.btnXemDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnCaLam = new Guna.UI2.WinForms.Guna2Button();
             this.pannelGD_tong = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnMenu = new Guna.UI2.WinForms.Guna2Button();
             this.panelMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.btnGiaoHang = new Guna.UI2.WinForms.Guna2Button();
             this.btnKho = new Guna.UI2.WinForms.Guna2Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pannelGD_tong.SuspendLayout();
             this.panelMenu.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelhienthi
@@ -60,6 +63,7 @@
             // btnChuong
             // 
             this.btnChuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChuong.BackColor = System.Drawing.Color.Transparent;
             this.btnChuong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnChuong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnChuong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -68,11 +72,12 @@
             this.btnChuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnChuong.ForeColor = System.Drawing.Color.Gold;
             this.btnChuong.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnChuong.Location = new System.Drawing.Point(1194, 32);
+            this.btnChuong.Location = new System.Drawing.Point(1187, 40);
             this.btnChuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChuong.Name = "btnChuong";
             this.btnChuong.Size = new System.Drawing.Size(83, 102);
             this.btnChuong.TabIndex = 0;
+            this.btnChuong.UseTransparentBackground = true;
             this.btnChuong.Click += new System.EventHandler(this.btnChuong_Click);
             // 
             // lblBadge
@@ -82,7 +87,7 @@
             this.lblBadge.ForeColor = System.Drawing.Color.White;
             this.lblBadge.Location = new System.Drawing.Point(1256, 19);
             this.lblBadge.Name = "lblBadge";
-            this.lblBadge.Size = new System.Drawing.Size(60, 63);
+            this.lblBadge.Size = new System.Drawing.Size(69, 67);
             this.lblBadge.TabIndex = 1;
             this.lblBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblBadge.Visible = false;
@@ -146,31 +151,18 @@
             // pannelGD_tong
             // 
             this.pannelGD_tong.AutoScroll = true;
+            this.pannelGD_tong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pannelGD_tong.BackgroundImage")));
             this.pannelGD_tong.Controls.Add(this.panelhienthi);
-            this.pannelGD_tong.Controls.Add(this.btnMenu);
             this.pannelGD_tong.Controls.Add(this.panelMenu);
             this.pannelGD_tong.Controls.Add(this.btnChuong);
             this.pannelGD_tong.Controls.Add(this.lblBadge);
+            this.pannelGD_tong.Controls.Add(this.menuStrip1);
             this.pannelGD_tong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannelGD_tong.Location = new System.Drawing.Point(0, 0);
             this.pannelGD_tong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pannelGD_tong.Name = "pannelGD_tong";
             this.pannelGD_tong.Size = new System.Drawing.Size(1328, 834);
             this.pannelGD_tong.TabIndex = 7;
-            // 
-            // btnMenu
-            // 
-            this.btnMenu.BorderRadius = 10;
-            this.btnMenu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnMenu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnMenu.ForeColor = System.Drawing.Color.White;
-            this.btnMenu.Location = new System.Drawing.Point(51, 32);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(180, 50);
-            this.btnMenu.TabIndex = 6;
-            this.btnMenu.Text = "Menu";
-            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // panelMenu
             // 
@@ -182,6 +174,10 @@
             this.panelMenu.Controls.Add(this.btnDuyetDon);
             this.panelMenu.Controls.Add(this.btnXemDon);
             this.panelMenu.Controls.Add(this.btnCaLam);
+            this.panelMenu.FillColor = System.Drawing.Color.Transparent;
+            this.panelMenu.FillColor2 = System.Drawing.Color.Transparent;
+            this.panelMenu.FillColor3 = System.Drawing.Color.Transparent;
+            this.panelMenu.FillColor4 = System.Drawing.Color.Transparent;
             this.panelMenu.Location = new System.Drawing.Point(51, 169);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
@@ -216,12 +212,35 @@
             this.btnKho.Text = "Kho";
             this.btnKho.Click += new System.EventHandler(this.btnKho_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(59, 40);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(113, 46);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(105, 42);
+            this.menuToolStripMenuItem.Text = "Menu";
+            this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
+            // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1328, 834);
             this.Controls.Add(this.pannelGD_tong);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "NhanVienForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -230,6 +249,8 @@
             this.pannelGD_tong.ResumeLayout(false);
             this.pannelGD_tong.PerformLayout();
             this.panelMenu.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -244,9 +265,10 @@
         private Guna.UI2.WinForms.Guna2Button btnXemDon;
         private Guna.UI2.WinForms.Guna2Button btnCaLam;
         private Guna.UI2.WinForms.Guna2Panel pannelGD_tong;
-        private Guna.UI2.WinForms.Guna2Button btnMenu;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel panelMenu;
         private Guna.UI2.WinForms.Guna2Button btnKho;
         private Guna.UI2.WinForms.Guna2Button btnGiaoHang;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
     }
 }

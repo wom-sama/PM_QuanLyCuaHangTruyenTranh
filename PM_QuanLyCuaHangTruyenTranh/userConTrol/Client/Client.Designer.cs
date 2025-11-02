@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Client));
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.picRoleGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
             this.btnEditProfile = new System.Windows.Forms.Button();
@@ -46,11 +46,10 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblHoTen = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.picRoleGif = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoleGif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRoleGif)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Button1
@@ -61,10 +60,9 @@
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(2, 1264);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button1.Location = new System.Drawing.Point(2, 1011);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(202, 56);
+            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
             this.guna2Button1.TabIndex = 0;
             this.guna2Button1.Text = "guna2Button1";
             // 
@@ -76,10 +74,9 @@
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(1961, 1264);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button2.Location = new System.Drawing.Point(1743, 1011);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(202, 56);
+            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
             this.guna2Button2.TabIndex = 1;
             this.guna2Button2.Text = "guna2Button2";
             // 
@@ -91,10 +88,9 @@
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(1961, 1);
-            this.guna2Button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button3.Location = new System.Drawing.Point(1743, 1);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(202, 56);
+            this.guna2Button3.Size = new System.Drawing.Size(180, 45);
             this.guna2Button3.TabIndex = 2;
             this.guna2Button3.Text = "guna2Button3";
             // 
@@ -109,21 +105,34 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.FillColor = System.Drawing.Color.Pink;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1562, 1094);
+            this.guna2Panel1.Size = new System.Drawing.Size(1388, 875);
             this.guna2Panel1.TabIndex = 3;
+            // 
+            // picRoleGif
+            // 
+            this.picRoleGif.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picRoleGif.BackColor = System.Drawing.Color.Pink;
+            this.picRoleGif.BorderRadius = 10;
+            this.picRoleGif.FillColor = System.Drawing.Color.LightPink;
+            this.picRoleGif.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
+            this.picRoleGif.ImageRotate = 0F;
+            this.picRoleGif.Location = new System.Drawing.Point(265, 12);
+            this.picRoleGif.Name = "picRoleGif";
+            this.picRoleGif.Size = new System.Drawing.Size(114, 103);
+            this.picRoleGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRoleGif.TabIndex = 19;
+            this.picRoleGif.TabStop = false;
             // 
             // picAvatar
             // 
             this.picAvatar.BackColor = System.Drawing.Color.Pink;
             this.picAvatar.FillColor = System.Drawing.Color.LightPink;
             this.picAvatar.ImageRotate = 0F;
-            this.picAvatar.Location = new System.Drawing.Point(25, 0);
-            this.picAvatar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.picAvatar.Location = new System.Drawing.Point(22, 0);
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.picAvatar.Size = new System.Drawing.Size(205, 215);
+            this.picAvatar.Size = new System.Drawing.Size(182, 172);
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picAvatar.TabIndex = 15;
             this.picAvatar.TabStop = false;
@@ -131,19 +140,17 @@
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.Pink;
-            this.panelMain.Location = new System.Drawing.Point(537, 55);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelMain.Location = new System.Drawing.Point(477, 44);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1011, 946);
+            this.panelMain.Size = new System.Drawing.Size(899, 757);
             this.panelMain.TabIndex = 14;
             // 
             // btnEditProfile
             // 
             this.btnEditProfile.BackColor = System.Drawing.Color.HotPink;
-            this.btnEditProfile.Location = new System.Drawing.Point(25, 311);
-            this.btnEditProfile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEditProfile.Location = new System.Drawing.Point(22, 249);
             this.btnEditProfile.Name = "btnEditProfile";
-            this.btnEditProfile.Size = new System.Drawing.Size(172, 42);
+            this.btnEditProfile.Size = new System.Drawing.Size(153, 34);
             this.btnEditProfile.TabIndex = 11;
             this.btnEditProfile.Text = "Chỉnh sửa hồ sơ";
             this.btnEditProfile.UseVisualStyleBackColor = false;
@@ -151,10 +158,9 @@
             // 
             // btnChangePFP
             // 
-            this.btnChangePFP.Location = new System.Drawing.Point(225, 186);
-            this.btnChangePFP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnChangePFP.Location = new System.Drawing.Point(200, 149);
             this.btnChangePFP.Name = "btnChangePFP";
-            this.btnChangePFP.Size = new System.Drawing.Size(144, 29);
+            this.btnChangePFP.Size = new System.Drawing.Size(128, 23);
             this.btnChangePFP.TabIndex = 10;
             this.btnChangePFP.Text = "Chọn ảnh";
             this.btnChangePFP.UseVisualStyleBackColor = true;
@@ -171,23 +177,21 @@
             this.guna2GroupBox1.Controls.Add(this.lblEmail);
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.Orchid;
             this.guna2GroupBox1.FillColor = System.Drawing.Color.Pink;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Lato Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(15, 238);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(13, 190);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(495, 764);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(440, 611);
             this.guna2GroupBox1.TabIndex = 16;
             this.guna2GroupBox1.Text = "Hồ sơ của tôi";
             // 
             // cboTrangThai
             // 
-            this.cboTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTrangThai.Font = new System.Drawing.Font("Lato Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTrangThai.FormattingEnabled = true;
-            this.cboTrangThai.Location = new System.Drawing.Point(10, 282);
-            this.cboTrangThai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboTrangThai.Location = new System.Drawing.Point(9, 226);
             this.cboTrangThai.Name = "cboTrangThai";
-            this.cboTrangThai.Size = new System.Drawing.Size(259, 34);
+            this.cboTrangThai.Size = new System.Drawing.Size(231, 30);
             this.cboTrangThai.TabIndex = 14;
             this.cboTrangThai.Text = "Trạng thái hàng";
             this.cboTrangThai.SelectedIndexChanged += new System.EventHandler(this.cboTrangThai_SelectedIndexChanged_1);
@@ -195,11 +199,10 @@
             // btnHistory
             // 
             this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistory.Location = new System.Drawing.Point(289, 282);
-            this.btnHistory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnHistory.Font = new System.Drawing.Font("Lato Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.Location = new System.Drawing.Point(257, 226);
             this.btnHistory.Name = "btnHistory";
-            this.btnHistory.Size = new System.Drawing.Size(180, 35);
+            this.btnHistory.Size = new System.Drawing.Size(160, 28);
             this.btnHistory.TabIndex = 8;
             this.btnHistory.Text = "Lịch sử mua hàng";
             this.btnHistory.UseVisualStyleBackColor = true;
@@ -207,33 +210,31 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHoTen.Font = new System.Drawing.Font("Lato", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHoTen.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtHoTen.Location = new System.Drawing.Point(184, 142);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtHoTen.Location = new System.Drawing.Point(164, 114);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.ReadOnly = true;
-            this.txtHoTen.Size = new System.Drawing.Size(284, 28);
+            this.txtHoTen.Size = new System.Drawing.Size(253, 25);
             this.txtHoTen.TabIndex = 12;
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(184, 200);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEmail.Font = new System.Drawing.Font("Lato Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(164, 160);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(284, 28);
+            this.txtEmail.Size = new System.Drawing.Size(253, 25);
             this.txtEmail.TabIndex = 13;
             // 
             // lblHoTen
             // 
             this.lblHoTen.AutoSize = true;
             this.lblHoTen.BackColor = System.Drawing.Color.LightPink;
-            this.lblHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoTen.Location = new System.Drawing.Point(12, 140);
+            this.lblHoTen.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoTen.Location = new System.Drawing.Point(11, 112);
             this.lblHoTen.Name = "lblHoTen";
-            this.lblHoTen.Size = new System.Drawing.Size(195, 29);
+            this.lblHoTen.Size = new System.Drawing.Size(143, 24);
             this.lblHoTen.TabIndex = 4;
             this.lblHoTen.Text = "Tên đăng nhập:";
             // 
@@ -241,50 +242,32 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.BackColor = System.Drawing.Color.LightPink;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(12, 216);
+            this.lblEmail.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(11, 173);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(86, 29);
+            this.lblEmail.Size = new System.Drawing.Size(64, 24);
             this.lblEmail.TabIndex = 5;
             this.lblEmail.Text = "Email:";
             // 
-            // picRoleGif
-            // 
-            this.picRoleGif.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picRoleGif.BackColor = System.Drawing.Color.Pink;
-            this.picRoleGif.BorderRadius = 10;
-            this.picRoleGif.FillColor = System.Drawing.Color.LightPink;
-            this.picRoleGif.Image = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
-            this.picRoleGif.ImageRotate = 0F;
-            this.picRoleGif.Location = new System.Drawing.Point(298, 15);
-            this.picRoleGif.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.picRoleGif.Name = "picRoleGif";
-            this.picRoleGif.Size = new System.Drawing.Size(128, 129);
-            this.picRoleGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRoleGif.TabIndex = 19;
-            this.picRoleGif.TabStop = false;
-            // 
             // Client
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1562, 1094);
+            this.ClientSize = new System.Drawing.Size(1388, 875);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.guna2Button1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Khachcs";
             this.Load += new System.EventHandler(this.Client_Load_1);
             this.guna2Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picRoleGif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRoleGif)).EndInit();
             this.ResumeLayout(false);
 
         }
