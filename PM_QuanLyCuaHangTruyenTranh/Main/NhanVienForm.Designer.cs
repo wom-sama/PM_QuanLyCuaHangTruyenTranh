@@ -152,6 +152,7 @@
             // 
             this.pannelGD_tong.AutoScroll = true;
             this.pannelGD_tong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pannelGD_tong.BackgroundImage")));
+            this.pannelGD_tong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pannelGD_tong.Controls.Add(this.panelhienthi);
             this.pannelGD_tong.Controls.Add(this.panelMenu);
             this.pannelGD_tong.Controls.Add(this.btnChuong);
