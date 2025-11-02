@@ -22,24 +22,20 @@ namespace PM.GUI.Main
             this.MaximizeBox = false;
             try
             {
-                // Dữ liệu ban đầu
-                txtHoTen.Text = "Nguyễn Văn A";
-                txtEmail.Text = "vana@example.com";
+                txtHoTen.Text = currentUser.HoTen;
+                txtEmail.Text = currentUser.Email;
                 txtHoTen.ReadOnly = true;
                 txtEmail.ReadOnly = true;
 
-                // Khởi tạo ComboBox với 3 trạng thái
                 cboTrangThai.Items.Clear();
-                cboTrangThai.Items.Add("-- Chọn trạng thái --"); // Placeholder
+                cboTrangThai.Items.Add("-- Chọn trạng thái --");
                 cboTrangThai.Items.Add("Đang chuẩn bị hàng");
                 cboTrangThai.Items.Add("Đang vận chuyển");
                 cboTrangThai.Items.Add("Đã nhận hàng");
-                cboTrangThai.SelectedIndex = 0; // Chọn placeholder
+                cboTrangThai.SelectedIndex = 0;
 
-                // Gắn event
                 cboTrangThai.SelectedIndexChanged += cboTrangThai_SelectedIndexChanged_1;
 
-                // KHÔNG load UserControl mặc định - để panel trống
                 panelMain.Controls.Clear();
             }
             catch (Exception ex)
