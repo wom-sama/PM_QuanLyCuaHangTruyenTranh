@@ -73,7 +73,7 @@ namespace PM.GUI.Main
 
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            var profile = new userConTrol.Client.Profile_Edit();
+            var profile = new userConTrol.Client.Profile_Edit(currentUser);
             profile.ProfileUpdated += ProfileEdit_ProfileUpdated;
             LoadUserControl(profile);
         }
