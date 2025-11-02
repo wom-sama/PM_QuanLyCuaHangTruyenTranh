@@ -312,5 +312,10 @@ namespace PM.GUI.Main
             var ucThongBao = new PM.GUI.userConTrol.Employee.ThongBao(currentNV);
             HienThiUserControl(ucThongBao);
         }
+
+        private void btnThongTin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

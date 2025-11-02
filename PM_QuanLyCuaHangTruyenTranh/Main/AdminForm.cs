@@ -322,6 +322,11 @@ namespace PM.GUI.Main
             btnCN_Click_1(sender, e);
 
         }
+
+        private void btn_TTCN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 
