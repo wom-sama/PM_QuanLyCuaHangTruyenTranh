@@ -6,9 +6,9 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using DonHangModel = PM.DAL.Models.DonHang; // ✅ Alias để tránh xung đột tên
+using DonHangModel = PM.DAL.Models.DonHang; 
 
-namespace PM.GUI.UserControls.Client
+namespace PM.GUI.userConTrol.Client
 {
     public partial class DonHang : UserControl
     {

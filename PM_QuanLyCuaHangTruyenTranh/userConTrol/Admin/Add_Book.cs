@@ -208,7 +208,7 @@ namespace PM.GUI.userConTrol.Admin
             cbTacGia.ValueMember = "MaTacGia";
 
             var theLoais = _theLoaiService.GetAll().ToList();
-            theLoais.Insert(0, new TheLoai { MaTheLoai = "", TenTheLoai = "-- Chọn thể loại --" });
+            theLoais.Insert(0, new DAL.Models.TheLoai { MaTheLoai = "", TenTheLoai = "-- Chọn thể loại --" });
             cbTheLoai.DataSource = theLoais;
             cbTheLoai.DisplayMember = "TenTheLoai";
             cbTheLoai.ValueMember = "MaTheLoai";

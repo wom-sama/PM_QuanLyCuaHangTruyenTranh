@@ -1,4 +1,4 @@
-﻿namespace PM.GUI.UserControls.Client
+﻿namespace PM.GUI.userConTrol.Client
 {
     partial class DonHang
     {

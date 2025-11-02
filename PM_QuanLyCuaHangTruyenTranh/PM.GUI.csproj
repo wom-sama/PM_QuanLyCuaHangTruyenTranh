@@ -205,6 +205,12 @@
     <Compile Include="userConTrol\Admin\PhanCong.Designer.cs">
       <DependentUpon>PhanCong.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\TheLoai.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\TheLoai.Designer.cs">
+      <DependentUpon>TheLoai.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Admin\TinhLuong.cs">
       <SubType>UserControl</SubType>
     </Compile>
