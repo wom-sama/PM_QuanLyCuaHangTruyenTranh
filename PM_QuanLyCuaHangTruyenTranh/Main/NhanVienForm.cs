@@ -218,7 +218,7 @@ namespace PM.GUI.Main
 
         private void btnXemDon_Click(object sender, EventArgs e)
         {
-            var uc = new XemDon();
+            var uc = new XemDon(currentNV);
             HienThiUserControl(uc);
         }
 

@@ -32,11 +32,12 @@
             this.txtFindTen.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFindTen.DefaultText = "";
             this.txtFindTen.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtFindTen.Location = new System.Drawing.Point(183, 20);
+            this.txtFindTen.Location = new System.Drawing.Point(206, 25);
+            this.txtFindTen.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.txtFindTen.Name = "txtFindTen";
             this.txtFindTen.PlaceholderText = "Tìm kiếm sách...";
             this.txtFindTen.SelectedText = "";
-            this.txtFindTen.Size = new System.Drawing.Size(234, 33);
+            this.txtFindTen.Size = new System.Drawing.Size(263, 41);
             this.txtFindTen.TabIndex = 0;
             this.txtFindTen.TextChanged += new System.EventHandler(this.txtFindTen_TextChanged);
             // 
@@ -46,10 +47,10 @@
             this.btnFind.BorderRadius = 10;
             this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(423, 20);
+            this.btnFind.Location = new System.Drawing.Point(476, 25);
             this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(122, 33);
+            this.btnFind.Size = new System.Drawing.Size(137, 41);
             this.btnFind.TabIndex = 1;
             this.btnFind.Text = "Tìm kiếm";
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -60,10 +61,10 @@
             this.btnCart.BorderRadius = 10;
             this.btnCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnCart.ForeColor = System.Drawing.Color.White;
-            this.btnCart.Location = new System.Drawing.Point(563, 20);
+            this.btnCart.Location = new System.Drawing.Point(633, 25);
             this.btnCart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCart.Name = "btnCart";
-            this.btnCart.Size = new System.Drawing.Size(148, 33);
+            this.btnCart.Size = new System.Drawing.Size(166, 41);
             this.btnCart.TabIndex = 0;
             this.btnCart.Text = "🛒 Giỏ hàng";
             this.btnCart.Click += new System.EventHandler(this.btnCart_Click);
@@ -74,9 +75,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDanhSach.AutoScroll = true;
-            this.panelDanhSach.Location = new System.Drawing.Point(3, 64);
+            this.panelDanhSach.Location = new System.Drawing.Point(3, 80);
+            this.panelDanhSach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelDanhSach.Name = "panelDanhSach";
-            this.panelDanhSach.Size = new System.Drawing.Size(738, 392);
+            this.panelDanhSach.Size = new System.Drawing.Size(830, 490);
             this.panelDanhSach.TabIndex = 2;
             // 
             // pannelTong
@@ -90,7 +92,7 @@
             this.pannelTong.Location = new System.Drawing.Point(0, 0);
             this.pannelTong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pannelTong.Name = "pannelTong";
-            this.pannelTong.Size = new System.Drawing.Size(743, 458);
+            this.pannelTong.Size = new System.Drawing.Size(836, 572);
             this.pannelTong.TabIndex = 3;
             this.pannelTong.Paint += new System.Windows.Forms.PaintEventHandler(this.pannelTong_Paint);
             // 
@@ -106,9 +108,10 @@
             this.cbChiNhanh.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbChiNhanh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbChiNhanh.ItemHeight = 30;
-            this.cbChiNhanh.Location = new System.Drawing.Point(14, 20);
+            this.cbChiNhanh.Location = new System.Drawing.Point(16, 25);
+            this.cbChiNhanh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbChiNhanh.Name = "cbChiNhanh";
-            this.cbChiNhanh.Size = new System.Drawing.Size(163, 36);
+            this.cbChiNhanh.Size = new System.Drawing.Size(183, 36);
             this.cbChiNhanh.TabIndex = 3;
             this.cbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
             // 
@@ -121,12 +124,12 @@
             // 
             // Shop_BookView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pannelTong);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Shop_BookView";
-            this.Size = new System.Drawing.Size(743, 458);
+            this.Size = new System.Drawing.Size(836, 572);
             this.Load += new System.EventHandler(this.Shop_BookView_Load);
             this.pannelTong.ResumeLayout(false);
             this.ResumeLayout(false);

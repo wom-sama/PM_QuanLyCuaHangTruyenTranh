@@ -1,4 +1,5 @@
 ﻿using PM.BUS.Services.Facade;
+using PM.DAL.Models;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace PM.GUI.userConTrol.Employee
     public partial class XemDon : UserControl
     {
         private readonly QuanLyDonHangBUS _bus = new QuanLyDonHangBUS();
-
-        public XemDon()
+        private readonly NhanVien _currentNV;
+        public XemDon(NhanVien nv)
         {
             InitializeComponent();
+            _currentNV = nv;
             this.Load += XemDon_Load;
         }
 
@@ -33,12 +35,14 @@ namespace PM.GUI.userConTrol.Employee
         {
             try
             {
-                guna2DataGridView1.DataSource = _bus.LayDanhSachDonHang(trangThai);
+                // ✅ Lấy danh sách đơn hàng theo chi nhánh của nhân viên
+                guna2DataGridView1.DataSource = _bus.LayDanhSachDonHangTheoTrangThai(trangThai, _currentNV.MaChiNhanh);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("❌ Lỗi khi tải danh sách đơn hàng: " + ex.Message);
             }
+            
         }
 
         private void TinhChinhDataGridView()
@@ -59,26 +63,28 @@ namespace PM.GUI.userConTrol.Employee
 
         private void CapNhatSoLuongBadge()
         {
-            int tatCa = _bus.LayDanhSachDonHang(null).Count(); //Dếm tất cả đơn hàng
-            int dangXuLy = _bus.LayDanhSachDonHang("Chờ xử lý").Count();
-            int dangGiao = _bus.LayDanhSachDonHang("Đang giao").Count();
-            int daGiao = _bus.LayDanhSachDonHang("Đã giao").Count();
-            int daBan = _bus.LayDanhSachDonHang("Đã thanh toán").Count();
-            int khongDuyet = _bus.LayDanhSachDonHang("Không duyệt").Count();
-            int daHuy = _bus.LayDanhSachDonHang("Đơn Hàng Không Giao").Count();
+            string maCN = _currentNV.MaChiNhanh;
 
+            int tatCa = _bus.LayDanhSachDonHangTheoTrangThai(null, maCN).Count();
+            int dangXuLy = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý", maCN).Count();
+            int dangGiao = _bus.LayDanhSachDonHangTheoTrangThai("Đang giao", maCN).Count();
+            int daGiao = _bus.LayDanhSachDonHangTheoTrangThai("Đã giao", maCN).Count();
+            int daBan = _bus.LayDanhSachDonHangTheoTrangThai("Đã thanh toán", maCN).Count();
+            int khongDuyet = _bus.LayDanhSachDonHangTheoTrangThai("Không duyệt", maCN).Count();
+            int daHuy = _bus.LayDanhSachDonHangTheoTrangThai("Đơn Hàng Không Giao", maCN).Count();
 
-            btnTatCa.Text = $"Tất cả ({tatCa})"; // Cập nhật số lượng trên nút
+            btnTatCa.Text = $"Tất cả ({tatCa})";
             btnXuLy.Text = $"Chờ xử lý ({dangXuLy})";
             btnDangGiao.Text = $"Đang giao ({dangGiao})";
             btnĐaGiao.Text = $"Đã giao ({daGiao})";
             btnDaban.Text = $"Đã thanh toán ({daBan})";
-            btnKhongDuyet.Text = $"Không duyệt({khongDuyet})";
-            btnDaHuy.Text = $"Đơn Hàng Không Giao({daHuy})";
+            btnKhongDuyet.Text = $"Không duyệt ({khongDuyet})";
+            btnDaHuy.Text = $"Đơn Hàng Không Giao ({daHuy})";
         }
 
+
         // ==== Sự kiện lọc ====
-   
+
         private void btnLoc_Click_1(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();
@@ -123,6 +129,7 @@ namespace PM.GUI.userConTrol.Employee
                 MessageBox.Show("Lỗi khi lọc dữ liệu: " + ex.Message);
             }
         }
+       
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
