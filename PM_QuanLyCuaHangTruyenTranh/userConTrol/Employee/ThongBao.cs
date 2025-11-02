@@ -4,7 +4,6 @@ using PM.DAL;
 using PM.DAL.Interfaces;
 using PM.DAL.Models;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,13 +15,23 @@ namespace PM.GUI.userConTrol.Employee
         private readonly ThongBaoService _service;
         private readonly IUnitOfWork _unitOfWork;
         private readonly NhanVien _nhanVien;
+
         public ThongBao(NhanVien nv)
         {
             InitializeComponent();
+
             _nhanVien = nv;
-            // ✅ Khởi tạo UnitOfWork và ThongBaoService đúng thứ tự
-            _unitOfWork = new UnitOfWork();            // ✅ khởi tạo UnitOfWork
-            _service = new ThongBaoService(_unitOfWork); // ✅ truyền vào constructor
+
+            // Khởi tạo UnitOfWork và Service
+            _unitOfWork = new UnitOfWork();
+            _service = new ThongBaoService(_unitOfWork);
+
+            // Đăng ký Load event
+            this.Load += ThongBao_Load;
+
+            // Bật scroll panel
+            panelDanhSach.AutoScroll = true;
+            panelDanhSach.BackColor = Color.WhiteSmoke;
         }
 
         private void ThongBao_Load(object sender, EventArgs e)
@@ -32,7 +41,14 @@ namespace PM.GUI.userConTrol.Employee
 
         private void HienThiThongBao()
         {
-            var ds = _service.GetListByNguoiNhan(_nhanVien.MaNV);
+            // Lấy tất cả thông báo chung (ALL)
+            var dsChung = _service.GetAllThongBaoChung();
+
+            // Nếu muốn hiển thị cả thông báo cá nhân:
+            // var dsCaNhan = _service.GetAllThongBaoCaNhan(_nhanVien.MaNV);
+            // var ds = dsChung.Concat(dsCaNhan).OrderByDescending(tb => tb.NgayGui).ToList();
+
+            var ds = dsChung.OrderByDescending(tb => tb.NgayGui).ToList();
 
             panelDanhSach.Controls.Clear();
 
@@ -44,7 +60,8 @@ namespace PM.GUI.userConTrol.Employee
                     AutoSize = true,
                     Font = new Font("Segoe UI", 10, FontStyle.Italic),
                     ForeColor = Color.Gray,
-                    Dock = DockStyle.Top
+                    Dock = DockStyle.Top,
+                    Padding = new Padding(10)
                 };
                 panelDanhSach.Controls.Add(lbl);
                 return;
@@ -54,12 +71,14 @@ namespace PM.GUI.userConTrol.Employee
             {
                 Panel item = new Panel
                 {
-                    Height = 70,
+                    Height = 80,
                     Dock = DockStyle.Top,
                     Padding = new Padding(10),
-                    BackColor = Color.WhiteSmoke
+                    Margin = new Padding(5),
+                    BackColor = Color.White
                 };
 
+                // Tiêu đề
                 Label lblTieuDe = new Label
                 {
                     Text = tb.TieuDe,
@@ -68,6 +87,7 @@ namespace PM.GUI.userConTrol.Employee
                     Dock = DockStyle.Top
                 };
 
+                // Nội dung
                 Label lblNoiDung = new Label
                 {
                     Text = tb.NoiDung,
@@ -76,6 +96,7 @@ namespace PM.GUI.userConTrol.Employee
                     Dock = DockStyle.Top
                 };
 
+                // Ngày gửi
                 Label lblNgay = new Label
                 {
                     Text = tb.NgayGui.ToString("dd/MM/yyyy HH:mm"),
@@ -84,12 +105,14 @@ namespace PM.GUI.userConTrol.Employee
                     Dock = DockStyle.Bottom
                 };
 
+                // Thêm controls vào panel item
                 item.Controls.Add(lblNgay);
                 item.Controls.Add(lblNoiDung);
                 item.Controls.Add(lblTieuDe);
 
+                // Thêm panel item vào panelDanhSach
                 panelDanhSach.Controls.Add(item);
-                panelDanhSach.Controls.SetChildIndex(item, 0); // đẩy lên trên cùng
+                panelDanhSach.Controls.SetChildIndex(item, 0); // Đẩy item mới lên trên cùng
             }
         }
     }

@@ -45,22 +45,22 @@ namespace PM.BUS.Services
             }
         }
         // Lấy danh sách thông báo dành cho người nhận (hoặc ALL)
-        public List<ThongBao> GetListByNguoiNhan(string maNguoiNhan)
+        public List<ThongBao> GetAllThongBaoChung()
         {
             try
             {
                 return _unitOfWork.ThongBaoRepository
-                        .Find(tb => tb.NguoiNhan == "ALL" || tb.NguoiNhan == maNguoiNhan)
+                        .Find(tb => tb.NguoiNhan == "ALL")
                         .OrderByDescending(tb => tb.NgayGui)
                         .ToList();
-
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi khi lấy danh sách thông báo: " + ex.Message);
+                Console.WriteLine("Lỗi khi lấy danh sách thông báo chung: " + ex.Message);
                 return new List<ThongBao>();
             }
         }
+
 
         // ==================== THÊM ====================
         public bool Add(ThongBao thongBao)

@@ -113,7 +113,7 @@ namespace PM.BUS.Services.Facade
             {
                 MaThongBao = "TB" + DateTime.Now.Ticks,
                 TieuDe = "Đơn hàng được duyệt",
-                NoiDung = $"Đơn hàng {don.MaDonHang} của bạn đã được duyệt và đang giao.",
+                NoiDung = $"Đơn hàng {don.MaDonHang} của bạn đã được duyệt và sẽ giao trong vòng 3-5 ngày.",
                 NguoiNhan = don.MaKhach,
                 NgayGui = DateTime.Now
             });
@@ -261,7 +261,7 @@ namespace PM.BUS.Services.Facade
                 {
                     MaThongBao = "TB" + DateTime.Now.Ticks,
                     TieuDe = "Đơn hàng không được duyệt",
-                    NoiDung = $"Đơn hàng {don.MaDonHang} đã bị từ chối duyệt.",
+                    NoiDung = $"Đơn hàng {don.MaDonHang} đã bị từ chối duyệt vui lòng liên hệ admin 0378952722 để biết thêm chi tiết.",
                     NguoiNhan = don.MaKhach,
                     NgayGui = DateTime.Now
                 });

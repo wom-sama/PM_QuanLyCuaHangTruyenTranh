@@ -20,6 +20,7 @@
             this.btnCart = new Guna.UI2.WinForms.Guna2Button();
             this.panelDanhSach = new System.Windows.Forms.FlowLayoutPanel();
             this.pannelTong = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnCaNhan = new Guna.UI2.WinForms.Guna2Button();
             this.pannelTong.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -35,7 +36,7 @@
             this.txtFindTen.Name = "txtFindTen";
             this.txtFindTen.PlaceholderText = "Tìm kiếm sách...";
             this.txtFindTen.SelectedText = "";
-            this.txtFindTen.Size = new System.Drawing.Size(421, 41);
+            this.txtFindTen.Size = new System.Drawing.Size(284, 41);
             this.txtFindTen.TabIndex = 0;
             // 
             // btnFind
@@ -44,7 +45,7 @@
             this.btnFind.BorderRadius = 10;
             this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(476, 25);
+            this.btnFind.Location = new System.Drawing.Point(490, 25);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(137, 41);
             this.btnFind.TabIndex = 1;
@@ -73,11 +74,12 @@
             this.panelDanhSach.Location = new System.Drawing.Point(3, 80);
             this.panelDanhSach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelDanhSach.Name = "panelDanhSach";
-            this.panelDanhSach.Size = new System.Drawing.Size(830, 490);
+            this.panelDanhSach.Size = new System.Drawing.Size(833, 490);
             this.panelDanhSach.TabIndex = 2;
             // 
             // pannelTong
             // 
+            this.pannelTong.Controls.Add(this.btnCaNhan);
             this.pannelTong.Controls.Add(this.btnCart);
             this.pannelTong.Controls.Add(this.btnFind);
             this.pannelTong.Controls.Add(this.txtFindTen);
@@ -88,6 +90,19 @@
             this.pannelTong.Size = new System.Drawing.Size(836, 573);
             this.pannelTong.TabIndex = 3;
             this.pannelTong.Paint += new System.Windows.Forms.PaintEventHandler(this.pannelTong_Paint);
+            // 
+            // btnCaNhan
+            // 
+            this.btnCaNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCaNhan.BorderRadius = 10;
+            this.btnCaNhan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCaNhan.ForeColor = System.Drawing.Color.White;
+            this.btnCaNhan.Location = new System.Drawing.Point(333, 25);
+            this.btnCaNhan.Name = "btnCaNhan";
+            this.btnCaNhan.Size = new System.Drawing.Size(137, 41);
+            this.btnCaNhan.TabIndex = 3;
+            this.btnCaNhan.Text = "Cá nhân";
+            this.btnCaNhan.Click += new System.EventHandler(this.btnCaNhan_Click);
             // 
             // Shop_BookView
             // 
@@ -109,5 +124,6 @@
         private Guna.UI2.WinForms.Guna2Button btnCart;
         private System.Windows.Forms.FlowLayoutPanel panelDanhSach;
         private Guna.UI2.WinForms.Guna2Panel pannelTong;
+        private Guna.UI2.WinForms.Guna2Button btnCaNhan;
     }
 }

@@ -253,5 +253,10 @@ namespace PM.GUI.userConTrol.Customer
                 _unitOfWork.Save();
             }
         }
+
+        private void btnCaNhan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
