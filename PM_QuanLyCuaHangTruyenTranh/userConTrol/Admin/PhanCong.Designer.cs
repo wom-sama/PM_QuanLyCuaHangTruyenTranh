@@ -43,45 +43,49 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel_tmp = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhanCong)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panel_tmp.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPhanCong
             // 
+            this.dgvPhanCong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPhanCong.BackgroundColor = System.Drawing.Color.White;
             this.dgvPhanCong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhanCong.Location = new System.Drawing.Point(31, 370);
             this.dgvPhanCong.Name = "dgvPhanCong";
             this.dgvPhanCong.RowHeadersWidth = 51;
             this.dgvPhanCong.RowTemplate.Height = 24;
-            this.dgvPhanCong.Size = new System.Drawing.Size(660, 355);
+            this.dgvPhanCong.Size = new System.Drawing.Size(794, 355);
             this.dgvPhanCong.TabIndex = 0;
             // 
             // txtMaNV
             // 
-            this.txtMaNV.Location = new System.Drawing.Point(94, 44);
+            this.txtMaNV.Location = new System.Drawing.Point(152, 40);
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(100, 27);
             this.txtMaNV.TabIndex = 1;
             // 
             // txtTenCV
             // 
-            this.txtTenCV.Location = new System.Drawing.Point(138, 90);
+            this.txtTenCV.Location = new System.Drawing.Point(152, 90);
             this.txtTenCV.Name = "txtTenCV";
             this.txtTenCV.Size = new System.Drawing.Size(100, 27);
             this.txtTenCV.TabIndex = 3;
             // 
             // dtpBatDau
             // 
-            this.dtpBatDau.Location = new System.Drawing.Point(120, 185);
+            this.dtpBatDau.Location = new System.Drawing.Point(152, 183);
             this.dtpBatDau.Name = "dtpBatDau";
             this.dtpBatDau.Size = new System.Drawing.Size(200, 27);
             this.dtpBatDau.TabIndex = 4;
             // 
             // dtpKetThuc
             // 
-            this.dtpKetThuc.Location = new System.Drawing.Point(120, 230);
+            this.dtpKetThuc.Location = new System.Drawing.Point(152, 228);
             this.dtpKetThuc.Name = "dtpKetThuc";
             this.dtpKetThuc.Size = new System.Drawing.Size(200, 27);
             this.dtpKetThuc.TabIndex = 5;
@@ -90,7 +94,7 @@
             // 
             this.btnSua.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(407, 124);
+            this.btnSua.Location = new System.Drawing.Point(550, 110);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(141, 49);
             this.btnSua.TabIndex = 7;
@@ -102,7 +106,7 @@
             // 
             this.btnXoa.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(407, 218);
+            this.btnXoa.Location = new System.Drawing.Point(550, 207);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(141, 45);
             this.btnXoa.TabIndex = 8;
@@ -167,7 +171,7 @@
             this.btnThem.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnThem.Location = new System.Drawing.Point(407, 27);
+            this.btnThem.Location = new System.Drawing.Point(550, 31);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(141, 53);
             this.btnThem.TabIndex = 15;
@@ -177,6 +181,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtMaNV);
             this.groupBox1.Controls.Add(this.label5);
@@ -190,26 +195,38 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(31, 17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(326, 338);
+            this.groupBox1.Size = new System.Drawing.Size(373, 338);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
+            // 
+            // panel_tmp
+            // 
+            this.panel_tmp.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel_tmp.Controls.Add(this.btnSua);
+            this.panel_tmp.Controls.Add(this.btnThem);
+            this.panel_tmp.Controls.Add(this.btnXoa);
+            this.panel_tmp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_tmp.Location = new System.Drawing.Point(0, 0);
+            this.panel_tmp.Name = "panel_tmp";
+            this.panel_tmp.Size = new System.Drawing.Size(860, 741);
+            this.panel_tmp.TabIndex = 17;
+            this.panel_tmp.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_tmp_Paint);
             // 
             // PhanCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Pink;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dgvPhanCong);
+            this.Controls.Add(this.panel_tmp);
             this.Name = "PhanCong";
-            this.Size = new System.Drawing.Size(860, 819);
+            this.Size = new System.Drawing.Size(860, 741);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhanCong)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel_tmp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -231,5 +248,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.GroupBox groupBox1;
+        private Guna.UI2.WinForms.Guna2Panel panel_tmp;
     }
 }

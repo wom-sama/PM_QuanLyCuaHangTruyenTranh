@@ -387,6 +387,9 @@
     <EmbeddedResource Include="userConTrol\Admin\Edit_BOOk.resx">
       <DependentUpon>Edit_BOOk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Admin\PhanCong.resx">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\ucThongKeLoiNhuan.resx">
       <DependentUpon>ucThongKeLoiNhuan.cs</DependentUpon>
     </EmbeddedResource>
