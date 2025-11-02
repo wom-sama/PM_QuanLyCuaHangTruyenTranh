@@ -174,7 +174,7 @@ namespace PM.BUS.Services.Facade
             return true;
         }
 
-        public bool TaoDonHang(KhachHang kh, string loaiDon, string maDVVC, string hinhThucThanhToan, decimal tongTien, List<CT_GioHang> items)
+        public bool TaoDonHang(KhachHang kh, string mavn,string loaiDon, string maDVVC, string hinhThucThanhToan, decimal tongTien, List<CT_GioHang> items)
         {
             try
             {
@@ -182,6 +182,7 @@ namespace PM.BUS.Services.Facade
                 {
                     MaDonHang = "DH" + DateTime.Now.Ticks.ToString(),
                     MaKhach = kh.TenDangNhap,
+                    MaNV=mavn,
                     NgayDat = DateTime.Now,
                     LoaiDon = loaiDon,
                     TrangThai = "Chờ xử lý",

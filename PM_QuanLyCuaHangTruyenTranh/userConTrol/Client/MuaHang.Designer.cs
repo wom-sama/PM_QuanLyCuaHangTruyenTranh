@@ -67,6 +67,7 @@ namespace PM.GUI.userConTrol.Customer
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(700, 600);
             this.guna2Panel1.TabIndex = 0;
+            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // picBiaSach
             // 
@@ -191,7 +192,7 @@ namespace PM.GUI.userConTrol.Customer
             // lbl7
             // 
             this.lbl7.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbl7.Location = new System.Drawing.Point(45, 490);
+            this.lbl7.Location = new System.Drawing.Point(45, 497);
             this.lbl7.Name = "lbl7";
             this.lbl7.Size = new System.Drawing.Size(200, 25);
             this.lbl7.TabIndex = 35;
@@ -284,7 +285,7 @@ namespace PM.GUI.userConTrol.Customer
             this.btnDatHang.FillColor = System.Drawing.Color.Gray;
             this.btnDatHang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnDatHang.ForeColor = System.Drawing.Color.White;
-            this.btnDatHang.Location = new System.Drawing.Point(255, 530);
+            this.btnDatHang.Location = new System.Drawing.Point(255, 540);
             this.btnDatHang.Name = "btnDatHang";
             this.btnDatHang.Size = new System.Drawing.Size(200, 40);
             this.btnDatHang.TabIndex = 42;
@@ -296,7 +297,7 @@ namespace PM.GUI.userConTrol.Customer
             this.btnBack.FillColor = System.Drawing.Color.LightGray;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(45, 530);
+            this.btnBack.Location = new System.Drawing.Point(45, 540);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(120, 35);
             this.btnBack.TabIndex = 43;

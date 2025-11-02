@@ -26,8 +26,9 @@ namespace PM.GUI.userConTrol.Customer
         private GioHangService _gioHangService;
         private CT_GioHangService _ctGioHangService;
         private GHModel _currentGioHang;
+        private NhanVien _nhanVien;
 
-        public BookDetailControl(Sach sach, KhachHang khachHang, string maChiNhanh, Action onBack)
+        public BookDetailControl(Sach sach, KhachHang khachHang, NhanVien a, Action onBack)
         {
             InitializeComponent();
 
@@ -36,7 +37,7 @@ namespace PM.GUI.userConTrol.Customer
                 _sach = sach;
                 _khachHang = khachHang;
                 _onBack = onBack;
-                this._maChiNhanh = maChiNhanh;
+                _nhanVien = a;
 
                 // Khởi tạo service
                 var unit = new DAL.UnitOfWork();
@@ -46,7 +47,7 @@ namespace PM.GUI.userConTrol.Customer
                 LoadOrCreateCart();
             }
 
-            _maChiNhanh = maChiNhanh;
+            _maChiNhanh = a.MaChiNhanh;
         }
 
         private void BookDetailControl_Load(object sender, EventArgs e)
@@ -105,7 +106,7 @@ namespace PM.GUI.userConTrol.Customer
             // 🔹 Khai báo trước biến muaHang
             MuaHang muaHang = null;
 
-            muaHang = new MuaHang(_sach, _khachHang, _maChiNhanh, () =>
+            muaHang = new MuaHang(_sach,_khachHang,_nhanVien, () =>
             {
                 parentPanel.Controls.Remove(muaHang);
                 this.Visible = true;
