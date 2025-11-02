@@ -17,6 +17,10 @@ namespace PM.BUS.Services
         {
             _unitOfWork = unitOfWork;
         }
+        public ThongBaoService() 
+        {
+            _unitOfWork = new UnitOfWork();
+        }
 
         // ==================== LẤY DỮ LIỆU ====================
         public IEnumerable<ThongBao> GetAll()

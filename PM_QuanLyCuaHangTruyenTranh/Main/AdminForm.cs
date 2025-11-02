@@ -259,7 +259,8 @@ namespace PM.GUI.Main
                 case "btn_TheLoai": return new Edit_TheLoai { Dock = DockStyle.Fill };
                 case "btn_NhapKho": return new Edit_NhapKho() { Dock = DockStyle.Fill };
                 case "btn_TTCn":    return new  userConTrol.Common.ShowTTCN(currentNV.MaNV) { Dock = DockStyle.Fill };
-
+                case"Btn_ThongBao": return new userConTrol.Admin.GuiThongBao() { Dock =DockStyle.Fill};
+                case "btn_ChucVu": return new Edit_ChucVu { Dock = DockStyle.Fill };
                 default:
                     return null;
             }
@@ -332,6 +333,37 @@ namespace PM.GUI.Main
         {
             MoPanelConTheoNut("btn_NhapKho");
             btnCN_Click_1(sender, e);
+        }
+
+        private void Btn_ThongBao_Click(object sender, EventArgs e)
+        {
+            MoPanelConTheoNut("Btn_ThongBao");
+            btnCN_Click_1(sender, e);
+        }
+
+        private void btn_ChucVu_Click(object sender, EventArgs e)
+        {
+            MoPanelConTheoNut("btn_ChucVu");
+            btnCN_Click_1(sender, e);
+
+
+        }
+
+        private void btn_DangXuat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+       
+
+        private void btn_CuaHang_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2GradientTileButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }

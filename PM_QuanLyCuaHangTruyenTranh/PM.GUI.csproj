@@ -199,17 +199,35 @@
     <Compile Include="userConTrol\Admin\Edit_BOOK_CT.Designer.cs">
       <DependentUpon>Edit_BOOK_CT.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\Edit_ChucVu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\Edit_ChucVu.Designer.cs">
+      <DependentUpon>Edit_ChucVu.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Admin\Edit_NhapKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userConTrol\Admin\Edit_NhapKho.Designer.cs">
       <DependentUpon>Edit_NhapKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\GuiThongBao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\GuiThongBao.Designer.cs">
+      <DependentUpon>GuiThongBao.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Admin\PhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userConTrol\Admin\PhanCong.Designer.cs">
       <DependentUpon>PhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Admin\QuanLyTaiKhoanNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\QuanLyTaiKhoanNhanVien.Designer.cs">
+      <DependentUpon>QuanLyTaiKhoanNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Admin\TheLoai.cs">
       <SubType>UserControl</SubType>
@@ -411,11 +429,20 @@
     <EmbeddedResource Include="userConTrol\Admin\Edit_BOOk.resx">
       <DependentUpon>Edit_BOOk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Admin\Edit_ChucVu.resx">
+      <DependentUpon>Edit_ChucVu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\Edit_NhapKho.resx">
       <DependentUpon>Edit_NhapKho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Admin\GuiThongBao.resx">
+      <DependentUpon>GuiThongBao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\PhanCong.resx">
       <DependentUpon>PhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Admin\QuanLyTaiKhoanNhanVien.resx">
+      <DependentUpon>QuanLyTaiKhoanNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\TheLoai.resx">
       <DependentUpon>TheLoai.cs</DependentUpon>
