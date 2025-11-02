@@ -256,7 +256,19 @@ namespace PM.GUI.userConTrol.Customer
 
         private void btnCaNhan_Click(object sender, EventArgs e)
         {
+            // Dùng namespace đầy đủ cho Client class
+            PM.GUI.Main.Client clientForm = new PM.GUI.Main.Client(currentKhachHang);
 
+            clientForm.FormClosed += (s, args) =>
+            {
+                this.FindForm().Show();
+            };
+
+            clientForm.Show();
+            this.FindForm().Hide();
         }
+
+
+
     }
 }
