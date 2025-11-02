@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using PM.BUS.Helpers;
 using PM.BUS.Services.Sachsv;
 using PM.DAL.Models;
 using PM.GUI.FormThongBao;
@@ -54,7 +55,7 @@ namespace PM.GUI.userConTrol.Admin
             btnAdd = CreateButton("Thêm", Add_Click);
             btnEdit = CreateButton("Sửa", Edit_Click);
             btnDelete = CreateButton("Xóa", Delete_Click);
-         //   btnRefresh = CreateButton("Làm mới", async (s, e) => await LoadTheLoaiAsync());
+            btnRefresh = CreateButton("Làm mới", async (s, e) => await LoadTheLoaiAsync());
 
             pnlTop = new FlowLayoutPanel
             {
@@ -79,8 +80,7 @@ namespace PM.GUI.userConTrol.Admin
             dgvTheLoai.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã TL", DataPropertyName = "MaTheLoai" });
             dgvTheLoai.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Tên thể loại", DataPropertyName = "TenTheLoai", Width = 200 });
             dgvTheLoai.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ghi chú", DataPropertyName = "GhiChu", Width = 200 });
-            dgvTheLoai.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Số lượng sách", Name = "SoLuongSach", Width = 120 });
-
+           
             guna2Panel1.Controls.Add(dgvTheLoai);
             guna2Panel1.Controls.Add(pnlTop);
         }
@@ -104,26 +104,8 @@ namespace PM.GUI.userConTrol.Admin
             var list = await _theLoaiService.GetAllAsync();
             dgvTheLoai.DataSource = list.ToList();
 
-            // ✅ Đảm bảo cột SoLuongSach tồn tại
-            if (!dgvTheLoai.Columns.Contains("SoLuongSach"))
-            {
-                dgvTheLoai.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    Name = "SoLuongSach",
-                    HeaderText = "Số lượng sách",
-                    Width = 120
-                });
-            }
-
-            // ✅ Gán số lượng sách vào từng dòng
-            foreach (DataGridViewRow row in dgvTheLoai.Rows)
-            {
-                if (row.DataBoundItem is TheLoai tl)
-                {
-                    int soLuong = await _theLoaiService.LaySoLuongSachTL(tl.MaTheLoai);
-                    row.Cells["SoLuongSach"].Value = soLuong;
-                }
-            }
+           
+            
         }
 
 
@@ -209,7 +191,7 @@ namespace PM.GUI.userConTrol.Admin
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            txtMa = new Guna2TextBox { PlaceholderText = "Mã thể loại", Text = tl?.MaTheLoai };
+            txtMa = new Guna2TextBox { PlaceholderText = "Mã thể loại", Text = tl?.MaTheLoai??RandHelper.TaoMa("TL") }; txtMa.ReadOnly = true;
             txtTen = new Guna2TextBox { PlaceholderText = "Tên thể loại", Text = tl?.TenTheLoai };
             txtGhiChu = new Guna2TextBox { PlaceholderText = "Ghi chú", Text = tl?.GhiChu, Multiline = true, Height = 60 };
 
