@@ -160,10 +160,10 @@ namespace PM.GUI.Main
             this.btn_phanCong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_phanCong.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_phanCong.ForeColor = System.Drawing.Color.White;
-            this.btn_phanCong.Location = new System.Drawing.Point(-3, 472);
+            this.btn_phanCong.Location = new System.Drawing.Point(6, 593);
             this.btn_phanCong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_phanCong.Name = "btn_phanCong";
-            this.btn_phanCong.Size = new System.Drawing.Size(136, 32);
+            this.btn_phanCong.Size = new System.Drawing.Size(153, 40);
             this.btn_phanCong.TabIndex = 18;
             this.btn_phanCong.Text = "Phân Công";
             this.btn_phanCong.Click += new System.EventHandler(this.btn_phanCong_Click);
@@ -177,7 +177,7 @@ namespace PM.GUI.Main
             this.Btn_ThongBao.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.Btn_ThongBao.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_ThongBao.ForeColor = System.Drawing.Color.White;
-            this.Btn_ThongBao.Location = new System.Drawing.Point(0, 621);
+            this.Btn_ThongBao.Location = new System.Drawing.Point(6, 769);
             this.Btn_ThongBao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_ThongBao.Name = "Btn_ThongBao";
             this.Btn_ThongBao.Size = new System.Drawing.Size(153, 40);
@@ -193,7 +193,7 @@ namespace PM.GUI.Main
             this.btn_CH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_CH.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_CH.ForeColor = System.Drawing.Color.White;
-            this.btn_CH.Location = new System.Drawing.Point(0, 584);
+            this.btn_CH.Location = new System.Drawing.Point(6, 725);
             this.btn_CH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_CH.Name = "btn_CH";
             this.btn_CH.Size = new System.Drawing.Size(153, 40);
@@ -209,7 +209,7 @@ namespace PM.GUI.Main
             this.btn_TTCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_TTCN.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_TTCN.ForeColor = System.Drawing.Color.White;
-            this.btn_TTCN.Location = new System.Drawing.Point(-3, 547);
+            this.btn_TTCN.Location = new System.Drawing.Point(6, 681);
             this.btn_TTCN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_TTCN.Name = "btn_TTCN";
             this.btn_TTCN.Size = new System.Drawing.Size(153, 40);
@@ -240,7 +240,7 @@ namespace PM.GUI.Main
             this.Btn_chiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.Btn_chiNhanh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_chiNhanh.ForeColor = System.Drawing.Color.White;
-            this.Btn_chiNhanh.Location = new System.Drawing.Point(0, 509);
+            this.Btn_chiNhanh.Location = new System.Drawing.Point(6, 637);
             this.Btn_chiNhanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_chiNhanh.Name = "Btn_chiNhanh";
             this.Btn_chiNhanh.Size = new System.Drawing.Size(153, 40);
@@ -277,6 +277,7 @@ namespace PM.GUI.Main
             this.btn_BangLuong.Size = new System.Drawing.Size(153, 40);
             this.btn_BangLuong.TabIndex = 11;
             this.btn_BangLuong.Text = "xem luong cho nhan vien";
+            this.btn_BangLuong.Click += new System.EventHandler(this.btn_BangLuong_Click);
             // 
             // btn_LoiLo
             // 
