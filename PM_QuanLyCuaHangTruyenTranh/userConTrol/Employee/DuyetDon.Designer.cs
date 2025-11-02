@@ -53,7 +53,6 @@ namespace PM.GUI.userConTrol.Employee
             this.lblHTTT = new System.Windows.Forms.Label();
             this.dgvChiTiet = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnDuyetDon = new Guna.UI2.WinForms.Guna2Button();
-            this.lblHTTT = new System.Windows.Forms.Label();
             this.btnTaiLai = new Guna.UI2.WinForms.Guna2Button();
             this.lblTitleDonHang = new System.Windows.Forms.Label();
             this.lblTitleChiTiet = new System.Windows.Forms.Label();

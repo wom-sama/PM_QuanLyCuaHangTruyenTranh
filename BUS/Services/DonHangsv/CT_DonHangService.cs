@@ -205,12 +205,17 @@ namespace PM.BUS.Services.DonHangsv
 
 
 
-        public async Task<int>LaySoLuongBanDuocTheoSachAsync(string maSach)
+        public async Task<int> LaySoLuongBanDuocTheoSachAsync(string maSach)
         {
             try
             {
+                var donHangs = await _unitOfWork.DonHangRepository.GetAllAsync();
+                var daGiao = donHangs.Where(dh => dh.TrangThai == "Đã giao").Select(dh => dh.MaDonHang).ToList();
+
                 var ctDonHangs = await _unitOfWork.CT_DonHangRepository.GetAllAsync();
-                return ctDonHangs.Where(ct => ct.MaSach == maSach).Sum(ct => ct.SoLuong);
+                return ctDonHangs
+                    .Where(ct => daGiao.Contains(ct.MaDonHang) && ct.MaSach == maSach)
+                    .Sum(ct => ct.SoLuong);
             }
             catch (Exception ex)
             {
@@ -218,7 +223,9 @@ namespace PM.BUS.Services.DonHangsv
                 return 0;
             }
         }
-    }
+
+
+        }
 
 
 }

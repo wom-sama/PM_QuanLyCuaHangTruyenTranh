@@ -254,6 +254,8 @@ namespace PM.GUI.Main
                    return new Edit_TacGia { Dock = DockStyle.Fill };
                case "btn_LoiLo":
                    return new ucThongKeLoiNhuan { Dock = DockStyle.Fill };
+                case "btn_phanCong":
+                    return new userConTrol.Admin.PhanCong { Dock = DockStyle.Fill };
 
 
 
@@ -295,6 +297,13 @@ namespace PM.GUI.Main
         private void btn_LoiLo_Click(object sender, EventArgs e)
         {
             MoPanelConTheoNut("btn_LoiLo");
+            btnCN_Click_1(sender, e);
+
+        }
+
+        private void btn_phanCong_Click(object sender, EventArgs e)
+        {
+            MoPanelConTheoNut("btn_phanCong");
             btnCN_Click_1(sender, e);
 
         }

@@ -53,6 +53,7 @@ namespace PM.GUI.Main
             this.BtnThem = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btn_phanCong = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.pannel_Admin.SuspendLayout();
             this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
@@ -121,6 +122,7 @@ namespace PM.GUI.Main
             | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelCN.AutoScroll = true;
             this.PanelCN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PanelCN.Controls.Add(this.btn_phanCong);
             this.PanelCN.Controls.Add(this.Btn_ThongBao);
             this.PanelCN.Controls.Add(this.btn_CH);
             this.PanelCN.Controls.Add(this.btn_TTCN);
@@ -155,7 +157,7 @@ namespace PM.GUI.Main
             this.Btn_ThongBao.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.Btn_ThongBao.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_ThongBao.ForeColor = System.Drawing.Color.White;
-            this.Btn_ThongBao.Location = new System.Drawing.Point(3, 734);
+            this.Btn_ThongBao.Location = new System.Drawing.Point(0, 776);
             this.Btn_ThongBao.Name = "Btn_ThongBao";
             this.Btn_ThongBao.Size = new System.Drawing.Size(153, 40);
             this.Btn_ThongBao.TabIndex = 17;
@@ -170,7 +172,7 @@ namespace PM.GUI.Main
             this.btn_CH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_CH.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_CH.ForeColor = System.Drawing.Color.White;
-            this.btn_CH.Location = new System.Drawing.Point(3, 688);
+            this.btn_CH.Location = new System.Drawing.Point(0, 730);
             this.btn_CH.Name = "btn_CH";
             this.btn_CH.Size = new System.Drawing.Size(153, 40);
             this.btn_CH.TabIndex = 16;
@@ -185,7 +187,7 @@ namespace PM.GUI.Main
             this.btn_TTCN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_TTCN.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_TTCN.ForeColor = System.Drawing.Color.White;
-            this.btn_TTCN.Location = new System.Drawing.Point(0, 642);
+            this.btn_TTCN.Location = new System.Drawing.Point(-3, 684);
             this.btn_TTCN.Name = "btn_TTCN";
             this.btn_TTCN.Size = new System.Drawing.Size(153, 40);
             this.btn_TTCN.TabIndex = 15;
@@ -215,7 +217,7 @@ namespace PM.GUI.Main
             this.Btn_chiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.Btn_chiNhanh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_chiNhanh.ForeColor = System.Drawing.Color.White;
-            this.Btn_chiNhanh.Location = new System.Drawing.Point(3, 594);
+            this.Btn_chiNhanh.Location = new System.Drawing.Point(0, 636);
             this.Btn_chiNhanh.Name = "Btn_chiNhanh";
             this.Btn_chiNhanh.Size = new System.Drawing.Size(153, 40);
             this.Btn_chiNhanh.TabIndex = 13;
@@ -432,6 +434,22 @@ namespace PM.GUI.Main
             this.pannel_CT_CN.Size = new System.Drawing.Size(854, 477);
             this.pannel_CT_CN.TabIndex = 0;
             // 
+            // btn_phanCong
+            // 
+            this.btn_phanCong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_phanCong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_phanCong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_phanCong.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_phanCong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_phanCong.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_phanCong.ForeColor = System.Drawing.Color.White;
+            this.btn_phanCong.Location = new System.Drawing.Point(-3, 590);
+            this.btn_phanCong.Name = "btn_phanCong";
+            this.btn_phanCong.Size = new System.Drawing.Size(153, 40);
+            this.btn_phanCong.TabIndex = 18;
+            this.btn_phanCong.Text = "Phân Công";
+            this.btn_phanCong.Click += new System.EventHandler(this.btn_phanCong_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -481,5 +499,6 @@ namespace PM.GUI.Main
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_CH;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_TTCN;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btn_phanCong;
     }
 }
