@@ -344,6 +344,12 @@
     <Compile Include="userConTrol\Employee\LenDon.Designer.cs">
       <DependentUpon>LenDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\ThongBao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\ThongBao.Designer.cs">
+      <DependentUpon>ThongBao.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\XemDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
