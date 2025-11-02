@@ -1,91 +1,108 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PM.DAL.Models;
+using PM.BUS.Services.DonHangsv;
+using PM.BUS.Services.TaiKhoansv;
+using PM.BUS.Services.VanChuyensv;
+using PM.DAL;
 
 namespace PM.GUI.userConTrol.Admin
 {
     public partial class ucThongKeLoiNhuan : UserControl
     {
-        private AppDbContext _context;
+        private readonly DonHangService _donHangService;
+        private readonly CT_DonHangService _ctDonHangService;
+        private readonly NhanVienService _nhanVienService;
+        private readonly CT_NhapKhoService _ctNhapKhoService;
+        private readonly NhapKhoService _nhapKhoService;
 
         public ucThongKeLoiNhuan()
         {
             InitializeComponent();
-            _context = new AppDbContext();
+
+            // Khởi tạo UnitOfWork
+            var unitOfWork = new UnitOfWork();
+
+            // Khởi tạo service với UnitOfWork
+            _donHangService = new DonHangService(unitOfWork);
+            _ctDonHangService = new CT_DonHangService(unitOfWork);
+            _nhanVienService = new NhanVienService(unitOfWork);
+            _ctNhapKhoService = new CT_NhapKhoService(unitOfWork);
+            _nhapKhoService = new NhapKhoService(unitOfWork);
 
             LoadChiNhanh();
             dtpFrom.Value = DateTime.Now.AddMonths(-1);
             dtpTo.Value = DateTime.Now;
         }
 
-        // Load danh sách chi nhánh vào ComboBox
         private void LoadChiNhanh()
         {
-            var listChiNhanh = _context.ChiNhanhs
-                .Where(c => c.TrangThai)
+            var listChiNhanh = _nhanVienService.GetAll()
+                .Where(nv => nv.ChiNhanh != null && nv.ChiNhanh.TrangThai)
+                .Select(nv => nv.ChiNhanh)
+                .Distinct()
                 .Select(c => new { c.MaChiNhanh, c.TenChiNhanh })
                 .ToList();
 
             cmbChiNhanh.DataSource = listChiNhanh;
             cmbChiNhanh.DisplayMember = "TenChiNhanh";
             cmbChiNhanh.ValueMember = "MaChiNhanh";
-            cmbChiNhanh.SelectedIndex = -1; // không chọn mặc định
+            cmbChiNhanh.SelectedIndex = -1;
         }
 
-        // Xử lý nút Thống kê
-        private void btnThongKe_Click(object sender, EventArgs e)
+        private async void btnThongKe_Click(object sender, EventArgs e)
         {
             string maCN = cmbChiNhanh.SelectedValue?.ToString();
             DateTime fromDate = dtpFrom.Value.Date;
             DateTime toDate = dtpTo.Value.Date;
 
-            // Lấy danh sách đơn hàng theo chi nhánh và khoảng thời gian
-            var query = _context.CT_DonHangs
-                .Where(ct => ct.DonHang.NgayDat >= fromDate && ct.DonHang.NgayDat <= toDate);
+            var donHangs = (await _donHangService.GetAllAsync())
+                .Where(dh => dh.NgayDat >= fromDate && dh.NgayDat <= toDate);
 
             if (!string.IsNullOrEmpty(maCN))
             {
-                query = query.Where(ct => ct.DonHang.NhanVien.MaChiNhanh == maCN);
+                donHangs = donHangs
+                    .Where(dh => dh.NhanVien != null && dh.NhanVien.MaChiNhanh == maCN);
             }
 
-            var result = query
-                .Select(ct => new
+            var donHangIds = donHangs.Select(dh => dh.MaDonHang).ToList();
+
+            var ctDonHangs = (await _ctDonHangService.GetAllAsync())
+                .Where(ct => donHangIds.Contains(ct.MaDonHang))
+                .ToList();
+
+            var result = ctDonHangs.Select(ct =>
+            {
+                // Lấy chi tiết nhập kho gần nhất cho sách này
+                var nhapKho = (from ctNk in _ctNhapKhoService.GetAll()
+                               join nk in _nhapKhoService.GetAll() on ctNk.MaPhieuNhap equals nk.MaPhieuNhap
+                               where ctNk.MaSach == ct.MaSach
+                               orderby nk.NgayNhap descending
+                               select ctNk)
+                              .FirstOrDefault();
+
+                decimal chiPhi = (nhapKho?.DonGia ?? 0) * ct.SoLuong;
+
+                return new
                 {
                     ct.MaDonHang,
-                    ct.DonHang.NgayDat,
-                    TenSach = ct.Sach.TenSach,
+                    NgayDat = ct.DonHang?.NgayDat ?? DateTime.MinValue,
+                    TenSach = ct.Sach?.TenSach ?? "Không xác định",
                     SoLuongBan = ct.SoLuong,
                     DoanhThu = ct.ThanhTien,
-                    // Lấy giá nhập từ CT_NhapKho tương ứng
-                    ChiPhi = _context.CT_NhapKhos
-                        .Where(nk => nk.MaSach == ct.MaSach)
-                        .Select(nk => nk.DonGia * ct.SoLuong)
-                        .FirstOrDefault(),
-                    LoiNhuan = ct.ThanhTien - _context.CT_NhapKhos
-                        .Where(nk => nk.MaSach == ct.MaSach)
-                        .Select(nk => nk.DonGia * ct.SoLuong)
-                        .FirstOrDefault()
-                })
-                .OrderBy(r => r.NgayDat)
-                .ToList();
+                    ChiPhi = chiPhi,
+                    LoiNhuan = ct.ThanhTien - chiPhi
+                };
+            })
+            .OrderBy(r => r.NgayDat)
+            .ToList();
 
             dgvLoiNhuan.DataSource = result;
 
-            // =================== TÍNH TỔNG ===================
-            decimal tongDoanhThu = result.Sum(r => r.DoanhThu);
-            decimal tongChiPhi = result.Sum(r => r.ChiPhi);
-            decimal tongLoiNhuan = result.Sum(r => r.LoiNhuan);
-
-            lblTongDoanhThu.Text = $"Tổng doanh thu: {tongDoanhThu:n0} VNĐ";
-            lblTongChiPhi.Text = $"Tổng chi phí: {tongChiPhi:n0} VNĐ";
-            lblTongLoiNhuan.Text = $"Tổng lợi nhuận: {tongLoiNhuan:n0} VNĐ";
+            lblTongDoanhThu.Text = $"Tổng doanh thu: {result.Sum(r => r.DoanhThu):n0} VNĐ";
+            lblTongChiPhi.Text = $"Tổng chi phí: {result.Sum(r => r.ChiPhi):n0} VNĐ";
+            lblTongLoiNhuan.Text = $"Tổng lợi nhuận: {result.Sum(r => r.LoiNhuan):n0} VNĐ";
         }
     }
 }
