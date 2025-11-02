@@ -136,10 +136,28 @@ namespace PM.BUS.Services.Facade
         // ==================== BỔ SUNG PHƯƠNG THỨC CHO FORM DUYỆT ====================
 
         // Lấy danh sách đơn hàng theo trạng thái cụ thể
-        public List<object> LayDanhSachDonHangTheoTrangThai(string trangThai)
+        public IEnumerable<object> LayDanhSachDonHangTheoTrangThai(string trangThai, string maChiNhanh)
         {
-            return LayDanhSachDonHang(trangThai).ToList();
+            var donHangs = _donHangService.GetAll()
+                .Where(d => d.TrangThai == trangThai
+                            && d.NhanVien != null
+                            && d.NhanVien.MaChiNhanh == maChiNhanh)
+                .Select(d => new
+                {
+                    d.MaDonHang,
+                    d.NgayDat,
+                    d.TrangThai,
+                    NhanVien = d.NhanVien.HoTen,
+                    MaChiNhanh = d.NhanVien.MaChiNhanh,
+                    KhachHang = d.Khach != null ? d.Khach.HoTen : "Không rõ",
+                    d.TongTien
+                })
+                .ToList();
+
+            return donHangs;
         }
+
+
 
         // Lấy đơn hàng theo mã đơn
         public DonHang LayDonHangTheoMa(string maDonHang)
@@ -178,6 +196,7 @@ namespace PM.BUS.Services.Facade
         {
             try
             {
+
                 var don = new DonHang
                 {
                     MaDonHang = "DH" + DateTime.Now.Ticks.ToString(),
@@ -281,6 +300,14 @@ namespace PM.BUS.Services.Facade
 
             don.TrangThai = "Đơn Hàng Không Giao"; // trạng thái mới
             return _donHangService.Update(don); 
+        }
+        // Đếm đơn hàng chờ xử lý theo chi nhánh
+        public int DemDonHangChoXuLyTheoChiNhanh(string maChiNhanh)
+        {
+            return _donHangService.GetAll()
+                .Count(d => d.TrangThai == "Chờ xử lý"
+                         && d.NhanVien != null
+                         && d.NhanVien.MaChiNhanh == maChiNhanh);
         }
 
 

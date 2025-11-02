@@ -140,5 +140,25 @@ namespace PM.BUS.Services.LamViecsv
                 return false;
             }
         }
+        // ==================== LẤY DANH SÁCH PHÂN CÔNG THEO NHÂN VIÊN ====================
+        public IEnumerable<PhanCong> GetByNhanVien(string maNhanVien)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(maNhanVien))
+                    return new List<PhanCong>();
+
+                return _unitOfWork.PhanCongRepository
+                    .GetAll()
+                    .Where(p => p.MaNV == maNhanVien)  // 🔍 lọc đúng nhân viên
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách phân công theo nhân viên: " + ex.Message);
+                return new List<PhanCong>();
+            }
+        }
+
     }
 }

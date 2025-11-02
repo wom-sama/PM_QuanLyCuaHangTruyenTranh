@@ -10,15 +10,16 @@ namespace PM.GUI.userConTrol.Employee
     public partial class DuyetDon : UserControl
     {
         private readonly QuanLyDonHangBUS _bus;
+        private readonly NhanVien _currentNhanVien;
         private string selectedMaDonHang = null;
         public event Action OnDonHangDuyet; // 🔔 sự kiện callback
 
         // ✅ Constructor nhận bus từ form cha
-        public DuyetDon(QuanLyDonHangBUS bus)
+        public DuyetDon(QuanLyDonHangBUS bus, NhanVien currentNhanVien)
         {
             InitializeComponent();
-            _bus = bus ?? throw new ArgumentNullException(nameof(bus)); // đảm bảo không null
-
+            _bus = bus;
+            _currentNhanVien = currentNhanVien;
             // Định dạng label sau khi InitializeComponent()
             var labels = new[] { lblTenKhach, lblSDT, lblEmail, lblDiaChi, lblDonViVC, lblTongTien,lblNgayDat, lblNgayGiao,lblHTTT};
             int x = 20, y = 15, spacing = 22;
@@ -32,18 +33,25 @@ namespace PM.GUI.userConTrol.Employee
             }
 
             // Nạp danh sách đơn hàng
-            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý");
+            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý", currentNhanVien.MaChiNhanh);
             dgvChiTiet.DataSource = null;
+
+            // Load danh sách đơn
+            LoadDonHang();
         }
 
         private void LoadDonHang()
         {
-            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý");
+            // Gọi trực tiếp BUS để lọc theo chi nhánh
+            dgvDonHang.DataSource = _bus.LayDanhSachDonHangTheoTrangThai("Chờ xử lý", _currentNhanVien.MaChiNhanh);
+
+
             dgvChiTiet.DataSource = null;
             selectedMaDonHang = null;
-            OnDonHangDuyet?.Invoke(); // 🔔 đảm bảo luôn sync chuông khi tải lại
+            OnDonHangDuyet?.Invoke(); // 🔔 đồng bộ chuông
             XoaThongTinChiTiet();
         }
+
 
         private void dgvDonHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -150,6 +158,13 @@ namespace PM.GUI.userConTrol.Employee
                 return;
             }
 
+            // ✅ Kiểm tra chi nhánh
+            if (donHang.NhanVien?.MaChiNhanh != _currentNhanVien.MaChiNhanh)
+            {
+                MessageBox.Show("⚠️ Bạn không được phép duyệt đơn của chi nhánh khác!", "Thông báo");
+                return;
+            }
+
             if (donHang.TrangThai != "Chờ xử lý")
             {
                 MessageBox.Show("⚠️ Chỉ duyệt các đơn đang xử lý!");
@@ -161,15 +176,14 @@ namespace PM.GUI.userConTrol.Employee
             {
                 MessageBox.Show($"✅ Đơn {selectedMaDonHang} đã chuyển sang trạng thái 'Đang giao'!");
                 LoadDonHang();
-                OnDonHangDuyet?.Invoke(); // 🔔 Báo lại cho form cha cập nhật chuông
+                OnDonHangDuyet?.Invoke();
             }
             else
             {
                 MessageBox.Show("❌ Duyệt đơn thất bại!");
             }
-
-            LoadDonHang();
         }
+
 
 
         private void BtnTaiLai_Click(object sender, EventArgs e)

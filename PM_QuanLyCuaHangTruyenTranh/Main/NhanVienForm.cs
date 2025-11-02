@@ -18,7 +18,7 @@ namespace PM.GUI.Main
     {
         private bool isMenuVisible = false; // Trạng thái panel menu
         private Timer menuTimer;            // Timer để tạo hiệu ứng
-        private int targetWidth = 150;      // Độ rộng tối đa của panelMenu  
+        private int targetWidth = 160;      // Độ rộng tối đa của panelMenu  
         private int slideSpeed = 200;        // Tốc độ trượt
 
         private readonly QuanLyDonHangBUS _bus = new QuanLyDonHangBUS();
@@ -50,7 +50,9 @@ namespace PM.GUI.Main
         {
             try
             {
-                int soLuong = _bus.DemDonHangChoXuLy(); // ✅ dùng hàm đếm
+                // ✅ Đếm đơn hàng chờ duyệt theo chi nhánh của nhân viên hiện tại
+                int soLuong = _bus.DemDonHangChoXuLyTheoChiNhanh(currentNV.MaChiNhanh);
+
                 if (soLuong > 0)
                 {
                     lblThongBao.Visible = true;
@@ -168,7 +170,7 @@ namespace PM.GUI.Main
             try
             {
                 // 🟩 Khi nhấn chuông -> mở giao diện duyệt đơn
-                DuyetDon duyetDonUC = new DuyetDon(_bus);
+                DuyetDon duyetDonUC = new DuyetDon(_bus, currentNV);  // ✅ truyền nhân viên hiện tại
 
                 duyetDonUC.OnDonHangDuyet += () => CapNhatThongBao();
                 // 🔔 Khi duyệt thành công trong UC => cập nhật lại chuông ngay
@@ -209,28 +211,23 @@ namespace PM.GUI.Main
 
         private void btnDuyetDon_Click(object sender, EventArgs e)
         {
-            var uc = new DuyetDon(_bus);
+            var uc = new DuyetDon(_bus, currentNV);  // ✅ truyền nhân viên hiện tại
             uc.OnDonHangDuyet += () => CapNhatThongBao(); // 🔔 đồng bộ chuông
             HienThiUserControl(uc);
         }
 
         private void btnXemDon_Click(object sender, EventArgs e)
         {
-            var uc = new XemDon();
+            var uc = new XemDon(currentNV);
             HienThiUserControl(uc);
         }
 
         private void btnCaLam_Click(object sender, EventArgs e)
         {
-            var uc = new CaLam();
+            var uc = new CaLam(currentNV.MaNV); // ✅ chỉ xem được ca của mình
             HienThiUserControl(uc);
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            isMenuVisible = !isMenuVisible; // Đảo trạng thái
-            menuTimer.Start();              // Kích hoạt hiệu ứng
-        }
         private void MenuTimer_Tick(object sender, EventArgs e)
         {
             if (isMenuVisible)
@@ -297,7 +294,7 @@ namespace PM.GUI.Main
 
         private void btnGiaoHang_Click(object sender, EventArgs e)
         {
-            var uc = new GiaoHang();
+            var uc = new GiaoHang(currentNV);
             HienThiUserControl(uc);
         }
 
