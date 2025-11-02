@@ -1,6 +1,7 @@
 ﻿using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Sachsv;
 using PM.BUS.Services.VanChuyensv;
+using PM.BUS.Services.TaiKhoansv;
 using PM.DAL;
 using PM.DAL.Models;
 using PM.GUI.userConTrol.Common;
@@ -28,15 +29,16 @@ namespace PM.GUI.userConTrol.Customer
         private GioHang currentGioHang;
       
 
-        public Shop_BookView(KhachHang khachHang, NhanVien nhanVien)
+        public Shop_BookView(KhachHang khachHang)
         {
             currentKhachHang = khachHang;
-            onlineNhanVien = nhanVien;
+           
             _unitOfWork = new UnitOfWork();
             _gioHangService = new GioHangService(_unitOfWork);
             _ctGioHangService = new CT_GioHangService(_unitOfWork);
             if (!DesignMode)
                 InitializeComponent();
+
 
         }
 
@@ -44,6 +46,20 @@ namespace PM.GUI.userConTrol.Customer
         {
             if (DesignMode) return;
             LoadOrCreateCart(); // ✅ KHỞI TẠO GIỎ HÀNG CHO KHÁCH HÀNG
+                                // Load chi nhánh vào combobox (nếu cần)
+                                // Tạo danh sách dữ liệu cho ComboBox
+            var danhSachChiNhanh = new List<KeyValuePair<string, string>>()
+                {
+             new KeyValuePair<string, string>("NV_ONLINE_HCM", "Chi Nhánh Hồ Chí Minh"),
+            new KeyValuePair<string, string>("NV_ONLINE_HN", "Chi Nhánh Hà Nội")
+};
+
+            // Gán nguồn dữ liệu cho ComboBox
+            cbChiNhanh.DataSource = danhSachChiNhanh;
+            cbChiNhanh.DisplayMember = "Value";   // Hiển thị tên chi nhánh
+            cbChiNhanh.ValueMember = "Key";       // Giá trị tương ứng (mã)
+            this.onlineNhanVien = new NhanVienService().GetById(cbChiNhanh.SelectedValue.ToString());
+            // Hiển thị tất cả sách
             LoadAllBooks();
         }
 
@@ -161,7 +177,7 @@ namespace PM.GUI.userConTrol.Customer
 
             // Mở MuaHang
             MuaHang muaHang = null; // khai báo trước
-            muaHang = new MuaHang(sach, currentKhachHang,onlineNhanVien.MaChiNhanh, () =>
+            muaHang = new MuaHang(sach, currentKhachHang,onlineNhanVien, () =>
             {
                 pannelTong.Controls.Remove(muaHang);
                 panelDanhSach.Visible = true;
@@ -181,7 +197,7 @@ namespace PM.GUI.userConTrol.Customer
 
             BookDetailControl detailControl = null;
 
-            detailControl = new BookDetailControl(sach, currentKhachHang,onlineNhanVien.MaChiNhanh, () =>
+            detailControl = new BookDetailControl(sach, currentKhachHang,onlineNhanVien, () =>
             {
                 pannelTong.Controls.Remove(detailControl);
                 panelDanhSach.Visible = true;
@@ -214,7 +230,7 @@ namespace PM.GUI.userConTrol.Customer
 
             // Tạo UserControl giỏ hàng với onBack
             cartControl = new GHControl(
-                currentGioHang.MaGioHang,onlineNhanVien.MaChiNhanh,
+                currentGioHang.MaGioHang,onlineNhanVien,
                 currentKhachHang,
                 _ctGioHangService,
                 _gioHangService,
@@ -252,6 +268,17 @@ namespace PM.GUI.userConTrol.Customer
                 _gioHangService.Add(currentGioHang);
                 _unitOfWork.Save();
             }
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.onlineNhanVien = new NhanVienService().GetById(cbChiNhanh.SelectedValue.ToString());
+
+        }
+
+        private void txtFindTen_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

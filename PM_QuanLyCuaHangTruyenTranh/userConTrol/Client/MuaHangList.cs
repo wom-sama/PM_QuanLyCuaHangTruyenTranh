@@ -1,6 +1,8 @@
 ﻿using PM.BUS.Services;
 using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Facade;
+using PM.BUS.Services.VanChuyensv;
+using PM.BUS.Services.TaiKhoansv;
 using PM.DAL.Models;
 using PM.GUI.userConTrol.Customer;
 using System;
@@ -24,12 +26,14 @@ namespace PM.GUI.userConTrol.Client
         private Label lblTongTien;
         private Button btnDatHang;
         private DateTimePicker dtpNgayDat;
+        private string _manv;
 
-        public MuaHangList(List<CT_GioHang> items, KhachHang khach, string vanChuyen = "", string thanhToan = "", DateTime? ngayDat = null, Action onBack = null)
+        public MuaHangList(List<CT_GioHang> items,string manv, KhachHang khach, string vanChuyen = "", string thanhToan = "", DateTime? ngayDat = null, Action onBack = null)
         {
             _items = items;
             _khach = khach;
             _onBack = onBack;
+            _manv = manv;
 
             InitializeComponent();
             LoadItems(vanChuyen, thanhToan, ngayDat ?? DateTime.Now);
@@ -232,6 +236,15 @@ namespace PM.GUI.userConTrol.Client
 
         private void BtnDatHang_Click(object sender, EventArgs e)
         {
+            //kiem tra so luong ton kho
+            foreach (var ct in _items)
+            {
+                if (ct.SoLuong > new KhoService().LaySoLuongTon(ct.Sach.MaSach, new NhanVienService().GetById(_manv).MaChiNhanh))
+                {
+                    MessageBox.Show($"❌ Số lượng tồn kho của sách '{ct.Sach.TenSach}' không đủ. Vui lòng điều chỉnh số lượng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             // 🟢 Nếu chọn phương thức là "Chuyển khoản ngân hàng" → hiển thị QR thanh toán
             if (cbThanhToan.SelectedItem?.ToString() == "Chuyển khoản ngân hàng")
             {
@@ -241,7 +254,7 @@ namespace PM.GUI.userConTrol.Client
                 {
                     // ✅ Callback sau khi xác nhận thanh toán thành công
                     bool ok = new QuanLyDonHangBUS().TaoDonHang(
-                        _khach,
+                        _khach,_manv,
                         "Online",
                         cbVanChuyen.SelectedValue?.ToString(),
                         cbThanhToan.SelectedItem?.ToString(),
@@ -276,7 +289,7 @@ namespace PM.GUI.userConTrol.Client
 
             // 🟩 Trường hợp COD (Thanh toán khi nhận hàng)
             bool okCOD = new QuanLyDonHangBUS().TaoDonHang(
-                _khach,
+                _khach,_manv,
                 "Online",
                 cbVanChuyen.SelectedValue?.ToString(),
                 cbThanhToan.SelectedItem?.ToString(),

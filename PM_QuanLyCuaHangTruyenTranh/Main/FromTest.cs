@@ -24,8 +24,8 @@ namespace PM.GUI.Main
             InitializeComponent();
             currentKhachHang = kh;
             NhanVienService sv=new NhanVienService();
-            NhanVien a= sv.GetById("NV_ONLINE_HCM");
-            shopView = new Shop_BookView(currentKhachHang,a)
+           // NhanVien a= sv.GetById("NV_ONLINE_HCM");
+            shopView = new Shop_BookView(currentKhachHang)
             {
                 Dock = DockStyle.Fill
             };

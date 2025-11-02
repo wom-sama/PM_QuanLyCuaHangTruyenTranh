@@ -24,15 +24,17 @@ namespace PM.GUI.userConTrol.Customer
         private int _soLuong = 1;
         private decimal _giaBan;
         private decimal _phiShip = 0;
-        private string _maChiNhanh;
+      
+        private NhanVien nv;
 
-        public MuaHang(Sach sach, KhachHang khach, string maChiNhanh, Action onBack)
+        public MuaHang(Sach sach, KhachHang khach, NhanVien a,Action onBack)
         {
             InitializeComponent();
             _sach = sach;
             _khach = khach;
             _onBack = onBack;
-            _maChiNhanh = maChiNhanh;
+           
+           this.nv=a;
 
             // Gắn sự kiện
             btnTang.Click += btnTang_Click;
@@ -41,7 +43,7 @@ namespace PM.GUI.userConTrol.Customer
             txtSDT.TextChanged += txtSDT_TextChanged;
             txtDiaChi.TextChanged += txtDiaChi_TextChanged;
             cbVanChuyen.SelectedIndexChanged += cbVanChuyen_SelectedIndexChanged;
-            _maChiNhanh = maChiNhanh;
+           
         }
 
         private void MuaHang_Load(object sender, EventArgs e)
@@ -158,7 +160,7 @@ namespace PM.GUI.userConTrol.Customer
 
             // Kiểm tra số lượng tồn kho
             var khoService = new KhoService(new DAL.UnitOfWork());
-            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach, _maChiNhanh);
+            int soLuongTon = khoService.LaySoLuongTon(_sach.MaSach,nv.MaChiNhanh );
 
             if (_soLuong <= 0)
             {
@@ -177,7 +179,7 @@ namespace PM.GUI.userConTrol.Customer
             var don = new DonHang
             {
                 MaDonHang = maDon,
-                MaKhach = _khach.TenDangNhap,
+                MaKhach = _khach.TenDangNhap,MaNV=nv.MaNV,
                 NgayDat = dtpNgayDat.Value,
                 LoaiDon = "Online",
                 TrangThai = "Chờ xử lý",
@@ -258,5 +260,12 @@ namespace PM.GUI.userConTrol.Customer
         {
             _onBack?.Invoke();
         }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+       
     }
 }
