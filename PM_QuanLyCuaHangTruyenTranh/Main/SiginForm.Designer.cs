@@ -102,7 +102,7 @@
             this.lblDem.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDem.Location = new System.Drawing.Point(629, 226);
             this.lblDem.Name = "lblDem";
-            this.lblDem.Size = new System.Drawing.Size(44, 23);
+            this.lblDem.Size = new System.Drawing.Size(53, 28);
             this.lblDem.TabIndex = 31;
             this.lblDem.Text = "None";
             // 
@@ -114,7 +114,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(158, 314);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 23);
+            this.label3.Size = new System.Drawing.Size(160, 28);
             this.label3.TabIndex = 30;
             this.label3.Text = "Confirm Password";
             // 
@@ -313,7 +313,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(242, 226);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 23);
+            this.label2.Size = new System.Drawing.Size(58, 28);
             this.label2.TabIndex = 24;
             this.label2.Text = "Email";
             // 
@@ -344,7 +344,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(242, 185);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 23);
+            this.label1.Size = new System.Drawing.Size(58, 28);
             this.label1.TabIndex = 20;
             this.label1.Text = "Email";
             // 
@@ -392,7 +392,7 @@
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(153, 23);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(565, 80);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(671, 95);
             this.guna2HtmlLabel1.TabIndex = 17;
             this.guna2HtmlLabel1.Text = "Account Sign-Up";
             // 
@@ -423,7 +423,7 @@
             this.lblPass.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPass.Location = new System.Drawing.Point(217, 275);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(73, 23);
+            this.lblPass.Size = new System.Drawing.Size(88, 28);
             this.lblPass.TabIndex = 13;
             this.lblPass.Text = "Password";
             // 
@@ -435,7 +435,7 @@
             this.lblUN.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUN.Location = new System.Drawing.Point(211, 154);
             this.lblUN.Name = "lblUN";
-            this.lblUN.Size = new System.Drawing.Size(79, 23);
+            this.lblUN.Size = new System.Drawing.Size(93, 28);
             this.lblUN.TabIndex = 12;
             this.lblUN.Text = "UserName";
             // 
@@ -526,6 +526,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.guna2ShadowPanel1);
             this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SignInForm";
             this.Text = "Account Sign-Up Form";
             this.Load += new System.EventHandler(this.SignInForm_Load);

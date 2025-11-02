@@ -48,6 +48,7 @@ namespace PM.GUI.Main
             currentNV = main9;
             InitializeComponent();
             CaiDatAnimation();
+            CaiDatAnimationCT();
         }
         private void CaiDatAnimation()
         {
