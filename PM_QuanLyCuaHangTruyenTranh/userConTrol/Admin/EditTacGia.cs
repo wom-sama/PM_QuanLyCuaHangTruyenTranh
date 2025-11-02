@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using PM.BUS.Helpers;
 using PM.BUS.Services.Sachsv;
 using PM.DAL.Models;
 using PM.GUI.FormThongBao;
@@ -82,7 +83,7 @@ namespace PM.GUI.userConTrol.Admin
             dgvTacGia.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Tên tác giả", DataPropertyName = "TenTacGia", Width = 200 });
             dgvTacGia.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Quốc tịch", DataPropertyName = "QuocTich", Width = 120 });
             dgvTacGia.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ghi chú", DataPropertyName = "GhiChu", Width = 200 });
-            dgvTacGia.Columns.Add(new DataGridViewTextBoxColumn{HeaderText = "Số lượng sách",Name = "SoLuongSach",Width = 120});
+          
 
             guna2Panel1.Controls.Add(dgvTacGia);
             guna2Panel1.Controls.Add(pnlTop);
@@ -106,12 +107,7 @@ namespace PM.GUI.userConTrol.Admin
             var list = await _tacGiaService.GetAllAsync();
             dgvTacGia.DataSource = list.ToList();
             // Cập nhật số lượng sách cho mỗi tác giả
-            foreach (DataGridViewRow row in dgvTacGia.Rows)
-            {
-                var tg = (TacGia)row.DataBoundItem;
-                int soLuongSach = await _tacGiaService.LaySoLuongSach(tg.MaTacGia);
-                row.Cells["SoLuongSach"].Value = soLuongSach;
-            }
+           
         }
 
         private void SearchTacGia()
@@ -189,7 +185,7 @@ namespace PM.GUI.userConTrol.Admin
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            txtMa = new Guna2TextBox { PlaceholderText = "Mã tác giả", Text = tg?.MaTacGia };
+            txtMa = new Guna2TextBox { PlaceholderText = "Mã tác giả", Text = tg?.MaTacGia??RandHelper.TaoMa("TG") }; txtMa.ReadOnly = true;
             txtTen = new Guna2TextBox { PlaceholderText = "Tên tác giả", Text = tg?.TenTacGia };
             txtQuocTich = new Guna2TextBox { PlaceholderText = "Quốc tịch", Text = tg?.QuocTich };
             txtGhiChu = new Guna2TextBox { PlaceholderText = "Ghi chú", Text = tg?.GhiChu, Multiline = true, Height = 60 };

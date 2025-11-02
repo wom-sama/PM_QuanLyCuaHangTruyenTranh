@@ -64,11 +64,11 @@ namespace PM.GUI.Main
             this.pannel_Admin.AutoScroll = true;
             this.pannel_Admin.BackColor = System.Drawing.Color.Transparent;
             this.pannel_Admin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pannel_Admin.BackgroundImage")));
+            this.pannel_Admin.Controls.Add(this.pannel_CT_CN);
             this.pannel_Admin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pannel_Admin.Controls.Add(this.btnCN);
             this.pannel_Admin.Controls.Add(this.lbl_titleCN);
             this.pannel_Admin.Controls.Add(this.shadow_PannelCN);
-            this.pannel_Admin.Controls.Add(this.pannel_CT_CN);
             this.pannel_Admin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannel_Admin.Location = new System.Drawing.Point(0, 0);
             this.pannel_Admin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
