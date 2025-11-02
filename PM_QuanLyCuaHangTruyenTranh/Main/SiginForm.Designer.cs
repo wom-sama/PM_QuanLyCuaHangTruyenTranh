@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
+            Guna.UI2.AnimatorNS.Animation animation2 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignInForm));
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.lblDem = new System.Windows.Forms.Label();
@@ -112,11 +112,11 @@
             this.label3.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.label3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(158, 314);
+            this.label3.Location = new System.Drawing.Point(126, 314);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 28);
+            this.label3.Size = new System.Drawing.Size(181, 28);
             this.label3.TabIndex = 30;
-            this.label3.Text = "Confirm Password";
+            this.label3.Text = "Nhập Lại Mật Khẩu";
             // 
             // GNtxtRePass
             // 
@@ -131,7 +131,7 @@
             this.GNtxtRePass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.GNtxtRePass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.GNtxtRePass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.GNtxtRePass.Location = new System.Drawing.Point(313, 306);
+            this.GNtxtRePass.Location = new System.Drawing.Point(313, 314);
             this.GNtxtRePass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GNtxtRePass.Name = "GNtxtRePass";
             this.GNtxtRePass.PasswordChar = '*';
@@ -388,13 +388,13 @@
             this.guna2HtmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Transition1.SetDecoration(this.guna2HtmlLabel1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Lucida Calligraphy", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Times New Roman", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(153, 23);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(153, 36);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(671, 95);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(565, 62);
             this.guna2HtmlLabel1.TabIndex = 17;
-            this.guna2HtmlLabel1.Text = "Account Sign-Up";
+            this.guna2HtmlLabel1.Text = "ĐĂNG KÝ TÀI KHOẢN";
             // 
             // GNbtnSignUp
             // 
@@ -408,11 +408,11 @@
             this.GNbtnSignUp.FillColor = System.Drawing.Color.RoyalBlue;
             this.GNbtnSignUp.Font = new System.Drawing.Font("Tempus Sans ITC", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GNbtnSignUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.GNbtnSignUp.Location = new System.Drawing.Point(285, 385);
+            this.GNbtnSignUp.Location = new System.Drawing.Point(313, 371);
             this.GNbtnSignUp.Name = "GNbtnSignUp";
             this.GNbtnSignUp.Size = new System.Drawing.Size(180, 45);
             this.GNbtnSignUp.TabIndex = 14;
-            this.GNbtnSignUp.Text = "Sign-Up";
+            this.GNbtnSignUp.Text = "Đăng ký";
             this.GNbtnSignUp.Click += new System.EventHandler(this.GNbtnSignUp_Click);
             // 
             // lblPass
@@ -421,11 +421,11 @@
             this.lblPass.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.lblPass, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblPass.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPass.Location = new System.Drawing.Point(217, 275);
+            this.lblPass.Location = new System.Drawing.Point(203, 275);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(88, 28);
+            this.lblPass.Size = new System.Drawing.Size(97, 28);
             this.lblPass.TabIndex = 13;
-            this.lblPass.Text = "Password";
+            this.lblPass.Text = "Mật Khẩu";
             // 
             // lblUN
             // 
@@ -433,11 +433,11 @@
             this.lblUN.AutoSize = true;
             this.guna2Transition1.SetDecoration(this.lblUN, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblUN.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUN.Location = new System.Drawing.Point(211, 154);
+            this.lblUN.Location = new System.Drawing.Point(166, 154);
             this.lblUN.Name = "lblUN";
-            this.lblUN.Size = new System.Drawing.Size(93, 28);
+            this.lblUN.Size = new System.Drawing.Size(141, 28);
             this.lblUN.TabIndex = 12;
-            this.lblUN.Text = "UserName";
+            this.lblUN.Text = "Tên Đăng Nhập";
             // 
             // GNtxtPass
             // 
@@ -491,22 +491,22 @@
             // guna2Transition1
             // 
             this.guna2Transition1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.guna2Transition1.DefaultAnimation = animation1;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation2;
             // 
             // iconSplitButton1
             // 
@@ -528,7 +528,7 @@
             this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SignInForm";
-            this.Text = "Account Sign-Up Form";
+            this.Text = "Đăng Ký Tài Khoản";
             this.Load += new System.EventHandler(this.SignInForm_Load);
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2ShadowPanel1.PerformLayout();

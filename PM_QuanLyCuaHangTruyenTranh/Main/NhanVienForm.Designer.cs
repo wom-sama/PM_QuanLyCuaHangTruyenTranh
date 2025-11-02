@@ -43,7 +43,6 @@
             this.btnKho = new Guna.UI2.WinForms.Guna2Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnThongTin = new Guna.UI2.WinForms.Guna2Button();
             this.pannelGD_tong.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -171,7 +170,6 @@
             // 
             this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelMenu.Controls.Add(this.btnThongTin);
             this.panelMenu.Controls.Add(this.btnThongBao);
             this.panelMenu.Controls.Add(this.btnGiaoHang);
             this.panelMenu.Controls.Add(this.btnKho);
@@ -252,20 +250,6 @@
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
-            // btnThongTin
-            // 
-            this.btnThongTin.BorderRadius = 10;
-            this.btnThongTin.FillColor = System.Drawing.Color.SlateGray;
-            this.btnThongTin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnThongTin.ForeColor = System.Drawing.Color.White;
-            this.btnThongTin.Location = new System.Drawing.Point(20, 624);
-            this.btnThongTin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThongTin.Name = "btnThongTin";
-            this.btnThongTin.Size = new System.Drawing.Size(180, 50);
-            this.btnThongTin.TabIndex = 9;
-            this.btnThongTin.Text = "Thông Tin";
-            this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
-            // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -304,6 +288,5 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private Guna.UI2.WinForms.Guna2Button btnThongBao;
-        private Guna.UI2.WinForms.Guna2Button btnThongTin;
     }
 }

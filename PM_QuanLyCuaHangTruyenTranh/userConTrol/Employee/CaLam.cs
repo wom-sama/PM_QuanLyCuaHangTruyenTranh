@@ -12,7 +12,7 @@ namespace PM.GUI.userConTrol.Employee
         private readonly PhanCongService _phanCongService;
         private readonly string _maNhanVien;
 
-        public CaLam(string maNhanVien = null)
+        public CaLam(string maNhanVien )
         {
             InitializeComponent();
             _maNhanVien = maNhanVien;
@@ -25,12 +25,7 @@ namespace PM.GUI.userConTrol.Employee
         {
             try
             {
-                var data = _phanCongService.GetAll();
-
-                if (!string.IsNullOrEmpty(_maNhanVien))
-                {
-                    data = data.Where(p => p.MaNV == _maNhanVien);
-                }
+                var data = _phanCongService.GetByNhanVien(_maNhanVien);
 
                 dgvCaLam.DataSource = data
                     .Select(p => new
@@ -39,14 +34,14 @@ namespace PM.GUI.userConTrol.Employee
                         p.TenCongViec,
                         p.MoTa,
                         NgayBatDau = p.NgayBatDau.ToString("dd/MM/yyyy"),
-                        NgayKetThuc = p.NgayKetThuc.HasValue ? p.NgayKetThuc.Value.ToString("dd/MM/yyyy") : "Chưa kết thúc",
+                        NgayKetThuc = p.NgayKetThuc.HasValue
+                            ? p.NgayKetThuc.Value.ToString("dd/MM/yyyy")
+                            : "Chưa kết thúc",
                         TrangThai = p.HoanThanh ? "Hoàn thành" : "Đang làm"
                     })
                     .ToList();
 
-                lblNhanVien.Text = string.IsNullOrEmpty(_maNhanVien)
-                    ? "Tất cả nhân viên"
-                    : $"Nhân viên: {_maNhanVien}";
+                lblNhanVien.Text = $"Ca làm của nhân viên: {_maNhanVien}";
             }
             catch (Exception ex)
             {

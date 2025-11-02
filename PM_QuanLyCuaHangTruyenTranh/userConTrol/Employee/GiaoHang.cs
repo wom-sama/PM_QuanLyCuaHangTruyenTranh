@@ -8,23 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PM.DAL.Models;
 
 namespace PM.GUI.userConTrol.Employee
 {
     public partial class GiaoHang : UserControl
     {
         private readonly QuanLyDonHangBUS _bus;
+        private readonly NhanVien _currentNhanVien;
 
-        public GiaoHang()
+        public GiaoHang(NhanVien currentNhanVien)
         {
             InitializeComponent();
             _bus = new QuanLyDonHangBUS();
+            _currentNhanVien = currentNhanVien; // ✅ Gán đúng giá trị được truyền từ ngoài vào
             LoadDonHang();
         }
 
         private void LoadDonHang()
         {
-            var dsDangGiao = _bus.LayDanhSachDonHangTheoTrangThai("Đang giao");
+            var dsDangGiao = _bus.LayDanhSachDonHangTheoTrangThai("Đang giao", _currentNhanVien.MaChiNhanh);
             dgvDonHang.DataSource = dsDangGiao.ToList();
         }
 
