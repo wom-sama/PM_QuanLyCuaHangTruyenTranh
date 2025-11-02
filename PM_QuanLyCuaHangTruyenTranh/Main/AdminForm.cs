@@ -255,7 +255,7 @@ namespace PM.GUI.Main
                case "btn_LoiLo":
                    return new ucThongKeLoiNhuan { Dock = DockStyle.Fill };
                 case "btn_phanCong":
-                    return new userConTrol.Admin.PhanCong { Dock = DockStyle.Fill };
+                    return new userConTrol.Admin.PhanCong(currentNV.MaChiNhanh) { Dock = DockStyle.Fill };
 
 
 

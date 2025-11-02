@@ -53,6 +53,8 @@
             // 
             // dgvLuong
             // 
+            this.dgvLuong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLuong.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLuong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLuong.Location = new System.Drawing.Point(3, 454);
