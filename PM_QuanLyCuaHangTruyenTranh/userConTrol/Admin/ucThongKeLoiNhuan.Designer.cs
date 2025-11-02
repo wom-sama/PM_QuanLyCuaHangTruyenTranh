@@ -37,6 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblTongDoanhThu = new System.Windows.Forms.Label();
+            this.lblTongChiPhi = new System.Windows.Forms.Label();
+            this.lblTongLoiNhuan = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoiNhuan)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +50,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLoiNhuan.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvLoiNhuan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLoiNhuan.Location = new System.Drawing.Point(28, 407);
+            this.dgvLoiNhuan.Location = new System.Drawing.Point(17, 455);
             this.dgvLoiNhuan.Name = "dgvLoiNhuan";
             this.dgvLoiNhuan.RowHeadersWidth = 51;
             this.dgvLoiNhuan.RowTemplate.Height = 24;
@@ -132,11 +135,41 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Chi nhánh ";
             // 
+            // lblTongDoanhThu
+            // 
+            this.lblTongDoanhThu.AutoSize = true;
+            this.lblTongDoanhThu.Location = new System.Drawing.Point(415, 163);
+            this.lblTongDoanhThu.Name = "lblTongDoanhThu";
+            this.lblTongDoanhThu.Size = new System.Drawing.Size(100, 16);
+            this.lblTongDoanhThu.TabIndex = 6;
+            this.lblTongDoanhThu.Text = "Tổng doanh thu";
+            // 
+            // lblTongChiPhi
+            // 
+            this.lblTongChiPhi.AutoSize = true;
+            this.lblTongChiPhi.Location = new System.Drawing.Point(417, 204);
+            this.lblTongChiPhi.Name = "lblTongChiPhi";
+            this.lblTongChiPhi.Size = new System.Drawing.Size(83, 16);
+            this.lblTongChiPhi.TabIndex = 7;
+            this.lblTongChiPhi.Text = "Tổng chi phí ";
+            // 
+            // lblTongLoiNhuan
+            // 
+            this.lblTongLoiNhuan.AutoSize = true;
+            this.lblTongLoiNhuan.Location = new System.Drawing.Point(417, 251);
+            this.lblTongLoiNhuan.Name = "lblTongLoiNhuan";
+            this.lblTongLoiNhuan.Size = new System.Drawing.Size(98, 16);
+            this.lblTongLoiNhuan.TabIndex = 8;
+            this.lblTongLoiNhuan.Text = "Tổng lợi nhuận ";
+            // 
             // ucThongKeLoiNhuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
+            this.Controls.Add(this.lblTongLoiNhuan);
+            this.Controls.Add(this.lblTongChiPhi);
+            this.Controls.Add(this.lblTongDoanhThu);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.dgvLoiNhuan);
@@ -146,6 +179,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -160,5 +194,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTongDoanhThu;
+        private System.Windows.Forms.Label lblTongChiPhi;
+        private System.Windows.Forms.Label lblTongLoiNhuan;
     }
 }
