@@ -1,8 +1,9 @@
 ﻿using PM.DAL;
-using PM.DAL.Models;
 using PM.DAL.Interfaces;
+using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PM.BUS.Services
@@ -43,13 +44,16 @@ namespace PM.BUS.Services
                 return null;
             }
         }
+        // Lấy danh sách thông báo dành cho người nhận (hoặc ALL)
         public List<ThongBao> GetListByNguoiNhan(string maNguoiNhan)
         {
             try
             {
-                // Nếu người nhận là ALL thì lấy toàn bộ thông báo gửi cho ALL + riêng người đó
-                return new List<ThongBao>(_unitOfWork.ThongBaoRepository.Find(
-                    tb => tb.NguoiNhan == "ALL" || tb.NguoiNhan == maNguoiNhan));
+                return _unitOfWork.ThongBaoRepository
+                        .Find(tb => tb.NguoiNhan == "ALL" || tb.NguoiNhan == maNguoiNhan)
+                        .OrderByDescending(tb => tb.NgayGui)
+                        .ToList();
+
             }
             catch (Exception ex)
             {
@@ -123,6 +127,7 @@ namespace PM.BUS.Services
                 return false;
             }
         }
+
 
     }
        

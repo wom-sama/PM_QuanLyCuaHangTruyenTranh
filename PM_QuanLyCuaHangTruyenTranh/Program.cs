@@ -24,7 +24,7 @@ namespace PM.GUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main.Client());
+            Application.Run(new Main.LoginForm());
 
          //   byte[] originalKey = AESHelper.GetOriginalKey();
          //   Console.WriteLine(Encoding.UTF8.GetString(originalKey));
