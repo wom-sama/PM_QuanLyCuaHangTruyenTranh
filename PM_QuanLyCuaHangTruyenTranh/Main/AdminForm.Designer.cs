@@ -213,6 +213,7 @@ namespace PM.GUI.Main
             this.btn_TTCN.Size = new System.Drawing.Size(153, 40);
             this.btn_TTCN.TabIndex = 15;
             this.btn_TTCN.Text = "Cá Nhân";
+            this.btn_TTCN.Click += new System.EventHandler(this.btn_TTCN_Click);
             // 
             // btn_NhapKho
             // 

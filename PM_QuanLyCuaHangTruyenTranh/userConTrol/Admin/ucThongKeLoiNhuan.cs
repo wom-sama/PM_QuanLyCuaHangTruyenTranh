@@ -36,7 +36,7 @@ namespace PM.GUI.userConTrol.Admin
             cmbChiNhanh.DataSource = listChiNhanh;
             cmbChiNhanh.DisplayMember = "TenChiNhanh";
             cmbChiNhanh.ValueMember = "MaChiNhanh";
-            cmbChiNhanh.SelectedIndex = -1; // không chọn mặc định
+            cmbChiNhanh.SelectedIndex = 0; 
         }
 
         // Xử lý nút Thống kê
