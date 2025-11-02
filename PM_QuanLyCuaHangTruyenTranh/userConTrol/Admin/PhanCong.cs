@@ -94,18 +94,14 @@ namespace PM.GUI.userConTrol.Admin
             try
             {
                 var list = _phanCongService.GetAll()
-                    .Where(pc => pc.NhanVien.MaChiNhanh == _maChiNhanh)
-                    .Select(pc => new
-                    {
-                        pc.MaPhanCong,
-                        pc.MaNV,
-                        TenNhanVien = pc.NhanVien?.HoTen ?? "(Chưa có)",
-                        pc.TenCongViec,
-                        pc.MoTa,
-                        pc.NgayBatDau,
-                        pc.NgayKetThuc
-                    })
+                    .Where(pc => pc.NhanVien.MaChiNhanh == _maChiNhanh) // lọc theo chi nhánh
                     .ToList();
+
+                // Thêm thuộc tính TenNhanVien để hiển thị trong dgv
+                foreach (var pc in list)
+                {
+                    pc.GetType().GetProperty("TenNhanVien")?.SetValue(pc, pc.NhanVien?.HoTen ?? "(Chưa có)");
+                }
 
                 dgvPhanCong.DataSource = list;
             }
@@ -161,11 +157,7 @@ namespace PM.GUI.userConTrol.Admin
         // ======================= LẤY DÒNG ĐANG CHỌN =======================
         private PM.DAL.Models.PhanCong GetSelectedPhanCong()
         {
-            var selected = dgvPhanCong.CurrentRow?.DataBoundItem;
-            if (selected == null) return null;
-
-            int maPC = (int)selected.GetType().GetProperty("MaPhanCong").GetValue(selected);
-            return _phanCongService.GetById(maPC);
+            return dgvPhanCong.CurrentRow?.DataBoundItem as PM.DAL.Models.PhanCong;
         }
 
         // ======================= CLICK DGV =======================
@@ -176,7 +168,7 @@ namespace PM.GUI.userConTrol.Admin
             var pc = GetSelectedPhanCong();
             if (pc == null) return;
 
-            cboNhanVien.SelectedValue = pc.MaNV;
+            cboNhanVien.SelectedValue = pc.MaNV;  // set nhân viên
             cboCongViec.Text = pc.TenCongViec;
             txtMoTa.Text = pc.MoTa;
             dtpBatDau.Value = pc.NgayBatDau;
@@ -210,7 +202,9 @@ namespace PM.GUI.userConTrol.Admin
                     ClearInput();
                 }
                 else
+                {
                     MessageBox.Show("❌ Thêm thất bại!");
+                }
             }
             catch (Exception ex)
             {
@@ -243,7 +237,9 @@ namespace PM.GUI.userConTrol.Admin
                     ClearInput();
                 }
                 else
+                {
                     MessageBox.Show("❌ Cập nhật thất bại!");
+                }
             }
             catch (Exception ex)
             {

@@ -110,7 +110,9 @@ namespace PM.BUS.Services.TaiKhoansv
                     TenDangNhap = username,
                     HoTen = username,
                     Email = email,
-                    NgayDangKy = DateTime.Now
+                    NgayDangKy = DateTime.Now,
+                    TaiKhoan = tk,
+                    NgaySinh = DateTime.Now
                 };
 
                 _uow.TaiKhoanRepository.Add(tk);
