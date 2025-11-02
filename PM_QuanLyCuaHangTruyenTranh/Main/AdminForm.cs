@@ -30,9 +30,8 @@ namespace PM.GUI.Main
         private int viTriYDich;                  // vị trí Y khi hiển thị
         private bool dangDongCT = false; // ngăn việc nhấn khi đang đóng
 
-        // thuộc tính và phương thức khác của AdminForm...
-        // biến nhân    viên hiện tại
-        NhanVien currentNV= new NhanVienService().GetById("NV01");
+        //
+        NhanVien currentNV;
         //
 
 
@@ -258,8 +257,8 @@ namespace PM.GUI.Main
                     return new userConTrol.Admin.PhanCong(currentNV.MaChiNhanh) { Dock = DockStyle.Fill };
                 case "btn_BangLuong": return new TinhLuong { Dock = DockStyle.Fill };
                 case "btn_TheLoai": return new Edit_TheLoai { Dock = DockStyle.Fill };
-
-
+                case "btn_NhapKho": return new Edit_NhapKho() { Dock = DockStyle.Fill };
+                case "btn_TTCn":    return new  userConTrol.Common.ShowTTCN(currentNV.MaNV) { Dock = DockStyle.Fill };
 
                 default:
                     return null;
@@ -325,7 +324,14 @@ namespace PM.GUI.Main
 
         private void btn_TTCN_Click(object sender, EventArgs e)
         {
+            MoPanelConTheoNut("btn_TTCn");
+            btnCN_Click_1(sender, e);
+        }
 
+        private void btn_NhapKho_Click(object sender, EventArgs e)
+        {
+            MoPanelConTheoNut("btn_NhapKho");
+            btnCN_Click_1(sender, e);
         }
     }
     }

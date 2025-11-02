@@ -143,7 +143,7 @@ namespace PM.GUI.Main
                 case "Admin":
                     newGif = Properties.Resources.evernight_ezgif_com_apng_to_gif_converter;
                     break;
-                case "Nhân Viên":
+                case "Nhân viên":
                     newGif = Properties.Resources.sparkle_hanabi;
                     break;
                 case "Khách":

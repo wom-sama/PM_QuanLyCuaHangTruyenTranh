@@ -199,6 +199,12 @@
     <Compile Include="userConTrol\Admin\Edit_BOOK_CT.Designer.cs">
       <DependentUpon>Edit_BOOK_CT.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Admin\Edit_NhapKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Admin\Edit_NhapKho.Designer.cs">
+      <DependentUpon>Edit_NhapKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Admin\PhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -302,6 +308,12 @@
       <DependentUpon>BooKShowcs.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Common\Edit_Lable.cs" />
+    <Compile Include="userConTrol\Common\ShowTTCN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Common\ShowTTCN.Designer.cs">
+      <DependentUpon>ShowTTCN.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\CaLam.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -399,6 +411,9 @@
     <EmbeddedResource Include="userConTrol\Admin\Edit_BOOk.resx">
       <DependentUpon>Edit_BOOk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Admin\Edit_NhapKho.resx">
+      <DependentUpon>Edit_NhapKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\PhanCong.resx">
       <DependentUpon>PhanCong.cs</DependentUpon>
     </EmbeddedResource>
@@ -437,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Common\BooKShowcs.resx">
       <DependentUpon>BooKShowcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Common\ShowTTCN.resx">
+      <DependentUpon>ShowTTCN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\CaLam.resx">
       <DependentUpon>CaLam.cs</DependentUpon>

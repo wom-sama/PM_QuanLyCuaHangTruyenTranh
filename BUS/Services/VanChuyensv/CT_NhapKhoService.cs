@@ -17,6 +17,10 @@ namespace PM.BUS.Services.VanChuyensv
         {
             _unitOfWork = unitOfWork;
         }
+        public CT_NhapKhoService()
+        {
+            _unitOfWork = new UnitOfWork();
+        }
 
         // ==================== LẤY DỮ LIỆU ====================
 
@@ -185,6 +189,52 @@ namespace PM.BUS.Services.VanChuyensv
                 return false;
             }
         }
+        // xoa theo ma phieu nhap
+        public bool DeleteByMaPhieuNhap(string maPhieuNhap)
+        {
+            try
+            {
+                var cts = _unitOfWork.CT_NhapKhoRepository.Find(ct => ct.MaPhieuNhap == maPhieuNhap).ToList();
+                if (cts.Count == 0)
+                    return false;
+                foreach (var ct in cts)
+                {
+                    _unitOfWork.CT_NhapKhoRepository.Delete(ct);
+                }
+                _unitOfWork.Save();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi xóa chi tiết nhập kho theo mã phiếu nhập: " + ex.Message);
+                return false;
+            }
+        }
+        // xoa theo ma phieu nhap async
+        public async Task<bool> DeleteByMaPhieuNhapAsync(string maPhieuNhap)
+        {
+            try
+            {
+                var cts = (await _unitOfWork.CT_NhapKhoRepository.GetAllAsync())
+                    .Where(ct => ct.MaPhieuNhap == maPhieuNhap)
+                    .ToList();
+                if (cts.Count == 0)
+                    return false;
+                foreach (var ct in cts)
+                {
+                    _unitOfWork.CT_NhapKhoRepository.Delete(ct);
+                }
+                await _unitOfWork.SaveAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi xóa chi tiết nhập kho theo mã phiếu nhập (async): " + ex.Message);
+                return false;
+            }
+        }
+
+
     }
 
 }

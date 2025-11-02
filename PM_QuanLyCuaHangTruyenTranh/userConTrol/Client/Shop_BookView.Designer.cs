@@ -33,6 +33,7 @@
             this.txtFindTen.DefaultText = "";
             this.txtFindTen.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtFindTen.Location = new System.Drawing.Point(183, 20);
+            this.txtFindTen.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtFindTen.Name = "txtFindTen";
             this.txtFindTen.PlaceholderText = "Tìm kiếm sách...";
             this.txtFindTen.SelectedText = "";
@@ -46,7 +47,7 @@
             this.btnFind.BorderRadius = 10;
             this.btnFind.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Location = new System.Drawing.Point(423, 20);
+            this.btnFind.Location = new System.Drawing.Point(450, 20);
             this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(122, 33);
@@ -60,7 +61,7 @@
             this.btnCart.BorderRadius = 10;
             this.btnCart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnCart.ForeColor = System.Drawing.Color.White;
-            this.btnCart.Location = new System.Drawing.Point(563, 20);
+            this.btnCart.Location = new System.Drawing.Point(578, 20);
             this.btnCart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCart.Name = "btnCart";
             this.btnCart.Size = new System.Drawing.Size(148, 33);

@@ -24,7 +24,7 @@ namespace PM.BUS.Helpers
                 string senderPassword = AESHelper.DecryptString(encPass);
 
                 var message = new MailMessage();
-                message.From = new MailAddress(senderEmail, "Comic Store");
+                message.From = new MailAddress(senderEmail, "Cửa Hàng Manga Truyện Tranh");
                 message.To.Add(recipientEmail);
                 message.Subject = "Your verification code";
                 message.Body = $"Hello,\n\nYour verification code is: {code}\n\nThanks!";
