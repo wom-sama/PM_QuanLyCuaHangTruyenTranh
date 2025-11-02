@@ -131,7 +131,7 @@ namespace PM.GUI.userConTrol.Employee
         {
             lblTenKhach.Text = lblSDT.Text = lblEmail.Text =
                 lblDiaChi.Text = lblDonViVC.Text =
-                lblTongTien.Text = lblNgayDat.Text = lblNgayGiao.Text = "";
+                lblTongTien.Text = lblNgayDat.Text = lblNgayGiao.Text = lblHTTT.Text="";
             dgvChiTiet.DataSource = null;
         }
 

@@ -176,10 +176,11 @@ namespace PM.GUI
                 // ----- 6. Tai Khoan (admin, staff, customers) -----
                 var tkAdmin = new TaiKhoan { TenDangNhap = "admin", MatKhau = PM.BUS.Helpers.PasswordHelper.HashPassword("123"), Quyen = "Admin", TrangThai = true, MaNhanVien = nv1.MaNV };
                 var tkNv2 = new TaiKhoan { TenDangNhap = "nv_b", MatKhau = PM.BUS.Helpers.PasswordHelper.HashPassword("123"), Quyen = "NhanVien", TrangThai = true, MaNhanVien = nv2.MaNV };
+                var tkNv3 = new TaiKhoan { TenDangNhap= "nv_c", MatKhau =PM.BUS.Helpers.PasswordHelper.HashPassword("123"), Quyen="NhanVien", TrangThai=true,MaNhanVien= nv3.MaNV };
                 var tkKh1 = new TaiKhoan { TenDangNhap = "kh_anh", MatKhau = PM.BUS.Helpers.PasswordHelper.HashPassword("123"), Quyen = "Khach", TrangThai = true };
                 var tkKh2 = new TaiKhoan { TenDangNhap = "kh_huong", MatKhau = PM.BUS.Helpers.PasswordHelper.HashPassword("123"), Quyen = "Khach", TrangThai = true };
                 var tkKh3 = new TaiKhoan { TenDangNhap = "kh_minh", MatKhau = PM.BUS.Helpers.PasswordHelper.HashPassword("123"), Quyen = "Khach", TrangThai = true };
-                db.TaiKhoans.AddRange(new[] { tkAdmin, tkNv2, tkKh1, tkKh2, tkKh3 });
+                db.TaiKhoans.AddRange(new[] { tkAdmin, tkNv2, tkKh1, tkKh2, tkKh3 ,tkNv3});
                 db.SaveChanges();
 
                 // ----- 7. KhachHang -----

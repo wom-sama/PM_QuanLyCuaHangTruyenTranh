@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
+using PM.DAL.Models;
 using PM.GUI.FormThongBao;
-using PM.GUI.UserControls.Client;
+using PM.GUI.userConTrol;
+
 
 namespace PM.GUI.Main
 {
     public partial class Client : Form
     {
-        public Client()
+        KhachHang currentUser;
+        public Client(KhachHang kh)
         {
             InitializeComponent();
+            currentUser= kh;
         }
 
         private void Client_Load_1(object sender, EventArgs e)
@@ -80,7 +84,8 @@ namespace PM.GUI.Main
 
         private void btnSeeOrder_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new DonHang());
+            
+            LoadUserControl(new userConTrol.Client.DonHang(currentUser.TenDangNhap));
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
@@ -122,9 +127,9 @@ namespace PM.GUI.Main
                 }
 
                 // Tạo và load DonHang với trạng thái được chọn
-                var donHangUC = new PM.GUI.UserControls.Client.DonHang();
+                var donHangUC = new PM.GUI.userConTrol.Client.DonHang(currentUser.TenDangNhap);
 
-                var method = typeof(PM.GUI.UserControls.Client.DonHang)
+                var method = typeof(PM.GUI.userConTrol.Client.DonHang)
                     .GetMethod("TaiDonHang", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
                 if (method != null)

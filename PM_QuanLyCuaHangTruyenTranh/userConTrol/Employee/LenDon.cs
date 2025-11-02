@@ -4,6 +4,7 @@ using PM.BUS.Helpers;
 using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Facade;
 using PM.BUS.Services.Sachsv;
+using PM.BUS.Services.VanChuyensv;
 using PM.DAL;
 using PM.DAL.Models;
 using QRCoder;
@@ -23,21 +24,25 @@ namespace PM.GUI.userConTrol.Employee
         private readonly SachService _sachService;
         private readonly DonHangService _donHangService;
         private readonly CT_DonHangService _ctDonHangService;
+        private readonly KhoService _khoService;
     
         private string lastCreatedOrderID = null;
         private decimal lastOrderTotal = 0;
         private decimal tienKhachDua = 0;
         private decimal tienThua = 0;
 
-
-        public LenDon()
+        private NhanVien nhanVien;
+        public LenDon(NhanVien nv)
         {
             InitializeComponent();
+        
 
             // Khởi tạo services theo mã bạn cung cấp
             _sachService = new SachService();                     // có ctor mặc định
             _donHangService = new DonHangService();               // có ctor mặc định
             _ctDonHangService = new CT_DonHangService(); // CT_DonHangService chỉ có ctor(IUnitOfWork)
+            nhanVien = nv;
+            _khoService = new KhoService();
          
         }
 
@@ -82,8 +87,7 @@ namespace PM.GUI.userConTrol.Employee
                         s.TenSach,
                         TenTheLoai = s.TheLoai != null ? s.TheLoai.TenTheLoai : "Chưa phân loại",
                         s.GiaBan,
-                        SoLuongTon = (s.CT_NhapKhos?.Sum(n => (int?)n.SoLuong) ?? 0)
-                                    - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)
+                        SoLuongTon = _khoService.LaySoLuongTon(s.MaSach,nhanVien.MaChiNhanh)
                     })
                     .ToList();
 
@@ -126,7 +130,7 @@ namespace PM.GUI.userConTrol.Employee
                 {
                     MaDonHang = maDonHang,
                     MaKhach = null, // Khách lẻ
-                    MaNV = "NV01",  // không có context NhanVien trong service hiện tại -> dùng mã mặc định
+                    MaNV = nhanVien?.MaNV,
                     NgayDat = DateTime.Now,
                     NgayGiao = DateTime.Now,
                     TongTien = 0, // sẽ cập nhật sau
@@ -261,8 +265,7 @@ namespace PM.GUI.userConTrol.Employee
                     s.TenSach,
                     TenTheLoai = s.TheLoai != null ? s.TheLoai.TenTheLoai : "Chưa phân loại",
                     s.GiaBan,
-                    SoLuongTon = (s.CT_NhapKhos?.Sum(n => (int?)n.SoLuong) ?? 0)
-                                - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)
+                    SoLuongTon = _khoService.LaySoLuongTon(s.MaSach,nhanVien.MaChiNhanh)
                 })
                 .ToList();
 
@@ -368,8 +371,7 @@ namespace PM.GUI.userConTrol.Employee
                 s.TenSach,
                 TenTheLoai = s.TheLoai != null ? s.TheLoai.TenTheLoai : "Chưa phân loại",
                 s.GiaBan,
-                SoLuongTon = (s.CT_NhapKhos?.Sum(n => (int?)n.SoLuong) ?? 0)
-                            - (s.CT_DonHangs?.Sum(d => (int?)d.SoLuong) ?? 0)
+                SoLuongTon = _khoService.LaySoLuongTon(s.MaSach,nhanVien.MaChiNhanh)
             }).ToList();
 
             dgvSach.DataSource = data;

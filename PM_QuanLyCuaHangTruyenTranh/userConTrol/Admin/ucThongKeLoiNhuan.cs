@@ -77,6 +77,15 @@ namespace PM.GUI.userConTrol.Admin
                 .ToList();
 
             dgvLoiNhuan.DataSource = result;
+
+            // =================== TÍNH TỔNG ===================
+            decimal tongDoanhThu = result.Sum(r => r.DoanhThu);
+            decimal tongChiPhi = result.Sum(r => r.ChiPhi);
+            decimal tongLoiNhuan = result.Sum(r => r.LoiNhuan);
+
+            lblTongDoanhThu.Text = $"Tổng doanh thu: {tongDoanhThu:n0} VNĐ";
+            lblTongChiPhi.Text = $"Tổng chi phí: {tongChiPhi:n0} VNĐ";
+            lblTongLoiNhuan.Text = $"Tổng lợi nhuận: {tongLoiNhuan:n0} VNĐ";
         }
     }
 }

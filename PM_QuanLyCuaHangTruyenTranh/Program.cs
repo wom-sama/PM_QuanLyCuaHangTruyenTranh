@@ -26,8 +26,8 @@ namespace PM.GUI
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main.LoginForm());
 
-         //   byte[] originalKey = AESHelper.GetOriginalKey();
-         //   Console.WriteLine(Encoding.UTF8.GetString(originalKey));
+            //   byte[] originalKey = AESHelper.GetOriginalKey();
+            //   Console.WriteLine(Encoding.UTF8.GetString(originalKey));
 
 
 

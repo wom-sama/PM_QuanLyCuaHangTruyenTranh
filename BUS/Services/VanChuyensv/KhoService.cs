@@ -18,6 +18,9 @@ namespace PM.BUS.Services.VanChuyensv
             _unitOfWork = unitOfWork;
         }
 
+        public KhoService() { 
+        _unitOfWork=new UnitOfWork();
+        }
         // ==================== LẤY DỮ LIỆU ====================
 
         public IEnumerable<Kho> GetAll()

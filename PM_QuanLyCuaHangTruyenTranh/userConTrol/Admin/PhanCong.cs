@@ -10,23 +10,25 @@ namespace PM.GUI.userConTrol.Admin
     public partial class PhanCong : UserControl
     {
         private readonly PhanCongService _phanCongService;
-        private string _maChiNhanh; 
+        private string _maChiNhanh;
 
         public PhanCong(string maChiNhanh)
         {
             InitializeComponent();
             _phanCongService = new PhanCongService(new UnitOfWork());
-            SetupGrid();
-            LoadData();
             _maChiNhanh = maChiNhanh;
+
+            SetupGrid();
+            LoadComboBox();
+            LoadData();
         }
 
+        // ======================= CẤU HÌNH DATAGRIDVIEW =======================
         private void SetupGrid()
         {
             dgvPhanCong.AutoGenerateColumns = false;
             dgvPhanCong.Columns.Clear();
 
-            // Ẩn mã phân công (vẫn bind DataPropertyName nhưng không cần Name)
             dgvPhanCong.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "MaPhanCong",
@@ -37,7 +39,14 @@ namespace PM.GUI.userConTrol.Admin
             dgvPhanCong.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "MaNV",
-                HeaderText = "Mã Nhân Viên",
+                HeaderText = "Mã NV",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            });
+
+            dgvPhanCong.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "TenNhanVien",
+                HeaderText = "Tên Nhân Viên",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
 
@@ -59,86 +68,157 @@ namespace PM.GUI.userConTrol.Admin
             {
                 DataPropertyName = "NgayBatDau",
                 HeaderText = "Ngày Bắt Đầu",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
             });
 
             dgvPhanCong.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "NgayKetThuc",
                 HeaderText = "Ngày Kết Thúc",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
             });
 
             dgvPhanCong.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPhanCong.MultiSelect = false;
             dgvPhanCong.AllowUserToAddRows = false;
 
-            dgvPhanCong.CellClick -= dgvPhanCong_CellClick; // tránh bind đôi
+            dgvPhanCong.CellClick -= dgvPhanCong_CellClick;
             dgvPhanCong.CellClick += dgvPhanCong_CellClick;
         }
 
+        // ======================= LOAD DỮ LIỆU PHÂN CÔNG =======================
         private void LoadData()
         {
             try
             {
-                // bind trực tiếp danh sách PhanCong (mỗi dòng DataBoundItem là PhanCong)
-                dgvPhanCong.DataSource = _phanCongService.GetAll().ToList();
+                var list = _phanCongService.GetAll()
+                    .Where(pc => pc.NhanVien.MaChiNhanh == _maChiNhanh)
+                    .Select(pc => new
+                    {
+                        pc.MaPhanCong,
+                        pc.MaNV,
+                        TenNhanVien = pc.NhanVien?.HoTen ?? "(Chưa có)",
+                        pc.TenCongViec,
+                        pc.MoTa,
+                        pc.NgayBatDau,
+                        pc.NgayKetThuc
+                    })
+                    .ToList();
+
+                dgvPhanCong.DataSource = list;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi load dữ liệu: " + ex.Message);
+                MessageBox.Show("❌ Lỗi khi load dữ liệu: " + ex.Message);
             }
         }
 
-        // Lấy đối tượng PhanCong từ hàng đã chọn
-        private DAL.Models.PhanCong GetSelectedPhanCong()
+        // ======================= LOAD COMBOBOX =======================
+        private void LoadComboBox()
         {
-            if (dgvPhanCong.CurrentRow == null) return null;
-            return dgvPhanCong.CurrentRow.DataBoundItem as DAL.Models.PhanCong;
+            try
+            {
+                using (var context = new AppDbContext())
+                {
+                    // Load nhân viên theo chi nhánh
+                    var nhanViens = context.NhanViens
+                        .Where(nv => nv.MaChiNhanh == _maChiNhanh)
+                        .Select(nv => new
+                        {
+                            nv.MaNV,
+                            nv.HoTen
+                        })
+                        .ToList();
+
+                    cboNhanVien.DataSource = nhanViens;
+                    cboNhanVien.DisplayMember = "HoTen";
+                    cboNhanVien.ValueMember = "MaNV";
+                    cboNhanVien.SelectedIndex = -1;
+
+                    // Load tất cả công việc
+                    var congViecs = context.CongViecs
+                        .Select(cv => new
+                        {
+                            cv.MaCongViec,
+                            cv.TenCongViec
+                        })
+                        .ToList();
+
+                    cboCongViec.DataSource = congViecs;
+                    cboCongViec.DisplayMember = "TenCongViec";
+                    cboCongViec.ValueMember = "MaCongViec";
+                    cboCongViec.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Lỗi khi load combobox: " + ex.Message);
+            }
         }
 
+        // ======================= LẤY DÒNG ĐANG CHỌN =======================
+        private PM.DAL.Models.PhanCong GetSelectedPhanCong()
+        {
+            var selected = dgvPhanCong.CurrentRow?.DataBoundItem;
+            if (selected == null) return null;
+
+            int maPC = (int)selected.GetType().GetProperty("MaPhanCong").GetValue(selected);
+            return _phanCongService.GetById(maPC);
+        }
+
+        // ======================= CLICK DGV =======================
         private void dgvPhanCong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            var pc = dgvPhanCong.Rows[e.RowIndex].DataBoundItem as DAL.Models.PhanCong;
+            var pc = GetSelectedPhanCong();
             if (pc == null) return;
 
-            // Đổ dữ liệu lên control
-            txtMaNV.Text = pc.MaNV;
-            txtTenCV.Text = pc.TenCongViec;
+            cboNhanVien.SelectedValue = pc.MaNV;
+            cboCongViec.Text = pc.TenCongViec;
             txtMoTa.Text = pc.MoTa;
             dtpBatDau.Value = pc.NgayBatDau;
             dtpKetThuc.Value = pc.NgayKetThuc ?? DateTime.Now;
         }
 
+        // ======================= NÚT THÊM =======================
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
-                var pc = new DAL.Models.PhanCong
+                if (cboNhanVien.SelectedValue == null || cboCongViec.SelectedValue == null)
                 {
-                    MaNV = txtMaNV.Text.Trim(),
-                    TenCongViec = txtTenCV.Text.Trim(),
+                    MessageBox.Show("⚠️ Vui lòng chọn Nhân viên và Công việc!");
+                    return;
+                }
+
+                var pc = new PM.DAL.Models.PhanCong
+                {
+                    MaNV = cboNhanVien.SelectedValue.ToString(),
+                    TenCongViec = cboCongViec.Text,
                     MoTa = txtMoTa.Text.Trim(),
                     NgayBatDau = dtpBatDau.Value,
                     NgayKetThuc = dtpKetThuc.Value
                 };
 
-                var ok = _phanCongService.Add(pc);
-                if (ok)
+                if (_phanCongService.Add(pc))
                 {
-                    MessageBox.Show("✅ Thêm thành công!");
+                    MessageBox.Show("✅ Thêm phân công thành công!");
                     LoadData();
+                    ClearInput();
                 }
-                else MessageBox.Show("❌ Thêm thất bại (service trả về false).");
+                else
+                    MessageBox.Show("❌ Thêm thất bại!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi thêm: " + ex.Message);
+                MessageBox.Show("❌ Lỗi khi thêm: " + ex.Message);
             }
         }
 
+        // ======================= NÚT SỬA =======================
         private void btnSua_Click(object sender, EventArgs e)
         {
             try
@@ -146,38 +226,32 @@ namespace PM.GUI.userConTrol.Admin
                 var selected = GetSelectedPhanCong();
                 if (selected == null)
                 {
-                    MessageBox.Show("Vui lòng chọn phân công để sửa.");
+                    MessageBox.Show("⚠️ Vui lòng chọn một phân công để sửa!");
                     return;
                 }
 
-                // Lấy lại bản ghi thực từ DB (đảm bảo context đúng)
-                var pc = _phanCongService.GetById(selected.MaPhanCong);
-                if (pc == null)
-                {
-                    MessageBox.Show("Không tìm thấy bản ghi trong DB.");
-                    return;
-                }
+                selected.MaNV = cboNhanVien.SelectedValue?.ToString();
+                selected.TenCongViec = cboCongViec.Text;
+                selected.MoTa = txtMoTa.Text.Trim();
+                selected.NgayBatDau = dtpBatDau.Value;
+                selected.NgayKetThuc = dtpKetThuc.Value;
 
-                pc.MaNV = txtMaNV.Text.Trim();
-                pc.TenCongViec = txtTenCV.Text.Trim();
-                pc.MoTa = txtMoTa.Text.Trim();
-                pc.NgayBatDau = dtpBatDau.Value;
-                pc.NgayKetThuc = dtpKetThuc.Value;
-
-                var ok = _phanCongService.Update(pc);
-                if (ok)
+                if (_phanCongService.Update(selected))
                 {
                     MessageBox.Show("✅ Cập nhật thành công!");
                     LoadData();
+                    ClearInput();
                 }
-                else MessageBox.Show("❌ Cập nhật thất bại (service trả về false).");
+                else
+                    MessageBox.Show("❌ Cập nhật thất bại!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi sửa: " + ex.Message);
+                MessageBox.Show("❌ Lỗi khi sửa: " + ex.Message);
             }
         }
 
+        // ======================= NÚT XÓA =======================
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
@@ -185,30 +259,36 @@ namespace PM.GUI.userConTrol.Admin
                 var selected = GetSelectedPhanCong();
                 if (selected == null)
                 {
-                    MessageBox.Show("Vui lòng chọn phân công để xóa.");
+                    MessageBox.Show("⚠️ Vui lòng chọn một phân công để xóa!");
                     return;
                 }
 
-                var confirm = MessageBox.Show($"Bạn có chắc muốn xóa phân công (ID={selected.MaPhanCong})?", "Xác nhận", MessageBoxButtons.YesNo);
-                if (confirm != DialogResult.Yes) return;
-
-                var ok = _phanCongService.Delete(selected.MaPhanCong);
-                if (ok)
+                if (MessageBox.Show($"Xóa phân công của {selected.TenCongViec}?",
+                    "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("✅ Xóa thành công!");
-                    LoadData();
+                    if (_phanCongService.Delete(selected.MaPhanCong))
+                    {
+                        MessageBox.Show("✅ Xóa thành công!");
+                        LoadData();
+                        ClearInput();
+                    }
+                    else
+                        MessageBox.Show("❌ Xóa thất bại!");
                 }
-                else MessageBox.Show("❌ Xóa thất bại (service trả về false).");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi xóa: " + ex.Message);
+                MessageBox.Show("❌ Lỗi khi xóa: " + ex.Message);
             }
         }
 
-        private void panel_tmp_Paint(object sender, PaintEventArgs e)
+        // ======================= XÓA TRẮNG INPUT =======================
+        private void ClearInput()
         {
-
+            cboCongViec.SelectedIndex = -1;
+            txtMoTa.Clear();
+            dtpBatDau.Value = DateTime.Now;
+            dtpKetThuc.Value = DateTime.Now;
         }
     }
 }

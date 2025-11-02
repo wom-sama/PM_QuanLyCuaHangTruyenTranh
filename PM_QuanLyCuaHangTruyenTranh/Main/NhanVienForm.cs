@@ -203,7 +203,7 @@ namespace PM.GUI.Main
 
         private void btnLenDon_Click(object sender, EventArgs e)
         {
-            var uc = new LenDon();
+            var uc = new LenDon(currentNV);
             HienThiUserControl(uc);
         }
 

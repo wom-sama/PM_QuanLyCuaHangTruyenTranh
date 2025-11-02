@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvPhanCong = new System.Windows.Forms.DataGridView();
-            this.txtMaNV = new System.Windows.Forms.TextBox();
-            this.txtTenCV = new System.Windows.Forms.TextBox();
             this.dtpBatDau = new System.Windows.Forms.DateTimePicker();
             this.dtpKetThuc = new System.Windows.Forms.DateTimePicker();
             this.btnSua = new System.Windows.Forms.Button();
@@ -44,6 +42,8 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel_tmp = new Guna.UI2.WinForms.Guna2Panel();
+            this.cboNhanVien = new System.Windows.Forms.ComboBox();
+            this.cboCongViec = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhanCong)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel_tmp.SuspendLayout();
@@ -61,20 +61,6 @@
             this.dgvPhanCong.RowTemplate.Height = 24;
             this.dgvPhanCong.Size = new System.Drawing.Size(794, 355);
             this.dgvPhanCong.TabIndex = 0;
-            // 
-            // txtMaNV
-            // 
-            this.txtMaNV.Location = new System.Drawing.Point(152, 40);
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(100, 27);
-            this.txtMaNV.TabIndex = 1;
-            // 
-            // txtTenCV
-            // 
-            this.txtTenCV.Location = new System.Drawing.Point(152, 90);
-            this.txtTenCV.Name = "txtTenCV";
-            this.txtTenCV.Size = new System.Drawing.Size(100, 27);
-            this.txtTenCV.TabIndex = 3;
             // 
             // dtpBatDau
             // 
@@ -126,9 +112,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(14, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.Size = new System.Drawing.Size(83, 20);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Mã NV";
+            this.label1.Text = "Nhân viên";
             // 
             // label2
             // 
@@ -182,13 +168,13 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.groupBox1.Controls.Add(this.cboCongViec);
+            this.groupBox1.Controls.Add(this.cboNhanVien);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtMaNV);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtpKetThuc);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtTenCV);
             this.groupBox1.Controls.Add(this.txtMoTa);
             this.groupBox1.Controls.Add(this.dtpBatDau);
             this.groupBox1.Controls.Add(this.label3);
@@ -211,7 +197,23 @@
             this.panel_tmp.Name = "panel_tmp";
             this.panel_tmp.Size = new System.Drawing.Size(860, 741);
             this.panel_tmp.TabIndex = 17;
-            this.panel_tmp.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_tmp_Paint);
+           // this.panel_tmp.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_tmp_Paint);
+            // 
+            // cboNhanVien
+            // 
+            this.cboNhanVien.FormattingEnabled = true;
+            this.cboNhanVien.Location = new System.Drawing.Point(105, 39);
+            this.cboNhanVien.Name = "cboNhanVien";
+            this.cboNhanVien.Size = new System.Drawing.Size(121, 28);
+            this.cboNhanVien.TabIndex = 15;
+            // 
+            // cboCongViec
+            // 
+            this.cboCongViec.FormattingEnabled = true;
+            this.cboCongViec.Location = new System.Drawing.Point(138, 85);
+            this.cboCongViec.Name = "cboCongViec";
+            this.cboCongViec.Size = new System.Drawing.Size(121, 28);
+            this.cboCongViec.TabIndex = 16;
             // 
             // PhanCong
             // 
@@ -234,8 +236,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvPhanCong;
-        private System.Windows.Forms.TextBox txtMaNV;
-        private System.Windows.Forms.TextBox txtTenCV;
         private System.Windows.Forms.DateTimePicker dtpBatDau;
         private System.Windows.Forms.DateTimePicker dtpKetThuc;
         private System.Windows.Forms.Button btnSua;
@@ -249,5 +249,7 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.GroupBox groupBox1;
         private Guna.UI2.WinForms.Guna2Panel panel_tmp;
+        private System.Windows.Forms.ComboBox cboCongViec;
+        private System.Windows.Forms.ComboBox cboNhanVien;
     }
 }

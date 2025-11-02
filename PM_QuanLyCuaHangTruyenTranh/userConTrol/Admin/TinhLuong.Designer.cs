@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvLuong = new System.Windows.Forms.DataGridView();
-            this.txtMaNV = new System.Windows.Forms.TextBox();
             this.txtLuongCoBan = new System.Windows.Forms.TextBox();
             this.txtPhuCap = new System.Windows.Forms.TextBox();
             this.txtThuong = new System.Windows.Forms.TextBox();
@@ -47,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboNhanVien = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLuong)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,19 +57,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLuong.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLuong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLuong.Location = new System.Drawing.Point(3, 454);
+            this.dgvLuong.Location = new System.Drawing.Point(30, 519);
             this.dgvLuong.Name = "dgvLuong";
             this.dgvLuong.RowHeadersWidth = 51;
             this.dgvLuong.RowTemplate.Height = 24;
-            this.dgvLuong.Size = new System.Drawing.Size(736, 366);
+            this.dgvLuong.Size = new System.Drawing.Size(793, 299);
             this.dgvLuong.TabIndex = 0;
-            // 
-            // txtMaNV
-            // 
-            this.txtMaNV.Location = new System.Drawing.Point(115, 54);
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(100, 27);
-            this.txtMaNV.TabIndex = 1;
             // 
             // txtLuongCoBan
             // 
@@ -166,9 +159,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(23, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.Size = new System.Drawing.Size(88, 20);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Mã NV";
+            this.label1.Text = "Nhân viên ";
             // 
             // label2
             // 
@@ -217,13 +210,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboNhanVien);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtMaNV);
             this.groupBox1.Controls.Add(this.dtThang);
             this.groupBox1.Controls.Add(this.txtKhauTru);
             this.groupBox1.Controls.Add(this.txtLuongCoBan);
@@ -232,10 +225,18 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(327, 411);
+            this.groupBox1.Size = new System.Drawing.Size(327, 369);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
+            // 
+            // cboNhanVien
+            // 
+            this.cboNhanVien.FormattingEnabled = true;
+            this.cboNhanVien.Location = new System.Drawing.Point(111, 46);
+            this.cboNhanVien.Name = "cboNhanVien";
+            this.cboNhanVien.Size = new System.Drawing.Size(121, 28);
+            this.cboNhanVien.TabIndex = 18;
             // 
             // TinhLuong
             // 
@@ -262,7 +263,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvLuong;
-        private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.TextBox txtLuongCoBan;
         private System.Windows.Forms.TextBox txtPhuCap;
         private System.Windows.Forms.TextBox txtThuong;
@@ -280,5 +280,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cboNhanVien;
     }
 }
