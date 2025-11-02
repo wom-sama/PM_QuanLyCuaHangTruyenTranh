@@ -53,12 +53,10 @@ namespace PM.GUI.Main
             this.btn_DSTG = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btnKho = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.BtnThem = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pannel_CT_CN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.pannel_Admin.SuspendLayout();
             this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pannel_Admin
@@ -112,10 +110,10 @@ namespace PM.GUI.Main
             | System.Windows.Forms.AnchorStyles.Left)));
             this.shadow_PannelCN.BackColor = System.Drawing.Color.Pink;
             this.shadow_PannelCN.Controls.Add(this.PanelCN);
-            this.shadow_PannelCN.FillColor = System.Drawing.Color.White;
+            this.shadow_PannelCN.FillColor = System.Drawing.Color.Transparent;
             this.shadow_PannelCN.Location = new System.Drawing.Point(41, 193);
             this.shadow_PannelCN.Name = "shadow_PannelCN";
-            this.shadow_PannelCN.ShadowColor = System.Drawing.Color.Black;
+            this.shadow_PannelCN.ShadowColor = System.Drawing.Color.Transparent;
             this.shadow_PannelCN.Size = new System.Drawing.Size(249, 477);
             this.shadow_PannelCN.TabIndex = 1;
             // 
@@ -124,6 +122,7 @@ namespace PM.GUI.Main
             this.PanelCN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelCN.AutoScroll = true;
+            this.PanelCN.BackColor = System.Drawing.Color.Transparent;
             this.PanelCN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PanelCN.Controls.Add(this.btn_phanCong);
             this.PanelCN.Controls.Add(this.Btn_ThongBao);
@@ -143,7 +142,6 @@ namespace PM.GUI.Main
             this.PanelCN.Controls.Add(this.btn_DSTG);
             this.PanelCN.Controls.Add(this.btnKho);
             this.PanelCN.Controls.Add(this.BtnThem);
-            this.PanelCN.Controls.Add(this.guna2PictureBox1);
             this.PanelCN.FillColor = System.Drawing.Color.Transparent;
             this.PanelCN.ForeColor = System.Drawing.Color.Transparent;
             this.PanelCN.Location = new System.Drawing.Point(3, 16);
@@ -340,6 +338,7 @@ namespace PM.GUI.Main
             this.btn_TheLoai.Size = new System.Drawing.Size(156, 40);
             this.btn_TheLoai.TabIndex = 6;
             this.btn_TheLoai.Text = "Thể Loại";
+            this.btn_TheLoai.Click += new System.EventHandler(this.btn_TheLoai_Click);
             // 
             // btn_Sach
             // 
@@ -437,15 +436,6 @@ namespace PM.GUI.Main
             this.BtnThem.Text = "Thêm Sách";
             this.BtnThem.Click += new System.EventHandler(this.BtnThem_Click);
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(-3, -11);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(249, 471);
-            this.guna2PictureBox1.TabIndex = 4;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // pannel_CT_CN
             // 
             this.pannel_CT_CN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -478,7 +468,6 @@ namespace PM.GUI.Main
             this.pannel_Admin.ResumeLayout(false);
             this.shadow_PannelCN.ResumeLayout(false);
             this.PanelCN.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,7 +497,6 @@ namespace PM.GUI.Main
         private Guna.UI2.WinForms.Guna2GradientTileButton Btn_ThongBao;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_CH;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_TTCN;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2GradientTileButton btn_phanCong;
     }
 }

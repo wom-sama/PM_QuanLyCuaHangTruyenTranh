@@ -22,12 +22,13 @@ namespace PM.GUI
         static void Main()
         {
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main.Client());
+              Application.EnableVisualStyles();
+              Application.SetCompatibleTextRenderingDefault(false);
+               Application.Run(new Main.LoginForm());
+           
 
-         //   byte[] originalKey = AESHelper.GetOriginalKey();
-         //   Console.WriteLine(Encoding.UTF8.GetString(originalKey));
+            //   byte[] originalKey = AESHelper.GetOriginalKey();
+            //   Console.WriteLine(Encoding.UTF8.GetString(originalKey));
 
 
 

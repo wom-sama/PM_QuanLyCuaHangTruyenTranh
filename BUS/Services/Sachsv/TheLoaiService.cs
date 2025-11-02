@@ -12,7 +12,7 @@ namespace PM.BUS.Services.Sachsv
     {
         private readonly IUnitOfWork _unitOfWork;
 
-    public TheLoaiService(IUnitOfWork unitOfWork)
+        public TheLoaiService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -62,6 +62,7 @@ namespace PM.BUS.Services.Sachsv
                 return new List<TheLoai>();
             }
         }
+
 
         // ==================== THÊM / SỬA / XÓA ====================
 
@@ -202,7 +203,22 @@ namespace PM.BUS.Services.Sachsv
                 return false;
             }
         }
+
+        // lấy số lượng sách của thể loại
+        public async Task<int> LaySoLuongSachTL(string maTL)
+        {
+            try
+            {
+                var sachList = await _unitOfWork.SachRepository.GetAllAsync();
+                return sachList.Count(s => s.MaTheLoai == maTL);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy số lượng sách của tác giả: " + ex.Message);
+                return 0;
+            }
+        }
     }
 
+    }
 
-}

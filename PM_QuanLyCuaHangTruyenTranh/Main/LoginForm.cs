@@ -107,7 +107,7 @@ namespace PM.GUI.Main
                         var kh = await authService.DangNhapVaLayKhachHang(username, password);
                         if (kh != null)
                         {
-                            new Client(kh).ShowDialog();
+                            new FromTest(kh).ShowDialog();
                         }
                         else
                         {

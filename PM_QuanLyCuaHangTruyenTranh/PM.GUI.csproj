@@ -402,6 +402,9 @@
     <EmbeddedResource Include="userConTrol\Admin\PhanCong.resx">
       <DependentUpon>PhanCong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Admin\TheLoai.resx">
+      <DependentUpon>TheLoai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\TinhLuong.resx">
       <DependentUpon>TinhLuong.cs</DependentUpon>
     </EmbeddedResource>
