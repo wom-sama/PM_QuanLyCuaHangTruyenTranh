@@ -24,7 +24,7 @@ namespace PM.GUI.userConTrol.Admin
         private Guna2DataGridView dgvCTNhap;
         private Guna2ComboBox cboKho;
         private Guna2TextBox txtSearch;
-        private Guna2Button btnAdd, btnEdit, btnDelete, btnRefresh, btnAddDetail;
+        private Guna2Button btnAdd, btnEdit, btnDelete, btnRefresh, btnAddDetail, btnToggleEditDetail;
         private Guna2Panel pnlForm;
         private Guna2TextBox txtMaPhieu, txtGhiChu;
         private Guna2DateTimePicker dtpNgayNhap;
@@ -36,6 +36,7 @@ namespace PM.GUI.userConTrol.Admin
         private FlowLayoutPanel pnlTop;
 
         private bool _isAnimating = false;
+        private bool _isDetailEditMode = false; // mới: trạng thái sửa/ thêm chi tiết (nằm bên trái)
 
         public Edit_NhapKho()
         {
@@ -78,6 +79,10 @@ namespace PM.GUI.userConTrol.Admin
             btnRefresh = CreateButton("Làm mới", async (s, e) => await LoadAllAsync());
             btnAddDetail = CreateButton("Thêm chi tiết", AddDetail_Click);
 
+            // MỚI: nút chuyển chế độ Sửa chi tiết (bên phải nút Làm mới)
+            btnToggleEditDetail = CreateButton("Sửa chi tiết", ToggleEditDetail_Click);
+            btnToggleEditDetail.Margin = new Padding(6);
+
             // Top panel
             pnlTop = new FlowLayoutPanel
             {
@@ -87,7 +92,9 @@ namespace PM.GUI.userConTrol.Admin
                 BackColor = Color.WhiteSmoke,
                 Padding = new Padding(10, 8, 10, 8)
             };
-            pnlTop.Controls.AddRange(new Control[] { txtSearch, btnAdd, btnEdit, btnDelete, btnRefresh, btnAddDetail });
+
+            // đặt order: search, add, edit, delete, refresh, toggleEditDetail, addDetail
+            pnlTop.Controls.AddRange(new Control[] { txtSearch, btnAdd, btnEdit, btnDelete, btnRefresh, btnToggleEditDetail, btnAddDetail });
 
             // DataGridView danh sách phiếu
             dgvNhapKho = new Guna2DataGridView
@@ -102,7 +109,7 @@ namespace PM.GUI.userConTrol.Admin
             };
             dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã phiếu", DataPropertyName = "MaPhieuNhap", Width = 100 });
             dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ngày nhập", DataPropertyName = "NgayNhap", Width = 110 });
-            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Kho", DataPropertyName = "TenKho", Width = 140 });
+            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Kho", DataPropertyName = "TenKho", Width = 200 }); // tăng width để hiển thị tên kho
             dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "NV", DataPropertyName = "MaNV", Width = 80 });
             dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ghi chú", DataPropertyName = "GhiChu", Width = 200 });
 
@@ -194,6 +201,13 @@ namespace PM.GUI.userConTrol.Admin
 
         private async void Delete_Click(object sender, EventArgs e)
         {
+            // nếu đang ở chế độ sửa chi tiết thì nút xóa bị vô hiệu (không gọi), nhưng guard thêm đây
+            if (_isDetailEditMode)
+            {
+                ShowMessage("Đang ở chế độ Sửa/Thêm chi tiết. Nút Xóa bị vô hiệu.");
+                return;
+            }
+
             if (dgvNhapKho.SelectedRows.Count == 0) { ShowMessage("Vui lòng chọn phiếu để xóa"); return; }
             var phieu = (NhapKho)dgvNhapKho.SelectedRows[0].DataBoundItem;
             if (MessageBox.Show($"Bạn có chắc muốn xóa phiếu \"{phieu.MaPhieuNhap}\"? (Toàn bộ chi tiết sẽ bị xóa)", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -215,15 +229,48 @@ namespace PM.GUI.userConTrol.Admin
             }
 
             var phieu = (NhapKho)dgvNhapKho.SelectedRows[0].DataBoundItem;
+            // Nếu đang ở chế độ "Sửa chi tiết" (bật), hành vi vẫn là mở form thêm chi tiết,
+            // nhưng panel sẽ mở từ trái (ShowDetailForm sẽ kiểm tra _isDetailEditMode)
             ShowDetailForm("Thêm chi tiết - " + phieu.MaPhieuNhap, phieu);
+        }
+
+        // === Toggle: chuyển sang chế độ Sửa/Thêm chi tiết (nằm bên trái) hoặc quay về ===
+        private void ToggleEditDetail_Click(object sender, EventArgs e)
+        {
+            // nút chuyển chế độ: nếu đang tắt -> bật; bật -> tắt
+            _isDetailEditMode = !_isDetailEditMode;
+
+            if (_isDetailEditMode)
+            {
+                // thay đổi UI: khi bật, nút thêm/sửa sẽ dùng để thêm/sửa chi tiết,
+                // nút xóa vô hiệu
+                btnToggleEditDetail.Text = "Quay về quản lý phiếu";
+                btnAdd.Text = "Thêm chi tiết";
+                btnEdit.Text = "Sửa chi tiết";
+                btnDelete.Enabled = false;
+                btnAddDetail.Text = "Mở chi tiết"; // optional: giữ 1 nút để mở form thêm chi tiết
+                ShowMessage("Đã chuyển sang chế độ Thêm/Sửa chi tiết. Panel chi tiết sẽ xuất hiện ở bên trái khi mở.");
+            }
+            else
+            {
+                // quay về trạng thái bình thường
+                btnToggleEditDetail.Text = "Sửa chi tiết";
+                btnAdd.Text = "Thêm phiếu";
+                btnEdit.Text = "Sửa phiếu";
+                btnDelete.Enabled = true;
+                btnAddDetail.Text = "Thêm chi tiết";
+                ShowMessage("Đã quay về chế độ quản lý phiếu (Thêm/Sửa/Xóa phiếu).");
+            }
         }
 
         // === ShowForm cho Thêm / Sửa phiếu (header) ===
         private async void ShowForm(string title, NhapKho phieu = null)
         {
+            // Khi đang ở chế độ edit detail, nhưng user mở form phiếu, ta muốn mở panel ở bên phải (như cũ).
+            // Nếu có pnlForm đang mở thì đóng trước
             if (pnlForm != null && guna2Panel1.Controls.Contains(pnlForm))
             {
-                await AnimatePanel(pnlForm, false);
+                await AnimatePanel(pnlForm, false, DockStyle.Right);
             }
 
             pnlForm = new Guna2Panel
@@ -251,7 +298,9 @@ namespace PM.GUI.userConTrol.Admin
             // Controls nhập phiếu
             txtMaPhieu = new Guna2TextBox { PlaceholderText = "Mã phiếu", Text = phieu?.MaPhieuNhap ?? RandHelper.TaoMa("PN"), ReadOnly = true };
             dtpNgayNhap = new Guna2DateTimePicker { Format = DateTimePickerFormat.Short, Value = phieu?.NgayNhap ?? DateTime.Now };
-            var tmp = new Guna2ComboBox();
+
+            // Tăng chiều rộng combobox kho để nhìn rõ tên kho (yêu cầu)
+            var tmp = new Guna2ComboBox { Width = 360 };
             tmp.AutoCompleteSource = AutoCompleteSource.ListItems;
             tmp.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cboKho = tmp;
@@ -269,7 +318,7 @@ namespace PM.GUI.userConTrol.Admin
 
             // nút lưu / hủy
             btnSave = CreateButton("Lưu", async (s, e) => await SavePhieu_Click(phieu));
-            btnCancel = CreateButton("Hủy", async (s, e) => await AnimatePanel(pnlForm, false));
+            btnCancel = CreateButton("Hủy", async (s, e) => await AnimatePanel(pnlForm, false, DockStyle.Right));
 
             var flow = new FlowLayoutPanel
             {
@@ -281,9 +330,10 @@ namespace PM.GUI.userConTrol.Admin
 
             pnlForm.Controls.Add(flow);
             guna2Panel1.Controls.Add(pnlForm);
+            // đặt BringToFront để panel hiện lên trên
             pnlForm.BringToFront();
 
-            await AnimatePanel(pnlForm, true);
+            await AnimatePanel(pnlForm, true, DockStyle.Right);
         }
 
         // === ShowForm thêm chi tiết (sách vào phiếu) ===
@@ -291,9 +341,11 @@ namespace PM.GUI.userConTrol.Admin
         {
             if (phieu == null) return;
 
+            // Nếu đang có panel mở thì đóng trước
             if (pnlForm != null && guna2Panel1.Controls.Contains(pnlForm))
             {
-                await AnimatePanel(pnlForm, false);
+                // đóng panel hiện tại (nếu là từ phải hoặc trái) trước
+                await AnimatePanel(pnlForm, false, pnlForm.Dock);
             }
 
             pnlForm = new Guna2Panel
@@ -303,7 +355,8 @@ namespace PM.GUI.userConTrol.Admin
                 BorderThickness = 1,
                 BorderColor = Color.Gray,
                 BackColor = Color.White,
-                Dock = DockStyle.Right,
+                // MỞ Ở BÊN TRÁI khi đang ở chế độ sửa chi tiết (_isDetailEditMode == true)
+                Dock = _isDetailEditMode ? DockStyle.Left : DockStyle.Right,
                 Padding = new Padding(12),
                 Visible = true,
                 ShadowDecoration = { Enabled = true, Depth = 8, Color = Color.FromArgb(60, 0, 0, 0) }
@@ -330,7 +383,7 @@ namespace PM.GUI.userConTrol.Admin
             cboSach.ValueMember = "MaSach";
 
             btnSave = CreateButton("Thêm vào phiếu", async (s, e) => await SaveDetail_Click(phieu));
-            btnCancel = CreateButton("Hủy", async (s, e) => await AnimatePanel(pnlForm, false));
+            btnCancel = CreateButton("Hủy", async (s, e) => await AnimatePanel(pnlForm, false, pnlForm.Dock));
 
             var flow = new FlowLayoutPanel
             {
@@ -355,7 +408,8 @@ namespace PM.GUI.userConTrol.Admin
             guna2Panel1.Controls.Add(pnlForm);
             pnlForm.BringToFront();
 
-            await AnimatePanel(pnlForm, true);
+            // MỞ bằng animation từ trái khi _isDetailEditMode == true, ngược lại từ phải
+            await AnimatePanel(pnlForm, true, pnlForm.Dock);
         }
 
         // === Lưu phiếu (header) ===
@@ -391,7 +445,7 @@ namespace PM.GUI.userConTrol.Admin
             if (success)
             {
                 ShowMessage("Lưu phiếu thành công!");
-                await AnimatePanel(pnlForm, false);
+                await AnimatePanel(pnlForm, false, DockStyle.Right);
                 await LoadAllAsync();
             }
             else
@@ -429,7 +483,7 @@ namespace PM.GUI.userConTrol.Admin
             {
                 // có thể cập nhật kho/số lượng tồn ở tầng service nếu cần
                 ShowMessage("Đã thêm sách vào phiếu!");
-                await AnimatePanel(pnlForm, false);
+                await AnimatePanel(pnlForm, false, pnlForm.Dock);
                 DgvNhapKho_SelectionChanged(null, null); // reload chi tiết
             }
             else
@@ -439,12 +493,13 @@ namespace PM.GUI.userConTrol.Admin
         }
 
         // === Hiệu ứng slide panel giống mẫu ===
-        private async Task AnimatePanel(Guna2Panel panel, bool show)
+        // Bổ sung tham số dockSide để cho panel có thể mở từ trái hoặc phải
+        private async Task AnimatePanel(Guna2Panel panel, bool show, DockStyle dockSide)
         {
             if (_isAnimating) return;
             _isAnimating = true;
 
-            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnAddDetail.Enabled = false;
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnAddDetail.Enabled = btnToggleEditDetail.Enabled = false;
 
             int targetWidth = 380;
             int frameRate = 120;
@@ -458,6 +513,8 @@ namespace PM.GUI.userConTrol.Admin
 
             panel.SuspendLayout();
 
+            // để điều khiển animation mở từ trái hoặc phải, ta thay đổi Width và vị trí thông qua Padding/Offset.
+            // simpler: nếu mở từ trái, DockStyle.Left và tăng Width; nếu mở từ phải, DockStyle.Right và tăng Width.
             if (show)
             {
                 panel.Visible = true;
@@ -502,7 +559,10 @@ namespace PM.GUI.userConTrol.Admin
 
             panel.ResumeLayout();
 
-            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnAddDetail.Enabled = true;
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnAddDetail.Enabled = btnToggleEditDetail.Enabled = true;
+            // Nếu đang ở chế độ detail edit thì vô hiệu nút xóa
+            btnDelete.Enabled = !_isDetailEditMode;
+
             _isAnimating = false;
         }
 

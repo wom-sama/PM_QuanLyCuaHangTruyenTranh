@@ -237,8 +237,8 @@ namespace PM.GUI.Main
         private void btn_NhanVien_Click(object sender, EventArgs e)
         {
             Edit_Lable.AdjustFontSize(lbl_titleCN);
-            MoPanelConTheoNut("NhanVien");
-            
+            MoPanelConTheoNut("btn_NhanVien");
+            btnCN_Click_1(sender, e);            
 
         }
         private UserControl TaiControlChoNut(string nut)
@@ -261,6 +261,7 @@ namespace PM.GUI.Main
                 case "btn_TTCn":    return new  userConTrol.Common.ShowTTCN(currentNV.MaNV) { Dock = DockStyle.Fill };
                 case"Btn_ThongBao": return new userConTrol.Admin.GuiThongBao() { Dock =DockStyle.Fill};
                 case "btn_ChucVu": return new Edit_ChucVu { Dock = DockStyle.Fill };
+                case "btn_NhanVien": return new TaiKhoanNhanVien { Dock = DockStyle.Fill };
                 default:
                     return null;
             }

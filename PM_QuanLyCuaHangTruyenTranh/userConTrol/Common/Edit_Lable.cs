@@ -25,6 +25,9 @@ namespace PM.GUI.userConTrol.Common
             float newSize = Math.Max(8, lbl.Font.Size * ratio);
 
             lbl.Font = new Font(lbl.Font.FontFamily, newSize, lbl.Font.Style);
+            //Cẵn Giữa
+            lbl.TextAlignment = ContentAlignment.MiddleCenter;
+
         }
     }
 }
