@@ -32,6 +32,7 @@
             this.pannelGD_tong = new Guna.UI2.WinForms.Guna2Panel();
             this.panelhienthi = new Guna.UI2.WinForms.Guna2Panel();
             this.panelMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongTin = new Guna.UI2.WinForms.Guna2Button();
             this.btnXemLuong = new Guna.UI2.WinForms.Guna2Button();
@@ -46,7 +47,6 @@
             this.lblBadge = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.pannelGD_tong.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -66,7 +66,7 @@
             this.pannelGD_tong.Location = new System.Drawing.Point(0, 0);
             this.pannelGD_tong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pannelGD_tong.Name = "pannelGD_tong";
-            this.pannelGD_tong.Size = new System.Drawing.Size(1328, 1148);
+            this.pannelGD_tong.Size = new System.Drawing.Size(1217, 596);
             this.pannelGD_tong.TabIndex = 7;
             // 
             // panelhienthi
@@ -79,7 +79,7 @@
             this.panelhienthi.Location = new System.Drawing.Point(252, 135);
             this.panelhienthi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelhienthi.Name = "panelhienthi";
-            this.panelhienthi.Size = new System.Drawing.Size(1017, 939);
+            this.panelhienthi.Size = new System.Drawing.Size(906, 408);
             this.panelhienthi.TabIndex = 7;
             // 
             // panelMenu
@@ -87,6 +87,7 @@
             this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMenu.AutoScroll = true;
             this.panelMenu.Controls.Add(this.btnDoanhThu);
             this.panelMenu.Controls.Add(this.guna2Button1);
             this.panelMenu.Controls.Add(this.btnThongTin);
@@ -105,8 +106,22 @@
             this.panelMenu.Location = new System.Drawing.Point(45, 135);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(217, 939);
+            this.panelMenu.Size = new System.Drawing.Size(192, 406);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnDoanhThu
+            // 
+            this.btnDoanhThu.BorderRadius = 10;
+            this.btnDoanhThu.FillColor = System.Drawing.Color.Crimson;
+            this.btnDoanhThu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDoanhThu.ForeColor = System.Drawing.Color.White;
+            this.btnDoanhThu.Location = new System.Drawing.Point(20, 538);
+            this.btnDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDoanhThu.Name = "btnDoanhThu";
+            this.btnDoanhThu.Size = new System.Drawing.Size(180, 50);
+            this.btnDoanhThu.TabIndex = 12;
+            this.btnDoanhThu.Text = "Doanh Thu";
+            this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
             // guna2Button1
             // 
@@ -260,7 +275,7 @@
             this.btnChuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnChuong.ForeColor = System.Drawing.Color.Gold;
             this.btnChuong.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnChuong.Location = new System.Drawing.Point(1055, 32);
+            this.btnChuong.Location = new System.Drawing.Point(944, 32);
             this.btnChuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChuong.Name = "btnChuong";
             this.btnChuong.Size = new System.Drawing.Size(74, 82);
@@ -301,25 +316,11 @@
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
-            // btnDoanhThu
-            // 
-            this.btnDoanhThu.BorderRadius = 10;
-            this.btnDoanhThu.FillColor = System.Drawing.Color.Crimson;
-            this.btnDoanhThu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnDoanhThu.ForeColor = System.Drawing.Color.White;
-            this.btnDoanhThu.Location = new System.Drawing.Point(20, 538);
-            this.btnDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDoanhThu.Name = "btnDoanhThu";
-            this.btnDoanhThu.Size = new System.Drawing.Size(180, 50);
-            this.btnDoanhThu.TabIndex = 12;
-            this.btnDoanhThu.Text = "Doanh Thu";
-            this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
-            // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 1148);
+            this.ClientSize = new System.Drawing.Size(1217, 596);
             this.Controls.Add(this.pannelGD_tong);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;

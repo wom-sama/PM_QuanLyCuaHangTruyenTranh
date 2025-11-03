@@ -15,7 +15,7 @@ namespace PM.GUI.Main
 {
     public partial class LoginForm : Form
     {
-        private readonly AuthService authService = new AuthService(); // dùng BUS thay vì DbContext
+        private readonly AuthService authService = new AuthService(); 
         FormMessage f = new FormMessage("Vui lòng liên hệ Admin để được hỗ trợ!");
 
         public LoginForm()
@@ -29,7 +29,7 @@ namespace PM.GUI.Main
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             lblInfo.Cursor = Cursors.Default;
 
-            GNcmbVAI.Items.AddRange(new string[] { "", "Admin", "Nhân viên", "Khách" });
+            GNcmbVAI.Items.AddRange(new string[] {"Admin", "Nhân viên", "Khách" });
             GNcmbVAI.SelectedIndex = 0;
             
             this.MaximizeBox = false;
@@ -141,7 +141,7 @@ namespace PM.GUI.Main
             switch (GNcmbVAI.SelectedItem.ToString())
             {
                 case "Admin":
-                    newGif = Properties.Resources.evernight_ezgif_com_apng_to_gif_converter;
+                    newGif = Properties.Resources.cherry_blossoms_6383_128;
                     break;
                 case "Nhân viên":
                     newGif = Properties.Resources.sparkle_hanabi;

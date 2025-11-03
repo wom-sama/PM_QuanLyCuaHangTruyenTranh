@@ -1,7 +1,9 @@
 ﻿using Guna.UI2.WinForms;
+using Org.BouncyCastle.Asn1.X509;
 using PM.BUS.Services.DonHangsv;
 using PM.BUS.Services.Sachsv;
 using PM.DAL.Models;
+using PM.GUI.FormThongBao;
 using System;
 using System.Drawing;
 using System.IO;
@@ -226,7 +228,8 @@ namespace PM.GUI.userConTrol.Admin
             _sach = await _sachService.GetByIdAsync(_maSach);
             if (_sach == null)
             {
-                MessageBox.Show("Không tìm thấy sách!");
+               Form f= new FormMessage("Không tìm được sách");
+                f.ShowDialog();
                 return;
             }
 
@@ -313,11 +316,13 @@ namespace PM.GUI.userConTrol.Admin
                 }
 
                 await _sachService.UpdateAsync(_sach);
-                MessageBox.Show("✅ Đã lưu thay đổi!", "Thông báo");
+                Form f = new FormMessage("Đã Lưu Thông Tin Sách");
+                f.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi lưu: " + ex.Message);
+                Form f = new FormMessage("Không tìm được sách"+ex.Message);
+                f.ShowDialog();
             }
         }
 
@@ -326,7 +331,8 @@ namespace PM.GUI.userConTrol.Admin
             if (MessageBox.Show("Bạn có chắc muốn xóa sách này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 await _sachService.DeleteAsync(_maSach);
-                MessageBox.Show("Đã xóa thành công!");
+                Form f = new FormMessage("Xóa Thành Công");
+                f.ShowDialog();
                 OnExitClicked?.Invoke(this, EventArgs.Empty);
             }
         }
