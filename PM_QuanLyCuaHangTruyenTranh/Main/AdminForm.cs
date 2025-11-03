@@ -236,6 +236,7 @@ namespace PM.GUI.Main
 
         private void btn_NhanVien_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Quản lý tài khoản nhân viên";
             Edit_Lable.AdjustFontSize(lbl_titleCN);
             MoPanelConTheoNut("btn_NhanVien");
             btnCN_Click_1(sender, e);            
@@ -359,6 +360,8 @@ namespace PM.GUI.Main
 
         private void btn_ChucVu_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Quản Lý Chức vụ";
+            Edit_Lable.AdjustFontSize(lbl_titleCN) ;
             MoPanelConTheoNut("btn_ChucVu");
             btnCN_Click_1(sender, e);
 

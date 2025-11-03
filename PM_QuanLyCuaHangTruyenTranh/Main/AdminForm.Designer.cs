@@ -430,7 +430,7 @@ namespace PM.GUI.Main
             this.lbl_titleCN.AutoSize = false;
             this.lbl_titleCN.BackColor = System.Drawing.Color.Transparent;
             this.lbl_titleCN.Enabled = false;
-            this.lbl_titleCN.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_titleCN.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_titleCN.Location = new System.Drawing.Point(149, 12);
             this.lbl_titleCN.Name = "lbl_titleCN";
             this.lbl_titleCN.Size = new System.Drawing.Size(1009, 151);
