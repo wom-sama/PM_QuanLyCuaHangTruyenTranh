@@ -37,13 +37,13 @@ namespace PM.GUI.userConTrol.Admin
             cbo_nhanVien.DataSource = danhSachNhanVien.ToList();
             cbo_nhanVien.DisplayMember = "HoTen"; // Thuộc tính hiển thị
             cbo_nhanVien.ValueMember = "MaNV";   // Thuộc tính giá trị
-            cbo_nhanVien.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbo_nhanVien.SelectedIndex = 0;
             //load danh sach khach hang vao combobox
             var danhSachKhachHang = khachHangService.LayTatCa();
             cbo_Khack.DataSource = danhSachKhachHang.ToList();
             cbo_Khack.DisplayMember = "HoTen"; // Thuộc tính hiển thị
             cbo_Khack.ValueMember = "TenDangNhap";   // Thuộc tính giá trị
-            cbo_Khack.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbo_Khack.SelectedIndex = 0;
 
 
 

@@ -36,6 +36,7 @@ namespace PM.GUI.Main
             this.lbl_titleCN = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.shadow_PannelCN = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.PanelCN = new Guna.UI2.WinForms.Guna2Panel();
+            this.btn_DX = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btn_phanCong = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.Btn_ThongBao = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -52,7 +53,6 @@ namespace PM.GUI.Main
             this.btn_DSTG = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btnKho = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.BtnThem = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.btn_DX = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.pannel_Admin.SuspendLayout();
             this.shadow_PannelCN.SuspendLayout();
             this.PanelCN.SuspendLayout();
@@ -64,10 +64,10 @@ namespace PM.GUI.Main
             this.pannel_Admin.BackColor = System.Drawing.Color.Transparent;
             this.pannel_Admin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pannel_Admin.BackgroundImage")));
             this.pannel_Admin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pannel_Admin.Controls.Add(this.shadow_PannelCN);
             this.pannel_Admin.Controls.Add(this.pannel_CT_CN);
             this.pannel_Admin.Controls.Add(this.btnCN);
             this.pannel_Admin.Controls.Add(this.lbl_titleCN);
-            this.pannel_Admin.Controls.Add(this.shadow_PannelCN);
             this.pannel_Admin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannel_Admin.Location = new System.Drawing.Point(0, 0);
             this.pannel_Admin.Name = "pannel_Admin";
@@ -160,6 +160,23 @@ namespace PM.GUI.Main
             this.PanelCN.Name = "PanelCN";
             this.PanelCN.Size = new System.Drawing.Size(240, 458);
             this.PanelCN.TabIndex = 0;
+            // 
+            // btn_DX
+            // 
+            this.btn_DX.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_DX.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_DX.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_DX.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_DX.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_DX.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_DX.ForeColor = System.Drawing.Color.White;
+            this.btn_DX.Location = new System.Drawing.Point(6, 544);
+            this.btn_DX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_DX.Name = "btn_DX";
+            this.btn_DX.Size = new System.Drawing.Size(141, 45);
+            this.btn_DX.TabIndex = 20;
+            this.btn_DX.Text = "Dang Xuat";
+            this.btn_DX.Click += new System.EventHandler(this.guna2GradientTileButton2_Click);
             // 
             // guna2GradientTileButton1
             // 
@@ -419,23 +436,6 @@ namespace PM.GUI.Main
             this.BtnThem.TabIndex = 0;
             this.BtnThem.Text = "Thêm Sách";
             this.BtnThem.Click += new System.EventHandler(this.BtnThem_Click);
-            // 
-            // btn_DX
-            // 
-            this.btn_DX.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_DX.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_DX.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_DX.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_DX.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_DX.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_DX.ForeColor = System.Drawing.Color.White;
-            this.btn_DX.Location = new System.Drawing.Point(6, 544);
-            this.btn_DX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_DX.Name = "btn_DX";
-            this.btn_DX.Size = new System.Drawing.Size(141, 45);
-            this.btn_DX.TabIndex = 20;
-            this.btn_DX.Text = "Dang Xuat";
-            this.btn_DX.Click += new System.EventHandler(this.guna2GradientTileButton2_Click);
             // 
             // AdminForm
             // 

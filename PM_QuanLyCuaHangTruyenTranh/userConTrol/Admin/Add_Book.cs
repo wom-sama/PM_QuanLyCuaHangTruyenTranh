@@ -26,6 +26,9 @@ namespace PM.GUI.userConTrol.Admin
         private Guna2PictureBox picBiaSach;
         private Guna2Button btnUpload, btnLuu, btnHuy;
         private Label lblTitle;
+
+      
+
         private Guna2Panel Pannel_AddBook_main;
 
 
@@ -50,6 +53,7 @@ namespace PM.GUI.userConTrol.Admin
         private void Add_Book_Load(object sender, EventArgs e)
         {
             LoadDropdowns();
+            Pannel_AddBook_main.BackColor= Color.Pink;
             txtMaSach.Text = RandHelper.TaoMa("S");
         }
 

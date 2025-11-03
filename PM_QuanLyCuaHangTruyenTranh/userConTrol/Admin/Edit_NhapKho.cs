@@ -24,11 +24,10 @@ namespace PM.GUI.userConTrol.Admin
         private Guna2DataGridView dgvCTNhap;
         private Guna2ComboBox cboKho;
         private Guna2TextBox txtSearch;
-        private Guna2Button btnAdd, btnEdit, btnDelete, btnRefresh, btnAddDetail, btnToggleEditDetail;
+        private Guna2Button btnAdd, btnEdit, btnDelete, btnRefresh, btnToggleMode;
         private Guna2Panel pnlForm;
         private Guna2TextBox txtMaPhieu, txtGhiChu;
         private Guna2DateTimePicker dtpNgayNhap;
-        private Guna2ComboBox cboNhanVien; // optional: giả sử có list NV
         private Guna2ComboBox cboSach;
         private Guna2NumericUpDown numSoLuong;
         private Guna2TextBox txtDonGia;
@@ -36,19 +35,21 @@ namespace PM.GUI.userConTrol.Admin
         private FlowLayoutPanel pnlTop;
 
         private bool _isAnimating = false;
-        private bool _isDetailEditMode = false; // mới: trạng thái sửa/ thêm chi tiết (nằm bên trái)
-
-        public Edit_NhapKho()
+        private bool _isDetailMode = false; // false = quản lý phiếu, true = quản lý chi tiết
+        private NhapKho _currentPhieu = null; // phiếu đang chọn khi ở chế độ chi tiết
+        private CT_NhapKho _currentDetail = null; // chi tiết đang chọn để sửa
+        private readonly string chu;
+        public Edit_NhapKho(string manv)
         {
             if (!DesignMode)
             {
                 InitializeComponent();
 
-                // khởi tạo service (đổi theo DI/ cách bạn dùng)
                 _nhapKhoService = new NhapKhoService();
                 _ctNhapKhoService = new CT_NhapKhoService();
                 _sachService = new SachService();
                 _khoService = new KhoService();
+                chu = manv;
 
                 BuildUI();
                 _ = LoadAllAsync();
@@ -59,29 +60,25 @@ namespace PM.GUI.userConTrol.Admin
         // === Dựng giao diện chính ===
         private void BuildUI()
         {
-            // xóa nội dung panel chính từ designer nếu cần
             guna2Panel1.Controls.Clear();
 
             // SEARCH
             txtSearch = new Guna2TextBox
             {
-                PlaceholderText = "Tìm kiếm phiếu / mã / kho ...",
+                PlaceholderText = "Tìm kiếm...",
                 BorderRadius = 8,
                 Width = 300,
                 Margin = new Padding(10)
             };
-            txtSearch.TextChanged += (s, e) => SearchNhapKho();
+            txtSearch.TextChanged += (s, e) => SearchData();
 
             // Buttons CRUD
             btnAdd = CreateButton("Thêm phiếu", Add_Click);
             btnEdit = CreateButton("Sửa phiếu", Edit_Click);
             btnDelete = CreateButton("Xóa phiếu", Delete_Click);
             btnRefresh = CreateButton("Làm mới", async (s, e) => await LoadAllAsync());
-            btnAddDetail = CreateButton("Thêm chi tiết", AddDetail_Click);
-
-            // MỚI: nút chuyển chế độ Sửa chi tiết (bên phải nút Làm mới)
-            btnToggleEditDetail = CreateButton("Sửa chi tiết", ToggleEditDetail_Click);
-            btnToggleEditDetail.Margin = new Padding(6);
+            btnToggleMode = CreateButton("→ Quản lý chi tiết", ToggleMode_Click);
+            btnToggleMode.FillColor = Color.FromArgb(94, 148, 255);
 
             // Top panel
             pnlTop = new FlowLayoutPanel
@@ -93,29 +90,27 @@ namespace PM.GUI.userConTrol.Admin
                 Padding = new Padding(10, 8, 10, 8)
             };
 
-            // đặt order: search, add, edit, delete, refresh, toggleEditDetail, addDetail
-            pnlTop.Controls.AddRange(new Control[] { txtSearch, btnAdd, btnEdit, btnDelete, btnRefresh, btnToggleEditDetail, btnAddDetail });
+            pnlTop.Controls.AddRange(new Control[] { txtSearch, btnAdd, btnEdit, btnDelete, btnRefresh, btnToggleMode });
 
             // DataGridView danh sách phiếu
             dgvNhapKho = new Guna2DataGridView
             {
-                Dock = DockStyle.Left,
-                Width = 520,
+                Dock = DockStyle.Fill,
                 AutoGenerateColumns = false,
                 ReadOnly = true,
                 AllowUserToAddRows = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 Margin = new Padding(0, 5, 0, 0)
             };
-            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã phiếu", DataPropertyName = "MaPhieuNhap", Width = 100 });
-            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ngày nhập", DataPropertyName = "NgayNhap", Width = 110 });
-            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Kho", DataPropertyName = "TenKho", Width = 200 }); // tăng width để hiển thị tên kho
+            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã phiếu", DataPropertyName = "MaPhieuNhap", Width = 120 });
+            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ngày nhập", DataPropertyName = "NgayNhap", Width = 120, DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" } });
+            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Tên kho", DataPropertyName = "TenKho", Width = 250 });
             dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "NV", DataPropertyName = "MaNV", Width = 80 });
-            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ghi chú", DataPropertyName = "GhiChu", Width = 200 });
+            dgvNhapKho.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ghi chú", DataPropertyName = "GhiChu", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
 
             dgvNhapKho.SelectionChanged += DgvNhapKho_SelectionChanged;
 
-            // DataGridView chi tiết nhập (sách trong phiếu)
+            // DataGridView chi tiết nhập
             dgvCTNhap = new Guna2DataGridView
             {
                 Dock = DockStyle.Fill,
@@ -123,14 +118,16 @@ namespace PM.GUI.userConTrol.Admin
                 ReadOnly = true,
                 AllowUserToAddRows = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Margin = new Padding(10, 5, 0, 0)
+                Margin = new Padding(0, 5, 0, 0),
+                Visible = false
             };
-            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã sách", DataPropertyName = "MaSach" });
-            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Tên sách", DataPropertyName = "TenSach", Width = 220 });
-            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Số lượng", DataPropertyName = "SoLuong" });
-            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Đơn giá", DataPropertyName = "DonGia" });
+            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã sách", DataPropertyName = "MaSach", Width = 100 });
+            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Tên sách", DataPropertyName = "TenSach", Width = 300 });
+            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Số lượng", DataPropertyName = "SoLuong", Width = 100 });
+            dgvCTNhap.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Đơn giá", DataPropertyName = "DonGia", Width = 120, DefaultCellStyle = new DataGridViewCellStyle { Format = "N0" } });
 
-            // Add controls vào panel chính
+            dgvCTNhap.SelectionChanged += DgvCTNhap_SelectionChanged;
+
             guna2Panel1.Controls.Add(dgvCTNhap);
             guna2Panel1.Controls.Add(dgvNhapKho);
             guna2Panel1.Controls.Add(pnlTop);
@@ -143,7 +140,8 @@ namespace PM.GUI.userConTrol.Admin
                 Text = text,
                 BorderRadius = 8,
                 Height = 36,
-                Margin = new Padding(6)
+                Margin = new Padding(6),
+                AutoSize = false
             };
             btn.Click += click;
             return btn;
@@ -153,160 +151,303 @@ namespace PM.GUI.userConTrol.Admin
         private async Task LoadAllAsync()
         {
             var listPhieu = await _nhapKhoService.GetAllAsync();
-            var listCT = await _ctNhapKhoService.GetAllAsync();
+            
+            // Map TenKho từ navigation property
+            var phieuList = listPhieu.Select(p => new
+            {
+                p.MaPhieuNhap,
+                p.NgayNhap,
+                p.MaKho,
+                TenKho = p.Kho?.TenKho ?? "",
+                p.MaNV,
+                p.GhiChu
+            }).ToList();
 
-            // nếu model NhapKho không có TenKho, bạn có thể map manually trong service hoặc ở đây
-            dgvNhapKho.DataSource = listPhieu.ToList();
-
-            dgvCTNhap.DataSource = null; // chưa chọn phiếu
+            dgvNhapKho.DataSource = phieuList;
+            dgvCTNhap.DataSource = null;
         }
 
-        private void SearchNhapKho()
+        private void SearchData()
         {
             string kw = txtSearch.Text.Trim().ToLower();
-            var filtered = _nhapKhoService.GetAll()
-                .Where(n => (n.MaPhieuNhap ?? "").ToLower().Contains(kw)
-                         || (n.MaKho ?? "").ToLower().Contains(kw)
-                         || (n.GhiChu ?? "").ToLower().Contains(kw))
-                .ToList();
-            dgvNhapKho.DataSource = filtered;
+
+            if (_isDetailMode)
+            {
+                // Tìm trong chi tiết
+                if (_currentPhieu == null) return;
+                
+                var filtered = _ctNhapKhoService.GetAll()
+                    .Where(c => c.MaPhieuNhap == _currentPhieu.MaPhieuNhap)
+                    .Where(c => (c.MaSach ?? "").ToLower().Contains(kw)
+                             || (c.Sach?.TenSach ?? "").ToLower().Contains(kw))
+                    .Select(c => new
+                    {
+                        c.MaPhieuNhap,
+                        c.MaSach,
+                        TenSach = c.Sach?.TenSach ?? "",
+                        c.SoLuong,
+                        c.DonGia
+                    })
+                    .ToList();
+                dgvCTNhap.DataSource = filtered;
+            }
+            else
+            {
+                // Tìm trong phiếu
+                var filtered = _nhapKhoService.GetAll()
+                    .Where(n => (n.MaPhieuNhap ?? "").ToLower().Contains(kw)
+                             || (n.MaKho ?? "").ToLower().Contains(kw)
+                             || (n.Kho?.TenKho ?? "").ToLower().Contains(kw)
+                             || (n.GhiChu ?? "").ToLower().Contains(kw))
+                    .Select(p => new
+                    {
+                        p.MaPhieuNhap,
+                        p.NgayNhap,
+                        p.MaKho,
+                        TenKho = p.Kho?.TenKho ?? "",
+                        p.MaNV,
+                        p.GhiChu
+                    })
+                    .ToList();
+                dgvNhapKho.DataSource = filtered;
+            }
         }
 
-        // === Khi chọn phiếu, load chi tiết ===
+        // === Khi chọn phiếu ===
         private void DgvNhapKho_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvNhapKho.SelectedRows.Count == 0)
+            if (dgvNhapKho.SelectedRows.Count == 0) return;
+
+            var row = dgvNhapKho.SelectedRows[0];
+                string maPhieu = row.Cells[0].Value?.ToString();
+                if (string.IsNullOrEmpty(maPhieu)) return;
+
+            _currentPhieu = _nhapKhoService.GetById(maPhieu);
+        }
+
+        // === Khi chọn chi tiết ===
+        private void DgvCTNhap_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvCTNhap.SelectedRows.Count == 0)
             {
-                dgvCTNhap.DataSource = null;
+                _currentDetail = null;
                 return;
             }
 
-            var phieu = (NhapKho)dgvNhapKho.SelectedRows[0].DataBoundItem;
-            if (phieu == null) return;
-
-            var ctList = _ctNhapKhoService.GetAll()
-                .Where(c => c.MaPhieuNhap == phieu.MaPhieuNhap)
-                .ToList();
-            dgvCTNhap.DataSource = ctList;
+            var row = dgvCTNhap.SelectedRows[0];
+            string maPhieu = row.Cells[0].Value?.ToString();
+            string maSach = row.Cells[0].Value?.ToString();
+            
+            if (!string.IsNullOrEmpty(maPhieu) && !string.IsNullOrEmpty(maSach))
+            {
+                _currentDetail = _ctNhapKhoService.GetById(maPhieu, maSach);
+            }
         }
 
-        // === CRUD phiếu ===
-        private void Add_Click(object sender, EventArgs e) => ShowForm("Thêm phiếu nhập");
+        // === Toggle giữa 2 chế độ ===
+        private void ToggleMode_Click(object sender, EventArgs e)
+        {
+            _isDetailMode = !_isDetailMode;
+
+            if (_isDetailMode)
+            {
+                // Chuyển sang chế độ quản lý chi tiết
+                if (_currentPhieu == null)
+                {
+                    ShowMessage("Vui lòng chọn phiếu nhập trước!");
+                    _isDetailMode = false;
+                    return;
+                }
+
+                // Load chi tiết của phiếu đang chọn
+                var ctList = _ctNhapKhoService.GetAll()
+                    .Where(c => c.MaPhieuNhap == _currentPhieu.MaPhieuNhap)
+                    .Select(c => new
+                    {
+                        c.MaPhieuNhap,
+                        c.MaSach,
+                        TenSach = c.Sach?.TenSach ?? "",
+                        c.SoLuong,
+                        c.DonGia
+                    })
+                    .ToList();
+                dgvCTNhap.DataSource = ctList;
+
+                // Đổi UI
+                btnToggleMode.Text = "← Quay về phiếu";
+                btnToggleMode.FillColor = Color.FromArgb(255, 128, 0);
+                btnAdd.Text = "Thêm chi tiết";
+                btnEdit.Text = "Sửa chi tiết";
+                btnDelete.Text = "Xóa chi tiết";
+                txtSearch.PlaceholderText = $"Tìm trong phiếu {_currentPhieu.MaPhieuNhap}...";
+
+                dgvNhapKho.Visible = false;
+                dgvCTNhap.Visible = true;
+            }
+            else
+            {
+                // Quay về chế độ quản lý phiếu
+                btnToggleMode.Text = "→ Quản lý chi tiết";
+                btnToggleMode.FillColor = Color.FromArgb(94, 148, 255);
+                btnAdd.Text = "Thêm phiếu";
+                btnEdit.Text = "Sửa phiếu";
+                btnDelete.Text = "Xóa phiếu";
+                txtSearch.PlaceholderText = "Tìm kiếm...";
+
+                dgvCTNhap.Visible = false;
+                dgvNhapKho.Visible = true;
+
+                _ = LoadAllAsync();
+            }
+        }
+
+        // === CRUD ===
+        private void Add_Click(object sender, EventArgs e)
+        {
+            if (_isDetailMode)
+            {
+                ShowDetailForm("Thêm chi tiết", null);
+            }
+            else
+            {
+                ShowPhieuForm("Thêm phiếu nhập", null);
+            }
+        }
+
         private void Edit_Click(object sender, EventArgs e)
         {
-            if (dgvNhapKho.SelectedRows.Count == 0) { ShowMessage("Vui lòng chọn phiếu để sửa"); return; }
-            var phieu = (NhapKho)dgvNhapKho.SelectedRows[0].DataBoundItem;
-            ShowForm("Sửa phiếu nhập", phieu);
+            if (_isDetailMode)
+            {
+                if (_currentDetail == null)
+                {
+                    ShowMessage("Vui lòng chọn chi tiết để sửa!");
+                    return;
+                }
+                ShowDetailForm("Sửa chi tiết", _currentDetail);
+            }
+            else
+            {
+                if (_currentPhieu == null)
+                {
+                    ShowMessage("Vui lòng chọn phiếu để sửa!");
+                    return;
+                }
+                ShowPhieuForm("Sửa phiếu nhập", _currentPhieu);
+            }
         }
 
         private async void Delete_Click(object sender, EventArgs e)
         {
-            // nếu đang ở chế độ sửa chi tiết thì nút xóa bị vô hiệu (không gọi), nhưng guard thêm đây
-            if (_isDetailEditMode)
+            if (_isDetailMode)
             {
-                ShowMessage("Đang ở chế độ Sửa/Thêm chi tiết. Nút Xóa bị vô hiệu.");
-                return;
-            }
+                // Xóa chi tiết
+                if (_currentDetail == null)
+                {
+                    ShowMessage("Vui lòng chọn chi tiết để xóa!");
+                    return;
+                }
 
-            if (dgvNhapKho.SelectedRows.Count == 0) { ShowMessage("Vui lòng chọn phiếu để xóa"); return; }
-            var phieu = (NhapKho)dgvNhapKho.SelectedRows[0].DataBoundItem;
-            if (MessageBox.Show($"Bạn có chắc muốn xóa phiếu \"{phieu.MaPhieuNhap}\"? (Toàn bộ chi tiết sẽ bị xóa)", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                await _ctNhapKhoService.DeleteByMaPhieuNhapAsync(phieu.MaPhieuNhap);
-                await _nhapKhoService.DeleteAsync(phieu.MaPhieuNhap);
-                await LoadAllAsync();
-                ShowMessage("Đã xóa phiếu nhập.");
-            }
-        }
-
-        // === Thêm chi tiết (thêm sách vào phiếu đang chọn hoặc mở form tạo phiếu mới) ===
-        private void AddDetail_Click(object sender, EventArgs e)
-        {
-            if (dgvNhapKho.SelectedRows.Count == 0)
-            {
-                ShowMessage("Vui lòng chọn phiếu nhập trước khi thêm chi tiết (hoặc tạo phiếu mới).");
-                return;
-            }
-
-            var phieu = (NhapKho)dgvNhapKho.SelectedRows[0].DataBoundItem;
-            // Nếu đang ở chế độ "Sửa chi tiết" (bật), hành vi vẫn là mở form thêm chi tiết,
-            // nhưng panel sẽ mở từ trái (ShowDetailForm sẽ kiểm tra _isDetailEditMode)
-            ShowDetailForm("Thêm chi tiết - " + phieu.MaPhieuNhap, phieu);
-        }
-
-        // === Toggle: chuyển sang chế độ Sửa/Thêm chi tiết (nằm bên trái) hoặc quay về ===
-        private void ToggleEditDetail_Click(object sender, EventArgs e)
-        {
-            // nút chuyển chế độ: nếu đang tắt -> bật; bật -> tắt
-            _isDetailEditMode = !_isDetailEditMode;
-
-            if (_isDetailEditMode)
-            {
-                // thay đổi UI: khi bật, nút thêm/sửa sẽ dùng để thêm/sửa chi tiết,
-                // nút xóa vô hiệu
-                btnToggleEditDetail.Text = "Quay về quản lý phiếu";
-                btnAdd.Text = "Thêm chi tiết";
-                btnEdit.Text = "Sửa chi tiết";
-                btnDelete.Enabled = false;
-                btnAddDetail.Text = "Mở chi tiết"; // optional: giữ 1 nút để mở form thêm chi tiết
-                ShowMessage("Đã chuyển sang chế độ Thêm/Sửa chi tiết. Panel chi tiết sẽ xuất hiện ở bên trái khi mở.");
+                if (MessageBox.Show($"Xóa chi tiết sách '{_currentDetail.MaSach}'?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var success = await _ctNhapKhoService.DeleteAsync(_currentDetail.MaPhieuNhap, _currentDetail.MaSach);
+                    if (success)
+                    {
+                        ShowMessage("Đã xóa chi tiết!");
+                        // Reload chi tiết
+                        var ctList = _ctNhapKhoService.GetAll()
+                            .Where(c => c.MaPhieuNhap == _currentPhieu.MaPhieuNhap)
+                            .Select(c => new
+                            {
+                                c.MaPhieuNhap,
+                                c.MaSach,
+                                TenSach = c.Sach?.TenSach ?? "",
+                                c.SoLuong,
+                                c.DonGia
+                            })
+                            .ToList();
+                        dgvCTNhap.DataSource = ctList;
+                    }
+                }
             }
             else
             {
-                // quay về trạng thái bình thường
-                btnToggleEditDetail.Text = "Sửa chi tiết";
-                btnAdd.Text = "Thêm phiếu";
-                btnEdit.Text = "Sửa phiếu";
-                btnDelete.Enabled = true;
-                btnAddDetail.Text = "Thêm chi tiết";
-                ShowMessage("Đã quay về chế độ quản lý phiếu (Thêm/Sửa/Xóa phiếu).");
+                // Xóa phiếu
+                if (_currentPhieu == null)
+                {
+                    ShowMessage("Vui lòng chọn phiếu để xóa!");
+                    return;
+                }
+
+                if (MessageBox.Show($"Xóa phiếu '{_currentPhieu.MaPhieuNhap}'? (Toàn bộ chi tiết sẽ bị xóa)", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    await _ctNhapKhoService.DeleteByMaPhieuNhapAsync(_currentPhieu.MaPhieuNhap);
+                    await _nhapKhoService.DeleteAsync(_currentPhieu.MaPhieuNhap);
+                    await LoadAllAsync();
+                    ShowMessage("Đã xóa phiếu!");
+                }
             }
         }
 
-        // === ShowForm cho Thêm / Sửa phiếu (header) ===
-        private async void ShowForm(string title, NhapKho phieu = null)
+        // === Form phiếu (panel phải) ===
+        private async void ShowPhieuForm(string title, NhapKho phieu)
         {
-            // Khi đang ở chế độ edit detail, nhưng user mở form phiếu, ta muốn mở panel ở bên phải (như cũ).
-            // Nếu có pnlForm đang mở thì đóng trước
             if (pnlForm != null && guna2Panel1.Controls.Contains(pnlForm))
             {
-                await AnimatePanel(pnlForm, false, DockStyle.Right);
+                await AnimatePanel(pnlForm, false);
             }
+
+            bool isEdit = phieu != null;
 
             pnlForm = new Guna2Panel
             {
-                Size = new Size(0, guna2Panel1.Height),
+                Width = 0,
+                Height = guna2Panel1.Height,
                 BorderRadius = 12,
                 BorderThickness = 1,
                 BorderColor = Color.Gray,
                 BackColor = Color.White,
                 Dock = DockStyle.Right,
-                Padding = new Padding(12),
-                Visible = true,
-                ShadowDecoration = { Enabled = true, Depth = 8, Color = Color.FromArgb(60, 0, 0, 0) }
+                Padding = new Padding(20),
+                Visible = true
             };
 
             var lblTitle = new Label
             {
                 Text = title,
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 Dock = DockStyle.Top,
-                Height = 36,
-                TextAlign = ContentAlignment.MiddleCenter
+                Height = 40,
+                TextAlign = ContentAlignment.MiddleCenter,
+                ForeColor = Color.FromArgb(64, 64, 64)
             };
 
-            // Controls nhập phiếu
-            txtMaPhieu = new Guna2TextBox { PlaceholderText = "Mã phiếu", Text = phieu?.MaPhieuNhap ?? RandHelper.TaoMa("PN"), ReadOnly = true };
-            dtpNgayNhap = new Guna2DateTimePicker { Format = DateTimePickerFormat.Short, Value = phieu?.NgayNhap ?? DateTime.Now };
+            txtMaPhieu = new Guna2TextBox
+            {
+                PlaceholderText = "Mã phiếu",
+                Text = phieu?.MaPhieuNhap ?? RandHelper.TaoMa("PN"),
+                ReadOnly = true,
+                Width = 360,
+                BorderRadius = 8,
+                Margin = new Padding(0, 10, 0, 0)
+            };
 
-            // Tăng chiều rộng combobox kho để nhìn rõ tên kho (yêu cầu)
-            var tmp = new Guna2ComboBox { Width = 360 };
-            tmp.AutoCompleteSource = AutoCompleteSource.ListItems;
-            tmp.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cboKho = tmp;
-            txtGhiChu = new Guna2TextBox { PlaceholderText = "Ghi chú", Text = phieu?.GhiChu, Multiline = true, Height = 60 };
+            dtpNgayNhap = new Guna2DateTimePicker
+            {
+                Format = DateTimePickerFormat.Short,
+                Value = phieu?.NgayNhap ?? DateTime.Now,
+                Width = 360,
+                BorderRadius = 8,
+                Margin = new Padding(0, 10, 0, 0)
+            };
 
-            // load danh sách kho
+            cboKho = new Guna2ComboBox
+            {
+                Width = 360,
+                BorderRadius = 8,
+                Margin = new Padding(0, 10, 0, 0),
+                Enabled = !isEdit // Chỉ cho chọn kho khi thêm mới
+            };
+
             var khoList = await _khoService.GetAllAsync();
             cboKho.DataSource = khoList.ToList();
             cboKho.DisplayMember = "TenKho";
@@ -316,114 +457,231 @@ namespace PM.GUI.userConTrol.Admin
                 cboKho.SelectedValue = phieu.MaKho;
             }
 
-            // nút lưu / hủy
-            btnSave = CreateButton("Lưu", async (s, e) => await SavePhieu_Click(phieu));
-            btnCancel = CreateButton("Hủy", async (s, e) => await AnimatePanel(pnlForm, false, DockStyle.Right));
+            txtGhiChu = new Guna2TextBox
+            {
+                PlaceholderText = "Ghi chú",
+                Text = phieu?.GhiChu,
+                Multiline = true,
+                Height = 80,
+                Width = 360,
+                BorderRadius = 8,
+                Margin = new Padding(0, 10, 0, 0)
+            };
+
+            var pnlButtons = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 50,
+                FlowDirection = FlowDirection.LeftToRight,
+                Padding = new Padding(40, 10, 40, 0)
+            };
+
+            btnSave = new Guna2Button
+            {
+                Text = "Lưu",
+                Width = 130,
+                Height = 40,
+                BorderRadius = 8,
+                FillColor = Color.FromArgb(94, 148, 255)
+            };
+            btnSave.Click += async (s, e) => await SavePhieu(phieu);
+
+            btnCancel = new Guna2Button
+            {
+                Text = "Hủy",
+                Width = 130,
+                Height = 40,
+                BorderRadius = 8,
+                FillColor = Color.FromArgb(200, 200, 200),
+                Margin = new Padding(20, 0, 0, 0)
+            };
+            btnCancel.Click += async (s, e) => await AnimatePanel(pnlForm, false);
+
+            pnlButtons.Controls.AddRange(new Control[] { btnSave, btnCancel });
 
             var flow = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.TopDown,
-                Padding = new Padding(5)
+                AutoScroll = true,
+                Padding = new Padding(10)
             };
-            flow.Controls.AddRange(new Control[] { lblTitle, txtMaPhieu, dtpNgayNhap, cboKho, txtGhiChu, btnSave, btnCancel });
 
+            flow.Controls.Add(lblTitle);
+            flow.Controls.Add(new Label { Text = "Mã phiếu:", AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold), Margin = new Padding(0, 10, 0, 2) });
+            flow.Controls.Add(txtMaPhieu);
+            flow.Controls.Add(new Label { Text = "Ngày nhập:", AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold), Margin = new Padding(0, 10, 0, 2) });
+            flow.Controls.Add(dtpNgayNhap);
+            flow.Controls.Add(new Label { Text = "Kho:" + (isEdit ? " (Không thể thay đổi)" : ""), AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold), Margin = new Padding(0, 10, 0, 2) });
+            flow.Controls.Add(cboKho);
+            flow.Controls.Add(new Label { Text = "Ghi chú:", AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold), Margin = new Padding(0, 10, 0, 2) });
+            flow.Controls.Add(txtGhiChu);
+
+            pnlForm.Controls.Add(pnlButtons);
             pnlForm.Controls.Add(flow);
             guna2Panel1.Controls.Add(pnlForm);
-            // đặt BringToFront để panel hiện lên trên
             pnlForm.BringToFront();
 
-            await AnimatePanel(pnlForm, true, DockStyle.Right);
+            await AnimatePanel(pnlForm, true);
         }
 
-        // === ShowForm thêm chi tiết (sách vào phiếu) ===
-        private async void ShowDetailForm(string title, NhapKho phieu)
+        // === Form chi tiết (panel trái) ===
+        private async void ShowDetailForm(string title, CT_NhapKho detail)
         {
-            if (phieu == null) return;
+            if (_currentPhieu == null)
+            {
+                ShowMessage("Không có phiếu nào được chọn!");
+                return;
+            }
 
-            // Nếu đang có panel mở thì đóng trước
             if (pnlForm != null && guna2Panel1.Controls.Contains(pnlForm))
             {
-                // đóng panel hiện tại (nếu là từ phải hoặc trái) trước
-                await AnimatePanel(pnlForm, false, pnlForm.Dock);
+                await AnimatePanel(pnlForm, false);
             }
+
+            bool isEdit = detail != null;
 
             pnlForm = new Guna2Panel
             {
-                Size = new Size(0, guna2Panel1.Height),
+                Width = 0,
+                Height = guna2Panel1.Height,
                 BorderRadius = 12,
                 BorderThickness = 1,
                 BorderColor = Color.Gray,
                 BackColor = Color.White,
-                // MỞ Ở BÊN TRÁI khi đang ở chế độ sửa chi tiết (_isDetailEditMode == true)
-                Dock = _isDetailEditMode ? DockStyle.Left : DockStyle.Right,
-                Padding = new Padding(12),
-                Visible = true,
-                ShadowDecoration = { Enabled = true, Depth = 8, Color = Color.FromArgb(60, 0, 0, 0) }
+                Dock = DockStyle.Left, // MỞ TỪ TRÁI
+                Padding = new Padding(20),
+                Visible = true
             };
 
             var lblTitle = new Label
             {
                 Text = title,
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 Dock = DockStyle.Top,
-                Height = 36,
-                TextAlign = ContentAlignment.MiddleCenter
+                Height = 40,
+                TextAlign = ContentAlignment.MiddleCenter,
+                ForeColor = Color.FromArgb(64, 64, 64)
             };
 
-            // Controls nhập chi tiết
-            cboSach = new Guna2ComboBox { Width = 320, DropDownStyle = ComboBoxStyle.DropDownList };
-            numSoLuong = new Guna2NumericUpDown { Minimum = 1, Maximum = 1000000, Value = 1, Width = 120 };
-            txtDonGia = new Guna2TextBox { PlaceholderText = "Đơn giá", Width = 160 };
+            var lblPhieu = new Label
+            {
+                Text = $"Phiếu: {_currentPhieu.MaPhieuNhap}",
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                Height = 30,
+                Width = 360,
+                TextAlign = ContentAlignment.MiddleCenter,
+                BackColor = Color.FromArgb(240, 248, 255),
+                ForeColor = Color.FromArgb(94, 148, 255),
+                Margin = new Padding(0, 10, 0, 10)
+            };
 
-            // Load & map sách
+            cboSach = new Guna2ComboBox
+            {
+                Width = 360,
+                BorderRadius = 8,
+                Margin = new Padding(0, 10, 0, 0),
+                Enabled = !isEdit // Không cho đổi sách khi sửa
+            };
+
             var sachList = await _sachService.GetAllAsync();
             cboSach.DataSource = sachList.ToList();
             cboSach.DisplayMember = "TenSach";
             cboSach.ValueMember = "MaSach";
 
-            btnSave = CreateButton("Thêm vào phiếu", async (s, e) => await SaveDetail_Click(phieu));
-            btnCancel = CreateButton("Hủy", async (s, e) => await AnimatePanel(pnlForm, false, pnlForm.Dock));
+            if (detail != null)
+            {
+                cboSach.SelectedValue = detail.MaSach;
+            }
+
+            numSoLuong = new Guna2NumericUpDown
+            {
+                Minimum = 1,
+                Maximum = 1000000,
+                Value = detail?.SoLuong ?? 1,
+                Width = 360,
+                BorderRadius = 8,
+                Margin = new Padding(0, 10, 0, 0)
+            };
+
+            txtDonGia = new Guna2TextBox
+            {
+                PlaceholderText = "Đơn giá (VNĐ)",
+                Text = detail?.DonGia.ToString() ?? "",
+                Width = 360,
+                BorderRadius = 8,
+                Margin = new Padding(0, 10, 0, 0)
+            };
+
+            var pnlButtons = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 50,
+                FlowDirection = FlowDirection.LeftToRight,
+                Padding = new Padding(40, 10, 40, 0)
+            };
+
+            btnSave = new Guna2Button
+            {
+                Text = "Lưu",
+                Width = 130,
+                Height = 40,
+                BorderRadius = 8,
+                FillColor = Color.FromArgb(94, 148, 255)
+            };
+            btnSave.Click += async (s, e) => await SaveDetail(detail);
+
+            btnCancel = new Guna2Button
+            {
+                Text = "Hủy",
+                Width = 130,
+                Height = 40,
+                BorderRadius = 8,
+                FillColor = Color.FromArgb(200, 200, 200),
+                Margin = new Padding(20, 0, 0, 0)
+            };
+            btnCancel.Click += async (s, e) => await AnimatePanel(pnlForm, false);
+
+            pnlButtons.Controls.AddRange(new Control[] { btnSave, btnCancel });
 
             var flow = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.TopDown,
-                Padding = new Padding(5)
+                AutoScroll = true,
+                Padding = new Padding(10)
             };
-            flow.Controls.AddRange(new Control[] {
-                lblTitle,
-                new Label{ Text = "Phiếu: " + phieu.MaPhieuNhap, AutoSize=true },
-                new Label{ Text = "Chọn sách", AutoSize=true },
-                cboSach,
-                new Label{ Text = "Số lượng", AutoSize=true },
-                numSoLuong,
-                new Label{ Text = "Đơn giá (VNĐ)", AutoSize=true },
-                txtDonGia,
-                btnSave,
-                btnCancel
-            });
 
+            flow.Controls.Add(lblTitle);
+            flow.Controls.Add(lblPhieu);
+            flow.Controls.Add(new Label { Text = "Sách:" + (isEdit ? " (Không thể thay đổi)" : ""), AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold), Margin = new Padding(0, 10, 0, 2) });
+            flow.Controls.Add(cboSach);
+            flow.Controls.Add(new Label { Text = "Số lượng:", AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold), Margin = new Padding(0, 10, 0, 2) });
+            flow.Controls.Add(numSoLuong);
+            flow.Controls.Add(new Label { Text = "Đơn giá:", AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold), Margin = new Padding(0, 10, 0, 2) });
+            flow.Controls.Add(txtDonGia);
+
+            pnlForm.Controls.Add(pnlButtons);
             pnlForm.Controls.Add(flow);
             guna2Panel1.Controls.Add(pnlForm);
             pnlForm.BringToFront();
 
-            // MỞ bằng animation từ trái khi _isDetailEditMode == true, ngược lại từ phải
-            await AnimatePanel(pnlForm, true, pnlForm.Dock);
+            await AnimatePanel(pnlForm, true);
         }
 
-        // === Lưu phiếu (header) ===
-        private async Task SavePhieu_Click(NhapKho phieu)
+        // === Lưu phiếu ===
+        private async Task SavePhieu(NhapKho phieu)
         {
             if (string.IsNullOrWhiteSpace(txtMaPhieu.Text) || cboKho.SelectedValue == null)
             {
-                ShowMessage("Vui lòng điền Mã phiếu và chọn kho.");
+                ShowMessage("Vui lòng điền đầy đủ thông tin!");
                 return;
             }
 
             bool success;
             if (phieu == null)
             {
+                // Thêm mới
                 var newPhieu = new NhapKho
                 {
                     MaPhieuNhap = txtMaPhieu.Text.Trim(),
@@ -436,8 +694,8 @@ namespace PM.GUI.userConTrol.Admin
             }
             else
             {
+                // Chỉ sửa ngày nhập và ghi chú (không đổi kho)
                 phieu.NgayNhap = dtpNgayNhap.Value;
-                phieu.MaKho = cboKho.SelectedValue.ToString();
                 phieu.GhiChu = txtGhiChu.Text.Trim();
                 success = await _nhapKhoService.UpdateAsync(phieu);
             }
@@ -445,7 +703,7 @@ namespace PM.GUI.userConTrol.Admin
             if (success)
             {
                 ShowMessage("Lưu phiếu thành công!");
-                await AnimatePanel(pnlForm, false, DockStyle.Right);
+                await AnimatePanel(pnlForm, false);
                 await LoadAllAsync();
             }
             else
@@ -454,54 +712,77 @@ namespace PM.GUI.userConTrol.Admin
             }
         }
 
-        // === Lưu chi tiết (thêm sách vào phiếu) ===
-        private async Task SaveDetail_Click(NhapKho phieu)
+        // === Lưu chi tiết ===
+        private async Task SaveDetail(CT_NhapKho detail)
         {
             if (cboSach.SelectedValue == null)
             {
-                ShowMessage("Vui lòng chọn sách.");
+                ShowMessage("Vui lòng chọn sách!");
                 return;
             }
 
             if (!decimal.TryParse(txtDonGia.Text.Trim(), out decimal donGia) || donGia <= 0)
             {
-                ShowMessage("Đơn giá không hợp lệ.");
+                ShowMessage("Đơn giá không hợp lệ!");
                 return;
             }
 
-            var newCT = new CT_NhapKho
+            bool success;
+            if (detail == null)
             {
-                MaPhieuNhap = phieu.MaPhieuNhap,
-                MaSach = cboSach.SelectedValue.ToString(),
-                SoLuong = (int)numSoLuong.Value,
-                DonGia = donGia
-            };
+                // Thêm mới
+                var newCT = new CT_NhapKho
+                {
+                    MaPhieuNhap = _currentPhieu.MaPhieuNhap,
+                    MaSach = cboSach.SelectedValue.ToString(),
+                    SoLuong = (int)numSoLuong.Value,
+                    DonGia = donGia
+                };
 
-            var success = await _ctNhapKhoService.AddAsync(newCT);
-
-            if (success)
-            {
-                // có thể cập nhật kho/số lượng tồn ở tầng service nếu cần
-                ShowMessage("Đã thêm sách vào phiếu!");
-                await AnimatePanel(pnlForm, false, pnlForm.Dock);
-                DgvNhapKho_SelectionChanged(null, null); // reload chi tiết
+                success = await _ctNhapKhoService.AddAsync(newCT);
             }
             else
             {
-                ShowMessage("Có lỗi khi thêm chi tiết!");
+                // Sửa (chỉ số lượng và đơn giá)
+                detail.SoLuong = (int)numSoLuong.Value;
+                detail.DonGia = donGia;
+                success = await _ctNhapKhoService.UpdateAsync(detail);
+            }
+
+            if (success)
+            {
+                ShowMessage(detail == null ? "Đã thêm chi tiết!" : "Đã cập nhật chi tiết!");
+                await AnimatePanel(pnlForm, false);
+                
+                // Reload chi tiết
+                var ctList = _ctNhapKhoService.GetAll()
+                    .Where(c => c.MaPhieuNhap == _currentPhieu.MaPhieuNhap)
+                    .Select(c => new
+                    {
+                        c.MaPhieuNhap,
+                        c.MaSach,
+                        TenSach = c.Sach?.TenSach ?? "",
+                        c.SoLuong,
+                        c.DonGia
+                    })
+                    .ToList();
+                dgvCTNhap.DataSource = ctList;
+            }
+            else
+            {
+                ShowMessage("Có lỗi khi lưu chi tiết!");
             }
         }
 
-        // === Hiệu ứng slide panel giống mẫu ===
-        // Bổ sung tham số dockSide để cho panel có thể mở từ trái hoặc phải
-        private async Task AnimatePanel(Guna2Panel panel, bool show, DockStyle dockSide)
+        // === Hiệu ứng slide panel ===
+        private async Task AnimatePanel(Guna2Panel panel, bool show)
         {
             if (_isAnimating) return;
             _isAnimating = true;
 
-            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnAddDetail.Enabled = btnToggleEditDetail.Enabled = false;
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnToggleMode.Enabled = false;
 
-            int targetWidth = 380;
+            int targetWidth = 420;
             int frameRate = 120;
             int totalDuration = show ? 220 : 160;
             int frameDelay = 1000 / frameRate;
@@ -513,8 +794,6 @@ namespace PM.GUI.userConTrol.Admin
 
             panel.SuspendLayout();
 
-            // để điều khiển animation mở từ trái hoặc phải, ta thay đổi Width và vị trí thông qua Padding/Offset.
-            // simpler: nếu mở từ trái, DockStyle.Left và tăng Width; nếu mở từ phải, DockStyle.Right và tăng Width.
             if (show)
             {
                 panel.Visible = true;
@@ -559,9 +838,7 @@ namespace PM.GUI.userConTrol.Admin
 
             panel.ResumeLayout();
 
-            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnAddDetail.Enabled = btnToggleEditDetail.Enabled = true;
-            // Nếu đang ở chế độ detail edit thì vô hiệu nút xóa
-            btnDelete.Enabled = !_isDetailEditMode;
+            btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnRefresh.Enabled = btnToggleMode.Enabled = true;
 
             _isAnimating = false;
         }
@@ -578,7 +855,7 @@ namespace PM.GUI.userConTrol.Admin
             pnlTop.Top = 0;
         }
 
-        // === Hiển thị FormMessage nhỏ ===
+        // === Hiển thị FormMessage ===
         private void ShowMessage(string text)
         {
             var fm = new FormMessage(text);

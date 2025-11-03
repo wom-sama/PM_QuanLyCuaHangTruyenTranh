@@ -257,7 +257,7 @@ namespace PM.GUI.Main
                     return new userConTrol.Admin.PhanCong(currentNV.MaChiNhanh) { Dock = DockStyle.Fill };
                 case "btn_BangLuong": return new TinhLuong { Dock = DockStyle.Fill };
                 case "btn_TheLoai": return new Edit_TheLoai { Dock = DockStyle.Fill };
-                case "btn_NhapKho": return new Edit_NhapKho() { Dock = DockStyle.Fill };
+                case "btn_NhapKho": return new Edit_NhapKho(currentNV.MaNV) { Dock = DockStyle.Fill };
                 case "btn_TTCn":    return new  userConTrol.Common.ShowTTCN(currentNV.MaNV) { Dock = DockStyle.Fill };
                 case"Btn_ThongBao": return new userConTrol.Admin.GuiThongBao() { Dock =DockStyle.Fill};
                 case "btn_ChucVu": return new Edit_ChucVu { Dock = DockStyle.Fill };
