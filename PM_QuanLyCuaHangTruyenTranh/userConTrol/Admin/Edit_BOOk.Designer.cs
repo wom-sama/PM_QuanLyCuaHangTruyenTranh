@@ -31,10 +31,10 @@
             this.txtFindTen = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelDanhSach = new System.Windows.Forms.FlowLayoutPanel();
             this.pannel_TongEditBook = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnThoat = new Guna.UI2.WinForms.Guna2Button();
             this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.flpTheLoai = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTheLoai = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThoat = new Guna.UI2.WinForms.Guna2Button();
             this.pannel_TongEditBook.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,7 @@
             // 
             // pannel_TongEditBook
             // 
+            this.pannel_TongEditBook.BackColor = System.Drawing.Color.Pink;
             this.pannel_TongEditBook.Controls.Add(this.btnThoat);
             this.pannel_TongEditBook.Controls.Add(this.btnFind);
             this.pannel_TongEditBook.Controls.Add(this.flpTheLoai);
@@ -81,6 +82,23 @@
             this.pannel_TongEditBook.Name = "pannel_TongEditBook";
             this.pannel_TongEditBook.Size = new System.Drawing.Size(736, 461);
             this.pannel_TongEditBook.TabIndex = 3;
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThoat.BorderRadius = 15;
+            this.btnThoat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThoat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThoat.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.Location = new System.Drawing.Point(598, 69);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(135, 31);
+            this.btnThoat.TabIndex = 6;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnFind
             // 
@@ -120,23 +138,6 @@
             this.btnTheLoai.TabIndex = 3;
             this.btnTheLoai.Text = "tag";
             this.btnTheLoai.Click += new System.EventHandler(this.btnTheLoai_Click);
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThoat.BorderRadius = 15;
-            this.btnThoat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThoat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThoat.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnThoat.ForeColor = System.Drawing.Color.White;
-            this.btnThoat.Location = new System.Drawing.Point(598, 69);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(135, 31);
-            this.btnThoat.TabIndex = 6;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // Edit_BOOk
             // 

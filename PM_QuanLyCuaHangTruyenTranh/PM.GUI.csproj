@@ -125,12 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbSeeder.cs" />
-    <Compile Include="FormThongBao\HoveInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormThongBao\HoveInfo.Designer.cs">
-      <DependentUpon>HoveInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,9 +392,6 @@
     <Compile Include="userConTrol\Employee\XemLuong.Designer.cs">
       <DependentUpon>XemLuong.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormThongBao\HoveInfo.resx">
-      <DependentUpon>HoveInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>

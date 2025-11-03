@@ -685,6 +685,7 @@ namespace PM.GUI.userConTrol.Admin
                 var newPhieu = new NhapKho
                 {
                     MaPhieuNhap = txtMaPhieu.Text.Trim(),
+                    MaNV=chu,
                     NgayNhap = dtpNgayNhap.Value,
                     MaKho = cboKho.SelectedValue.ToString(),
                     GhiChu = txtGhiChu.Text.Trim()
