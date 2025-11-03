@@ -96,6 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\DoanhThuDto.cs" />
     <Compile Include="DTOs\DonHangDTO.cs" />
     <Compile Include="DTOs\TaiKhoanDTO.cs" />
     <Compile Include="Helpers\AESHelper.cs" />

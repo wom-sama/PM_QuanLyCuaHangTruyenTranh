@@ -327,7 +327,7 @@ namespace PM.GUI.Main
         private void btnThongTin_Click_1(object sender, EventArgs e)
         {
             var uc = new CaNhan(currentNV.MaNV);
-            // 👉 Hiện nút guna2Button1 khi bấm vào Thông tin
+            // Hiện nút guna2Button1 khi bấm vào Thông tin
             guna2Button1.Visible = true;
             HienThiUserControl(uc);
         }
@@ -337,6 +337,11 @@ namespace PM.GUI.Main
             var uc =  new ShowTTCN(currentNV.MaNV);
             HienThiUserControl(uc);
         }
-        
+
+        private void btnDoanhThu_Click(object sender, EventArgs e)
+        {
+            var uc = new DoanhThu(currentNV);
+            HienThiUserControl(uc);
+        }
     }
 }

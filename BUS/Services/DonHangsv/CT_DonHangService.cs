@@ -1,6 +1,7 @@
-﻿using PM.DAL;
-using PM.DAL.Models;
+﻿using BUS.DTOs;
+using PM.DAL;
 using PM.DAL.Interfaces;
+using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -224,8 +225,60 @@ namespace PM.BUS.Services.DonHangsv
             }
         }
 
+        public async Task<List<DoanhThuDto>> TinhDoanhThuLoiNhuanAsync(string maChiNhanh, DateTime fromDate, DateTime toDate)
+        {
+            try
+            {
+                var donHangs = await _unitOfWork.DonHangRepository.GetAllAsync();
 
+                if (!string.IsNullOrEmpty(maChiNhanh))
+                    donHangs = donHangs.Where(dh => dh.NhanVien != null && dh.NhanVien.MaChiNhanh == maChiNhanh).ToList();
+
+                donHangs = donHangs.Where(dh => dh.NgayDat >= fromDate && dh.NgayDat <= toDate).ToList();
+                var donHangIds = donHangs.Select(dh => dh.MaDonHang).ToList();
+
+                var ctDonHangs = (await _unitOfWork.CT_DonHangRepository.GetAllAsync())
+                                 .Where(ct => donHangIds.Contains(ct.MaDonHang))
+                                 .ToList();
+
+                var ctNhapKhos = _unitOfWork.CT_NhapKhoRepository.GetAll();
+                var nhapKhos = _unitOfWork.NhapKhoRepository.GetAll();
+
+                var result = ctDonHangs.Select(ct =>
+                {
+                    var nhapKho = (from ctNk in ctNhapKhos
+                                   join nk in nhapKhos on ctNk.MaPhieuNhap equals nk.MaPhieuNhap
+                                   where ctNk.MaSach == ct.MaSach
+                                   orderby nk.NgayNhap descending
+                                   select ctNk).FirstOrDefault();
+
+                    decimal chiPhi = (nhapKho?.DonGia ?? 0) * ct.SoLuong;
+                    decimal doanhThu = ct.DonGia * ct.SoLuong; // ✅ Sửa chỗ này
+                    decimal loiNhuan = doanhThu - chiPhi;
+
+                    return new DoanhThuDto
+                    {
+                        MaDonHang = ct.MaDonHang,
+                        NgayDat = ct.DonHang?.NgayDat ?? DateTime.MinValue,
+                        TenSach = ct.Sach?.TenSach ?? "Không xác định",
+                        SoLuongBan = ct.SoLuong,
+                        DoanhThu = doanhThu,
+                        ChiPhi = chiPhi,
+                        LoiNhuan = doanhThu - chiPhi
+                    };
+                }).OrderBy(r => r.NgayDat).ToList();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi tính doanh thu & lợi nhuận: " + ex.Message);
+                return new List<DoanhThuDto>();
+            }
         }
+
+
+    }  
 
 
 }
