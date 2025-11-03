@@ -30,7 +30,6 @@
             // 
             // txtFindTen
             // 
-            this.txtFindTen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFindTen.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFindTen.DefaultText = "";
             this.txtFindTen.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -39,7 +38,7 @@
             this.txtFindTen.Name = "txtFindTen";
             this.txtFindTen.PlaceholderText = "Tìm kiếm sách...";
             this.txtFindTen.SelectedText = "";
-            this.txtFindTen.Size = new System.Drawing.Size(263, 41);
+            this.txtFindTen.Size = new System.Drawing.Size(156, 41);
             this.txtFindTen.TabIndex = 0;
             this.txtFindTen.TextChanged += new System.EventHandler(this.txtFindTen_TextChanged);
             // 
@@ -80,16 +79,19 @@
             this.panelDanhSach.Location = new System.Drawing.Point(3, 80);
             this.panelDanhSach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelDanhSach.Name = "panelDanhSach";
-            this.panelDanhSach.Size = new System.Drawing.Size(830, 490);
+            this.panelDanhSach.Size = new System.Drawing.Size(832, 490);
             this.panelDanhSach.TabIndex = 2;
             // 
             // pannelTong
             // 
+            this.pannelTong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pannelTong.Controls.Add(this.guna2CirclePictureBox1);
             this.pannelTong.Controls.Add(this.cbChiNhanh);
             this.pannelTong.Controls.Add(this.btnCart);
             this.pannelTong.Controls.Add(this.btnFind);
             this.pannelTong.Controls.Add(this.txtFindTen);
             this.pannelTong.Controls.Add(this.panelDanhSach);
+            this.pannelTong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannelTong.Location = new System.Drawing.Point(0, 0);
             this.pannelTong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pannelTong.Name = "pannelTong";
@@ -99,8 +101,6 @@
             // 
             // cbChiNhanh
             // 
-            this.cbChiNhanh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbChiNhanh.BackColor = System.Drawing.Color.Transparent;
             this.cbChiNhanh.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -109,10 +109,10 @@
             this.cbChiNhanh.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbChiNhanh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbChiNhanh.ItemHeight = 30;
-            this.cbChiNhanh.Location = new System.Drawing.Point(16, 25);
+            this.cbChiNhanh.Location = new System.Drawing.Point(13, 30);
             this.cbChiNhanh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbChiNhanh.Name = "cbChiNhanh";
-            this.cbChiNhanh.Size = new System.Drawing.Size(183, 36);
+            this.cbChiNhanh.Size = new System.Drawing.Size(166, 36);
             this.cbChiNhanh.TabIndex = 3;
             this.cbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
             // 
@@ -128,7 +128,8 @@
             this.guna2CirclePictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2CirclePictureBox1.Image = global::PM.GUI.Properties.Resources.Untitled123;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(703, 0);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(382, 10);
+            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
@@ -140,7 +141,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.pannelTong);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Shop_BookView";

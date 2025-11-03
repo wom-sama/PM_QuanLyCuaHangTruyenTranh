@@ -12,15 +12,16 @@ namespace PM.GUI.userConTrol.Employee
     {
         private readonly KhoService _khoService;
         private readonly string _maKho;
-
+        private readonly NhanVien _currentNV;
         // Thêm delegate để hiển thị UserControl khác
         private readonly Action<UserControl> _hienThiUC;
 
-        public ChiTietKho(string maKho, Action<UserControl> hienThiUC)
+        public ChiTietKho(string maKho, NhanVien currentNV, Action<UserControl> hienThiUC)
         {
             InitializeComponent();
 
             _maKho = maKho;
+            _currentNV = currentNV;
             _hienThiUC = hienThiUC;
 
             _khoService = new KhoService(new PM.DAL.UnitOfWork());
@@ -67,7 +68,7 @@ namespace PM.GUI.userConTrol.Employee
         private void BtnBack_Click(object sender, EventArgs e)
         {
             // Sử dụng delegate để quay về Kho
-            _hienThiUC?.Invoke(new Kho(_hienThiUC));
+            _hienThiUC?.Invoke(new Kho(_currentNV, _hienThiUC));
         }
     }
 }

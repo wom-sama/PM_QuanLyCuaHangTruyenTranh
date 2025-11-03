@@ -338,6 +338,12 @@
     <Compile Include="userConTrol\Employee\CaLam.Designer.cs">
       <DependentUpon>CaLam.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\CaNhan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\CaNhan.Designer.cs">
+      <DependentUpon>CaNhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\ChiTietKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -385,6 +391,12 @@
     </Compile>
     <Compile Include="userConTrol\Employee\XemDon.Designer.cs">
       <DependentUpon>XemDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userConTrol\Employee\XemLuong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\XemLuong.Designer.cs">
+      <DependentUpon>XemLuong.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormThongBao\HoveInfo.resx">
       <DependentUpon>HoveInfo.cs</DependentUpon>
@@ -486,6 +498,9 @@
     <EmbeddedResource Include="userConTrol\Employee\CaLam.resx">
       <DependentUpon>CaLam.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\CaNhan.resx">
+      <DependentUpon>CaNhan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\ChiTietKho.resx">
       <DependentUpon>ChiTietKho.cs</DependentUpon>
     </EmbeddedResource>
@@ -509,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\XemDon.resx">
       <DependentUpon>XemDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\XemLuong.resx">
+      <DependentUpon>XemLuong.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

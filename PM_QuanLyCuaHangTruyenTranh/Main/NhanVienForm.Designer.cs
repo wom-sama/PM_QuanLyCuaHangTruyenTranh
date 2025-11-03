@@ -29,24 +29,44 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanVienForm));
+            this.pannelGD_tong = new Guna.UI2.WinForms.Guna2Panel();
             this.panelhienthi = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnChuong = new Guna.UI2.WinForms.Guna2Button();
-            this.lblBadge = new System.Windows.Forms.Label();
+            this.panelMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.btnThongTin = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXemLuong = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
+            this.btnGiaoHang = new Guna.UI2.WinForms.Guna2Button();
+            this.btnKho = new Guna.UI2.WinForms.Guna2Button();
             this.btnLenDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnDuyetDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnXemDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnCaLam = new Guna.UI2.WinForms.Guna2Button();
-            this.pannelGD_tong = new Guna.UI2.WinForms.Guna2Panel();
-            this.panelMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
-            this.btnGiaoHang = new Guna.UI2.WinForms.Guna2Button();
-            this.btnKho = new Guna.UI2.WinForms.Guna2Button();
+            this.btnChuong = new Guna.UI2.WinForms.Guna2Button();
+            this.lblBadge = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.pannelGD_tong.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pannelGD_tong
+            // 
+            this.pannelGD_tong.AutoScroll = true;
+            this.pannelGD_tong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pannelGD_tong.BackgroundImage")));
+            this.pannelGD_tong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pannelGD_tong.Controls.Add(this.panelhienthi);
+            this.pannelGD_tong.Controls.Add(this.panelMenu);
+            this.pannelGD_tong.Controls.Add(this.btnChuong);
+            this.pannelGD_tong.Controls.Add(this.lblBadge);
+            this.pannelGD_tong.Controls.Add(this.menuStrip1);
+            this.pannelGD_tong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pannelGD_tong.Location = new System.Drawing.Point(0, 0);
+            this.pannelGD_tong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pannelGD_tong.Name = "pannelGD_tong";
+            this.pannelGD_tong.Size = new System.Drawing.Size(1328, 1089);
+            this.pannelGD_tong.TabIndex = 7;
             // 
             // panelhienthi
             // 
@@ -58,40 +78,103 @@
             this.panelhienthi.Location = new System.Drawing.Point(284, 169);
             this.panelhienthi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelhienthi.Name = "panelhienthi";
-            this.panelhienthi.Size = new System.Drawing.Size(1017, 710);
+            this.panelhienthi.Size = new System.Drawing.Size(1017, 880);
             this.panelhienthi.TabIndex = 7;
             // 
-            // btnChuong
+            // panelMenu
             // 
-            this.btnChuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChuong.BackColor = System.Drawing.Color.Transparent;
-            this.btnChuong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnChuong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnChuong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnChuong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnChuong.FillColor = System.Drawing.Color.Transparent;
-            this.btnChuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnChuong.ForeColor = System.Drawing.Color.Gold;
-            this.btnChuong.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnChuong.Location = new System.Drawing.Point(1187, 40);
-            this.btnChuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnChuong.Name = "btnChuong";
-            this.btnChuong.Size = new System.Drawing.Size(83, 102);
-            this.btnChuong.TabIndex = 0;
-            this.btnChuong.UseTransparentBackground = true;
-            this.btnChuong.Click += new System.EventHandler(this.btnChuong_Click);
+            this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMenu.Controls.Add(this.guna2Button1);
+            this.panelMenu.Controls.Add(this.btnThongTin);
+            this.panelMenu.Controls.Add(this.btnXemLuong);
+            this.panelMenu.Controls.Add(this.btnThongBao);
+            this.panelMenu.Controls.Add(this.btnGiaoHang);
+            this.panelMenu.Controls.Add(this.btnKho);
+            this.panelMenu.Controls.Add(this.btnLenDon);
+            this.panelMenu.Controls.Add(this.btnDuyetDon);
+            this.panelMenu.Controls.Add(this.btnXemDon);
+            this.panelMenu.Controls.Add(this.btnCaLam);
+            this.panelMenu.FillColor = System.Drawing.Color.Transparent;
+            this.panelMenu.FillColor2 = System.Drawing.Color.Transparent;
+            this.panelMenu.FillColor3 = System.Drawing.Color.Transparent;
+            this.panelMenu.FillColor4 = System.Drawing.Color.Transparent;
+            this.panelMenu.Location = new System.Drawing.Point(51, 169);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(217, 880);
+            this.panelMenu.TabIndex = 0;
             // 
-            // lblBadge
+            // btnThongTin
             // 
-            this.lblBadge.BackColor = System.Drawing.Color.Red;
-            this.lblBadge.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.lblBadge.ForeColor = System.Drawing.Color.White;
-            this.lblBadge.Location = new System.Drawing.Point(1256, 19);
-            this.lblBadge.Name = "lblBadge";
-            this.lblBadge.Size = new System.Drawing.Size(69, 67);
-            this.lblBadge.TabIndex = 1;
-            this.lblBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblBadge.Visible = false;
+            this.btnThongTin.BorderRadius = 10;
+            this.btnThongTin.FillColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnThongTin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnThongTin.ForeColor = System.Drawing.Color.White;
+            this.btnThongTin.Location = new System.Drawing.Point(20, 707);
+            this.btnThongTin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongTin.Name = "btnThongTin";
+            this.btnThongTin.Size = new System.Drawing.Size(180, 50);
+            this.btnThongTin.TabIndex = 10;
+            this.btnThongTin.Text = "Cá Nhân";
+            this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click_1);
+            // 
+            // btnXemLuong
+            // 
+            this.btnXemLuong.BorderRadius = 10;
+            this.btnXemLuong.FillColor = System.Drawing.Color.SlateGray;
+            this.btnXemLuong.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnXemLuong.ForeColor = System.Drawing.Color.White;
+            this.btnXemLuong.Location = new System.Drawing.Point(20, 623);
+            this.btnXemLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXemLuong.Name = "btnXemLuong";
+            this.btnXemLuong.Size = new System.Drawing.Size(180, 50);
+            this.btnXemLuong.TabIndex = 9;
+            this.btnXemLuong.Text = "Lương";
+            this.btnXemLuong.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
+            // btnThongBao
+            // 
+            this.btnThongBao.BorderRadius = 10;
+            this.btnThongBao.FillColor = System.Drawing.Color.Pink;
+            this.btnThongBao.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnThongBao.ForeColor = System.Drawing.Color.White;
+            this.btnThongBao.Location = new System.Drawing.Point(20, 538);
+            this.btnThongBao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongBao.Name = "btnThongBao";
+            this.btnThongBao.Size = new System.Drawing.Size(180, 50);
+            this.btnThongBao.TabIndex = 8;
+            this.btnThongBao.Text = "Thông Báo";
+            this.btnThongBao.Click += new System.EventHandler(this.btnThongBao_Click);
+            // 
+            // btnGiaoHang
+            // 
+            this.btnGiaoHang.BorderRadius = 10;
+            this.btnGiaoHang.FillColor = System.Drawing.Color.Green;
+            this.btnGiaoHang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGiaoHang.ForeColor = System.Drawing.Color.White;
+            this.btnGiaoHang.Location = new System.Drawing.Point(20, 448);
+            this.btnGiaoHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGiaoHang.Name = "btnGiaoHang";
+            this.btnGiaoHang.Size = new System.Drawing.Size(180, 50);
+            this.btnGiaoHang.TabIndex = 7;
+            this.btnGiaoHang.Text = "Giao Hàng";
+            this.btnGiaoHang.Click += new System.EventHandler(this.btnGiaoHang_Click);
+            // 
+            // btnKho
+            // 
+            this.btnKho.BorderRadius = 10;
+            this.btnKho.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnKho.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnKho.ForeColor = System.Drawing.Color.White;
+            this.btnKho.Location = new System.Drawing.Point(20, 356);
+            this.btnKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnKho.Name = "btnKho";
+            this.btnKho.Size = new System.Drawing.Size(180, 50);
+            this.btnKho.TabIndex = 6;
+            this.btnKho.Text = "Kho";
+            this.btnKho.Click += new System.EventHandler(this.btnKho_Click);
             // 
             // btnLenDon
             // 
@@ -149,85 +232,37 @@
             this.btnCaLam.Text = "Ca Làm";
             this.btnCaLam.Click += new System.EventHandler(this.btnCaLam_Click);
             // 
-            // pannelGD_tong
+            // btnChuong
             // 
-            this.pannelGD_tong.AutoScroll = true;
-            this.pannelGD_tong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pannelGD_tong.BackgroundImage")));
-            this.pannelGD_tong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pannelGD_tong.Controls.Add(this.panelhienthi);
-            this.pannelGD_tong.Controls.Add(this.panelMenu);
-            this.pannelGD_tong.Controls.Add(this.btnChuong);
-            this.pannelGD_tong.Controls.Add(this.lblBadge);
-            this.pannelGD_tong.Controls.Add(this.menuStrip1);
-            this.pannelGD_tong.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pannelGD_tong.Location = new System.Drawing.Point(0, 0);
-            this.pannelGD_tong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pannelGD_tong.Name = "pannelGD_tong";
-            this.pannelGD_tong.Size = new System.Drawing.Size(1328, 919);
-            this.pannelGD_tong.TabIndex = 7;
+            this.btnChuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChuong.BackColor = System.Drawing.Color.Transparent;
+            this.btnChuong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnChuong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnChuong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnChuong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnChuong.FillColor = System.Drawing.Color.Transparent;
+            this.btnChuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnChuong.ForeColor = System.Drawing.Color.Gold;
+            this.btnChuong.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnChuong.Location = new System.Drawing.Point(1187, 40);
+            this.btnChuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChuong.Name = "btnChuong";
+            this.btnChuong.Size = new System.Drawing.Size(83, 102);
+            this.btnChuong.TabIndex = 0;
+            this.btnChuong.UseTransparentBackground = true;
+            this.btnChuong.Click += new System.EventHandler(this.btnChuong_Click);
             // 
-            // panelMenu
+            // lblBadge
             // 
-            this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelMenu.Controls.Add(this.btnThongBao);
-            this.panelMenu.Controls.Add(this.btnGiaoHang);
-            this.panelMenu.Controls.Add(this.btnKho);
-            this.panelMenu.Controls.Add(this.btnLenDon);
-            this.panelMenu.Controls.Add(this.btnDuyetDon);
-            this.panelMenu.Controls.Add(this.btnXemDon);
-            this.panelMenu.Controls.Add(this.btnCaLam);
-            this.panelMenu.FillColor = System.Drawing.Color.Transparent;
-            this.panelMenu.FillColor2 = System.Drawing.Color.Transparent;
-            this.panelMenu.FillColor3 = System.Drawing.Color.Transparent;
-            this.panelMenu.FillColor4 = System.Drawing.Color.Transparent;
-            this.panelMenu.Location = new System.Drawing.Point(51, 169);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(217, 710);
-            this.panelMenu.TabIndex = 0;
-            // 
-            // btnThongBao
-            // 
-            this.btnThongBao.BorderRadius = 10;
-            this.btnThongBao.FillColor = System.Drawing.Color.Pink;
-            this.btnThongBao.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnThongBao.ForeColor = System.Drawing.Color.White;
-            this.btnThongBao.Location = new System.Drawing.Point(20, 538);
-            this.btnThongBao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThongBao.Name = "btnThongBao";
-            this.btnThongBao.Size = new System.Drawing.Size(180, 50);
-            this.btnThongBao.TabIndex = 8;
-            this.btnThongBao.Text = "Thông Báo";
-            this.btnThongBao.Click += new System.EventHandler(this.btnThongBao_Click);
-            // 
-            // btnGiaoHang
-            // 
-            this.btnGiaoHang.BorderRadius = 10;
-            this.btnGiaoHang.FillColor = System.Drawing.Color.Green;
-            this.btnGiaoHang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGiaoHang.ForeColor = System.Drawing.Color.White;
-            this.btnGiaoHang.Location = new System.Drawing.Point(20, 448);
-            this.btnGiaoHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGiaoHang.Name = "btnGiaoHang";
-            this.btnGiaoHang.Size = new System.Drawing.Size(180, 50);
-            this.btnGiaoHang.TabIndex = 7;
-            this.btnGiaoHang.Text = "Giao Hàng";
-            this.btnGiaoHang.Click += new System.EventHandler(this.btnGiaoHang_Click);
-            // 
-            // btnKho
-            // 
-            this.btnKho.BorderRadius = 10;
-            this.btnKho.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnKho.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnKho.ForeColor = System.Drawing.Color.White;
-            this.btnKho.Location = new System.Drawing.Point(20, 356);
-            this.btnKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnKho.Name = "btnKho";
-            this.btnKho.Size = new System.Drawing.Size(180, 50);
-            this.btnKho.TabIndex = 6;
-            this.btnKho.Text = "Kho";
-            this.btnKho.Click += new System.EventHandler(this.btnKho_Click);
+            this.lblBadge.BackColor = System.Drawing.Color.Red;
+            this.lblBadge.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.lblBadge.ForeColor = System.Drawing.Color.White;
+            this.lblBadge.Location = new System.Drawing.Point(1256, 19);
+            this.lblBadge.Name = "lblBadge";
+            this.lblBadge.Size = new System.Drawing.Size(69, 67);
+            this.lblBadge.TabIndex = 1;
+            this.lblBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBadge.Visible = false;
             // 
             // menuStrip1
             // 
@@ -250,11 +285,25 @@
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BorderRadius = 10;
+            this.guna2Button1.FillColor = System.Drawing.Color.BlueViolet;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(20, 792);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(180, 50);
+            this.guna2Button1.TabIndex = 11;
+            this.guna2Button1.Text = "Sửa Thông Tin";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
+            // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 919);
+            this.ClientSize = new System.Drawing.Size(1328, 1089);
             this.Controls.Add(this.pannelGD_tong);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -288,5 +337,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private Guna.UI2.WinForms.Guna2Button btnThongBao;
+        private Guna.UI2.WinForms.Guna2Button btnXemLuong;
+        private Guna.UI2.WinForms.Guna2Button btnThongTin;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

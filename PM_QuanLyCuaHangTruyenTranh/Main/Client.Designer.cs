@@ -40,6 +40,7 @@
             this.btnEditProfile = new System.Windows.Forms.Button();
             this.btnChangePFP = new System.Windows.Forms.Button();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.btnMuaHang = new Guna.UI2.WinForms.Guna2Button();
             this.cboTrangThai = new System.Windows.Forms.ComboBox();
             this.btnHistory = new System.Windows.Forms.Button();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -128,7 +129,10 @@
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.Color.Transparent;
+            this.panelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMain.BackColor = System.Drawing.Color.Pink;
             this.panelMain.Location = new System.Drawing.Point(477, 44);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(899, 757);
@@ -158,6 +162,7 @@
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2GroupBox1.Controls.Add(this.btnMuaHang);
             this.guna2GroupBox1.Controls.Add(this.cboTrangThai);
             this.guna2GroupBox1.Controls.Add(this.btnHistory);
             this.guna2GroupBox1.Controls.Add(this.txtHoTen);
@@ -174,6 +179,22 @@
             this.guna2GroupBox1.TabIndex = 16;
             this.guna2GroupBox1.Text = "Hồ sơ của tôi";
             this.guna2GroupBox1.UseTransparentBackground = true;
+            // 
+            // btnMuaHang
+            // 
+            this.btnMuaHang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMuaHang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMuaHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMuaHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMuaHang.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMuaHang.ForeColor = System.Drawing.Color.White;
+            this.btnMuaHang.Location = new System.Drawing.Point(24, 305);
+            this.btnMuaHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMuaHang.Name = "btnMuaHang";
+            this.btnMuaHang.Size = new System.Drawing.Size(160, 36);
+            this.btnMuaHang.TabIndex = 0;
+            this.btnMuaHang.Text = "Mua Hàng";
+            this.btnMuaHang.Click += new System.EventHandler(this.btnMuaHang_Click);
             // 
             // cboTrangThai
             // 
@@ -297,5 +318,6 @@
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private System.Windows.Forms.ComboBox cboTrangThai;
         private Guna.UI2.WinForms.Guna2PictureBox picRoleGif;
+        private Guna.UI2.WinForms.Guna2Button btnMuaHang;
     }
 }

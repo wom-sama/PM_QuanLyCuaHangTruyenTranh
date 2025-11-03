@@ -141,5 +141,24 @@ namespace PM.GUI.Main
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
+        private void HienThiUserControl(UserControl uc)
+        {
+            // Ẩn panel cũ (nếu có)
+            panelMain.Controls.Clear(); // panelMain là nơi bạn muốn hiện Shop_BookView
+            uc.Dock = DockStyle.Fill;
+            panelMain.Controls.Add(uc);
+            uc.BringToFront();
+        }
+
+        private void btnMuaHang_Click(object sender, EventArgs e)
+        {
+            // Tạo control hiển thị sách
+            var shopUC = new PM.GUI.userConTrol.Customer.Shop_BookView(currentUser);
+
+            // Gọi hàm hiển thị (hoặc tự viết code)
+            HienThiUserControl(shopUC);
+        }
     }
 }
