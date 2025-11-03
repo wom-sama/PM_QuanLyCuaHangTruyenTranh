@@ -16,6 +16,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop_BookView));
             this.txtFindTen = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.btnCart = new Guna.UI2.WinForms.Guna2Button();
@@ -85,11 +86,14 @@
             // 
             // pannelTong
             // 
+            this.pannelTong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pannelTong.BackgroundImage")));
+            this.pannelTong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pannelTong.Controls.Add(this.cbChiNhanh);
             this.pannelTong.Controls.Add(this.btnCart);
             this.pannelTong.Controls.Add(this.btnFind);
             this.pannelTong.Controls.Add(this.txtFindTen);
             this.pannelTong.Controls.Add(this.panelDanhSach);
+            this.pannelTong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannelTong.Location = new System.Drawing.Point(0, 0);
             this.pannelTong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pannelTong.Name = "pannelTong";
