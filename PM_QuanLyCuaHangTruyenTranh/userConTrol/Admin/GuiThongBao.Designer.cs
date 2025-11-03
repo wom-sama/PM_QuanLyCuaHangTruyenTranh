@@ -45,6 +45,7 @@
             // 
             // Panel_Tong
             // 
+            this.Panel_Tong.BackgroundImage = global::PM.GUI.Properties.Resources.cherry_blossoms_6383_128;
             this.Panel_Tong.Controls.Add(this.cbo_Khack);
             this.Panel_Tong.Controls.Add(this.txt_TuaDe);
             this.Panel_Tong.Controls.Add(this.guna2CircleButton1);

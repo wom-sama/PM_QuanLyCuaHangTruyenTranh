@@ -1,6 +1,7 @@
 ﻿using PM.BUS.Services;
 using PM.BUS.Services.TaiKhoansv;
 using PM.DAL.Models;
+using PM.GUI.FormThongBao;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,17 +38,29 @@ namespace PM.GUI.userConTrol.Admin
             cbo_nhanVien.DataSource = danhSachNhanVien.ToList();
             cbo_nhanVien.DisplayMember = "HoTen"; // Thuộc tính hiển thị
             cbo_nhanVien.ValueMember = "MaNV";   // Thuộc tính giá trị
-            cbo_nhanVien.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbo_nhanVien.SelectedIndex = 0;
             //load danh sach khach hang vao combobox
             var danhSachKhachHang = khachHangService.LayTatCa();
             cbo_Khack.DataSource = danhSachKhachHang.ToList();
             cbo_Khack.DisplayMember = "HoTen"; // Thuộc tính hiển thị
             cbo_Khack.ValueMember = "TenDangNhap";   // Thuộc tính giá trị
-            cbo_Khack.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbo_Khack.SelectedIndex = 0;
 
 
 
 
+        }
+        private void ShowMessage(string text)
+        {
+            var fm = new FormMessage(text);
+            fm.StartPosition = FormStartPosition.CenterScreen;
+            fm.Show();
+        }
+        private void CleanTT()
+        {
+            this.RTB_NoiDung.Text = "...";
+            this.txt_TuaDe.Text = null;
+            this.check_ALL.Checked = true;
         }
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
@@ -55,13 +68,13 @@ namespace PM.GUI.userConTrol.Admin
             //kiểm tra tiêu đề và nội dung
             if (string.IsNullOrWhiteSpace(txt_TuaDe.Text))
             {
-                MessageBox.Show("Vui lòng nhập tiêu đề thông báo.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowMessage("Vui Lòng nhập tự đề thông báo");
                 return;
             }
             //kiểm tra gửi cho ai
             if (!check_ALL.Checked && !check_One.Checked && !check_Khach.Checked)
             {
-                MessageBox.Show("Vui lòng chọn người nhận thông báo.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowMessage("Vui lòng chọn người nhận");
                 return;
             }
             try
@@ -78,7 +91,8 @@ namespace PM.GUI.userConTrol.Admin
                         NguoiNhan = "ALL"
                     };
                     thongBaoService.Add(tb);
-
+                    ShowMessage("Gửi Thông Báo Thành Công");
+                    CleanTT();
                 }
                 else if (check_One.Checked)
                 {
@@ -92,7 +106,8 @@ namespace PM.GUI.userConTrol.Admin
                         NguoiNhan = cbo_nhanVien.SelectedValue.ToString()
                     };
                     thongBaoService.Add(tb);
-
+                    ShowMessage("Gửi Thông Báo Thành Công");
+                    CleanTT();
 
                 }
                 else if (check_Khach.Checked)
@@ -107,12 +122,14 @@ namespace PM.GUI.userConTrol.Admin
                         NguoiNhan = cbo_Khack.SelectedValue.ToString()
                     };
                     thongBaoService.Add(tb);
-                    MessageBox.Show("Gửi thông báo thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowMessage("Gửi Thông Báo Thành Công");
+                    CleanTT();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi gửi thông báo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowMessage("Lỗi Khi Gửi" + ex.Message);
+                CleanTT();
             }
         }
 

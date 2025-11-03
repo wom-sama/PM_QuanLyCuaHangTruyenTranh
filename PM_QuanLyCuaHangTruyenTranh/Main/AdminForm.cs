@@ -257,7 +257,7 @@ namespace PM.GUI.Main
                     return new userConTrol.Admin.PhanCong(currentNV.MaChiNhanh) { Dock = DockStyle.Fill };
                 case "btn_BangLuong": return new TinhLuong { Dock = DockStyle.Fill };
                 case "btn_TheLoai": return new Edit_TheLoai { Dock = DockStyle.Fill };
-                case "btn_NhapKho": return new Edit_NhapKho() { Dock = DockStyle.Fill };
+                case "btn_NhapKho": return new Edit_NhapKho(currentNV.MaNV) { Dock = DockStyle.Fill };
                 case "btn_TTCn":    return new  userConTrol.Common.ShowTTCN(currentNV.MaNV) { Dock = DockStyle.Fill };
                 case"Btn_ThongBao": return new userConTrol.Admin.GuiThongBao() { Dock =DockStyle.Fill};
                 case "btn_ChucVu": return new Edit_ChucVu { Dock = DockStyle.Fill };
@@ -276,15 +276,17 @@ namespace PM.GUI.Main
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
-         
-            
+
+            lbl_titleCN.Text = "Thêm sách bán";
+            Edit_Lable.AdjustFontSize(lbl_titleCN);
             MoPanelConTheoNut("BtnThem");
             btnCN_Click_1(sender, e);
         }
 
         private void btnKho_Click(object sender, EventArgs e)
         {
-
+            lbl_titleCN.Text = "Sách Đang Có";
+            Edit_Lable.AdjustFontSize(lbl_titleCN);
             
             MoPanelConTheoNut("btnKho");
             btnCN_Click_1(sender, e);
@@ -293,12 +295,16 @@ namespace PM.GUI.Main
 
         private void btn_DSTG_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Quản Lý Tác Giả";
+            Edit_Lable.AdjustFontSize(lbl_titleCN);
             MoPanelConTheoNut("btn_DSTG");
             btnCN_Click_1(sender, e);
         }
 
         private void btn_LoiLo_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Tổng Kết Chi Tiêu";
+            Edit_Lable.AdjustFontSize(lbl_titleCN);
             MoPanelConTheoNut("btn_LoiLo");
             btnCN_Click_1(sender, e);
 
@@ -306,6 +312,8 @@ namespace PM.GUI.Main
 
         private void btn_phanCong_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Phân Công Nhiệm Vụ";
+            Edit_Lable.AdjustFontSize(lbl_titleCN);
             MoPanelConTheoNut("btn_phanCong");
             btnCN_Click_1(sender, e);
 
@@ -313,12 +321,16 @@ namespace PM.GUI.Main
 
         private void btn_BangLuong_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Quản Lý Bảng Lương";
+            Edit_Lable.AdjustFontSize(lbl_titleCN);
             MoPanelConTheoNut("btn_BangLuong");
             btnCN_Click_1(sender, e);
         }
 
         private void btn_TheLoai_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Quản Lý Thể Loại";
+            Edit_Lable.AdjustFontSize(lbl_titleCN);
             MoPanelConTheoNut("btn_TheLoai");
             btnCN_Click_1(sender, e);
 
@@ -326,18 +338,21 @@ namespace PM.GUI.Main
 
         private void btn_TTCN_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Thông Tin Cá Nhân";
             MoPanelConTheoNut("btn_TTCn");
             btnCN_Click_1(sender, e);
         }
 
         private void btn_NhapKho_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Nhập Sách";
             MoPanelConTheoNut("btn_NhapKho");
             btnCN_Click_1(sender, e);
         }
 
         private void Btn_ThongBao_Click(object sender, EventArgs e)
         {
+            lbl_titleCN.Text = "Gửi Thông Báo";
             MoPanelConTheoNut("Btn_ThongBao");
             btnCN_Click_1(sender, e);
         }
@@ -358,11 +373,6 @@ namespace PM.GUI.Main
        
 
         private void btn_CuaHang_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2GradientTileButton2_Click(object sender, EventArgs e)
         {
 
         }

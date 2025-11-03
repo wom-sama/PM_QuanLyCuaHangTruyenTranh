@@ -98,7 +98,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.label1.Location = new System.Drawing.Point(196, 245);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 31);
+            this.label1.Size = new System.Drawing.Size(65, 26);
             this.label1.TabIndex = 20;
             this.label1.Text = "Vai trò";
             // 
@@ -139,13 +139,13 @@
             this.lblInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblInfo.BackColor = System.Drawing.Color.Transparent;
             this.guna2Transition1.SetDecoration(this.lblInfo, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.Font = new System.Drawing.Font("Times New Roman", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblInfo.Location = new System.Drawing.Point(292, 40);
+            this.lblInfo.Location = new System.Drawing.Point(263, 40);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(193, 93);
+            this.lblInfo.Size = new System.Drawing.Size(290, 69);
             this.lblInfo.TabIndex = 17;
-            this.lblInfo.Text = "Login";
+            this.lblInfo.Text = "Đăng Nhập";
             this.lblInfo.MouseEnter += new System.EventHandler(this.guna2HtmlLabel1_MouseEnter);
             this.lblInfo.MouseLeave += new System.EventHandler(this.guna2HtmlLabel1_MouseLeave);
             // 
@@ -156,9 +156,9 @@
             this.guna2Transition1.SetDecoration(this.lblClick, Guna.UI2.AnimatorNS.DecorationType.None);
             this.lblClick.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            this.lblClick.Location = new System.Drawing.Point(345, 379);
+            this.lblClick.Location = new System.Drawing.Point(295, 380);
             this.lblClick.Name = "lblClick";
-            this.lblClick.Size = new System.Drawing.Size(209, 32);
+            this.lblClick.Size = new System.Drawing.Size(177, 27);
             this.lblClick.TabIndex = 16;
             this.lblClick.Text = "Đăng ký tài khoản";
             this.lblClick.Click += new System.EventHandler(this.lblClick_Click);
@@ -193,7 +193,7 @@
             this.lblPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.lblPass.Location = new System.Drawing.Point(176, 205);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(103, 31);
+            this.lblPass.Size = new System.Drawing.Size(86, 26);
             this.lblPass.TabIndex = 13;
             this.lblPass.Text = "Mật khẩu";
             // 
@@ -206,7 +206,7 @@
             this.lblUN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.lblUN.Location = new System.Drawing.Point(126, 161);
             this.lblUN.Name = "lblUN";
-            this.lblUN.Size = new System.Drawing.Size(153, 31);
+            this.lblUN.Size = new System.Drawing.Size(129, 26);
             this.lblUN.TabIndex = 12;
             this.lblUN.Text = "Tên đăng nhập";
             // 
