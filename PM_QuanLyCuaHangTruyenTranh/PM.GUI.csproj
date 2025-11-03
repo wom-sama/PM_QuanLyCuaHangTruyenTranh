@@ -350,6 +350,12 @@
     <Compile Include="userConTrol\Employee\ChiTietKho.Designer.cs">
       <DependentUpon>ChiTietKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="userConTrol\Employee\DoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userConTrol\Employee\DoanhThu.Designer.cs">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="userConTrol\Employee\DuyetDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -503,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\ChiTietKho.resx">
       <DependentUpon>ChiTietKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userConTrol\Employee\DoanhThu.resx">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Employee\DuyetDon.resx">
       <DependentUpon>DuyetDon.cs</DependentUpon>

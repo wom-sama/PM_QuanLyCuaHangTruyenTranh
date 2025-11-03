@@ -32,6 +32,7 @@
             this.pannelGD_tong = new Guna.UI2.WinForms.Guna2Panel();
             this.panelhienthi = new Guna.UI2.WinForms.Guna2Panel();
             this.panelMenu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongTin = new Guna.UI2.WinForms.Guna2Button();
             this.btnXemLuong = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
@@ -45,7 +46,7 @@
             this.lblBadge = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.pannelGD_tong.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -65,7 +66,7 @@
             this.pannelGD_tong.Location = new System.Drawing.Point(0, 0);
             this.pannelGD_tong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pannelGD_tong.Name = "pannelGD_tong";
-            this.pannelGD_tong.Size = new System.Drawing.Size(1328, 1089);
+            this.pannelGD_tong.Size = new System.Drawing.Size(1328, 1148);
             this.pannelGD_tong.TabIndex = 7;
             // 
             // panelhienthi
@@ -78,7 +79,7 @@
             this.panelhienthi.Location = new System.Drawing.Point(284, 169);
             this.panelhienthi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelhienthi.Name = "panelhienthi";
-            this.panelhienthi.Size = new System.Drawing.Size(1017, 880);
+            this.panelhienthi.Size = new System.Drawing.Size(1017, 939);
             this.panelhienthi.TabIndex = 7;
             // 
             // panelMenu
@@ -86,6 +87,7 @@
             this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMenu.Controls.Add(this.btnDoanhThu);
             this.panelMenu.Controls.Add(this.guna2Button1);
             this.panelMenu.Controls.Add(this.btnThongTin);
             this.panelMenu.Controls.Add(this.btnXemLuong);
@@ -103,8 +105,22 @@
             this.panelMenu.Location = new System.Drawing.Point(51, 169);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(217, 880);
+            this.panelMenu.Size = new System.Drawing.Size(217, 939);
             this.panelMenu.TabIndex = 0;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BorderRadius = 10;
+            this.guna2Button1.FillColor = System.Drawing.Color.BlueViolet;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(20, 863);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(180, 50);
+            this.guna2Button1.TabIndex = 11;
+            this.guna2Button1.Text = "Sửa Thông Tin";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
             // 
             // btnThongTin
             // 
@@ -112,7 +128,7 @@
             this.btnThongTin.FillColor = System.Drawing.Color.DarkSlateBlue;
             this.btnThongTin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnThongTin.ForeColor = System.Drawing.Color.White;
-            this.btnThongTin.Location = new System.Drawing.Point(20, 707);
+            this.btnThongTin.Location = new System.Drawing.Point(20, 787);
             this.btnThongTin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongTin.Name = "btnThongTin";
             this.btnThongTin.Size = new System.Drawing.Size(180, 50);
@@ -126,7 +142,7 @@
             this.btnXemLuong.FillColor = System.Drawing.Color.SlateGray;
             this.btnXemLuong.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnXemLuong.ForeColor = System.Drawing.Color.White;
-            this.btnXemLuong.Location = new System.Drawing.Point(20, 623);
+            this.btnXemLuong.Location = new System.Drawing.Point(20, 711);
             this.btnXemLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXemLuong.Name = "btnXemLuong";
             this.btnXemLuong.Size = new System.Drawing.Size(180, 50);
@@ -140,7 +156,7 @@
             this.btnThongBao.FillColor = System.Drawing.Color.Pink;
             this.btnThongBao.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnThongBao.ForeColor = System.Drawing.Color.White;
-            this.btnThongBao.Location = new System.Drawing.Point(20, 538);
+            this.btnThongBao.Location = new System.Drawing.Point(20, 621);
             this.btnThongBao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongBao.Name = "btnThongBao";
             this.btnThongBao.Size = new System.Drawing.Size(180, 50);
@@ -285,25 +301,25 @@
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
-            // guna2Button1
+            // btnDoanhThu
             // 
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.FillColor = System.Drawing.Color.BlueViolet;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(20, 792);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(180, 50);
-            this.guna2Button1.TabIndex = 11;
-            this.guna2Button1.Text = "Sửa Thông Tin";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
+            this.btnDoanhThu.BorderRadius = 10;
+            this.btnDoanhThu.FillColor = System.Drawing.Color.Crimson;
+            this.btnDoanhThu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDoanhThu.ForeColor = System.Drawing.Color.White;
+            this.btnDoanhThu.Location = new System.Drawing.Point(20, 538);
+            this.btnDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDoanhThu.Name = "btnDoanhThu";
+            this.btnDoanhThu.Size = new System.Drawing.Size(180, 50);
+            this.btnDoanhThu.TabIndex = 12;
+            this.btnDoanhThu.Text = "Doanh Thu";
+            this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 1089);
+            this.ClientSize = new System.Drawing.Size(1328, 1148);
             this.Controls.Add(this.pannelGD_tong);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -340,5 +356,6 @@
         private Guna.UI2.WinForms.Guna2Button btnXemLuong;
         private Guna.UI2.WinForms.Guna2Button btnThongTin;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnDoanhThu;
     }
 }
