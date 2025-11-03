@@ -33,7 +33,7 @@ namespace PM.GUI.userConTrol.Common
         private void ShowTTCN_Load(object sender, EventArgs e)
         {
             // Ẩn groupbox và nút Lưu/Hủy
-            grb_TTCN.Visible = false;
+            //grb_TTCN.Visible = false;
             btn_Luu.Visible = false;
             btn_Huy.Visible = false;
             btn_Luu.Enabled = false;
@@ -99,24 +99,6 @@ namespace PM.GUI.userConTrol.Common
 
 
         }
-
-        private void Btn_CN_Click(object sender, EventArgs e)
-        {
-            // Hiện thông tin cá nhân neu đang ẩn va an ẩn neu đang hiện
-            if (grb_TTCN.Visible)
-            {
-                guna2Trans.Hide(grb_TTCN);
-                btn_CN.Text = "Hiện TTCN";
-            }
-            else
-            {
-                guna2Trans.Show(grb_TTCN);
-                btn_CN.Text = "Ẩn TTCN";
-            }
-
-        }
-
-     
 
         private void Btn_Sua_Click(object sender, EventArgs e)
         {
@@ -206,6 +188,26 @@ namespace PM.GUI.userConTrol.Common
         }
 
         private void guna2HtmlLabel10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DTP_NgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Panel_Tong_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grb_TTCN_Click(object sender, EventArgs e)
         {
 
         }

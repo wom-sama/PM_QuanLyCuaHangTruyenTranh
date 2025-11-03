@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PM.GUI.userConTrol.Common;
 
 namespace PM.GUI.Main
 {
@@ -43,6 +44,8 @@ namespace PM.GUI.Main
             InitializeComponent();
             panelMenu.BackColor = Color.Transparent;
             panelMenu.Parent = pannelGD_tong; // nếu pannelGD_tong là nền chính
+            guna2Button1.Visible = false;
+
             panelMenu.BringToFront();
 
         }
@@ -288,31 +291,52 @@ namespace PM.GUI.Main
 
         private void btnKho_Click(object sender, EventArgs e)
         {
+            guna2Button1.Visible = false;
             var uc = new userConTrol.Employee.Kho(HienThiUserControl); //  truyền delegate
             HienThiUserControl(uc);
         }
 
         private void btnGiaoHang_Click(object sender, EventArgs e)
         {
+            guna2Button1.Visible = false;
             var uc = new GiaoHang(currentNV);
             HienThiUserControl(uc);
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             isMenuVisible = !isMenuVisible; // Đảo trạng thái
             menuTimer.Start();              // Kích hoạt hiệu ứng
         }
 
         private void btnThongBao_Click(object sender, EventArgs e)
         {
+            guna2Button1.Visible = false;
             var ucThongBao = new PM.GUI.userConTrol.Employee.ThongBao(currentNV);
             HienThiUserControl(ucThongBao);
         }
 
-        private void btnThongTin_Click(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
-
+            guna2Button1.Visible = false;
+            var uc = new XemLuong(currentNV.MaNV);
+            HienThiUserControl(uc);
         }
+
+        private void btnThongTin_Click_1(object sender, EventArgs e)
+        {
+            var uc = new CaNhan(currentNV.MaNV);
+            // 👉 Hiện nút guna2Button1 khi bấm vào Thông tin
+            guna2Button1.Visible = true;
+            HienThiUserControl(uc);
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+            var uc =  new ShowTTCN(currentNV.MaNV);
+            HienThiUserControl(uc);
+        }
+        
     }
 }
