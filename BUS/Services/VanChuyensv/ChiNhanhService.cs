@@ -16,6 +16,10 @@ namespace PM.BUS.Services.VanChuyensv
         {
             _unitOfWork = unitOfWork;
         }
+        public ChiNhanhService() 
+        {
+            _unitOfWork = new UnitOfWork();
+        }
 
         // ==================== LẤY DỮ LIỆU ====================
         public IEnumerable<ChiNhanh> GetAll()

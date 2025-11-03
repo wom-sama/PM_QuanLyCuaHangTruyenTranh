@@ -16,7 +16,10 @@ namespace PM.BUS.Services.TaiKhoansv
         {
             _unitOfWork = unitOfWork;
         }
-
+        public ChucVuService()
+        {
+            _unitOfWork = new UnitOfWork();
+        }
         // ==================== LẤY DỮ LIỆU ====================
 
         public IEnumerable<ChucVu> GetAll()

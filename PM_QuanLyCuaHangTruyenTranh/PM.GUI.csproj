@@ -223,11 +223,11 @@
     <Compile Include="userConTrol\Admin\PhanCong.Designer.cs">
       <DependentUpon>PhanCong.cs</DependentUpon>
     </Compile>
-    <Compile Include="userConTrol\Admin\QuanLyTaiKhoanNhanVien.cs">
+    <Compile Include="userConTrol\Admin\TaiKhoanNhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="userConTrol\Admin\QuanLyTaiKhoanNhanVien.Designer.cs">
-      <DependentUpon>QuanLyTaiKhoanNhanVien.cs</DependentUpon>
+    <Compile Include="userConTrol\Admin\TaiKhoanNhanVien.Designer.cs">
+      <DependentUpon>TaiKhoanNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="userConTrol\Admin\TheLoai.cs">
       <SubType>UserControl</SubType>
@@ -441,8 +441,8 @@
     <EmbeddedResource Include="userConTrol\Admin\PhanCong.resx">
       <DependentUpon>PhanCong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="userConTrol\Admin\QuanLyTaiKhoanNhanVien.resx">
-      <DependentUpon>QuanLyTaiKhoanNhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="userConTrol\Admin\TaiKhoanNhanVien.resx">
+      <DependentUpon>TaiKhoanNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userConTrol\Admin\TheLoai.resx">
       <DependentUpon>TheLoai.cs</DependentUpon>

@@ -1,8 +1,9 @@
 ﻿using PM.DAL;
-using PM.DAL.Models;
 using PM.DAL.Interfaces;
+using PM.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PM.BUS.Services
@@ -15,7 +16,7 @@ namespace PM.BUS.Services
         {
             _unitOfWork = unitOfWork;
         }
-
+        public TaiKhoanService() { _unitOfWork = new UnitOfWork(); }
         // ==================== LẤY DỮ LIỆU ====================
         public IEnumerable<TaiKhoan> GetAll()
         {
@@ -168,6 +169,41 @@ namespace PM.BUS.Services
                 return false;
             }
         }
+        public IEnumerable<object> GetTaiKhoanNhanVien()
+        {
+            try
+            {
+                var dsTaiKhoan = _unitOfWork.TaiKhoanRepository.GetAll()
+                    .Where(tk => tk.Quyen == "NhanVien")
+                    .ToList();
+
+                var dsNhanVien = _unitOfWork.NhanVienRepository.GetAll().ToList();
+                var dsChucVu = _unitOfWork.ChucVuRepository.GetAll().ToList();
+                var dsChiNhanh = _unitOfWork.ChiNhanhRepository.GetAll().ToList();
+
+                var result = from tk in dsTaiKhoan
+                             join nv in dsNhanVien on tk.MaNhanVien equals nv.MaNV
+                             join cv in dsChucVu on nv.MaChucVu equals cv.MaChucVu
+                             join cn in dsChiNhanh on nv.MaChiNhanh equals cn.MaChiNhanh
+                             select new
+                             {
+                                 TenDangNhap = tk.TenDangNhap,
+                                 MaNV=nv.MaNV,
+                                 TenNhanVien = nv.HoTen,
+                                 TenChiNhanh = cn.TenChiNhanh,
+                                 TenChucVu = cv.TenChucVu
+
+                             };
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách tài khoản nhân viên: " + ex.Message);
+                return new List<object>();
+            }
+        }
+
     }
 
 }
