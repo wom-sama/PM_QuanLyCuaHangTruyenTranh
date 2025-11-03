@@ -292,7 +292,7 @@ namespace PM.GUI.Main
         private void btnKho_Click(object sender, EventArgs e)
         {
             guna2Button1.Visible = false;
-            var uc = new userConTrol.Employee.Kho(HienThiUserControl); //  truyền delegate
+            var uc = new userConTrol.Employee.Kho(currentNV, HienThiUserControl);
             HienThiUserControl(uc);
         }
 

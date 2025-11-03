@@ -218,7 +218,7 @@ namespace PM.BUS.Services.VanChuyensv
                     .ToList();
             }
         }
-      
+
 
 
         public int LaySoLuongTon(string maSach, string maChiNhanh)
@@ -264,6 +264,7 @@ namespace PM.BUS.Services.VanChuyensv
 
 
 
+
         public void CapNhatTonSauKhiNhap(string maPhieuNhap, string maSach, int soLuong, decimal Gia)
         {
             try
@@ -284,33 +285,37 @@ namespace PM.BUS.Services.VanChuyensv
                 Console.WriteLine("Lỗi khi nhập kho: " + ex.Message);
             }
         }
+        ////chi nhanh theo kho
+        public IEnumerable<Kho> GetByChiNhanh(string maChiNhanh)
+        {
+            try
+            {
+                return _unitOfWork.KhoRepository.GetAll()
+                    .Where(k => k.MaChiNhanh == maChiNhanh)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách kho theo chi nhánh: " + ex.Message);
+                return new List<Kho>();
+            }
+        }
+        //lấy số lượng bán theo sách trong chi nhánh
+        public int LaySoLuongBanTheoSach(string maSach, string maChiNhanh)
+        {
+            var danhSachNV = _unitOfWork.NhanVienRepository.GetAll()
+                .Where(nv => nv.MaChiNhanh == maChiNhanh)
+                .Select(nv => nv.MaNV)
+                .ToList();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            return (from dh in _unitOfWork.DonHangRepository.GetAll()
+                    join ctdh in _unitOfWork.CT_DonHangRepository.GetAll()
+                        on dh.MaDonHang equals ctdh.MaDonHang
+                    where danhSachNV.Contains(dh.MaNV)
+                          && ctdh.MaSach == maSach
+                          && dh.TrangThai == "Đã giao"
+                    select ctdh.SoLuong).Sum();
+        }
 
     }
 
