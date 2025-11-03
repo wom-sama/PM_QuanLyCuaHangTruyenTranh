@@ -175,7 +175,7 @@ namespace PM.BUS.Services.Facade
             don.NgayGiao = DateTime.Now;
             _donHangService.Update(don);
 
-            // ✅ Cập nhật lượt bán cho từng sách trong đơn
+            //  Cập nhật lượt bán cho từng sách trong đơn
             foreach (var ct in don.CT_DonHangs)
             {
                 var sach = ct.Sach;
@@ -186,8 +186,8 @@ namespace PM.BUS.Services.Facade
                 }
             }
 
-            _unitOfWork.Save(); // 💾 Lưu tất cả thay đổi (Đơn + Sách)
-            OnDonHangHoanTat?.Invoke(); // 🔔 Gửi sự kiện để form cập nhật giao diện
+            _unitOfWork.Save(); //  Lưu tất cả thay đổi (Đơn + Sách)
+            OnDonHangHoanTat?.Invoke(); //  Gửi sự kiện để form cập nhật giao diện
 
             return true;
         }
