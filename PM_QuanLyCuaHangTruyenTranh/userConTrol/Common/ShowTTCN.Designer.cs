@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Guna.UI2.AnimatorNS.Animation animation2 = new Guna.UI2.AnimatorNS.Animation();
+            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowTTCN));
             this.Panel_Tong = new Guna.UI2.WinForms.Guna2Panel();
             this.txt_ChiNhanh = new Guna.UI2.WinForms.Guna2TextBox();
@@ -51,7 +51,6 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_suaAnh = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_CN = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Huy = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Luu = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Sua = new Guna.UI2.WinForms.Guna2Button();
@@ -84,7 +83,6 @@
             this.Panel_Tong.Controls.Add(this.guna2HtmlLabel2);
             this.Panel_Tong.Controls.Add(this.guna2HtmlLabel4);
             this.Panel_Tong.Controls.Add(this.btn_suaAnh);
-            this.Panel_Tong.Controls.Add(this.btn_CN);
             this.Panel_Tong.Controls.Add(this.btn_Huy);
             this.Panel_Tong.Controls.Add(this.btn_Luu);
             this.Panel_Tong.Controls.Add(this.btn_Sua);
@@ -419,23 +417,6 @@
             this.btn_suaAnh.Text = "Chọn ảnh ";
             this.btn_suaAnh.Click += new System.EventHandler(this.btn_suaAnh_Click);
             // 
-            // btn_CN
-            // 
-            this.btn_CN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Trans.SetDecoration(this.btn_CN, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.btn_CN.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_CN.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_CN.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_CN.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_CN.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_CN.ForeColor = System.Drawing.Color.White;
-            this.btn_CN.Location = new System.Drawing.Point(1187, 792);
-            this.btn_CN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_CN.Name = "btn_CN";
-            this.btn_CN.Size = new System.Drawing.Size(138, 56);
-            this.btn_CN.TabIndex = 18;
-            this.btn_CN.Text = "Hiện TTCN";
-            // 
             // btn_Huy
             // 
             this.guna2Trans.SetDecoration(this.btn_Huy, Guna.UI2.AnimatorNS.DecorationType.None);
@@ -503,22 +484,22 @@
             // guna2Trans
             // 
             this.guna2Trans.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(0);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.guna2Trans.DefaultAnimation = animation2;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.guna2Trans.DefaultAnimation = animation1;
             // 
             // guna2ColorTransition1
             // 
@@ -549,7 +530,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_Huy;
         private Guna.UI2.WinForms.Guna2Button btn_Luu;
         private Guna.UI2.WinForms.Guna2Button btn_Sua;
-        private Guna.UI2.WinForms.Guna2Button btn_CN;
         private Guna.UI2.WinForms.Guna2Button btn_suaAnh;
         private Guna.UI2.WinForms.Guna2Transition guna2Trans;
         private Guna.UI2.WinForms.Guna2ColorTransition guna2ColorTransition1;

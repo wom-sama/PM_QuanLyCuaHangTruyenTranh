@@ -145,7 +145,7 @@ namespace PM.GUI.userConTrol.Client
 
                 _trangThaiHienTai = null;
 
-                ToMauTheoTrangThai();
+                //ToMauTheoTrangThai();
                 HienThiSoLuongDonHang(danhSachDonHang.Count);
             }
             catch (Exception ex)
@@ -190,7 +190,7 @@ namespace PM.GUI.userConTrol.Client
 
                 _trangThaiHienTai = trangThai;
 
-                ToMauTheoTrangThai();
+                //ToMauTheoTrangThai();
                 HienThiSoLuongDonHang(danhSachDonHang.Count);
             }
             catch (Exception ex)
@@ -199,7 +199,7 @@ namespace PM.GUI.userConTrol.Client
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /*
         private void ToMauTheoTrangThai()
         {
             foreach (DataGridViewRow row in dgvDonHang.Rows)
@@ -228,7 +228,7 @@ namespace PM.GUI.userConTrol.Client
                     }
                 }
             }
-        }
+        }*/
 
         private void HienThiSoLuongDonHang(int soLuong)
         {
